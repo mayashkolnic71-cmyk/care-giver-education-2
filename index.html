@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>פורטל בטיחות והכשרת כוחות עזר סיעודיים | נוהל 1.2.1.2</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -23,6 +26,12 @@
                             700: '#0369a1',
                             800: '#075985',
                             900: '#0c4a6e',
+                        },
+                        tealmed: {
+                            50: '#f0fdf4',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
                         }
                     },
                     fontFamily: {
@@ -33,178 +42,627 @@
         }
     </script>
     <style>
-        .gradient-bg { background: linear-gradient(135deg, #075985 0%, #0369a1 50%, #0d9488 100%); }
-        .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #075985 0%, #0369a1 50%, #0d9488 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .transition-all-custom {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            font-family: 'Rubik', 'Noto Sans Devanagari', sans-serif;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
+    <!-- TOP BAR / LINKS & LANGUAGE SWITCHER -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap justify-between items-center gap-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap justify-between items-center gap-3">
+            
+            <!-- LOGO & BRANDING -->
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="w-10 h-10 rounded-xl bg-medical-700 text-white flex items-center justify-center font-bold text-xl shadow-md">
-                    <i class="fa-solid fa-user-nurse"></i>
+                    <i class="fa-solid font-bold fa-user-nurse"></i>
                 </div>
                 <div>
-                    <span class="block text-xs font-semibold uppercase text-medical-700" id="header-badge">נוהל משרד הבריאות 1.2.1.2</span>
-                    <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight" id="header-title">הדרכת כוחות עזר - אדריכלות של בטיחות</h1>
+                    <span class="block text-xs font-semibold tracking-wide uppercase text-medical-700" id="header-badge">
+                        נוהל משרד הבריאות 1.2.1.2
+                    </span>
+                    <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight" id="header-title">
+                        הדרכת כוחות עזר - אדריכלות של בטיחות
+                    </h1>
                 </div>
             </div>
 
+            <!-- EXTERNAL LINKS & LANGUAGE SWITCHER -->
             <div class="flex flex-wrap items-center gap-2">
-                <a href="https://www.iang.co.il/" target="_blank" class="px-2.5 py-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
+                <!-- Association Website Link -->
+                <a href="https://www.iang.co.il/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs">
                     <i class="fa-solid fa-globe text-emerald-600"></i>
                     <span id="btn-assoc-txt">אתר עמותת האחיות (IANG)</span>
-                </a>
-                <a href="safety-brochure-assistive-personnel-v3.pdf" target="_blank" class="px-2.5 py-1.5 bg-amber-50 text-amber-900 border border-amber-200 hover:bg-amber-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
-                    <i class="fa-solid fa-file-pdf text-amber-600"></i>
-                    <span id="btn-brochure-txt-top">חוברת בטיחות (PDF)</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
 
-                <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border text-xs font-medium" id="lang-switcher">
-                    <button onclick="setLanguage('he')" id="btn-lang-he" class="px-2 py-1 rounded-lg bg-white text-medical-700 font-bold shadow-xs transition-all">🇮🇱 עברית</button>
-                    <button onclick="setLanguage('en')" id="btn-lang-en" class="px-2 py-1 rounded-lg text-slate-600 transition-all hover:bg-white/50">🇺🇸 English</button>
-                    <button onclick="setLanguage('ru')" id="btn-lang-ru" class="px-2 py-1 rounded-lg text-slate-600 transition-all hover:bg-white/50">🇷🇺 Русский</button>
-                    <button onclick="setLanguage('ar')" id="btn-lang-ar" class="px-2 py-1 rounded-lg text-slate-600 transition-all hover:bg-white/50">🇸🇦 العربية</button>
-                    <button onclick="setLanguage('ne')" id="btn-lang-ne" class="px-2 py-1 rounded-lg text-slate-600 transition-all hover:bg-white/50">🇳🇵 नेपाली</button>
+                <!-- Ministry of Health Procedure Link -->
+                <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" rel="noopener noreferrer" id="btn-proc-link-top" class="px-3 py-1.5 bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs">
+                    <i class="fa-solid fa-file-pdf text-rose-600 text-sm"></i>
+                    <span id="btn-proc-txt-top">נוהל 1.2.1.2 הרשמי (PDF)</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+
+                <!-- LANGUAGE PICKER PILLS -->
+                <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-medium">
+                    <button onclick="setLanguage('he')" id="btn-lang-he" class="px-2 py-1 rounded-lg transition-all flex items-center gap-1 font-semibold bg-white text-medical-700 shadow-sm">
+                        <span>🇮🇱</span> <span>עברית</span>
+                    </button>
+                    <button onclick="setLanguage('en')" id="btn-lang-en" class="px-2 py-1 rounded-lg transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                        <span>🇺🇸</span> <span>English</span>
+                    </button>
+                    <button onclick="setLanguage('ru')" id="btn-lang-ru" class="px-2 py-1 rounded-lg transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                        <span>🇷🇺</span> <span>Русский</span>
+                    </button>
+                    <button onclick="setLanguage('ar')" id="btn-lang-ar" class="px-2 py-1 rounded-lg transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                        <span>🇸🇦</span> <span>العربية</span>
+                    </button>
+                    <button onclick="setLanguage('ne')" id="btn-lang-ne" class="px-2 py-1 rounded-lg transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                        <span>🇳🇵</span> <span>नेपाली</span>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="gradient-bg text-white py-8 px-4 relative shadow-lg">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            <div class="lg:col-span-8 space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs text-sky-100 border border-white/20">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <span id="hero-tag">עמותה לקידום האַחֲיוּת הגריאטרי בישראל</span>
+    <!-- HERO SECTION -->
+    <section class="gradient-bg text-white py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden shadow-lg">
+        <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-8 space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur rounded-full text-xs font-medium text-sky-100 border border-white/20">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span id="hero-tag">עמותת האחיות לקידום הסיעוד הגריאטרי בישראל</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white" id="hero-main-title">
+                        הכשרה, בטיחות ובקרת כשירות למטפלים וכוחות עזר בגריאטריה
+                    </h2>
+                    <p class="text-sm sm:text-base text-sky-100 max-w-2xl leading-relaxed" id="hero-description">
+                        כוחות העזר הסיעודיים הם חומת המגן האמיתית השומרת על איכות חייהם, כבודם ובטיחותם של המטופלים. פורטל זה מנגיש את תוכניות ההכשרה, דרישות נוהל 1.2.1.2 ובקרת הכשירות הרב-לשונית במקום אחד.
+                    </p>
+                    
+                    <div class="pt-2 flex flex-wrap gap-3 text-xs sm:text-sm font-medium">
+                        <div class="bg-white/10 backdrop-blur px-3.5 py-2 rounded-xl border border-white/15 flex items-center gap-2">
+                            <i class="fa-solid fa-clock text-emerald-300"></i>
+                            <span id="hero-stat-1">18 שעות הכשרה בסיסית</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur px-3.5 py-2 rounded-xl border border-white/15 flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-amber-300"></i>
+                            <span id="hero-stat-2">40 שעות הכשרת המשך</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur px-3.5 py-2 rounded-xl border border-white/15 flex items-center gap-2">
+                            <i class="fa-solid fa-moon text-indigo-300"></i>
+                            <span id="hero-stat-3">4 שעות הסמכת לילה</span>
+                        </div>
+                    </div>
                 </div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white" id="hero-main-title">הכשרה, בטיחות ובקרת כשירות למטפלים וכוחות עזר בגריאטריה</h2>
-                <p class="text-xs sm:text-sm text-sky-100 max-w-2xl leading-relaxed" id="hero-description">כוחות העזר הסיעודיים הם חומת המגן האמיתית השומרת על איכות חייהם, כבודם ובטיחותם של המטופלים.</p>
-            </div>
-            <div class="lg:col-span-4 bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl text-xs space-y-2">
-                <p class="font-bold text-white" id="author-title">נכתבה ונערכה האפליקציה על ידי</p>
-                <p class="text-sky-100 font-semibold" id="author-name">מאיה שקולניק גזית</p>
-                <p class="text-sky-200 text-[11px]" id="author-role">MHA, BA, RN | מומחית במדיניות ומנהל בסיעוד</p>
+
+                <div class="lg:col-span-4 bg-white/10 backdrop-blur border border-white/20 p-5 rounded-2xl text-xs space-y-3 shadow-inner">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-xl shrink-0">
+                            👩‍⚕️
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm text-white" id="author-title">מחברת התוכנית והנוהל</p>
+                            <p class="text-sky-100 font-semibold" id="author-name">מאיה שקולניק גזית</p>
+                            <p class="text-sky-200 text-[11px]" id="author-role">MHA, BA, RN | מומחית במדיניות ומנהל בסיעוד</p>
+                        </div>
+                    </div>
+                    <hr class="border-white/15">
+                    <p class="text-sky-100 leading-relaxed text-[12px]" id="author-quote">
+                        "האחות כמובילת איכות ובטיחות, בשותפות מלאה עם כוחות העזר - זהו המפתח למניעת נזק בלתי רצוי ולשמירה על חיי הדיירים."
+                    </p>
+                    <div class="pt-1 flex gap-2">
+                        <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="flex-1 text-center py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition-all text-xs">
+                            <i class="fa-solid fa-file-pdf ml-1"></i>
+                            <span id="btn-proc-txt-hero">קובץ נוהל 1.2.1.2</span>
+                        </a>
+                        <a href="https://www.iang.co.il/" target="_blank" class="flex-1 text-center py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold transition-all text-xs">
+                            <i class="fa-solid fa-globe ml-1"></i>
+                            <span id="btn-assoc-txt-hero">אתר העמותה (IANG)</span>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <!-- NAVIGATION TABS (REORDERED: TRACKER MOVED TO THE VERY END) -->
     <div class="bg-white border-b border-slate-200 sticky top-[57px] z-40 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4">
-            <nav class="flex space-x-2 sm:space-x-6 space-x-reverse overflow-x-auto py-2 text-xs sm:text-sm font-semibold text-slate-600 no-scrollbar items-center" id="main-nav">
-                <button onclick="switchTab('modules')" id="tab-btn-modules" class="py-2 px-3 border-b-2 border-medical-600 text-medical-700 font-bold whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-graduation-cap"></i> <span id="span-tab-modules">תוכניות ההכשרה והנוהל</span></button>
-                <button onclick="switchTab('brochure')" id="tab-btn-brochure" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-book"></i> <span id="span-tab-brochure">חוברת בטיחות (PDF)</span></button>
-                <button onclick="switchTab('emergencies')" id="tab-btn-emergencies" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-heart-pulse"></i> <span id="span-tab-emergencies">מצבי חירום ותרגול</span></button>
-                <button onclick="switchTab('observation')" id="tab-btn-observation" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-clipboard-user"></i> <span id="span-tab-observation">הערכה חצי-שנתית ותצפית</span></button>
-                <button onclick="switchTab('nearmiss')" id="tab-btn-nearmiss" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> <span id="span-tab-nearmiss">דיווח כמעט-ונפגע ודיון</span></button>
-                <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-circle-question"></i> <span id="span-tab-quiz">מבדק ידע אינטראקטיבי</span></button>
-                <button onclick="switchTab('checklist')" id="tab-btn-checklist" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-list-check"></i> <span id="span-tab-checklist">צ'ק-ליסט במשמרת</span></button>
-                <button onclick="switchTab('tracker')" id="tab-btn-tracker" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5"><i class="fa-solid fa-table-cells"></i> <span id="span-tab-tracker">יומן מעקב ובקרת כשירות</span></button>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex space-x-2 sm:space-x-6 space-x-reverse overflow-x-auto py-2 text-xs sm:text-sm font-semibold text-slate-600 no-scrollbar" id="nav-tabs">
+                <button onclick="switchTab('modules')" id="tab-btn-modules" class="tab-active py-2 px-3 border-b-2 border-medical-600 text-medical-700 flex items-center gap-2 whitespace-nowrap font-bold">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span id="tab-title-modules">תוכניות ההכשרה והנוהל</span>
+                </button>
+                <button onclick="switchTab('emergencies')" id="tab-btn-emergencies" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-kit-medical text-rose-600"></i>
+                    <span id="tab-title-emergencies">מצבי חירום ותרגול</span>
+                </button>
+                <button onclick="switchTab('curriculum')" id="tab-btn-curriculum" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-list-ol"></i>
+                    <span id="tab-title-curriculum">תוכניות הדרכה ותרגול (18/40/4)</span>
+                </button>
+                <button onclick="switchTab('resilience')" id="tab-btn-resilience" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-heart-pulse text-rose-500"></i>
+                    <span id="tab-title-resilience">סדנת חוסן למטפל/ת</span>
+                </button>
+                <button onclick="switchTab('observation')" id="tab-btn-observation" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-clipboard-user text-teal-600"></i>
+                    <span id="tab-title-observation">הערכה חצי-שנתית ותצפית</span>
+                </button>
+                <button onclick="switchTab('nearmiss')" id="tab-btn-nearmiss" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span id="tab-title-nearmiss">דיווח כמעט-ונפגע ודיון</span>
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span id="tab-title-quiz">מבדק ידע אינטראקטיבי</span>
+                </button>
+                <button onclick="switchTab('checklist')" id="tab-btn-checklist" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span id="tab-title-checklist">צ'ק-ליסט במשמרת</span>
+                </button>
+                <button onclick="switchTab('tracker')" id="tab-btn-tracker" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-table shadow-xs"></i>
+                    <span id="tab-title-tracker">יומן מעקב ובקרת כשירות</span>
+                </button>
             </nav>
         </div>
     </div>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full relative">
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
 
-        <section id="tab-modules" class="space-y-6">
-            <div class="text-center max-w-3xl mx-auto space-y-1">
+        <!-- TAB 1: OVERVIEW OF PROCEDURE 1.2.1.2 -->
+        <section id="tab-modules" class="space-y-8">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
                 <h3 class="text-2xl font-bold text-slate-900" id="mod-heading">עקרונות הליבה של נוהל 1.2.1.2</h3>
                 <p class="text-slate-600 text-sm" id="mod-subheading">מסלול הכשרה היברידי מובנה להבטחת בטיחות המטופל ומניעת סיכונים בגריאטריה</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="modules-cards-container"></div>
-        </section>
 
-        <section id="tab-brochure" class="space-y-6 hidden max-w-5xl mx-auto">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow space-y-6">
-                <div class="flex justify-between items-center border-b pb-4 flex-wrap gap-3">
-                    <div>
-                        <span class="inline-block px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-bold mb-1" id="brochure-tag">חוברת הדרכה ובטיחות מלאה</span>
-                        <h3 class="text-xl font-bold text-slate-900" id="brochure-heading">חוברת בטיחות וכשירות לכוחות עזר ומטפלים</h3>
-                        <p class="text-xs text-slate-500 mt-1" id="brochure-subheading">ערכת תוכנית ההכשרה ההיברידית למטפלים סיעודיים - עמותה לקידום האַחֲיוּת הגריאטרי בישראל</p>
+            <!-- MODULE CARDS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="modules-cards-container">
+                <!-- Dynamically rendered according to active language -->
+            </div>
+
+            <!-- INFOGRAPHIC HIGHLIGHT BOX -->
+            <div class="bg-gradient-to-r from-slate-900 to-medical-900 text-white rounded-2xl p-6 sm:p-8 card-shadow space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">💡</span>
+                        <h4 class="text-xl font-bold" id="info-title">תרבות בטיחות ודיווח ללא פחד (Speak Up)</h4>
                     </div>
-                    <a href="safety-brochure-assistive-personnel-v3.pdf" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs flex items-center gap-2 transition-all shadow-md">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        <span id="btn-open-pdf-tab">פתח קובץ PDF בלשונית נפרדת</span>
+                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-file-pdf text-rose-400"></i>
+                        <span id="btn-proc-txt-box">הצג נוהל משרד הבריאות הרשמי</span>
                     </a>
                 </div>
-
-                <div class="w-full bg-slate-100 rounded-2xl border p-2 h-[650px] overflow-hidden">
-                    <iframe src="safety-brochure-assistive-personnel-v3.pdf" class="w-full h-full rounded-xl border-0" title="חוברת בטיחות"></iframe>
-                </div>
+                <p class="text-sm text-slate-200 leading-relaxed max-w-4xl" id="info-body">
+                    על פי ממצאי סקר תרבות בטיחות ארגונית, כוחות עזר מזהים מפגעים ואירועי "כמעט ונפגע" באופן היומיומי ביותר. עקרון הליבה של "אדריכלות של בטיחות" מעודד כל מטפל/ת לדווח באופן מיידי על כל מפגע, ללא פחד, מתוך הבנה שדיווח מוקדם מציל חיים ומאפשר פתרון מחלקתי קבוע.
+                </p>
             </div>
         </section>
 
-        <section id="tab-emergencies" class="space-y-6 hidden max-w-5xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto space-y-1">
+        <!-- TAB 2: INTERACTIVE EMERGENCY SITUATIONS & SIMULATIONS -->
+        <section id="tab-emergencies" class="space-y-8 hidden max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-100 text-rose-800 font-bold rounded-full text-xs">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span id="emg-badge-top">מדריך קליני ותרגול אינטראקטיבי</span>
+                </div>
                 <h3 class="text-2xl font-bold text-slate-900" id="emg-heading">זיהוי וניהול מצבי חירום קליניים בגריאטריה</h3>
-                <p class="text-slate-600 text-sm" id="emg-subheading">פעולות החירום המיידיות שעל המטפל/ת לבצע לפני הגעת הצוות הרפואי</p>
+                <p class="text-slate-600 text-sm" id="emg-subheading">כיצד מזהים בזמן ומהן פעולות החירום המיידיות שעל המטפל/ת לבצע לפני הגעת הצוות הרפואי</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="emergency-cards-container"></div>
-        </section>
 
-        <section id="tab-observation" class="space-y-6 hidden max-w-5xl mx-auto">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6 text-center">
-                <h3 class="text-2xl font-bold text-slate-900" id="obs-heading">הערכה חצי-שנתית ותצפית</h3>
-                <p class="text-slate-600">דף זה יכלול את טפסי ההערכה ותצפיות על עבודת כוחות העזר כפי שמוגדר בנוהל.</p>
+            <!-- EMERGENCY CARDS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="emergency-cards-container">
+                <!-- Dynamically Rendered Emergency Cards -->
             </div>
-        </section>
 
-        <section id="tab-nearmiss" class="space-y-6 hidden max-w-5xl mx-auto">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6 text-center">
-                <h3 class="text-2xl font-bold text-slate-900" id="nm-heading">דיווח כמעט-ונפגע ודיון</h3>
-                <p class="text-slate-600">מערכת דיווח פנימית ועידוד תרבות Speak Up.</p>
-            </div>
-        </section>
-
-        <section id="tab-checklist" class="space-y-6 hidden max-w-5xl mx-auto">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6 text-center">
-                <h3 class="text-2xl font-bold text-slate-900" id="chk-heading">צ'ק-ליסט במשמרת</h3>
-                <p class="text-slate-600">רשימת משימות קריטיות לבטיחות בתחילת ובסיום כל משמרת.</p>
-            </div>
-        </section>
-
-        <section id="tab-quiz" class="space-y-6 hidden max-w-3xl mx-auto">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6">
-                <div class="border-b pb-4 flex justify-between items-center">
-                    <h3 class="text-xl font-bold text-slate-900" id="quiz-heading">מבדק ידע ובטיחות למטפלים</h3>
-                    <span class="px-3 py-1 bg-medical-50 text-medical-700 font-bold rounded-full text-xs" id="quiz-step-indicator">שאלה 1</span>
+            <!-- INTERACTIVE SIMULATION WIDGET -->
+            <div class="bg-white rounded-2xl border-2 border-rose-200 p-6 sm:p-8 card-shadow space-y-6">
+                <div class="flex items-center justify-between border-b pb-4 flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-truck-medical"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900" id="sim-title">תרגול סימולציות חירום בזמן אמת</h4>
+                            <p class="text-xs text-slate-500" id="sim-subtitle">בחר תרחיש חירום ובחן את קבלת ההחלטות הבטיחותית שלך</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 bg-rose-50 text-rose-700 font-bold rounded-full text-xs" id="sim-step-txt">תרחיש אינטראקטיבי</span>
                 </div>
-                <div id="quiz-box" class="space-y-6">
-                    <h4 class="text-base font-bold text-slate-800" id="quiz-q-title">טוען...</h4>
-                    <div class="space-y-3" id="quiz-options-container"></div>
-                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-xs font-medium leading-relaxed"></div>
-                    <div class="flex justify-end pt-2">
-                        <button id="btn-quiz-next" onclick="nextQuestion()" class="hidden px-5 py-2.5 bg-medical-700 text-white rounded-xl font-semibold text-xs">לשאלה הבאה</button>
+
+                <div class="space-y-4">
+                    <label class="block font-bold text-xs text-slate-700" id="sim-select-label">בחר תרחיש לתרגול:</label>
+                    <select id="sim-scenario-select" onchange="loadEmergencySimulation()" class="w-full px-3 py-2 border rounded-xl bg-slate-50 text-xs font-bold text-slate-800">
+                        <option value="choking">1. חנק פתאומי בזמן האכלה בחדר האוכל</option>
+                        <option value="fall">2. מטופל שנמצא שרוע על הרצפה ליד המיטה</option>
+                        <option value="decline">3. מטופל אפתי עם קוצר נשימה חריף</option>
+                        <option value="fire">4. עשן סמיך בוקע מחדר דייר במשמרת לילה</option>
+                    </select>
+
+                    <div id="sim-content-box" class="p-4 bg-slate-50 border rounded-xl space-y-4 text-xs">
+                        <!-- Dynamic Simulation Options & Questions -->
+                    </div>
+
+                    <div id="sim-feedback-box" class="hidden p-4 rounded-xl text-xs leading-relaxed font-medium">
+                        <!-- Feedback -->
                     </div>
                 </div>
-                <div id="quiz-result-box" class="hidden text-center py-6 space-y-4">
-                    <span class="text-4xl">🏆</span>
-                    <h4 class="text-2xl font-bold text-slate-900">סיימת את המבדק בהצלחה!</h4>
-                    <p class="text-slate-600 text-sm font-bold" id="res-score-txt">ציון: 100%</p>
-                    <button onclick="restartQuiz()" class="px-5 py-2.5 bg-slate-200 text-slate-800 rounded-xl font-semibold text-xs">בצע מבדק מחדש</button>
+            </div>
+        </section>
+
+        <!-- TAB 3: DETAILED CURRICULUM WITH INTERACTIVE PRACTICE FOR EACH PROGRAM (18H, 40H, 4H NIGHT) -->
+        <section id="tab-curriculum" class="space-y-8 hidden max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-sky-100 text-sky-800 font-bold rounded-full text-xs">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>סילבוס + סימולטור תרגול מעשי</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900" id="curr-heading">תוכניות הדרכה מפורטות ומדריך תרגול קליני</h3>
+                <p class="text-slate-600 text-sm" id="curr-subheading">פירוט נושאי הלימוד ותרגול תרחישים אינטראקטיביים לכל תוכנית בנפרד (18 שעות, 40 שעות, 4 שעות לילה)</p>
+            </div>
+
+            <!-- CURRICULUM DETAILED CARDS -->
+            <div id="curriculum-container" class="space-y-6">
+                <!-- Dynamically Rendered Curriculum according to language -->
+            </div>
+
+            <!-- INTERACTIVE PRACTICE WIDGET FOR TRAINING PROGRAMS -->
+            <div class="bg-white rounded-2xl border-2 border-sky-200 p-6 sm:p-8 card-shadow space-y-6">
+                <div class="flex items-center justify-between border-b pb-4 flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900" id="curr-sim-title">תרגול אינטראקטיבי לפי תוכנית הדרכה</h4>
+                            <p class="text-xs text-slate-500" id="curr-sim-subtitle">בחר את תוכנית ההכשרה (18/40/4 ש') ובחן את היישום הקליני המעשי</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 bg-sky-50 text-sky-700 font-bold rounded-full text-xs">תרגול מבוסס תרחישים</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex flex-wrap gap-2" id="curr-sim-program-pills">
+                        <button onclick="selectCurriculumPractice('p18')" id="btn-prog-p18" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-700 text-white shadow-xs">18 שעות: בסיסית וארגונומיה</button>
+                        <button onclick="selectCurriculumPractice('p40')" id="btn-prog-p40" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">40 שעות: הידרדרות, דמנציה וחוסן</button>
+                        <button onclick="selectCurriculumPractice('p4n')" id="btn-prog-p4n" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">4 שעות: השגחת לילה ותקשורת</button>
+                    </div>
+
+                    <div id="curr-sim-content-box" class="p-4 bg-slate-50 border rounded-xl space-y-4 text-xs">
+                        <!-- Dynamic Practice Content -->
+                    </div>
+
+                    <div id="curr-sim-feedback-box" class="hidden p-4 rounded-xl text-xs leading-relaxed font-medium">
+                        <!-- Feedback -->
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- TAB 4: INTERACTIVE RESILIENCE WORKSHOP -->
+        <section id="tab-resilience" class="space-y-6 hidden max-w-3xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6">
+                <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-50 text-rose-700 rounded-full text-xs font-bold mb-1">
+                            <i class="fa-solid fa-heart"></i>
+                            <span id="res-tag">חלק מהכשרת המשך 40 שעות</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900" id="res-heading">סדנת חוסן נפשי ותמיכה בצוות המטפל</h3>
+                        <p class="text-xs text-slate-500 mt-1" id="res-subheading">שאלון חוסן אישי, מניעת שחיקה וכלים להתמודדות עם עומס רגשי בטיפול הגריאטרי</p>
+                    </div>
+                </div>
+
+                <form id="form-resilience" onsubmit="calculateResilienceScore(event)" class="space-y-5 text-xs sm:text-sm">
+                    <div class="space-y-4" id="resilience-questions-container">
+                        <!-- Questions injected dynamically based on language -->
+                    </div>
+
+                    <div class="pt-2 border-t">
+                        <label class="block font-bold text-slate-700 mb-1" id="res-lbl-name">שם המטפל/ת הממלא/ת:</label>
+                        <input type="text" id="res-staff-name" required placeholder="שם מלא..." class="w-full px-3 py-2 border rounded-xl text-xs">
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span id="btn-submit-resilience">הגש סדנת חוסן וקבל משוב</span>
+                    </button>
+                </form>
+
+                <!-- RESILIENCE RESULT BOX -->
+                <div id="resilience-result-box" class="hidden p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-4 text-xs">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 font-bold flex items-center justify-center text-xl shrink-0">
+                            💖
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900" id="res-result-title">תוצאות סדנת החוסן הנפשי</h4>
+                            <p class="text-slate-600" id="res-result-score-txt">רמת חוסן מוערכת: 85/100</p>
+                        </div>
+                    </div>
+                    <div id="res-recommendation-box" class="p-4 rounded-xl bg-white border text-slate-700 leading-relaxed">
+                        <!-- Dynamic tips -->
+                    </div>
+                    <button onclick="printResilienceCert()" class="px-4 py-2 bg-medical-700 text-white font-bold rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-print"></i>
+                        <span id="btn-print-resilience">הדפס אישור השלמת סדנת חוסן</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: FULL CAREGIVER SEMI-ANNUAL CLINICAL EVALUATION & OBSERVATION FORM -->
+        <section id="tab-observation" class="space-y-6 hidden max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6">
+                <div class="border-b border-slate-100 pb-4 flex justify-between items-center flex-wrap gap-2">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold mb-1">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                            <span>חובת תיוק בתיק עובד/ת (נוהל 1.2.1.2)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900" id="obs-heading">טופס הערכת תפקוד ותצפית חצי-שנתית למטפל/ת</h3>
+                        <p class="text-xs text-slate-500 mt-0.5" id="obs-subheading">כלי הערכה קליני מורחב למילוי ע"י אחות אחראית / מדריכה ליד מיטת המטופל</p>
+                    </div>
+                    <span class="px-3 py-1 bg-teal-50 text-teal-800 font-bold rounded-full text-xs">הערכה חצי-שנתית</span>
+                </div>
+
+                <!-- OBSERVATION FORM HEADERS -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs bg-slate-50 p-4 rounded-xl border">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1" id="obs-lbl-staff">שם המטפל/ת המוערך/ת:</label>
+                        <input type="text" id="obs-staff-name" placeholder="שם מלא..." class="w-full px-3 py-2 border rounded-xl bg-white">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1" id="obs-lbl-nurse">שם האחות המעריכה:</label>
+                        <input type="text" id="obs-nurse-name" placeholder="שם האחות והסמכה..." class="w-full px-3 py-2 border rounded-xl bg-white">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">תאריך הערכה:</label>
+                        <input type="date" id="obs-eval-date" class="w-full px-3 py-2 border rounded-xl bg-white">
+                    </div>
+                </div>
+
+                <!-- EVALUATION DOMAINS WITH SCORING SELECTORS -->
+                <div class="space-y-4 pt-2" id="obs-criteria-container">
+                    <!-- Dynamic rendering by language -->
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-xl border space-y-2">
+                    <label class="block font-bold text-slate-700 text-xs" id="obs-lbl-notes">הערות והמלצות האחות המעריכה (נקודות לשימור/לשיפור):</label>
+                    <textarea id="obs-notes" rows="3" placeholder="פרט דגשים מקצועיים, התנהגותיים והמלצות להמשך הכשרה..." class="w-full px-3 py-2 border rounded-xl text-xs bg-white"></textarea>
+                </div>
+
+                <div class="flex justify-between items-center border-t pt-4 flex-wrap gap-3">
+                    <div id="obs-score-live" class="text-xs font-bold text-teal-800 bg-teal-50 px-3 py-2 rounded-xl border border-teal-200">
+                        ציון משוקלל: 100% | הערכה חיובית ✅
+                    </div>
+                    <button onclick="saveAndPrintObservation()" class="px-5 py-2.5 bg-medical-700 hover:bg-medical-800 text-white rounded-xl font-bold text-xs flex items-center gap-2 transition-all shadow-sm">
+                        <i class="fa-solid fa-print"></i>
+                        <span id="btn-print-obs">שמור והדפס טופס הערכה חצי-שנתי</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: DAILY NEAR-MISS & SHIFT HANDOVER DISCUSSION -->
+        <section id="tab-nearmiss" class="space-y-6 hidden max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6">
+                <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900" id="nm-heading">דיווח "כמעט ונפגע" וכרטיס דיון 5 דקות במשמרת</h3>
+                        <p class="text-xs text-slate-500 mt-1" id="nm-subheading">דיווח ללא פחד (Speak Up) והעלאת מפגעים לדיון מחלקתי קצר בהעברת משמרת</p>
+                    </div>
+                    <span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold rounded-full text-xs">תרבות בטיחות</span>
+                </div>
+
+                <!-- REPORT NEAR MISS FORM -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3 text-xs">
+                    <h4 class="font-bold text-sm text-slate-800" id="nm-form-title">📝 הוסף דיווח יומי על מפגע / "כמעט ונפגע":</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <input type="text" id="nm-input-loc" placeholder="מיקום/חדר (למשל: במסדרון ליד חדר 12)" class="px-3 py-2 border rounded-xl">
+                        <select id="nm-input-type" class="px-3 py-2 border rounded-xl bg-white">
+                            <!-- Dynamic hazard options -->
+                        </select>
+                        <button onclick="addNearMissReport()" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 transition-all">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span id="btn-send-nm">שלח דיווח ללוח</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NEAR MISS LOG & 5-MIN DISCUSSION CARD -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-slate-800" id="nm-list-title">📋 מפגעים ואירועי "כמעט ונפגע" שנרשמו השבוע:</h4>
+                        <span class="text-xs text-slate-500" id="nm-sub-hint">לחץ לדיון 5 דקות בהעברת משמרת</span>
+                    </div>
+
+                    <div id="nearmiss-list" class="space-y-2 text-xs">
+                        <!-- Dynamic items -->
+                    </div>
+                </div>
+
+                <!-- 5 MIN SHIFT DISCUSSION BOX -->
+                <div class="p-5 bg-gradient-to-r from-sky-900 to-medical-900 text-white rounded-2xl space-y-3 shadow-md">
+                    <div class="flex items-center gap-2 text-amber-300 font-bold text-sm">
+                        <i class="fa-solid fa-comments"></i>
+                        <span id="nm-box-title">מדריך דיון 5 דקות בהעברת משמרת (Shift Handover 5-Min Discussion):</span>
+                    </div>
+                    <ol class="list-decimal list-inside text-xs text-sky-100 space-y-1.5 leading-relaxed" id="nm-box-steps">
+                        <li>האחות האחראית מעלה פתק "כמעט ונפגע" אחד שנאסף מהלוח.</li>
+                        <li>הצוות דן במשך 3-5 דקות: מה גרם למפגע? כיצד למנוע הישנות?</li>
+                        <li>מגדירים פתרון מחלקתי קבוע (למשל: החלפת בלם תקול ע"י אחזקה).</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 7: INTERACTIVE QUIZ -->
+        <section id="tab-quiz" class="space-y-6 hidden max-w-3xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6">
+                <div class="border-b border-slate-100 pb-4 flex justify-between items-center flex-wrap gap-2">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span id="quiz-chapter-badge" class="px-2.5 py-0.5 bg-sky-100 text-sky-800 font-bold rounded-full text-[11px]">
+                                פרק 1: בטיחות ומעברים
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900" id="quiz-heading">מבדק ידע ובטיחות למטפלים</h3>
+                        <p class="text-xs text-slate-500 mt-0.5" id="quiz-subheading">בחן את בקיאותך בכללי הבטיחות, מצבי חירום ומשמרת לילה (נוהל 1.2.1.2)</p>
+                    </div>
+                    <span class="px-3 py-1 bg-medical-50 text-medical-700 font-bold rounded-full text-xs" id="quiz-step-indicator">
+                        שאלה 1 מתוך 8
+                    </span>
+                </div>
+
+                <div id="quiz-box" class="space-y-6">
+                    <h4 class="text-base sm:text-lg font-bold text-slate-800 leading-snug" id="quiz-q-title">
+                        שאלה טוענת...
+                    </h4>
+
+                    <div class="space-y-3" id="quiz-options-container">
+                        <!-- Dynamic Buttons -->
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-medium leading-relaxed"></div>
+
+                    <div class="flex justify-end pt-2">
+                        <button id="btn-quiz-next" onclick="nextQuestion()" class="hidden px-5 py-2.5 bg-medical-700 hover:bg-medical-800 text-white rounded-xl font-semibold text-xs transition-all items-center gap-2">
+                            <span id="btn-quiz-next-txt">לשאלה הבאה</span>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CERTIFICATE RESULT BOX -->
+                <div id="quiz-result-box" class="hidden text-center space-y-6 py-6">
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto">
+                        🏆
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-900" id="res-title">כל הכבוד! סיימת את המבדק המורחב</h4>
+                        <p class="text-slate-600 text-sm mt-1" id="res-score-txt">הציון שלך: 100%</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-right max-w-md mx-auto space-y-3 text-xs">
+                        <div class="flex justify-between font-bold border-b pb-2">
+                            <span>אישור כשירות לימודית:</span>
+                            <span class="text-emerald-600">עבר בהצלחה ✅</span>
+                        </div>
+                        <p class="text-slate-600">מבוסס על נוהל משרד הבריאות 1.2.1.2 והכשרת עמותת האחיות לקידום הסיעוד הגריאטרי (כולל מצבי חירום ומשמרת לילה).</p>
+                        <div class="pt-2">
+                            <label class="block font-medium mb-1" id="cert-label-name">שם המטפל/ת להנפקת תעודה:</label>
+                            <input type="text" id="cert-user-name" placeholder="הכנס שם מלא..." class="w-full px-3 py-2 border rounded-lg text-xs">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-3">
+                        <button onclick="printCertificate()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-xs transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-print"></i>
+                            <span id="btn-print-cert">הדפס תעודת כשירות</span>
+                        </button>
+                        <button onclick="restartQuiz()" class="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl font-semibold text-xs transition-all">
+                            <span id="btn-restart-quiz">בצע מבדק מחדש</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 8: SHIFT SAFETY CHECKLIST -->
+        <section id="tab-checklist" class="space-y-6 hidden max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h3 class="text-xl font-bold text-slate-900" id="chk-heading">צ'ק-ליסט בטיחות למשמרת (בקרת חובה)</h3>
+                    <p class="text-xs text-slate-500 mt-1" id="chk-subheading">עשה זאת בעצמך: פעולות קריטיות למניעת נזק למטופל במהלך המשמרת</p>
+                </div>
+
+                <div class="space-y-4" id="checklist-items-container">
+                    <!-- Checkbox items injected via JS -->
+                </div>
+
+                <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs">
+                    <span id="chk-progress" class="text-slate-500 font-medium">הושלמו 0 מתוך 5 משימות</span>
+                    <button onclick="resetChecklist()" class="text-medical-600 hover:underline font-semibold" id="btn-reset-chk">איפוס צ'ק-ליסט</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 9: COMPETENCY TRACKER SIMULATOR (MOVED TO THE VERY END) -->
         <section id="tab-tracker" class="space-y-6 hidden">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 card-shadow">
                 <div>
                     <h3 class="text-xl font-bold text-slate-900" id="tr-heading">יומן מעקב, הדרכה ובקרת כשירות - כוחות עזר סיעודיים</h3>
-                    <p class="text-xs text-slate-500 mt-0.5" id="tr-subheading">סימולטור מעקב מלא הכולל את כל השדות מקובץ הבקרה הארגוני (נוהל 1.2.1.2)</p>
+                    <p class="text-xs text-slate-500 mt-0.5" id="tr-subheading">סימולטור מעקב מלא הכולל את כל 12 השדות מקובץ הבקרה הארגוני (נוהל 1.2.1.2)</p>
                 </div>
-                <button onclick="openAddCaregiverModal()" class="px-4 py-2 bg-medical-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-plus"></i>
-                    <span id="btn-add-staff">הוסף עובד/ת חדש/ה</span>
-                </button>
+                
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <input type="text" id="tracker-search" oninput="renderTrackerTable()" placeholder="חיפוש לפי שם..." class="px-3 py-2 text-xs border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medical-500 w-40">
+                    
+                    <select id="tracker-dept-filter" onchange="renderTrackerTable()" class="px-3 py-2 text-xs border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medical-500 bg-white">
+                        <!-- Dynamic options -->
+                    </select>
+
+                    <button onclick="openManageDeptsModal()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-building-circle-gear text-medical-700"></i>
+                        <span id="btn-manage-depts">עריכת מחלקות</span>
+                    </button>
+
+                    <button onclick="openAddCaregiverModal()" class="px-3.5 py-2 bg-medical-700 hover:bg-medical-800 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm">
+                        <i class="fa-solid fa-plus"></i>
+                        <span id="btn-add-staff">הוסף עובד/ת חדש/ה</span>
+                    </button>
+                </div>
             </div>
 
+            <!-- KPI SUMMARY METRICS -->
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                    <span class="block text-2xl font-bold text-slate-900" id="kpi-total">0</span>
+                    <span class="text-[11px] text-slate-500 font-medium" id="kpi-total-lbl">סה"כ מדווחים</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                    <span class="block text-2xl font-bold text-amber-600" id="kpi-tenure">0%</span>
+                    <span class="text-[11px] text-slate-500 font-medium" id="kpi-tenure-lbl">ותק > 3 חודשים</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                    <span class="block text-2xl font-bold text-sky-600" id="kpi-basic">0%</span>
+                    <span class="text-[11px] text-slate-500 font-medium" id="kpi-basic-lbl">השלמת בסיסית (18 ש')</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center">
+                    <span class="block text-2xl font-bold text-indigo-600" id="kpi-exam">0%</span>
+                    <span class="text-[11px] text-slate-500 font-medium" id="kpi-exam-lbl">מעבר מבדק (>=80%)</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center col-span-2 sm:col-span-1">
+                    <span class="block text-2xl font-bold text-emerald-600" id="kpi-night">0%</span>
+                    <span class="text-[11px] text-slate-500 font-medium" id="kpi-night-lbl">כשירים ללילה עצמאי</span>
+                </div>
+            </div>
+
+            <!-- TRACKER TABLE -->
             <div class="bg-white rounded-2xl border border-slate-200 card-shadow overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="w-full text-[11px] text-right text-slate-700">
-                        <thead class="bg-slate-100 border-b border-slate-200 font-bold">
+                        <thead class="bg-slate-100 border-b border-slate-200 text-slate-700 uppercase font-bold tracking-tight">
                             <tr>
                                 <th class="px-3 py-3">מזהה</th>
                                 <th class="px-3 py-3" id="th-name">שם המטפל/ת</th>
@@ -212,11 +670,16 @@
                                 <th class="px-3 py-3 text-center" id="th-tenure">ותק > 3 חודשים?</th>
                                 <th class="px-3 py-3 text-center" id="th-bls">החייאה BLS</th>
                                 <th class="px-3 py-3 text-center" id="th-basic">הכשרה בסיסית (18 ש')</th>
-                                <th class="px-3 py-3 text-center" id="th-score">ציון מבדק</th>
+                                <th class="px-3 py-3 text-center" id="th-advanced">הכשרת המשך (40 ש')</th>
+                                <th class="px-3 py-3 text-center" id="th-night">הכשרת לילה (4 ש')</th>
+                                <th class="px-3 py-3 text-center" id="th-score">ציון וסטטוס מבדק</th>
+                                <th class="px-3 py-3 text-center" id="th-eval">הערכה חצי-שנתית</th>
                                 <th class="px-3 py-3 text-center" id="th-status">כשיר/ה לעבודת לילה?</th>
                             </tr>
                         </thead>
-                        <tbody id="tracker-tbody" class="divide-y divide-slate-100"></tbody>
+                        <tbody id="tracker-tbody" class="divide-y divide-slate-100">
+                            <!-- Dynamic Content Injected via JS -->
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -224,410 +687,1220 @@
 
     </main>
 
-    <div id="modal-add-caregiver" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <h4 class="text-lg font-bold text-slate-900">הוספת עובד/ת חדש/ה ליומן המעקב הארגוני</h4>
+    <!-- MODAL 1: ADD NEW CAREGIVER -->
+    <div id="modal-add-caregiver" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 space-y-4 card-shadow max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h4 class="text-lg font-bold text-slate-900" id="m-add-title">הוספת עובד/ת חדש/ה ליומן המעקב הארגוני</h4>
+                <button onclick="closeAddCaregiverModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
             <form id="form-add-caregiver" onsubmit="handleSaveCaregiver(event)" class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">שם מלא:</label>
-                    <input type="text" id="new-cg-name" required placeholder="שם מלא..." class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-medical-500 focus:outline-none">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1" id="m-add-lbl-name">שם מלא:</label>
+                        <input type="text" id="new-cg-name" required placeholder="לדוגמה: רמי מורדי" class="w-full px-3 py-2 border rounded-xl">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1" id="m-add-lbl-dept">מחלקה בגריאטריה:</label>
+                        <select id="new-cg-dept" class="w-full px-3 py-2 border rounded-xl bg-white">
+                            <!-- Dynamic Options -->
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">מחלקה בגריאטריה:</label>
-                    <select id="new-cg-dept" class="w-full px-3 py-2 border rounded-xl bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none">
-                        <option value="סיעוד מורכב">סיעוד מורכב</option>
-                        <option value="שיקום">שיקום</option>
-                        <option value="תשושי נפש">תשושי נפש</option>
-                        <option value="סיעוד מורכב תומך">סיעוד מורכב תומך</option>
-                    </select>
+
+                <div class="grid grid-cols-2 gap-3 p-3 bg-slate-50 rounded-xl border">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" id="new-cg-tenure" checked class="w-4 h-4 text-emerald-600">
+                        <span class="font-bold">ותק > 3 חודשים?</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" id="new-cg-bls" checked class="w-4 h-4 text-emerald-600">
+                        <span class="font-bold">החייאה BLS בתוקף?</span>
+                    </label>
                 </div>
-                <div class="flex gap-4 p-3 bg-slate-50 rounded-xl border">
-                    <label class="flex items-center gap-2 font-bold cursor-pointer"><input type="checkbox" id="new-cg-tenure" checked class="w-4 h-4 text-medical-600 rounded"> ותק > 3 חודשים?</label>
-                    <label class="flex items-center gap-2 font-bold cursor-pointer"><input type="checkbox" id="new-cg-bls" checked class="w-4 h-4 text-medical-600 rounded"> החייאה BLS בתוקף?</label>
+
+                <!-- 18H BASIC TRAINING -->
+                <div class="p-3 bg-sky-50/60 rounded-xl border border-sky-100 space-y-2">
+                    <span class="font-bold text-sky-900 block">הכשרה בסיסית (18 שעות):</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <select id="new-cg-basic-status" class="px-2 py-1.5 border rounded-lg bg-white">
+                            <option value="הושלם">הושלם ✅</option>
+                            <option value="בתהליך">בתהליך ⏳</option>
+                            <option value="לא התחיל">לא התחיל ❌</option>
+                        </select>
+                        <input type="date" id="new-cg-basic-date" class="px-2 py-1.5 border rounded-lg bg-white">
+                    </div>
                 </div>
-                <div class="flex justify-end gap-2 pt-3 border-t mt-4">
-                    <button type="button" onclick="closeAddCaregiverModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 transition-colors text-slate-700 rounded-xl font-bold">ביטול</button>
-                    <button type="submit" class="px-4 py-2 bg-medical-700 hover:bg-medical-800 transition-colors text-white rounded-xl font-bold">שמור עובד/ת ביומן</button>
+
+                <!-- 40H CONTINUING TRAINING -->
+                <div class="p-3 bg-teal-50/60 rounded-xl border border-teal-100 space-y-2">
+                    <span class="font-bold text-teal-900 block">הכשרת המשך (40 שעות):</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <select id="new-cg-adv-status" class="px-2 py-1.5 border rounded-lg bg-white">
+                            <option value="הושלם">הושלם ✅</option>
+                            <option value="בתהליך">בתהליך ⏳</option>
+                            <option value="לא התחיל" selected>לא התחיל ❌</option>
+                        </select>
+                        <input type="date" id="new-cg-adv-date" class="px-2 py-1.5 border rounded-lg bg-white">
+                    </div>
+                </div>
+
+                <!-- 4H NIGHT TRAINING -->
+                <div class="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100 space-y-2">
+                    <span class="font-bold text-indigo-900 block">הכשרת לילה ייעודית (4 שעות):</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <select id="new-cg-night-status" class="px-2 py-1.5 border rounded-lg bg-white">
+                            <option value="הושלם">הושלם ✅</option>
+                            <option value="בתהליך">בתהליך ⏳</option>
+                            <option value="לא התחיל">לא התחיל ❌</option>
+                        </select>
+                        <input type="date" id="new-cg-night-date" class="px-2 py-1.5 border rounded-lg bg-white">
+                    </div>
+                </div>
+
+                <!-- EXAM SCORE & EVALUATION -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 bg-slate-50 rounded-xl border">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">ציון מבדק ידע (%):</label>
+                        <input type="number" id="new-cg-score" min="0" max="100" value="85" class="w-full px-3 py-1.5 border rounded-lg bg-white">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">הערכה חצי-שנתית:</label>
+                        <div class="flex items-center gap-2">
+                            <label class="flex items-center gap-1 cursor-pointer">
+                                <input type="checkbox" id="new-cg-eval" checked class="w-4 h-4 text-emerald-600">
+                                <span>הושלמה</span>
+                            </label>
+                            <input type="date" id="new-cg-eval-date" class="flex-1 px-2 py-1 border rounded-lg bg-white text-[10px]">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-3 border-t">
+                    <button type="button" onclick="closeAddCaregiverModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold">ביטול</button>
+                    <button type="submit" class="px-4 py-2 bg-medical-700 hover:bg-medical-800 text-white rounded-xl font-bold">שמור עובד/ת ביומן</button>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- MODAL 2: MANAGE DEPARTMENTS -->
+    <div id="modal-manage-depts" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 card-shadow">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h4 class="text-lg font-bold text-slate-900">ניהול ועריכת סוגי מחלקות</h4>
+                <button onclick="closeManageDeptsModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">הוספת מחלקה חדשה למערכת:</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="input-new-dept-name" placeholder="שם המחלקה (למשל: תשושי גוף / מונשמים)" class="flex-1 px-3 py-2 border rounded-xl">
+                        <button onclick="addNewDepartment()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold">הוסף</button>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <label class="block font-bold text-slate-700 mb-1">רשימת המחלקות הקיימות במערכת:</label>
+                    <ul id="dept-list-manager" class="divide-y divide-slate-100 border rounded-xl p-2 max-h-48 overflow-y-auto bg-slate-50">
+                        <!-- Dynamic items -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-2 border-t">
+                <button onclick="closeManageDeptsModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl font-bold text-xs">סגור</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-4 sm:px-6 lg:px-8 text-xs border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-right">
+            <div>
+                <p class="font-bold text-slate-200" id="ft-title">עמותת האחיות לקידום הסיעוד הגריאטרי בישראל</p>
+                <p class="mt-1" id="ft-sub">מבוסס על נוהל האגף לגריאטריה, משרד הבריאות 1.2.1.2 מ-12.2025 וסקר תרבות בטיחות ארגונית</p>
+            </div>
+            <div class="text-slate-400 text-center md:text-left space-y-1">
+                <p id="ft-author">נכתב ע"י מאיה שקולניק גזית MHA, BA, RN</p>
+                <div class="flex gap-3 justify-center md:justify-end text-emerald-400">
+                    <a href="https://www.iang.co.il/" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-globe"></i> אתר העמותה (IANG)</a>
+                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-file-pdf"></i> נוהל משרד הבריאות</a>
+                </div>
+                <p class="text-slate-500 text-[11px] pt-1" id="ft-copy">כל הזכויות שמורות © 2026 | מוקדש לבטיחות המטופל האזרח הוותיק</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC & MULTI-LANGUAGE TRANSLATIONS -->
     <script>
+        // GLOBAL STATE
         let currentLang = 'he';
+        let currentTab = 'modules';
         let quizCurrentIndex = 0;
         let quizScore = 0;
+        let activeCurrPractice = 'p18';
 
-        let trackerData = JSON.parse(localStorage.getItem('trackerData')) || [
-            { id: 101, name: "רמי מורדי", dept: "סיעוד מורכב", tenure: true, bls: true, basicStatus: "הושלם", score: 90, fitNight: true },
-            { id: 102, name: "אולגה קובלנקו", dept: "תשושי נפש", tenure: true, bls: true, basicStatus: "בתהליך", score: 75, fitNight: false },
-            { id: 103, name: "מוחמד מסארוה", dept: "שיקום", tenure: true, bls: false, basicStatus: "הושלם", score: 95, fitNight: false }
-        ];
+        // DYNAMIC DEPARTMENT LIST
+        let departmentList = ["סיעוד מורכב", "שיקום", "תשושי נפש", "סיעוד מורכב תומך", "תשושי גוף"];
 
+        // DICTIONARY FOR ALL 5 LANGUAGES
         const i18n = {
             he: {
                 dir: 'rtl',
-                headerBadge: 'נוהל משרד הבריאות 1.2.1.2', headerTitle: 'הדרכת כוחות עזר - אדריכלות של בטיחות',
-                btnAssocTop: 'אתר עמותת האחיות (IANG)', btnProcTop: 'נוהל 1.2.1.2 הרשמי (PDF)', btnBrochureTop: 'חוברת בטיחות (PDF)',
-                btnOpenPdfTab: 'פתח קובץ PDF בלשונית נפרדת', heroTag: 'עמותה לקידום האַחֲיוּת הגריאטרי בישראל',
+                headerBadge: 'נוהל משרד הבריאות 1.2.1.2',
+                headerTitle: 'הדרכת כוחות עזר - אדריכלות של בטיחות',
+                btnAssocTop: 'אתר עמותת האחיות (IANG)',
+                btnProcTop: 'נוהל 1.2.1.2 הרשמי (PDF)',
+                btnProcHero: 'קובץ נוהל 1.2.1.2',
+                btnAssocHero: 'אתר העמותה (IANG)',
+                heroTag: 'עמותת האחיות לקידום הסיעוד הגריאטרי בישראל',
                 heroTitle: 'הכשרה, בטיחות ובקרת כשירות למטפלים וכוחות עזר בגריאטריה',
                 heroDesc: 'כוחות העזר הסיעודיים הם חומת המגן האמיתית השומרת על איכות חייהם, כבודם ובטיחותם של המטופלים. פורטל זה מנגיש את תוכניות ההכשרה, דרישות נוהל 1.2.1.2 ובקרת הכשירות הרב-לשונית במקום אחד.',
-                stat1: '18 שעות הכשרה בסיסית', stat2: '40 שעות הכשרת המשך', stat3: '4 שעות הסמכת לילה',
-                authorTitle: 'נכתבה ונערכה האפליקציה על ידי', authorName: 'מאיה שקולניק גזית', authorRole: 'MHA, BA, RN | מומחית במדיניות ומנהל בסיעוד',
+                stat1: '18 שעות הכשרה בסיסית',
+                stat2: '40 שעות הכשרת המשך',
+                stat3: '4 שעות הסמכת לילה',
+                authorTitle: 'מחברת התוכנית והנוהל',
+                authorName: 'מאיה שקולניק גזית',
+                authorRole: 'MHA, BA, RN | מומחית במדיניות ומנהל בסיעוד',
                 authorQuote: '"האחות כמובילת איכות ובטיחות, בשותפות מלאה עם כוחות העזר - זהו המפתח למניעת נזק בלתי רצוי ולשמירה על חיי הדיירים."',
-                tabModules: 'תוכניות ההכשרה והנוהל', tabBrochure: 'חוברת בטיחות (PDF)', tabEmergencies: 'מצבי חירום ותרגול',
-                tabCurriculum: 'תוכניות הדרכה ותרגול (18/40/4)', tabResilience: 'סדנת חוסן למטפל/ת', tabObservation: 'הערכה חצי-שנתית ותצפית',
-                tabNearMiss: 'דיווח כמעט-ונפגע ודיון', tabQuiz: 'מבדק ידע אינטראקטיבי', tabChecklist: "צ'ק-ליסט במשמרת", tabTracker: 'יומן מעקב ובקרת כשירות',
-                modHeading: 'עקרונות הליבה של נוהל 1.2.1.2', modSubheading: 'מסלול הכשרה היברידי מובנה להבטחת בטיחות המטופל ומניעת סיכונים בגריאטריה',
-                infoTitle: 'תרבות בטיחות ודיווח ללא פחד (Speak Up)', infoBody: 'על פי ממצאי סקר תרבות בטיחות ארגונית, כוחות עזר מזהים מפגעים ואירועי "כמעט ונפגע" באופן היומיומי ביותר. עקרון הליבה מורה לדווח מיד ללא פחד.',
-                trHeading: 'יומן מעקב, הדרכה ובקרת כשירות - כוחות עזר סיעודיים', trSubheading: 'סימולטור מעקב מלא הכולל את השדות מקובץ הבקרה הארגוני (נוהל 1.2.1.2)',
-                btnAddStaff: 'הוסף עובד/ת חדש/ה', thName: 'שם המטפל/ת', thDept: 'מחלקה', thTenure: 'ותק > 3 חודשים?', thBls: 'החייאה BLS', thBasic: 'הכשרה בסיסית (18 ש\')', thScore: 'ציון מבדק', thStatus: 'כשיר/ה לעבודת לילה?',
-                modules: [
-                    { badge: "שלב א'", title: "הכשרה בסיסית (18 שעות)", desc: "יסודות הטיפול הסיעודי הבטוח, היגיינה, מניעת זיהומים, עקרונות ארגונומיה ומעברים בטוחים." },
-                    { badge: "שלב ב'", title: "הכשרת המשך (40 שעות)", desc: "זיהוי שינויים במצב המטופל, מניעת פצעי לחץ, תקשורת בדמנציה, וסדנת חוסן נפשי אינטראקטיבית." },
-                    { badge: "אישור לילה", title: "הכשרת לילה (4 שעות)", desc: "תנאי סף לשיבוץ עצמאי במשמרת לילה: ניהול סבבי בטיחות, ערנות ודיווח מיידי לאחות." },
-                    { badge: "כשירות", title: "החייאה BLS והערכה", desc: "רענון החייאה בסיסית בתוקף, מבדק ידע עיוני (80+), והערכת תפקוד מעשית חצי-שנתית." }
-                ],
-                emergencies: [
-                    { title: "1. חנק ואספירציה (Choking)", sym: "שיעול פתאומי חזק, אודם/מכחלון בפנים, חוסר יכולת לדבר בזמן האכלה.", act: "1. הפסק האכלה מיידית! 2. הושב ב-90 מעלות. 3. קרא בדחיפות לאחות!" },
-                    { title: "2. חשד לאירוע מוחי (שבץ)", sym: "עיוות או צניחה של צד אחד בפנים, חולשה פתאומית ביד/רגל, קושי בדיבור.", act: "1. השכב על הגב עם ראש מוגבה (30 מעלות). 2. איסור מוחלט לתת אוכל או שתייה!" }
-                ],
-                quiz: [
-                    { title: "במהלך ארוחת הצהריים במחלקה, דייר מתחיל להשתעל בחוזקה והקול שלו נשמע 'רטוב'. כיצד לפעול?", options: ["לעודד אותו להמשיך לאכול לאט", "לעצור מיד את ההאכלה, למנוע שתייה ולדווח מיידית לאחות", "להשכיב אותו מיד על הגב במיטה"], correct: 1, explain: "שיעול פתאומי הוא סימן אזהרה לאספירציה. חובה לעצור האכלה מיידית ולקרוא לאחות." }
-                ]
+                tabModules: 'תוכניות ההכשרה והנוהל',
+                tabEmergencies: 'מצבי חירום ותרגול',
+                tabCurriculum: 'תוכניות הדרכה ותרגול (18/40/4)',
+                tabResilience: 'סדנת חוסן למטפל/ת',
+                tabObservation: 'הערכה חצי-שנתית ותצפית',
+                tabNearMiss: 'דיווח כמעט-ונפגע ודיון',
+                tabQuiz: 'מבדק ידע אינטראקטיבי',
+                tabChecklist: "צ'ק-ליסט במשמרת",
+                tabTracker: 'יומן מעקב ובקרת כשירות',
+                modHeading: 'עקרונות הליבה של נוהל 1.2.1.2',
+                modSubheading: 'מסלול הכשרה היברידי מובנה להבטחת בטיחות המטופל ומניעת סיכונים בגריאטריה',
+                infoTitle: 'תרבות בטיחות ודיווח ללא פחד (Speak Up)',
+                infoBody: 'על פי ממצאי סקר תרבות בטיחות ארגונית, כוחות עזר מזהים מפגעים ואירועי "כמעט ונפגע" באופן היומיומי ביותר. עקרון הליבה של "אדריכלות של בטיחות" מעודד כל מטפל/ת לדווח באופן מיידי על כל מפגע, ללא פחד, מתוך הבנה שדיווח מוקדם מציל חיים ומאפשר פתרון מחלקתי קבוע.',
+                trHeading: 'יומן מעקב, הדרכה ובקרת כשירות - כוחות עזר סיעודיים',
+                trSubheading: 'סימולטור מעקב מלא הכולל את כל 12 השדות מקובץ הבקרה הארגוני (נוהל 1.2.1.2)',
+                btnManageDepts: 'עריכת מחלקות',
+                btnAddStaff: 'הוסף עובד/ת חדש/ה',
+                allDept: 'כל המחלקות',
+                kpiTotalLbl: 'סה"כ מדווחים',
+                kpiTenureLbl: 'ותק > 3 חודשים',
+                kpiBasicLbl: 'השלמת בסיסית (18 ש\')',
+                kpiExamLbl: 'מעבר מבדק (>=80%)',
+                kpiNightLbl: 'כשירים ללילה עצמאי',
+                thName: 'שם המטפל/ת',
+                thDept: 'מחלקה',
+                thTenure: 'ותק > 3 חודשים?',
+                thBls: 'החייאה BLS',
+                thBasic: 'הכשרה בסיסית (18 ש\')',
+                thAdvanced: 'הכשרת המשך (40 ש\')',
+                thNight: 'הכשרת לילה (4 ש\')',
+                thScore: 'ציון וסטטוס מבדק',
+                thEval: 'הערכה חצי-שנתית',
+                thStatus: 'כשיר/ה לעבודת לילה?',
+                resTag: 'חלק מהכשרת המשך 40 שעות',
+                resHeading: 'סדנת חוסן נפשי ותמיכה בצוות המטפל',
+                resSubheading: 'שאלון חוסן אישי, מניעת שחיקה וכלים להתמודדות עם עומס רגשי בטיפול הגריאטרי',
+                resLblName: 'שם המטפל/ת הממלא/ת:',
+                btnSubmitResilience: 'הגש סדנת חוסן וקבל משוב',
+                btnPrintResilience: 'הדפס אישור השלמת סדנת חוסן',
+                obsHeading: 'טופס הערכת תפקוד ותצפית חצי-שנתית למטפל/ת',
+                obsSubheading: 'כלי הערכה קליני מורחב למילוי ע"י אחות אחראית / מדריכה ליד מיטת המטופל (נוהל 1.2.1.2)',
+                obsLblStaff: 'שם המטפל/ת המוערך/ת:',
+                obsLblNurse: 'שם האחות המעריכה:',
+                obsLblNotes: 'הערות והמלצות האחות המעריכה (נקודות לשימור/לשיפור):',
+                btnPrintObs: 'שמור והדפס טופס הערכה חצי-שנתי',
+                nmHeading: 'דיווח "כמעט ונפגע" וכרטיס דיון 5 דקות במשמרת',
+                nmSubheading: 'דיווח ללא פחד (Speak Up) והעלאת מפגעים לדיון מחלקתי קצר בהעברת משמרת',
+                nmFormTitle: '📝 הוסף דיווח יומי על מפגע / "כמעט ונפגע":',
+                btnSendNm: 'שלח דיווח ללוח',
+                nmListTitle: '📋 מפגעים ואירועי "כמעט ונפגע" שנרשמו השבוע:',
+                quizHeading: 'מבדק ידע ובטיחות למטפלים',
+                quizSubheading: 'בחן את בקיאותך בכללי הבטיחות, מצבי חירום ומשמרת לילה (נוהל 1.2.1.2)',
+                chkHeading: "צ'ק-ליסט בטיחות למשמרת (בקרת חובה)",
+                chkSubheading: 'עשה זאת בעצמך: פעולות קריטיות למניעת נזק למטופל במהלך המשמרת',
+                ftTitle: 'עמותת האחיות לקידום הסיעוד הגריאטרי בישראל',
+                ftSub: 'מבוסס על נוהל האגף לגריאטריה, משרד הבריאות 1.2.1.2 מ-12.2025 וסקר תרבות בטיחות ארגונית',
+                ftAuthor: 'נכתב ע"י מאיה שקולניק גזית MHA, BA, RN',
             },
             en: {
                 dir: 'ltr',
-                headerBadge: 'MoH Procedure 1.2.1.2', headerTitle: 'Assistive Personnel Training - Safety Architecture',
-                btnAssocTop: 'IANG Nurses Website', btnProcTop: 'Official Procedure 1.2.1.2 (PDF)', btnBrochureTop: 'Safety Brochure (PDF)',
-                btnOpenPdfTab: 'Open PDF File in New Tab', heroTag: 'Association for Geriatric Advancement',
+                headerBadge: 'MoH Procedure 1.2.1.2',
+                headerTitle: 'Assistive Personnel Training - Safety Architecture',
+                btnAssocTop: 'IANG Nurses Website',
+                btnProcTop: 'Official Procedure 1.2.1.2 (PDF)',
+                btnProcHero: 'Procedure 1.2.1.2 PDF',
+                btnAssocHero: 'IANG Website',
+                heroTag: 'Association of Nurses for Geriatric Advancement in Israel',
                 heroTitle: 'Training, Safety & Competency Control for Geriatric Caregivers',
-                heroDesc: 'Assistive personnel are the true protective shield safeguarding patients quality of life, dignity, and safety.',
-                stat1: '18 Hours Basic Training', stat2: '40 Hours Advanced Training', stat3: '4 Hours Night Shift Cert',
-                authorTitle: 'Application Written & Edited by', authorName: 'Maya Shkolnik Gazit', authorRole: 'MHA, BA, RN | Policy Specialist',
-                authorQuote: '"The nurse as a quality leader, in full partnership with assistive personnel - is the key to preventing adverse events."',
-                tabModules: 'Training Programs', tabBrochure: 'Safety Brochure (PDF)', tabEmergencies: 'Emergencies & Practice',
-                tabCurriculum: 'Detailed Curriculum', tabResilience: 'Resilience Workshop', tabObservation: 'Clinical Evaluation',
-                tabNearMiss: 'Near-Miss Logs', tabQuiz: 'Safety Quiz', tabChecklist: 'Shift Checklist', tabTracker: 'Competency Tracker Log',
-                modHeading: 'Core Pillars of Procedure 1.2.1.2', modSubheading: 'Structured hybrid training pathway ensuring patient safety',
-                infoTitle: 'Safety Culture & Speak Up', infoBody: 'Assistive personnel identify hazards first. Report immediately without fear.',
-                trHeading: 'Caregiver Competency Dashboard', trSubheading: 'Full tracking simulator matching Excel control files (Procedure 1.2.1.2)',
-                btnAddStaff: 'Add New Caregiver', thName: 'Caregiver Name', thDept: 'Department', thTenure: 'Tenure > 3m?', thBls: 'BLS CPR', thBasic: 'Basic (18h)', thScore: 'Exam Score', thStatus: 'Fit for Night Duty?',
-                modules: [
-                    { badge: "Mandatory", title: "Basic Training (18 Hours)", desc: "Infection control, basic hygiene, safe ergonomic transfers and mobility." },
-                    { badge: "Advanced", title: "Continuing Track (40 Hours)", desc: "Detecting clinical decline, pressure injury prevention and dementia care." },
-                    { badge: "Night Shift", title: "Night Shift Cert (4 Hours)", desc: "Vigilance control, safety rounds, and prompt nurse escalation pathways." },
-                    { badge: "Competency", title: "BLS CPR Refresh", desc: "Maintaining valid basic life support credentials and practical assessments." }
-                ],
-                emergencies: [
-                    { title: "1. Choking & Aspiration", sym: "Sudden heavy cough, cyanosis, inability to speak during mealtime.", act: "1. Stop feeding immediately! 2. Sit upright at 90°. 3. Alert the nurse urgently!" },
-                    { title: "2. Suspected Stroke", sym: "Sudden facial drooping, arm/leg weakness, slurred speech.", act: "1. Lay flat with head elevated 30°. 2. Strictly prohibited to give food or water!" }
-                ],
-                quiz: [
-                    { title: "During lunch, a resident begins to cough heavily and their voice sounds wet. Action?", options: ["Encourage them to eat slower", "Stop feeding immediately, withhold fluids, and call the nurse", "Lay them flat on their back"], correct: 1, explain: "Coughing indicates potential aspiration. Stop feeding immediately and alert RN." }
-                ]
-            },
-            ru: {
-                dir: 'ltr',
-                headerBadge: 'Процедура Минздрава 1.2.1.2', headerTitle: 'Обучение младшего медперсонала - Архитектура Безопасности',
-                btnAssocTop: 'Сайт Ассоциации (IANG)', btnProcTop: 'Официальная процедура 1.2.1.2', btnBrochureTop: 'Брошюра безопасности (PDF)',
-                btnOpenPdfTab: 'Открыть PDF файл в новой вкладке', heroTag: 'Ассоциация медсестер по развитию гериатрии',
-                heroTitle: 'Обучение, безопасность и контроль квалификации сиделок',
-                heroDesc: 'Младший медицинский персонал — это настоящий защитный щит безопасности пациентов.',
-                stat1: '18 часов Базовое обучение', stat2: '40 часов Расширенное обучение', stat3: '4 часа Ночная сертификация',
-                authorTitle: 'Приложение написано и отредактировано:', authorName: 'Майя Школьник Газит', authorRole: 'MHA, BA, RN | Эксперт по политике',
-                authorQuote: '«Медсестра как лидер качества в полном партнерстве с младшим персоналом — ключ к предотвращению вреда.»',
-                tabModules: 'Программы обучения', tabBrochure: 'Брошюра безопасности (PDF)', tabEmergencies: 'ЧС и Практика',
-                tabCurriculum: 'Учебный план', tabResilience: 'Семинар устойчивости', tabObservation: 'Полугодовая оценка',
-                tabNearMiss: 'Отчет об инцидентах', tabQuiz: 'Интерактивный тест', tabChecklist: 'Чек-лист смены', tabTracker: 'Журнал квалификации',
-                modHeading: 'Основные элементы процедуры 1.2.1.2', modSubheading: 'Гибридное обучение для безопасности пациентов в гериатрии',
-                infoTitle: 'Культура безопасности (Speak Up)', infoBody: 'Санитары первыми замечают опасности. Архитектура безопасности призывает сообщать о риске без страха.',
-                trHeading: 'Журнал учета квалификации младшего персонала', trSubheading: 'Интерактивный симулятор контроля квалификации (1.2.1.2)',
-                btnAddStaff: 'Добавить сотрудника', thName: 'ФИО Сотрудника', thDept: 'Отделение', thTenure: 'Стаж > 3 мес?', thBls: 'Статус BLS', thBasic: 'Базовый (18ч)', thScore: 'Балл теста', thStatus: 'Допуск к ночи',
-                modules: [
-                    { badge: "Обязательно", title: "Базовый курс (18 часов)", desc: "Гигиена, предотвращение инфекций, основы эргономики и безопасных перемещений." },
-                    { badge: "Продвинутый", title: "Расширенный курс (40 часов)", desc: "Распознавание клинических изменений, профилактика пролежней и деменция." },
-                    { badge: "Ночь", title: "Ночной курс (4 часа)", desc: "Контроль ночных обходов, бдительность и протоколы экстренной связи." },
-                    { badge: "Квалификация", title: "Курс BLS реанимации", desc: "Поддержание действующего сертификата реанимации и оценка навыков." }
-                ],
-                emergencies: [
-                    { title: "1. Удушье и аспирация", sym: "Сильный кашель, покраснение лица, невозможность дышать во время еды.", act: "1. Прекратить кормление! 2. Посадить под 90°. 3. Срочно вызвать медсестру!" },
-                    { title: "2. Подозрение на инсульт", sym: "Асимметрия лица, слабость в руке/ноге, невнятная речь.", act: "1. Уложить на спину с приподнятой головой (30°). 2. Запрещено давать воду или еду!" }
-                ],
-                quiz: [
-                    { title: "Во время обеда пациент начинает сильно кашлять, голос звучит хрипло. Что делать?", options: ["Поощрять есть медленнее", "Прекратить кормление, не давать жидкость и вызвать медсестру", "Уложить на спину отдохнуть"], correct: 1, explain: "Кашель указывает на аспирацию. Прекратите кормление и вызовите медсестру." }
-                ]
-            },
-            ar: {
-                dir: 'rtl',
-                headerBadge: 'إجراء وزارة الصحة 1.2.1.2', headerTitle: 'تدريب مساعدي التمريض - هندسة السلامة',
-                btnAssocTop: 'موقع جمعية الممرضات (IANG)', btnProcTop: 'إجراء 1.2.1.2 الرسمي (PDF)', btnBrochureTop: 'كتيب السلامة (PDF)',
-                btnOpenPdfTab: 'فتح ملف PDF في علامة تبويب جديدة', heroTag: 'جمعية الممرضات لتطوير تمريض كبار السن في إسرائيل',
-                heroTitle: 'التدريب والسلامة ومراقبة الكفاءة لمساعدي التمريض',
-                heroDesc: 'مساعدو التمريض هم درع الحماية الحقيقي الذي يصون جودة حياة وسلامة المقيمين.',
-                stat1: '18 ساعة تدريب أساسي', stat2: '40 ساعة تدريب متقدم', stat3: '4 ساعات اعتماد ليلي',
-                authorTitle: 'تم كتابة وتحرير التطبيق بواسطة', authorName: 'مايا شكولنيك غازيت', authorRole: 'MHA, BA, RN | أخصائية إدارة وسياسات التمريض',
-                authorQuote: '"الممرضة كقائدة للجودة والسلامة بالشراكة الكاملة مع المساعدين - هي المفتاح لمنع الأخطاء وحماية حياة المقيمين."',
-                tabModules: 'برامج التدريب', tabBrochure: 'كتيب السلامة (PDF)', tabEmergencies: 'حالات الطوارئ',
-                tabCurriculum: 'منهج التدريب', tabResilience: 'ورشة الصمود النفسي', tabObservation: 'التقييم النصف سنوي',
-                tabNearMiss: 'بلاغ وشيك الوقوع', tabQuiz: 'اختبار المعرفة', tabChecklist: 'قائمة مراجعة الوردية', tabTracker: 'سجل متابعة الكفاءة',
-                modHeading: 'الركائز الأساسية للإجراء 1.2.1.2', modSubheading: 'مسار تدريب مدمج لضمان سلامة المرضى',
-                infoTitle: 'ثقافة السلامة والإبلاغ دون خوف (Speak Up)', infoBody: 'المساعدون هم أول من يلاحظ المخاطر. تحث هندسة السلامة على الإبلاغ الفوري دون خوف.',
-                trHeading: 'سجل متابعة كفاءة مساعدي التمريض', trSubheading: 'محاكي تفاعلي متكامل وفقاً للإجراء 1.2.1.2',
-                btnAddStaff: 'إضافة مساعد جديد', thName: 'اسم المساعد/ة', thDept: 'القسم', thTenure: 'أقدمية > 3 أشهر؟', thBls: 'حالة BLS', thBasic: 'التدريب الأساسي (18س)', thScore: 'علامة الاختبار', thStatus: 'أهلية العمل ليلاً؟',
-                modules: [
-                    { badge: "إجباري", title: "التدريب الأساسي (18 ساعة)", desc: "النظافة، منع العدوى، مبادئ الهندسة البشرية والنقل الآمن." },
-                    { badge: "متقدم", title: "التدريب المستمر (40 ساعة)", desc: "التعرف على التدهور السريري، منع قرح الفراش ورعاية الخرف." },
-                    { badge: "ليلي", title: "التدريب الليلي (4 ساعات)", desc: "إدارة الجولات التفقدية، اليقظة، وبلاغات الطوارئ للممرضة." },
-                    { badge: "كفاءة", title: "تنشيط إنعاش BLS", desc: "الحفاظ على شهادة إنعاش قلبي رئوي سارية والتقييم الدوري." }
-                ],
-                emergencies: [
-                    { title: "1. الاختناق والشفط (Choking)", sym: "سعال مفاجئ شديد، احمرار/ازرقاق في الوجه، عدم القدرة على التحدث أثناء الإطعام.", act: "1. أوقف الإطعام فوراً! 2. أجلس المريض بزاوية 90 درجة. 3. استدعِ الممرضة بشكل عاجل!" },
-                    { title: "2. اشتباه بسكتة دماغية (Stroke)", sym: "تدلي أو اعوجاج في جانب واحد من الوجه، ضعف مفاجئ في اليد/الرجل، صعوبة في الكلام.", act: "1. استلقاء على الظهر مع رفع الرأس (30 درجة). 2. يمنع منعاً باتاً إعطاء طعام أو شراب!" }
-                ],
-                quiz: [
-                    { title: "أثناء وجبة الغداء في القسم، بدأ أحد المقيمين يسعل بشدة وصوته يبدو 'رطباً'. كيف تتصرف؟", options: ["تشجيعه على الاستمرار في الأكل ببطء", "إيقاف الإطعام فوراً، منع الشرب، وإبلاغ الممرضة فوراً", "جعله يستلقي على ظهره فوراً في السرير"], correct: 1, explain: "السعال المفاجئ هو علامة تحذير للشفط (Aspiration). يجب إيقاف الإطعام فوراً واستدعاء الممرضة." }
-                ]
-            },
-            ne: {
-                dir: 'ltr',
-                headerBadge: 'MoH प्रक्रिया 1.2.1.2', headerTitle: 'सहायक कर्मचारी तालिम - सुरक्षा वास्तुकला',
-                btnAssocTop: 'IANG नर्स वेबसाइट', btnProcTop: 'आधिकारिक प्रक्रिया 1.2.1.2 (PDF)', btnBrochureTop: 'सुरक्षा पुस्तिका (PDF)',
-                btnOpenPdfTab: 'नयाँ ट्याबमा PDF खोल्नुहोस्', heroTag: 'जेरियाट्रिक उन्नतिका लागि संघ',
-                heroTitle: 'जेरियाट्रिक हेरचाहकर्ताहरूको लागि प्रशिक्षण, सुरक्षा र योग्यता नियन्त्रण',
-                heroDesc: 'सहायक कर्मचारीहरू बिरामीहरूको जीवनस्तर, मर्यादा र सुरक्षा सुनिश्चित गर्ने वास्तविक ढाल हुन्।',
-                stat1: '१८ घण्टा आधारभूत प्रशिक्षण', stat2: '४० घण्टा उन्नत प्रशिक्षण', stat3: '४ घण्टा राती सिफ्ट प्रमाणपत्र',
-                authorTitle: 'एप लेखन र सम्पादन:', authorName: 'माया श्कोल्निक गाजिट', authorRole: 'MHA, BA, RN | नीति विशेषज्ञ',
-                authorQuote: '"नर्स एक गुणस्तर नेताको रूपमा, सहायक कर्मचारीहरूसँग पूर्ण साझेदारीमा - प्रतिकूल घटनाहरू रोक्नको लागि साँचो हो।"',
-                tabModules: 'प्रशिक्षण कार्यक्रमहरू', tabBrochure: 'सुरक्षा पुस्तिका (PDF)', tabEmergencies: 'आपतकालीन अवस्था र अभ्यास',
-                tabCurriculum: 'विस्तृत पाठ्यक्रम', tabResilience: 'लचिलोपन कार्यशाला', tabObservation: 'क्लिनिकल मूल्याङ्कन',
-                tabNearMiss: 'नजिकैको-मिस लगहरू', tabQuiz: 'सुरक्षा प्रश्नोत्तरी', tabChecklist: 'सिफ्ट चेकलिस्ट', tabTracker: 'योग्यता ट्र्याकर लग',
-                modHeading: 'प्रक्रिया 1.2.1.2 को मुख्य स्तम्भहरू', modSubheading: 'बिरामीको सुरक्षा सुनिश्चित गर्ने हाइब्रिड प्रशिक्षण मार्ग',
-                infoTitle: 'सुरक्षा संस्कृति (Speak Up)', infoBody: 'सहायक कर्मचारीहरूले पहिले खतराहरू पहिचान गर्छन्। डर बिना तुरुन्त रिपोर्ट गर्नुहोस्।',
-                trHeading: 'हेरचाहकर्ता योग्यता ड्यासबोर्ड', trSubheading: 'एक्सेल नियन्त्रण फाइलहरूसँग मिल्दो पूर्ण ट्र्याकिङ सिम्युलेटर (प्रक्रिया 1.2.1.2)',
-                btnAddStaff: 'नयाँ कर्मचारी थप्नुहोस्', thName: 'कर्मचारीको नाम', thDept: 'विभाग', thTenure: 'अवधि > ३ महिना?', thBls: 'BLS CPR', thBasic: 'आधारभूत (१८घ)', thScore: 'परीक्षा स्कोर', thStatus: 'राती ड्युटीको लागि योग्य?',
-                modules: [
-                    { badge: "अनिवार्य", title: "आधारभूत तालिम (१८ घण्टा)", desc: "संक्रमण नियन्त्रण, आधारभूत सरसफाइ, सुरक्षित एर्गोनोमिक स्थानान्तरण र गतिशीलता।" },
-                    { badge: "उन्नत", title: "निरन्तर ट्र्याक (४० घण्टा)", desc: "क्लिनिकल गिरावट पत्ता लगाउने, दबाब चोट रोकथाम र डिमेन्सिया हेरचाह।" },
-                    { badge: "राती सिफ्ट", title: "राती सिफ्ट प्रमाणपत्र (४ घण्टा)", desc: "सतर्कता नियन्त्रण, सुरक्षा राउन्ड, र नर्सलाई तुरुन्त रिपोर्ट गर्ने मार्गहरू।" },
-                    { badge: "योग्यता", title: "BLS CPR रिफ्रेसर", desc: "वैध आधारभूत जीवन समर्थन प्रमाणहरू र व्यावहारिक मूल्याङ्कन कायम राख्दै।" }
-                ],
-                emergencies: [
-                    { title: "1. निसासिनु र एस्पिरेसन", sym: "अचानक भारी खोकी, अनुहार नीलो हुनु, खाना खाँदा बोल्न नसक्नु।", act: "1. तुरुन्तै खुवाउन रोक्नुहोस्! 2. ९०° मा सीधा बस्नुहोस्। 3. नर्सलाई तुरुन्तै बोलाउनुहोस्!" },
-                    { title: "2. स्ट्रोक (पक्षघात) को शंका", sym: "अचानक अनुहार झर्नु, हात/खुट्टा कमजोर हुनु, बोल्न गाह्रो हुनु।", act: "1. टाउको ३०° उचालेर सीधा सुताउनुहोस्। 2. खाना वा पानी दिन कडा रूपमा निषेध गरिएको छ!" }
-                ],
-                quiz: [
-                    { title: "दिउँसोको खानाको समयमा, एक बिरामीले भारी खोक्न थाल्छ र तिनीहरूको आवाज 'भिजेको' सुनिन्छ। के गर्ने?", options: ["बिस्तारै खान प्रोत्साहन गर्ने", "तुरुन्तै खुवाउन रोक्ने, तरल पदार्थ नदिने, र नर्सलाई बोलाउने", "ओछ्यानमा सिधा सुताउने"], correct: 1, explain: "खोकीले सम्भावित एस्पिरेसनलाई संकेत गर्छ। तुरुन्तै खुवाउन रोक्नुहोस् र नर्सलाई बोलाउनुहोस्।" }
-                ]
+                heroDesc: 'Assistive personnel are the true protective shield safeguarding patients quality of life, dignity, and safety. This portal unifies training programs, Procedure 1.2.1.2 standards, and multi-lingual competency tracking in one place.',
+                stat1: '18 Hours Basic Training',
+                stat2: '40 Hours Advanced Training',
+                stat3: '4 Hours Night Shift Cert',
+                authorTitle: 'Author & Policy Developer',
+                authorName: 'Maya Shkolnik Gazit',
+                authorRole: 'MHA, BA, RN | Policy & Management Specialist',
+                authorQuote: '"The nurse as a quality leader, in full partnership with assistive personnel - is the key to preventing adverse events and protecting resident lives."',
+                tabModules: 'Training Programs & Rules',
+                tabEmergencies: 'Emergencies & Practice',
+                tabCurriculum: 'Detailed Curriculum & Practice',
+                tabResilience: 'Caregiver Resilience Workshop',
+                tabObservation: 'Semi-Annual Clinical Evaluation',
+                tabNearMiss: 'Near-Miss & Shift Discussion',
+                tabQuiz: 'Interactive Safety Quiz',
+                tabChecklist: 'Shift Safety Checklist',
+                tabTracker: 'Competency Tracker Log',
+                modHeading: 'Core Pillars of Procedure 1.2.1.2',
+                modSubheading: 'Structured hybrid training pathway ensuring patient safety and risk prevention in geriatrics',
+                infoTitle: 'Safety Culture & Speak Up Without Fear',
+                infoBody: 'According to safety culture surveys, assistive personnel identify hazards and near-misses first. Safety Architecture encourages every caregiver to report any hazard immediately without fear, knowing early reporting saves lives.',
+                trHeading: 'Caregiver Competency Tracking Dashboard',
+                trSubheading: 'Full tracking simulator with all 12 parameters matching Excel control files (Procedure 1.2.1.2)',
+                btnManageDepts: 'Manage Depts',
+                btnAddStaff: 'Add New Caregiver',
+                allDept: 'All Departments',
+                kpiTotalLbl: 'Total Staff',
+                kpiTenureLbl: 'Tenure > 3 Months',
+                kpiBasicLbl: 'Basic (18h) Completed',
+                kpiExamLbl: 'Exam Pass Rate (>=80%)',
+                kpiNightLbl: 'Fit for Night Duty',
+                thName: 'Caregiver Name',
+                thDept: 'Department',
+                thTenure: 'Tenure > 3m?',
+                thBls: 'BLS CPR',
+                thBasic: 'Basic (18h)',
+                thAdvanced: 'Advanced (40h)',
+                thNight: 'Night (4h)',
+                thScore: 'Exam Score & Status',
+                thEval: 'Semi-Annual Eval',
+                thStatus: 'Fit for Night Duty?',
+                resTag: 'Part of 40-Hour Advanced Course',
+                resHeading: 'Caregiver Emotional Resilience & Support Workshop',
+                resSubheading: 'Self-assessment questionnaire for burnout prevention and emotional coping in geriatric care',
+                resLblName: 'Caregiver Name:',
+                btnSubmitResilience: 'Submit Resilience Survey & Get Feedback',
+                btnPrintResilience: 'Print Resilience Completion Certificate',
+                obsHeading: 'Caregiver Semi-Annual Performance Evaluation & Observation',
+                obsSubheading: 'Extended clinical evaluation tool completed by head nurse / instructor at bedside',
+                obsLblStaff: 'Caregiver Name:',
+                obsLblNurse: 'Evaluating Nurse Name:',
+                obsLblNotes: 'Nurse Evaluator Notes & Recommendations:',
+                btnPrintObs: 'Save & Print Semi-Annual Evaluation',
+                nmHeading: 'Near-Miss Reporting & 5-Min Shift Discussion',
+                nmSubheading: 'Speak Up culture: report hazards for immediate 5-minute handover discussions',
+                nmFormTitle: '📝 Log a Daily Hazard / Near-Miss Incident:',
+                btnSendNm: 'Submit Hazard Log',
+                nmListTitle: '📋 Logged Near-Miss Hazards This Week:',
+                quizHeading: 'Caregiver Safety Knowledge Quiz',
+                quizSubheading: 'Test your knowledge on safety standards, emergency situations, and night shift duty (Procedure 1.2.1.2)',
+                chkHeading: 'Shift Safety Control Checklist',
+                chkSubheading: 'Do-It-Yourself: Critical checklist to prevent resident harm during shift hours',
+                ftTitle: 'Association of Nurses for Geriatric Advancement in Israel',
+                ftSub: 'Based on MoH Geriatric Department Procedure 1.2.1.2 (12/2025)',
+                ftAuthor: 'Authored by Maya Shkolnik Gazit MHA, BA, RN',
             }
         };
 
+        // INTERACTIVE CURRICULUM PRACTICE SIMULATION DATA
+        const curriculumSimulations = {
+            p18: {
+                title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים",
+                q: "מטופל מורכב במיטה שאינו משתף פעולה נדרש לעבור לכורסה. לפי עקרונות הארגונומיה והבטיחות, מה הצעד הנכון ביותר?",
+                opts: [
+                    "א. לכופף גב ישר לבד, להרים אותו בכוח זרועות ולהעביר במהירות",
+                    "ב. לבדוק את תוכנית הטיפול האישית, להיעזר בסדין החלקה ובמטפל נוסף או מנוף, ולנעול בלמים במיטה ובכורסה",
+                    "ג. לבקש ממנו להתאמץ ולקום לבד",
+                    "ד. להעביר ללא נעילת בלמים כדי לחסוך זמן"
+                ],
+                correct: 1,
+                explain: "נכון מאוד! מעבר בטוח דורש בדיקת תוכנית טיפול אישית, נעילת בלמים במיטה ובכורסה, שימוש באביזרי עזר (סדין החלקה/מנוף) ועבודה בשני מטפלים במידת הצורך."
+            },
+            p40: {
+                title: "תרגול תוכנית 40 שעות: האכלה בטוחה בדמנציה/דיספגיה",
+                q: "בזמן האכלת דייר עם דמנציה וקשיי בליעה (דיספגיה), הדייר אוגר מזון בפה ומראה סימני השתעלות. מה הפעולה הנכונה?",
+                opts: [
+                    "א. להמשיך להאכיל כף אחר כף במהירות",
+                    "ב. לוודא הושבה ב-90 מעלות, להאכיל בכפיות קטנות, לוודא סיום בליעה לפני כפית נוספת ולדווח לאחות אם יש שיעול חוזר",
+                    "ג. להשכיב אותו שטוח ולהאכיל בשכיבה",
+                    "ד. לתת מים זורמים מהר בכוס"
+                ],
+                correct: 1,
+                explain: "מדויק! מניעת אספירציה וחנק דורשת מנח זקוף (90°), האכלה איטית, וידוא פינוי הפה לפני מתן כפית נוספת ודיווח לאחות על סימני קושי בליעה."
+            },
+            p4n: {
+                title: "תרגול תוכנית 4 שעות: עבודת לילה וסבבי השגחה",
+                q: "בשעה 02:00 בלילה במהלך סבב השגחה שעתי, גילית דייר מבולבל שיצא ממיטתו ומנסה ללכת בחושך. כיצד תפעל?",
+                opts: [
+                    "א. תצעק עליו שיחזור מיד למיטה ולנעול את החדר",
+                    "ב. תפנה אליו ברוגע, תדליק תאורת לילה רכה, תלווה אותו בבטחה, תבדוק אם נדרש מים/שירותים ותדווח לאחות התורנית",
+                    "ג. להתעלם ולהמשיך בסבב",
+                    "ד. להשאיר אותו על הרצפה"
+                ],
+                correct: 1,
+                explain: "כל הכבוד! גישה רגועה, שמירה על תאורת לילה בטוחה, מניעת נפילה, ומענה לצרכים פיזיולוגיים בשילוב דיווח לאחות מבטיחים את שלומו בלילה."
+            }
+        };
+
+        // FULL SEMI-ANNUAL CLINICAL EVALUATION CRITERIA DATA (6 DOMAINS WITH SCORING 1-5)
+        const evaluationDomainsData = {
+            he: [
+                {
+                    id: "d1",
+                    title: "1. בטיחות המטופל וארגונומיה במעברים",
+                    desc: "נעילת בלמים במיטה/כורסה, שימוש במנוף/סדין החלקה, שמירה על גב ישר, וידוא זמינות פעמון מצוקה ומעקות בטיחות."
+                },
+                {
+                    id: "d2",
+                    title: "2. היגיינה, מניעת זיהומים ושמירה על העור",
+                    desc: "חיטוי ידיים לפני/אחרי מגע, עטיפת PPE, זיהוי אדמומיות בסקרום (דרגה 1), וביצוע סבב שינוי תנוחה כל 2-3 שעות."
+                },
+                {
+                    id: "d3",
+                    title: "3. תקשורת מכבדת, פרטיות וטיפול בדמנציה",
+                    desc: "פנייה בגובה עיניים, סגירת וילון/דלת בטיפול אישי, גישה מכבדת לדיירים עם תשישות נפש ומניעת התעללות/הזנחה."
+                },
+                {
+                    id: "d4",
+                    title: "4. האכלה בטוחה ומניעת חנק/אספירציה",
+                    desc: "הושבת המטופל ב-90° בזמן ולאחר האכלה, האכלה בקצב מותאם, מתן מרקם נכון וזיהוי קשיי בליעה (דיספגיה)."
+                },
+                {
+                    id: "d5",
+                    title: "5. תפקוד במשמרת לילה ומצבי חירום",
+                    desc: "ביצוע סבבי השגחה היקפיים כל 2 שעות בלילה, ערנות, תגובה מהירה לפעמון, וזיהוי הידרדרות קלינית/חנק/שריפה."
+                },
+                {
+                    id: "d6",
+                    title: "6. עבודת צוות, אחריות ודיווח Speak Up",
+                    desc: "דיווח יומי ללא פחד על מפגעי 'כמעט ונפגע', השתתפות בדיון 5 דקות בהעברת משמרת, עמידה בזמנים ויחסי אנוש."
+                }
+            ]
+        };
+
+        // EMERGENCY CARDS DETAILED DATA (MULTILINGUAL)
+        const emergencyCardsData = {
+            he: [
+                { icon: "🫁", title: "1. חנק ואספירציה (Choking)", badge: "חירום קריטי", color: "border-rose-300 bg-rose-50/40", identify: "שיעול פתאומי חזק, אודם/מכחלון בפנים, חוסר יכולת לדבר או לשאוף אוויר, תנועות מצוקה בידיים בזמן האכלה.", action: "1. הפסק האכלה מיידית!\n2. הושב ב-90 מעלות (זקוף).\n3. קרא בדחיפות לאחות!\n4. אל תעזוב את המטופל!" },
+                { icon: "🫀", title: "2. דום לב / נשימה (BLS)", badge: "החייאה מיידית", color: "border-rose-300 bg-rose-50/40", identify: "חוסר תגובה לקריאה ומגע, היעדר נשימה תקינה או נשימות אגונליות (גניחות חנק פתאומיות).", action: "1. צעק לעזרה וקרא לאחות התורנית!\n2. החל נוהל החייאה בסיסי (BLS).\n3. הבא עגלת החייאה/דפיברילטור (AED)." },
+                { icon: "⚠️", title: "3. הידרדרות קלינית / שבץ / אלח דם", badge: "דיווח דחוף", color: "border-amber-300 bg-amber-50/40", identify: "שינוי פתאומי במצב הכרה (אפתיה חריפה), צניחת זווית פה, נשימה מהירה מאד, זיעה קרה, חולשת צד.", action: "1. קרא לאחות האחראית לדיווח מיידי.\n2. השכב בבטיחות ומנע נפילה.\n3. אל תיתן שתייה/מזון לפה." },
+                { icon: "🦴", title: "4. נפילה וחשד לשבר / חבלת ראש", badge: "איסור הזזה", color: "border-amber-300 bg-amber-50/40", identify: "מטופל שנמצא שרוע על הרצפה, תלונה על כאב עז באגן/ירך, קיצור/סיבוב רגל, חבלה מדממת בראש.", action: "1. אל תזיז ואל תקים את המטופל!\n2. קרא לאחות להערכת ראש ועמוד שדרה.\n3. הרגע וכסה בשמיכה עד לבדיקה." },
+                { icon: "🧠", title: "5. אי-שקט חריף / דליריום לילי", badge: "בטיחות ורגיעה", color: "border-indigo-300 bg-indigo-50/40", identify: "בלבול פתאומי, חרדה, הזיות, ניסיון לתלוש עירוי/צנתר, ירידה מהמיטה בצורה מסוכנת בלילה.", action: "1. פנה ברוגע ובגובה העיניים בשפה פשוטה.\n2. שמור על בטיחות למניעת נפילה.\n3. דווח מיידית לאחות התורנית." },
+                { icon: "🔥", title: "6. אירוע שריפה / עשן בלילה", badge: "נוהל RACE", color: "border-rose-300 bg-rose-50/40", identify: "ריח שרוף, עשן במחלקה, הפעלת אזעקת אש גלגלית.", action: "1. דווח מיד לאחות ולמוקד החירום.\n2. תחום את האש (סגור דלתות וחלונות).\n3. סייע בפינוי דיירים בסיכון לפי הנוהל." }
+            ],
+            en: [
+                { icon: "🫁", title: "1. Choking & Aspiration", badge: "Critical", color: "border-rose-300 bg-rose-50/40", identify: "Sudden cough, facial redness/cyanosis, inability to speak or inhale during feeding.", action: "1. Stop feeding immediately!\n2. Sit upright at 90°.\n3. Call RN urgently!\n4. Do not leave resident alone." },
+                { icon: "🫀", title: "2. Cardiac / Respiratory Arrest", badge: "BLS CPR", color: "border-rose-300 bg-rose-50/40", identify: "Unresponsiveness to voice/touch, no breathing or agonal gasping.", action: "1. Shout for help & call on-duty RN!\n2. Start BLS CPR steps.\n3. Fetch AED & emergency cart." },
+                { icon: "⚠️", title: "3. Acute Clinical Decline / Stroke", badge: "Urgent Escalate", color: "border-amber-300 bg-amber-50/40", identify: "Sudden altered consciousness, facial drooping, rapid breathing, cold sweat, unilateral weakness.", action: "1. Call head RN immediately.\n2. Ensure safe positioning, prevent fall.\n3. Do NOT give oral food or fluids." },
+                { icon: "🦴", title: "4. Fall & Suspected Fracture / Head Trauma", badge: "Do Not Move", color: "border-amber-300 bg-amber-50/40", identify: "Resident found on floor, severe hip pain, shortened/rotated leg, bleeding head injury.", action: "1. Do NOT move or lift resident!\n2. Call RN for spine & head review.\n3. Reassure & cover with blanket." },
+                { icon: "🧠", title: "5. Acute Delirium / Night Agitation", badge: "Safety & Calm", color: "border-indigo-300 bg-indigo-50/40", identify: "Sudden confusion, hallucinations, pulling catheter/IV lines, dangerous bed climbing.", action: "1. Speak calmly at eye level in simple terms.\n2. Maintain physical fall safety.\n3. Report immediately to night RN." },
+                { icon: "🔥", title: "6. Night Fire / Smoke Emergency", badge: "RACE Protocol", color: "border-rose-300 bg-rose-50/40", identify: "Burning odor, visible smoke in corridor, fire alarm sounding.", action: "1. Notify RN and emergency hotline.\n2. Contain fire (close doors/windows).\n3. Assist in resident evacuation." }
+            ]
+        };
+
+        // EMERGENCY SIMULATION DATA
+        const emergencySimulations = {
+            choking: {
+                q: "בזמן שהאכלת דייר בחדר האוכל, הוא מתחיל להשתעל בחוזקה, פניו מאדימות והוא מחזיק בגרונו בחוסר אונים. מה הצעד המיידי הנכון ביותר?",
+                opts: [
+                    "א. להמשיך להאכיל בזהירות לאט יותר ולתת כוס מים",
+                    "ב. להפסיק האכלה מיד, לוודא שהדייר יושב ב-90 מעלות, לקרוא בדחיפות לאחות ולהישאר צמוד אליו",
+                    "ג. שטוף את פניו במים קרים והשכב אותו שטוח על הגב",
+                    "ד. לטפוח בחוזקה על גבו בזמן שהוא שוכב"
+                ],
+                correct: 1,
+                explain: "נכון מאוד! בחשד לחנק חובה להפסיק האכלה מיידית, לשמור על מנח זקוף (90 מעלות), להזעיק אחות ולא לנטוש את המטופל ברגע קריטי זה."
+            },
+            fall: {
+                q: "נכנסת לחדר וראית דייר שרוע על הרצפה ליד המיטה. הוא גונח מכאב וטוען שאינו יכול להזיז את רגל ימין. מה עליך לעשות?",
+                opts: [
+                    "א. להרים אותו מיד יחד עם מטפל נוסף ולהושיב אותו בכורסה",
+                    "ב. לא להזיז את הדייר! לקרוא מיד לאחות להערכת ראש/עמוד שדרה/חשד לשבר, להרגיע אותו ולכסות בשמיכה",
+                    "ג. לבקש ממנו לקום בכוחות עצמו לאט לאט",
+                    "ד. להחזיר אותו למיטה ולבדוק בעוד שעה"
+                ],
+                correct: 1,
+                explain: "כל הכבוד! חל איסור מוחלט להרים מטופל לאחר נפילה לפני בדיקת אחות מוסמכת, כדי למנוע החמרה של שבר בצוואר הירך או פגיעת עמוד שדרה."
+            },
+            decline: {
+                q: "במהלך סבב בוקר, גילית מטופל שאוריינטטיבי בדרך כלל, כשהוא אפתי לחלוטין, שפתיו סגולות-כחולות ונשימתו מהירה מאד. מה הצעד הנכון?",
+                opts: [
+                    "א. להשכיב אותו לישון ולחזור לבדוק בתום החלוקה",
+                    "ב. לקרוא מיידית לאחות האחראית לדיווח על הידרדרות קלינית ומצוקה נשימתית",
+                    "ג. לתת לו כוס מים קרים ולפתוח חלון",
+                    "ד. לחכות לביקור הרופא בצהריים"
+                ],
+                correct: 1,
+                explain: "מדויק! ציאנוזיס (כחלון) ואפתיה חריפה הם סימני אזהרה קריטיים להידרדרות קלינית הדורשים התערבות אחות רפואית דחופה."
+            },
+            fire: {
+                q: "במשמרת לילה בשעה 03:00 נשמעה אזעקת אש וזיהית עשן סמיך היוצא מחדר כבסים. מהי הפעולה הראשונית לפי נוהל בטיחות?",
+                opts: [
+                    "א. לפתוח את כל החלונות והדלתות במחלקה כדי שאוויר יכנס",
+                    "ב. לדווח מיד לאחות תורנית, לסגור את הדלתות לתחימת העשן (RACE), ולסייע בפינוי דיירים ממוקד",
+                    "ג. לברוח מהבניין לבד ללא דיווח",
+                    "ד. לחכות לצוות הבוקר שיתפעל את האירוע"
+                ],
+                correct: 1,
+                explain: "מצוין! סגירת דלתות תוחמת את האש והעשן, מונעת התפשטות במזדרונות ומאפשרת פינוי בטוח בהובלת האחות."
+            }
+        };
+
+        // RESILIENCE WORKSHOP QUESTIONS
+        const resilienceQuestionsData = {
+            he: [
+                { q: "1. עד כמה אתה מרגיש עומס רגשי או שחיקה בתום משמרת עמוסה?", opts: ["עומס קל מאד", "עומס בינוני", "עומס כבד", "עומס כבד מאד וצורך בתמיכה"] },
+                { q: "2. במידה ואתה חווה קושי או תסכול עם מטופל, האם יש לך אוזן קשבת בצוות המחלקה?", opts: ["תמיד יש אחות/חבר צוות המקשיב לי", "לרוב כן", "לפעמים בלבד", "אינני מתוודה על קשיים"] },
+                { q: "3. באיזו תדירות אתה מנצל את ההפסקות המיועדות לאוכל ומנוחה במהלך המשמרת?", opts: ["בכל משמרת באופן סדיר", "לרוב מנצל", "לעיתים נדירות עקב עומס", "כמעט אף פעם"] },
+                { q: "4. עד כמה אתה מרגיש מוערך על ידי המנהלים והצוות הרב-מקצועי במחלקה?", opts: ["הערכה גבוהה מאד", "הערכה סבירה", "הערכה מועטה", "לא מרגיש מוערך"] },
+                { q: "5. באיזו מידה אתה מצליח 'להתנתק' מעבודת הטיפול הקשה כשאתה חוזר לביתך?", opts: ["מצליח לחלוטין", "מצליח בדרך כלל", "מתקשה להתנתק", "מחשבות ודאגות מלוות אותי בבית באופן רציף"] }
+            ]
+        };
+
+        // CLINICAL MODULE CARDS DATA
+        const modulesCardsData = {
+            he: [
+                { badge: "שלב א' (חובה)", title: "הכשרה בסיסית (18 שעות)", desc: "יסודות הטיפול הסיעודי הבטוח, היגיינה, מניעת זיהומים, עקרונות ארגונומיה ומעברים בטוחים.", items: ["היגיינת ידיים ומיגון אישי", "מעברים ושינויי תנוחה בטוחים", "מניעת נפילות בסביבת הטיפול"] },
+                { badge: "שלב ב' (מתקדם)", title: "הכשרת המשך (40 שעות)", desc: "זיהוי שינויים במצב המטופל, מניעת פצעי לחץ, תקשורת בדמנציה, וסדנת חוסן נפשי אינטראקטיבית.", items: ["זיהוי סימני אזהרה והידרדרות", "סדנת חוסן אינטראקטיבית למטפל/ת", "האכלה בטוחה ומניעת חנק"] },
+                { badge: "אישור עבודת לילה", title: "הכשרת לילה (4 שעות)", desc: "תנאי סף לשיבוץ עצמאי במשמרת לילה: ניהול סבבי בטיחות, ערנות ודיווח מיידי לאחות.", items: ["סבבי השגחה ובטיחות ליליים (כל 2 שעות)", "התמודדות עם שוטטות ובלבול", "תקשורת שוטפת עם אחות תורנית"] },
+                { badge: "כשירות מתמשכת", title: "החייאה BLS והערכה", desc: "רענון החייאה בסיסית בתוקף, מבדק ידע עיוני (80+), והערכת תפקוד מעשית חצי-שנתית.", items: ["החייאה בסיסית (BLS) בתוקף", "מבדק ידע עיוני בציון >= 80%", "הערכת תפקוד מעשית חצי-שנתית"] }
+            ]
+        };
+
+        // TRACKER SAMPLE DATA MATCHING EXCEL ROWS PERFECTLY
+        let trackerData = [
+            {
+                id: 101,
+                name: "רמי מורדי",
+                dept: "סיעוד מורכב",
+                tenure: true,
+                bls: true,
+                basicStatus: "הושלם", basicDate: "2026-01-15",
+                advStatus: "הושלם", advDate: "2026-05-10",
+                nightStatus: "הושלם", nightDate: "2026-01-20",
+                score: 92,
+                eval: true, evalDate: "2026-06-15",
+                fitNight: true
+            },
+            {
+                id: 102,
+                name: "ילנה פטרובה",
+                dept: "סיעוד מורכב תומך",
+                tenure: false,
+                bls: true,
+                basicStatus: "בתהליך", basicDate: "",
+                advStatus: "לא התחיל", advDate: "",
+                nightStatus: "לא התחיל", nightDate: "",
+                score: 0,
+                eval: false, evalDate: "",
+                fitNight: false
+            },
+            {
+                id: 103,
+                name: "חנין מסארווה",
+                dept: "שיקום",
+                tenure: true,
+                bls: false,
+                basicStatus: "הושלם", basicDate: "2026-01-20",
+                advStatus: "הושלם", advDate: "2026-06-25",
+                nightStatus: "הושלם", nightDate: "2026-01-25",
+                score: 95,
+                eval: true, evalDate: "2026-06-25",
+                fitNight: false
+            },
+            {
+                id: 104,
+                name: "דוד יוסף",
+                dept: "סיעוד מורכב",
+                tenure: true,
+                bls: true,
+                basicStatus: "הושלם", basicDate: "2026-03-05",
+                advStatus: "בתהליך", advDate: "",
+                nightStatus: "הושלם", nightDate: "2026-03-15",
+                score: 85,
+                eval: true, evalDate: "2026-07-10",
+                fitNight: true
+            },
+            {
+                id: 105,
+                name: "אמירה טאהא",
+                dept: "תשושי נפש",
+                tenure: true,
+                bls: true,
+                basicStatus: "הושלם", basicDate: "2026-01-12",
+                advStatus: "הושלם", advDate: "2026-05-18",
+                nightStatus: "הושלם", nightDate: "2026-01-18",
+                score: 80,
+                eval: true, evalDate: "2026-07-15",
+                fitNight: true
+            },
+            {
+                id: 106,
+                name: "סבטלנה לוין",
+                dept: "שיקום",
+                tenure: true,
+                bls: true,
+                basicStatus: "לא התחיל", basicDate: "",
+                advStatus: "לא התחיל", advDate: "",
+                nightStatus: "לא התחיל", nightDate: "",
+                score: 0,
+                eval: false, evalDate: "",
+                fitNight: false
+            }
+        ];
+
+        // NEAR-MISS LOG DATA
+        let nearMissData = [
+            { id: 1, loc: "במסדרון ב' ליד חדר 14", type: "רצפה רטובה / סכנת החלקה", status: "טופל במחלקה ✅" },
+            { id: 2, loc: "חדר 202 - מיטה 1", type: "בלם מיטה/כורסה משוחרר", status: "עלה לדיון 5 דקות 💬" },
+            { id: 3, loc: "מקלחת דיירים מרכזית", type: "פעמון מצוקה תקול", status: "בטיפול אחזקה 🛠️" }
+        ];
+
+        // EXPANDED INTERACTIVE QUIZ DATA
+        const quizQuestions = {
+            he: [
+                { chapter: "פרק 1: בטיחות ומעברים", title: "1. מטופל מבוגר בסיעוד מורכב מבקש לקום מהמיטה לכורסה. מהי הפעולה הבטיחותית הראשונה שעליך לבצע?", options: ["להרים אותו מיד לבד כדי שלא ימתין", "לבדוק בתוכנית הטיפול איזה מעבר נדרש (1 או 2 מטפלים/מנוף) ולנעול גלגלי מיטה", "לבקש ממנו לקום בכוחות עצמו לאט", "להעביר אותו ישירות ללא נעילת הגלגלים"], correct: 1, explain: "חובה לבדוק תוכנית טיפול אישית, להיעזר במטפל נוסף במידת הצורך ולנעול גלגלים לפני כל מעבר." },
+                { chapter: "פרק 1: בטיחות ומעברים", title: "2. במהלך סיור במסדרון המחלקה זיהית מים שנשפכו על הרצפה. מהי התגובה הנכונה לפי תרבות הבטיחות?", options: ["לעקוף את המים ולהמשיך בעיסוקיך", "לנגב/לחסום את האזור מיד ולדווח למניעת נפילת מטופלים או צוות", "להמתין לעובדי המשק שיגיעו בבוקר", "לכבות את התאורה באזור"], correct: 1, explain: "רצפה רטובה היא גורם לנפילות קשות. תרבות בטיחות ('Speak Up') מחייבת סילוק מפגע מיידי ודיווח." },
+                { chapter: "פרק 2: פצעי לחץ ושינוי קליני", title: "3. במהלכן החלפת חיתול, זיהית אדמומיות ממוקדת באזור הסקרום (עצם הזנב) שאינה נעלמת בלחיצה. מה נדרש לעשות?", options: ["ליידע מיד את האחות האחראית ולתעד סבב שינוי תנוחה", "למרוח אלכוהול ולעסות בחזקה", "להתעלם כיוון שזה תקין בגיל המבוגר", "להמתין למשמרת הבאה כדי לראות אם יחלוף"], correct: 0, explain: "אדמומיות שאינה נעלמת היא סימן ראשוני לפצע לחץ (דרגה 1). חובה לדווח מיד לאחות ולמנוע עיסוי חזק." },
+                { chapter: "פרק 2: פצעי לחץ ושינוי קליני", title: "4. מטופל שמסוגל בדרך כלל לתקשר הופך פתאום לאפתי, כפוף ונשימתו מהירה מאוד. מהי הפעולה הנכונה?", options: ["להשכיב אותו לישון ולבדוק שוב בעוד כמה שעות", "לקרוא מיד לאחות האחראית לדיווח על הידרדרות קלינית וסימני מצוקה", "לתת לו כוס מים קרים ולחזור לעבודה", "להמתין לביקור הרופא למחרת"], correct: 1, explain: "שינוי פתאומי במצב הכרה או נשימה הוא סימן אזהרה קריטי. יש להזעיק אחות לדיווח והערכה מיידית." },
+                { chapter: "פרק 3: מצבי חירום והחייאה", title: "5. בזמן האכלת מטופל בחדר האוכל, המטופל מתחיל להשתעל בחוזקה, מאדים, ולא מצליח להכניס אוויר. מה עליך לעשות מיד?", options: ["להמשיך להאכיל בזהירות לאט יותר", "להפסיק האכלה מיד, להושיב זקוף (90 מעלות), לקרוא בדחיפות לאחות ולא לנטוש את המטופל", "להשכיב את המטופל ישר על הגב במיטה", "לתת לו לבלוע לחם יבש"], correct: 1, explain: "בחשד לחנק/אספירציה חובה להפסיק האכלה מיד, לשמור על ישיבה זקופה, להזעיק אחות ולהישאר בצמוד למטופל." },
+                { chapter: "פרק 3: מצבי חירום והחייאה", title: "6. נשמעה אזעקת אש במחלקה או שזיהית עשן הבוקע מאחד החדרים בלילה. מהי הפעולה הראשונית הנכונה?", options: ["לפתוח את כל החלונות והדלתות במחלקה לרווחה", "לדווח מיד לאחות תורנית, לתחום את מקור האש (סגירת דלתות), ולסייע בפינוי ראשוני לפי הנוהל", "להימלט מהבניין לבד ללא דיווח", "להמתין לצוות הבוקר"], correct: 1, explain: "באירוע שריפה חובה לדווח מיד, לסגור דלתות לתחימת העשן והאש, ולסייע בפינוי דיירים ממוקד לפי הוראות האחות." },
+                { chapter: "פרק 4: עבודת משמרת לילה", title: "7. באיזו תדירות חובה על מטפל/ת במשמרת לילה לבצע סבבי השגחה ובטיחות בחדרי הדיירים לפי נוהל 1.2.1.2?", options: ["פעם אחת בלבד בתחילת המשמרת ופעם אחת בסופה", "לפחות מדי שעתיים ברציפות לאורך כל משמרת הלילה", "רק אם דייר קורא בפעמון", "כל 4 שעות"], correct: 1, explain: "נוהל 1.2.1.2 מחייב ביצוע סבב השגחה ובטיחות היקפי בחדרים לפחות מדי שעתיים לאורך הלילה." },
+                { chapter: "פרק 4: עבודת משמרת לילה", title: "8. בשעה 02:00 בלילה, דייר עם דמנציה קם ממיטתו מבולבל, חסר שקט ומנסה לצאת מהמחלקה. כיצד נכון להגיב?", options: ["צעק עליו שיחזור למיטה מיד וישן", "פנה אליו ברוגע ובכבוד, לווה אותו בבטחה, בדוק אם נדרש מים/שירותים ודווח לאחות התורנית", "לנעול אותו בחדרו", "להתעלם כיוון שהוא יחזור לבד"], correct: 1, explain: "פנייה רגועה ומכבדת, מניעת נפילה, מענה לצרכים פיזיולוגיים ודיווח לאחות הם המפתח לניהול אי-שקט בלילה." }
+            ],
+            en: [
+                { chapter: "Ch 1: Safety & Transfers", title: "1. A complex care resident asks to transfer from bed to chair. What is your first safety action?", options: ["Lift them alone immediately", "Check care plan for required assistance and lock bed wheels", "Ask them to stand up on their own", "Transfer directly without locking wheels"], correct: 1, explain: "Verify care plan, call 2nd caregiver if required, and lock wheels." },
+                { chapter: "Ch 1: Safety & Transfers", title: "2. You spot spilled water on the corridor floor. What is the correct response?", options: ["Walk around it", "Wipe or block area immediately and report to prevent falls", "Wait for cleaning staff", "Turn off lights"], correct: 1, explain: "Spilled water is a major fall hazard. Immediate hazard control is required." },
+                { chapter: "Ch 2: Skin & Clinical Decline", title: "3. While changing a brief, you spot non-blanchable redness over the sacrum. What must you do?", options: ["Inform nurse immediately and log repositioning", "Apply alcohol and massage hard", "Ignore as normal aging", "Wait for next shift"], correct: 0, explain: "Non-blanchable redness indicates Stage 1 pressure injury. Notify nurse immediately." },
+                { chapter: "Ch 2: Skin & Clinical Decline", title: "4. A usually communicative resident suddenly becomes apathetic with rapid breathing. What is correct?", options: ["Put them to sleep and recheck in a few hours", "Call RN immediately to report clinical deterioration", "Give cold water and return to work", "Wait for physician visit tomorrow"], correct: 1, explain: "Acute change in responsiveness or breathing requires immediate RN escalation." },
+                { chapter: "Ch 3: Emergencies & CPR", title: "5. During mealtime, a resident chokes, turns red, and struggles to breathe. What is your immediate action?", options: ["Continue feeding slowly", "Stop feeding immediately, sit upright (90°), call RN urgently and stay with resident", "Lay resident flat on bed", "Give dry bread"], correct: 1, explain: "Stop feeding immediately, keep resident upright at 90°, alert RN, and remain at bedside." },
+                { chapter: "Ch 3: Emergencies & CPR", title: "6. Fire alarm sounds or you detect smoke in a room at night. What is the primary safety action?", options: ["Open all doors and windows wide", "Inform on-duty RN, contain fire source (close doors), and assist in evacuation", "Flee building alone without reporting", "Wait for morning staff"], correct: 1, explain: "Alert RN immediately, close doors to contain smoke, and assist in resident evacuation." },
+                { chapter: "Ch 4: Night Shift Work", title: "7. How often must a night shift caregiver conduct safety observation rounds according to Procedure 1.2.1.2?", options: ["Once at start and once at end of shift", "At least every 2 hours continuously throughout the night shift", "Only if resident rings call bell", "Every 4 hours"], correct: 1, explain: "Procedure 1.2.1.2 mandates safety observation rounds at least every 2 hours all night." },
+                { chapter: "Ch 4: Night Shift Work", title: "8. At 02:00 AM, a resident with dementia gets out of bed confused and wandering. How should you respond?", options: ["Shout at resident to go back to bed", "Approach calmly, guide safely, check physiological needs (water/toilet), and inform RN", "Lock them in their room", "Ignore them"], correct: 1, explain: "Calm communication, fall prevention, addressing needs, and alerting RN is key for night agitation." }
+            ]
+        };
+
+        // SHIFT CHECKLIST DATA
+        const checklistItemsData = {
+            he: [
+                "לבישת ציוד מיגון אישי והיגיינת ידיים לפני ואחרי כל מטופל",
+                "נעילת גלגלי המיטה והכורסה ובדיקת פעמון קריאה בהישג יד המטופל",
+                "בדיקת שלמות העור וביצוע סבב שינוי תנוחה כל 2-3 שעות",
+                "וידוא מעקות בטיחות מורמים לפי תוכנית הטיפול האישית",
+                "ביצוע סיור השגחה ובטיחות היקפי לפחות מדי שעתיים במשמרת לילה"
+            ]
+        };
+
+        // INIT ON DOM LOAD
+        window.onload = function() {
+            setLanguage('he');
+        };
+
+        // LANGUAGE SWITCHER
         function setLanguage(lang) {
             currentLang = lang;
-            const t = i18n[lang];
-            
+            const dict = i18n[lang] || i18n['he'];
+
+            document.documentElement.dir = dict.dir;
             document.documentElement.lang = lang;
-            document.documentElement.dir = t.dir;
-
-            document.getElementById('header-badge').innerText = t.headerBadge;
-            document.getElementById('header-title').innerText = t.headerTitle;
-            document.getElementById('btn-assoc-txt').innerText = t.btnAssocTop;
-            document.getElementById('btn-brochure-txt-top').innerText = t.btnBrochureTop;
-
-            document.getElementById('hero-tag').innerText = t.heroTag;
-            document.getElementById('hero-main-title').innerText = t.heroTitle;
-            document.getElementById('hero-description').innerText = t.heroDesc;
-            document.getElementById('author-title').innerText = t.authorTitle;
-            document.getElementById('author-name').innerText = t.authorName;
-            document.getElementById('author-role').innerText = t.authorRole;
-
-            document.getElementById('span-tab-modules').innerText = t.tabModules || 'תוכניות ההכשרה והנוהל';
-            document.getElementById('span-tab-brochure').innerText = t.tabBrochure || 'חוברת בטיחות (PDF)';
-            document.getElementById('span-tab-emergencies').innerText = t.tabEmergencies || 'מצבי חירום ותרגול';
-            document.getElementById('span-tab-observation').innerText = t.tabObservation || 'הערכה חצי-שנתית ותצפית';
-            document.getElementById('span-tab-nearmiss').innerText = t.tabNearMiss || 'דיווח כמעט-ונפגע ודיון';
-            document.getElementById('span-tab-quiz').innerText = t.tabQuiz || 'מבדק ידע אינטראקטיבי';
-            document.getElementById('span-tab-checklist').innerText = t.tabChecklist || "צ'ק-ליסט במשמרת";
-            document.getElementById('span-tab-tracker').innerText = t.tabTracker || 'יומן מעקב ובקרת כשירות';
-
-            const obsHead = document.getElementById('obs-heading'); if(obsHead) obsHead.innerText = t.tabObservation || 'הערכה חצי-שנתית ותצפית';
-            const nmHead = document.getElementById('nm-heading'); if(nmHead) nmHead.innerText = t.tabNearMiss || 'דיווח כמעט-ונפגע ודיון';
-            const chkHead = document.getElementById('chk-heading'); if(chkHead) chkHead.innerText = t.tabChecklist || "צ'ק-ליסט במשמרת";
-
-            document.getElementById('mod-heading').innerText = t.modHeading;
-            document.getElementById('mod-subheading').innerText = t.modSubheading;
-
-            document.getElementById('btn-open-pdf-tab').innerText = t.btnOpenPdfTab;
-            
-            document.getElementById('tr-heading').innerText = t.trHeading;
-            document.getElementById('tr-subheading').innerText = t.trSubheading;
-            document.getElementById('btn-add-staff').innerText = t.btnAddStaff;
-
-            document.getElementById('th-name').innerText = t.thName;
-            document.getElementById('th-dept').innerText = t.thDept;
-            document.getElementById('th-tenure').innerText = t.thTenure;
-            document.getElementById('th-bls').innerText = t.thBls;
-            document.getElementById('th-basic').innerText = t.thBasic;
-            document.getElementById('th-score').innerText = t.thScore;
-            document.getElementById('th-status').innerText = t.thStatus;
 
             ['he', 'en', 'ru', 'ar', 'ne'].forEach(l => {
                 const btn = document.getElementById(`btn-lang-${l}`);
-                if (l === lang) {
-                    btn.className = 'px-2 py-1 rounded-lg bg-white text-medical-700 font-bold shadow-xs transition-all';
-                } else {
-                    btn.className = 'px-2 py-1 rounded-lg text-slate-600 transition-all hover:bg-white/50';
+                if (btn) {
+                    if (l === lang) {
+                        btn.className = "px-2 py-1 rounded-lg transition-all flex items-center gap-1 font-semibold bg-white text-medical-700 shadow-sm border border-slate-200";
+                    } else {
+                        btn.className = "px-2 py-1 rounded-lg transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900";
+                    }
                 }
             });
 
-            renderModules();
-            renderEmergencies();
-            renderTracker();
-            
-            if (!document.getElementById('tab-quiz').classList.contains('hidden')) {
-                loadQuizQuestion();
-            }
-        }
+            // Update Top Header & Hero Text
+            document.getElementById('header-badge').innerText = dict.headerBadge;
+            document.getElementById('header-title').innerText = dict.headerTitle;
+            document.getElementById('btn-assoc-txt').innerText = dict.btnAssocTop;
+            document.getElementById('btn-proc-txt-top').innerText = dict.btnProcTop;
+            document.getElementById('btn-proc-txt-hero').innerText = dict.btnProcHero;
+            document.getElementById('btn-assoc-txt-hero').innerText = dict.btnAssocHero;
+            document.getElementById('hero-tag').innerText = dict.heroTag;
+            document.getElementById('hero-main-title').innerText = dict.heroTitle;
+            document.getElementById('hero-description').innerText = dict.heroDesc;
+            document.getElementById('hero-stat-1').innerText = dict.stat1;
+            document.getElementById('hero-stat-2').innerText = dict.stat2;
+            document.getElementById('hero-stat-3').innerText = dict.stat3;
+            document.getElementById('author-title').innerText = dict.authorTitle;
+            document.getElementById('author-name').innerText = dict.authorName;
+            document.getElementById('author-role').innerText = dict.authorRole;
+            document.getElementById('author-quote').innerText = dict.authorQuote;
 
-        function renderModules() {
-            const container = document.getElementById('modules-cards-container');
-            const mods = i18n[currentLang].modules;
-            container.innerHTML = mods.map((m, i) => `
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 card-shadow transition-transform hover:-translate-y-1">
-                    <span class="inline-block px-2.5 py-1 bg-medical-50 text-medical-700 rounded-lg text-[10px] font-bold mb-3 border border-medical-100">${m.badge}</span>
-                    <h4 class="text-base font-bold text-slate-900 mb-2">${m.title}</h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">${m.desc}</p>
-                </div>
-            `).join('');
-        }
+            // Nav Tabs
+            document.getElementById('tab-title-modules').innerText = dict.tabModules;
+            if(document.getElementById('tab-title-emergencies')) document.getElementById('tab-title-emergencies').innerText = dict.tabEmergencies;
+            document.getElementById('tab-title-curriculum').innerText = dict.tabCurriculum;
+            document.getElementById('tab-title-resilience').innerText = dict.tabResilience;
+            document.getElementById('tab-title-tracker').innerText = dict.tabTracker;
+            document.getElementById('tab-title-observation').innerText = dict.tabObservation;
+            document.getElementById('tab-title-nearmiss').innerText = dict.tabNearMiss;
+            document.getElementById('tab-title-quiz').innerText = dict.tabQuiz;
+            document.getElementById('tab-title-checklist').innerText = dict.tabChecklist;
 
-        function renderEmergencies() {
-            const container = document.getElementById('emergency-cards-container');
-            const emgs = i18n[currentLang].emergencies;
-            container.innerHTML = emgs.map(e => `
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow">
-                    <div class="bg-rose-50 border-b border-rose-100 p-4 flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-rose-900">${e.title}</h4>
-                    </div>
-                    <div class="p-5 space-y-4">
-                        <div>
-                            <p class="text-[11px] font-bold uppercase text-slate-500 mb-1">סימנים מזהים:</p>
-                            <p class="text-sm text-slate-800 font-medium">${e.sym}</p>
-                        </div>
-                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                            <p class="text-[11px] font-bold uppercase text-slate-500 mb-1">פעולה מיידית נדרשת:</p>
-                            <p class="text-sm font-bold text-slate-900">${e.act}</p>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
+            // Overview Section
+            document.getElementById('mod-heading').innerText = dict.modHeading;
+            document.getElementById('mod-subheading').innerText = dict.modSubheading;
+            document.getElementById('info-title').innerText = dict.infoTitle;
+            document.getElementById('info-body').innerText = dict.infoBody;
 
-        function switchTab(tabId) {
-            ['modules', 'brochure', 'emergencies', 'observation', 'nearmiss', 'quiz', 'checklist', 'tracker'].forEach(id => {
-                document.getElementById(`tab-${id}`).classList.add('hidden');
-                const btn = document.getElementById(`tab-btn-${id}`);
-                btn.className = 'py-2 px-3 border-b-2 border-transparent hover:text-slate-900 font-medium whitespace-nowrap flex items-center gap-1.5';
-            });
+            // Resilience Section
+            document.getElementById('res-tag').innerText = dict.resTag;
+            document.getElementById('res-heading').innerText = dict.resHeading;
+            document.getElementById('res-subheading').innerText = dict.resSubheading;
+            document.getElementById('res-lbl-name').innerText = dict.resLblName;
+            document.getElementById('btn-submit-resilience').innerText = dict.btnSubmitResilience;
+            document.getElementById('btn-print-resilience').innerText = dict.btnPrintResilience;
 
-            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
-            activeBtn.className = 'py-2 px-3 border-b-2 border-medical-600 text-medical-700 font-bold whitespace-nowrap flex items-center gap-1.5';
+            // Tracker
+            document.getElementById('tr-heading').innerText = dict.trHeading;
+            document.getElementById('tr-subheading').innerText = dict.trSubheading;
+            document.getElementById('btn-manage-depts').innerText = dict.btnManageDepts;
+            document.getElementById('btn-add-staff').innerText = dict.btnAddStaff;
+            document.getElementById('kpi-total-lbl').innerText = dict.kpiTotalLbl;
+            document.getElementById('kpi-tenure-lbl').innerText = dict.kpiTenureLbl;
+            document.getElementById('kpi-basic-lbl').innerText = dict.kpiBasicLbl;
+            document.getElementById('kpi-exam-lbl').innerText = dict.kpiExamLbl;
+            document.getElementById('kpi-night-lbl').innerText = dict.kpiNightLbl;
+            document.getElementById('th-name').innerText = dict.thName;
+            document.getElementById('th-dept').innerText = dict.thDept;
+            document.getElementById('th-tenure').innerText = dict.thTenure;
+            document.getElementById('th-bls').innerText = dict.thBls;
+            document.getElementById('th-basic').innerText = dict.thBasic;
+            document.getElementById('th-advanced').innerText = dict.thAdvanced;
+            document.getElementById('th-night').innerText = dict.thNight;
+            document.getElementById('th-score').innerText = dict.thScore;
+            document.getElementById('th-eval').innerText = dict.thEval;
+            document.getElementById('th-status').innerText = dict.thStatus;
 
-            if (tabId === 'quiz') loadQuizQuestion();
-        }
+            // Observation
+            document.getElementById('obs-heading').innerText = dict.obsHeading;
+            document.getElementById('obs-subheading').innerText = dict.obsSubheading;
+            document.getElementById('obs-lbl-staff').innerText = dict.obsLblStaff;
+            document.getElementById('obs-lbl-nurse').innerText = dict.obsLblNurse;
+            document.getElementById('obs-lbl-notes').innerText = dict.obsLblNotes;
+            document.getElementById('btn-print-obs').innerText = dict.btnPrintObs;
 
-        function loadQuizQuestion() {
-            const t = i18n[currentLang];
-            const q = t.quiz[quizCurrentIndex];
-            
-            if (!q) {
-                document.getElementById('quiz-box').classList.add('hidden');
-                document.getElementById('quiz-result-box').classList.remove('hidden');
-                const p = Math.round((quizScore / t.quiz.length) * 100);
-                document.getElementById('res-score-txt').innerText = `ציון: ${p}%`;
-                return;
-            }
+            // Near Miss
+            document.getElementById('nm-heading').innerText = dict.nmHeading;
+            document.getElementById('nm-subheading').innerText = dict.nmSubheading;
+            document.getElementById('nm-form-title').innerText = dict.nmFormTitle;
+            document.getElementById('btn-send-nm').innerText = dict.btnSendNm;
+            document.getElementById('nm-list-title').innerText = dict.nmListTitle;
 
-            document.getElementById('quiz-box').classList.remove('hidden');
-            document.getElementById('quiz-result-box').classList.add('hidden');
-            
-            document.getElementById('quiz-step-indicator').innerText = `שאלה ${quizCurrentIndex + 1}`;
-            document.getElementById('quiz-q-title').innerText = q.title;
-            
-            const optsContainer = document.getElementById('quiz-options-container');
-            optsContainer.innerHTML = q.options.map((opt, i) => `
-                <button onclick="checkAnswer(${i})" class="w-full text-${t.dir === 'rtl' ? 'right' : 'left'} px-4 py-3 rounded-xl border border-slate-200 hover:border-medical-500 hover:bg-medical-50 font-medium text-sm transition-all" id="opt-btn-${i}">
-                    ${opt}
-                </button>
-            `).join('');
+            // Quiz & Checklist & Footer
+            document.getElementById('quiz-heading').innerText = dict.quizHeading;
+            document.getElementById('quiz-subheading').innerText = dict.quizSubheading;
+            document.getElementById('chk-heading').innerText = dict.chkHeading;
+            document.getElementById('chk-subheading').innerText = dict.chkSubheading;
+            document.getElementById('ft-title').innerText = dict.ftTitle;
+            document.getElementById('ft-sub').innerText = dict.ftSub;
+            document.getElementById('ft-author').innerText = dict.ftAuthor;
 
-            document.getElementById('quiz-feedback').classList.add('hidden');
-            document.getElementById('btn-quiz-next').classList.add('hidden');
-        }
-
-        function checkAnswer(selectedIdx) {
-            const q = i18n[currentLang].quiz[quizCurrentIndex];
-            const isCorrect = selectedIdx === q.correct;
-            
-            if (isCorrect) quizScore++;
-
-            q.options.forEach((_, i) => {
-                const btn = document.getElementById(`opt-btn-${i}`);
-                btn.disabled = true;
-                if (i === q.correct) {
-                    btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-800');
-                    btn.classList.remove('hover:border-medical-500', 'hover:bg-medical-50');
-                } else if (i === selectedIdx) {
-                    btn.classList.add('bg-rose-50', 'border-rose-500', 'text-rose-800');
-                    btn.classList.remove('hover:border-medical-500', 'hover:bg-medical-50');
-                }
-            });
-
-            const fb = document.getElementById('quiz-feedback');
-            fb.classList.remove('hidden');
-            fb.classList.add(isCorrect ? 'bg-emerald-100' : 'bg-rose-100', isCorrect ? 'text-emerald-900' : 'text-rose-900');
-            fb.innerText = q.explain;
-
-            document.getElementById('btn-quiz-next').classList.remove('hidden');
-        }
-
-        function nextQuestion() {
-            quizCurrentIndex++;
-            loadQuizQuestion();
-        }
-
-        function restartQuiz() {
+            // Re-render Dynamic Sub-components
+            renderOverviewModules();
+            renderEmergencyCards();
+            renderCurriculum();
+            selectCurriculumPractice(activeCurrPractice);
+            renderResilienceQuestions();
+            populateDepartmentSelects();
+            renderTrackerTable();
+            renderObservationCriteria();
+            renderNearMissList();
             quizCurrentIndex = 0;
             quizScore = 0;
             loadQuizQuestion();
+            renderChecklist();
+            loadEmergencySimulation();
         }
 
-        function renderTracker() {
+        // TAB SWITCHING
+        function switchTab(tabId) {
+            currentTab = tabId;
+            ['modules', 'emergencies', 'curriculum', 'resilience', 'observation', 'nearmiss', 'quiz', 'checklist', 'tracker'].forEach(t => {
+                const section = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (section && btn) {
+                    if (t === tabId) {
+                        section.classList.remove('hidden');
+                        btn.className = "tab-active py-2 px-3 border-b-2 border-medical-600 text-medical-700 flex items-center gap-2 whitespace-nowrap font-bold";
+                    } else {
+                        section.classList.add('hidden');
+                        btn.className = "py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600";
+                    }
+                }
+            });
+        }
+
+        // RENDER EMERGENCY CARDS
+        function renderEmergencyCards() {
+            const container = document.getElementById('emergency-cards-container');
+            if(!container) return;
+            const data = emergencyCardsData[currentLang] || emergencyCardsData['he'];
+            container.innerHTML = '';
+
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.className = `p-5 rounded-2xl border-2 ${item.color} card-shadow space-y-3 bg-white`;
+                div.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <span class="text-2xl">${item.icon}</span>
+                            <h4 class="font-bold text-base text-slate-900">${item.title}</h4>
+                        </div>
+                        <span class="px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full text-[11px]">${item.badge}</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-xl space-y-1 text-xs">
+                        <p class="font-bold text-slate-800">🔍 איך מזהים?</p>
+                        <p class="text-slate-600">${item.identify}</p>
+                    </div>
+                    <div class="p-3 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1 text-xs">
+                        <p class="font-bold text-rose-900">🚨 מה עושים? (צעדים מיידיים):</p>
+                        <p class="text-rose-950 font-medium whitespace-pre-line">${item.action}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // EMERGENCY SIMULATION LOGIC
+        function loadEmergencySimulation() {
+            const select = document.getElementById('sim-scenario-select');
+            const box = document.getElementById('sim-content-box');
+            const feedbackBox = document.getElementById('sim-feedback-box');
+            if (!select || !box) return;
+
+            const scenarioKey = select.value;
+            const simObj = emergencySimulations[scenarioKey];
+            feedbackBox.classList.add('hidden');
+
+            box.innerHTML = `
+                <p class="font-bold text-slate-900 text-xs sm:text-sm leading-relaxed">תרחיש: ${simObj.q}</p>
+                <div class="space-y-2 pt-2">
+                    ${simObj.opts.map((optText, idx) => `
+                        <button onclick="checkEmergencySim(${idx}, ${simObj.correct}, '${encodeURIComponent(simObj.explain)}')" class="w-full text-right p-3 bg-white border border-slate-200 hover:border-rose-400 rounded-xl text-xs font-medium text-slate-800 transition-all flex items-center justify-between">
+                            <span>${optText}</span>
+                            <i class="fa-regular fa-circle text-slate-300"></i>
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function checkEmergencySim(selectedIdx, correctIdx, encodedExplain) {
+            const explain = decodeURIComponent(encodedExplain);
+            const feedbackBox = document.getElementById('sim-feedback-box');
+            const buttons = document.querySelectorAll('#sim-content-box button');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correctIdx) {
+                    btn.className = "w-full text-right p-3 bg-emerald-50 border-2 border-emerald-500 rounded-xl text-xs font-bold text-emerald-900 flex items-center justify-between";
+                } else if (idx === selectedIdx) {
+                    btn.className = "w-full text-right p-3 bg-rose-50 border-2 border-rose-500 rounded-xl text-xs font-bold text-rose-900 flex items-center justify-between";
+                } else {
+                    btn.className = "w-full text-right p-3 bg-slate-50 border text-slate-400 rounded-xl text-xs opacity-60";
+                }
+            });
+
+            feedbackBox.classList.remove('hidden');
+            if (selectedIdx === correctIdx) {
+                feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
+                feedbackBox.innerHTML = `<strong>תשובה נכונה! ✅</strong><br>${explain}`;
+            } else {
+                feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 text-rose-950 border border-rose-300";
+                feedbackBox.innerHTML = `<strong>תשובה שגויה ❌</strong><br>${explain}`;
+            }
+        }
+
+        // RENDER OVERVIEW CARDS
+        function renderOverviewModules() {
+            const container = document.getElementById('modules-cards-container');
+            const data = modulesCardsData[currentLang] || modulesCardsData['he'];
+            if(!container) return;
+            container.innerHTML = '';
+
+            data.forEach((card, idx) => {
+                const colors = ['border-sky-200 hover:border-sky-500', 'border-teal-200 hover:border-teal-500', 'border-indigo-200 hover:border-indigo-500', 'border-rose-200 hover:border-rose-500'];
+                const badges = ['text-sky-600 bg-sky-50', 'text-teal-600 bg-teal-50', 'text-indigo-600 bg-indigo-50', 'text-rose-600 bg-rose-50'];
+                const div = document.createElement('div');
+                div.className = `bg-white rounded-2xl p-6 border ${colors[idx]} card-shadow transition-all-custom flex flex-col justify-between`;
+                div.innerHTML = `
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${badges[idx]}">${card.badge}</span>
+                        <h4 class="text-lg font-bold text-slate-900 mt-2">${card.title}</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">${card.desc}</p>
+                        <ul class="text-xs text-slate-700 space-y-2 pt-3 border-t border-slate-100">
+                            ${card.items.map(item => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> ${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // RENDER CURRICULUM
+        function renderCurriculum() {
+            const container = document.getElementById('curriculum-container');
+            if(!container) return;
+            if (currentLang === 'he') {
+                container.innerHTML = `
+                    <div class="bg-white rounded-2xl border border-slate-200 card-shadow p-6 space-y-4">
+                        <div class="flex items-center justify-between border-b pb-3">
+                            <h4 class="text-lg font-bold text-slate-900">1. תוכנית הכשרה בסיסית - 18 שעות לימוד (חובה - שלב א')</h4>
+                            <span class="px-3 py-1 bg-sky-100 text-sky-800 font-bold rounded-full text-xs">עיוני + מעשי</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="p-3.5 bg-slate-50 rounded-xl border"><strong>מודול 1: היגיינה ומניעת זיהומים (4 ש')</strong><p class="text-slate-600 mt-1">5 רגעי היגיינת ידיים לפי WHO, לבישת והסרת PPE, וחיטוי סביבת המטופל.</p></div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border"><strong>מודול 2: מעברים, ארגונומיה ומניעת נפילות (6 ש')</strong><p class="text-slate-600 mt-1">ארגונומיה להגנת גב המטפל, מעברים בטוחים (1/2 מטפלים/מנוף) ונעילת בלמים.</p></div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border"><strong>מודול 3: שלמות העור ומניעת פצעי לחץ (4 ש')</strong><p class="text-slate-600 mt-1">זיהוי אדמומיות בסקרום (דרגה 1), סבב שינוי תנוחה וסדין החלקה.</p></div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border"><strong>מודול 4: תקשורת וכבוד האדם (4 ש')</strong><p class="text-slate-600 mt-1">גישה מכבדת לאזרח הוותיק, שמירה על פרטיות ומניעת התעללות/הזנחה.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 card-shadow p-6 space-y-4">
+                        <div class="flex items-center justify-between border-b pb-3">
+                            <h4 class="text-lg font-bold text-slate-900">2. תוכנית הכשרת המשך מתקדמת - 40 שעות לימוד (שלב ב')</h4>
+                            <span class="px-3 py-1 bg-teal-100 text-teal-800 font-bold rounded-full text-xs">מתקדם</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="p-3.5 bg-slate-50 rounded-xl border"><strong>מודול 1: זיהוי הידרדרות קלינית (10 ש')</strong><p class="text-slate-600 mt-1">זיהוי שינויים בנשימה, חום גוף, מצב הכרה וכאב ודיווח מיידי לאחות.</p></div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border"><strong>מודול 2: טיפול בדמנציה ותשישות נפש (10 ש')</strong><p class="text-slate-600 mt-1">עקרונות הגישה הממערכת (Validation), התמודדות עם אי-שקט ושוטטות.</p></div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border"><strong>מודול 3: האכלה בטוחה ומניעת חנק (10 ש')</strong><p class="text-slate-600 mt-1">הושבה ב-90 מעלות, זיהוי קשיי בליעה (דיספגיה) ומתן מרקם מותאם.</p></div>
+                            <div class="p-3.5 bg-rose-50 border border-rose-200 rounded-xl"><strong>מודול 4: סדנת חוסן נפשי ותמיכה בצוות (10 ש')</strong><p class="text-slate-700 mt-1">מילוי שאלון חוסן אינטראקטיבי, מניעת שחיקה וניהול עומס רגשי בסיעוד.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border-2 border-indigo-200 card-shadow p-6 space-y-4">
+                        <div class="flex items-center justify-between border-b pb-3">
+                            <h4 class="text-lg font-bold text-slate-900">3. תוכנית הסמכת עבודת לילה מורחבת - 4 שעות לימוד</h4>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 font-bold rounded-full text-xs">אישור לילה</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="p-3.5 bg-slate-50 rounded-xl border">
+                                <strong class="text-indigo-900">נושא 1: סבבי השגחה ובטיחות (כל 2 שעות) (1 ש')</strong>
+                                <p class="text-slate-600 mt-1">ביצוע סבב השגחה ובטיחות היקפי מדי שעתיים ברציפות. בדיקת מעקות מיטה, תאורת לילה, וזמינות פעמון מצוקה.</p>
+                            </div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border">
+                                <strong class="text-indigo-900">נושא 2: ערנות ותפקוד בלמידה (1 ש')</strong>
+                                <p class="text-slate-600 mt-1">ניהול עייפות, שמירה על ערנות רציפה, הימנעות ממסיחי דעת ותגובה מהירה לקריאות דיירים בלילה.</p>
+                            </div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border">
+                                <strong class="text-indigo-900">נושא 3: הסלמה ודיווח לאחות תורנית (1 ש')</strong>
+                                <p class="text-slate-600 mt-1">קריטריונים לקריאה מיידית לאחות: שינוי בנשימה, בלבול סוער/דליריום, נפילה, חום או כאב פתאומי.</p>
+                            </div>
+                            <div class="p-3.5 bg-slate-50 rounded-xl border">
+                                <strong class="text-indigo-900">נושא 4: תרחישי חירום בלילה (1 ש')</strong>
+                                <p class="text-slate-600 mt-1">תרגול מעשי של תחימת אירוע שריפה/עשן בלילה (נוהל RACE), שוטטות דייר מבולבל ופינוי ראשוני בטוח.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="bg-white rounded-2xl border border-slate-200 card-shadow p-6 space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">1. Basic Training Curriculum (18 Hours)</h4>
+                        <p class="text-xs text-slate-600">Modules covering infection control, safe transfers, pressure injury prevention, and dignified communication.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-200 card-shadow p-6 space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">2. Advanced Continuing Curriculum (40 Hours)</h4>
+                        <p class="text-xs text-slate-600">Covers clinical deterioration, dementia care, safe dysphagia feeding, and the Caregiver Resilience Workshop.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-200 card-shadow p-6 space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">3. Comprehensive Night Shift Certification (4 Hours)</h4>
+                        <p class="text-xs text-slate-600">Bi-hourly safety rounds, fatigue management, night shift nurse escalation, and emergency simulations.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // CURRICULUM PRACTICE SIMULATION LOGIC
+        function selectCurriculumPractice(progKey) {
+            activeCurrPractice = progKey;
+            ['p18', 'p40', 'p4n'].forEach(k => {
+                const btn = document.getElementById(`btn-prog-${k}`);
+                if (btn) {
+                    if (k === progKey) {
+                        btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-700 text-white shadow-xs";
+                    } else {
+                        btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
+                    }
+                }
+            });
+
+            const box = document.getElementById('curr-sim-content-box');
+            const feedbackBox = document.getElementById('curr-sim-feedback-box');
+            if(!box) return;
+
+            const simObj = curriculumSimulations[progKey];
+            if(feedbackBox) feedbackBox.classList.add('hidden');
+
+            box.innerHTML = `
+                <div class="space-y-2">
+                    <p class="font-bold text-sky-900 text-xs">${simObj.title}</p>
+                    <p class="font-bold text-slate-800 text-xs sm:text-sm leading-relaxed">${simObj.q}</p>
+                </div>
+                <div class="space-y-2 pt-2">
+                    ${simObj.opts.map((optText, idx) => `
+                        <button onclick="checkCurriculumSim(${idx}, ${simObj.correct}, '${encodeURIComponent(simObj.explain)}')" class="w-full text-right p-3 bg-white border border-slate-200 hover:border-sky-400 rounded-xl text-xs font-medium text-slate-800 transition-all flex items-center justify-between">
+                            <span>${optText}</span>
+                            <i class="fa-regular fa-circle text-slate-300"></i>
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function checkCurriculumSim(selectedIdx, correctIdx, encodedExplain) {
+            const explain = decodeURIComponent(encodedExplain);
+            const feedbackBox = document.getElementById('curr-sim-feedback-box');
+            const buttons = document.querySelectorAll('#curr-sim-content-box button');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correctIdx) {
+                    btn.className = "w-full text-right p-3 bg-emerald-50 border-2 border-emerald-500 rounded-xl text-xs font-bold text-emerald-900 flex items-center justify-between";
+                } else if (idx === selectedIdx) {
+                    btn.className = "w-full text-right p-3 bg-rose-50 border-2 border-rose-500 rounded-xl text-xs font-bold text-rose-900 flex items-center justify-between";
+                } else {
+                    btn.className = "w-full text-right p-3 bg-slate-50 border text-slate-400 rounded-xl text-xs opacity-60";
+                }
+            });
+
+            if (feedbackBox) {
+                feedbackBox.classList.remove('hidden');
+                if (selectedIdx === correctIdx) {
+                    feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
+                    feedbackBox.innerHTML = `<strong>תשובה נכונה! ✅</strong><br>${explain}`;
+                } else {
+                    feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 text-rose-950 border border-rose-300";
+                    feedbackBox.innerHTML = `<strong>תשובה שגויה ❌</strong><br>${explain}`;
+                }
+            }
+        }
+
+        // RESILIENCE WORKSHOP LOGIC
+        function renderResilienceQuestions() {
+            const container = document.getElementById('resilience-questions-container');
+            const questions = resilienceQuestionsData[currentLang] || resilienceQuestionsData['he'];
+            if(!container) return;
+            container.innerHTML = '';
+
+            questions.forEach((qObj, idx) => {
+                const div = document.createElement('div');
+                div.className = "p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2";
+                div.innerHTML = `
+                    <p class="font-bold text-slate-800 text-xs sm:text-sm">${qObj.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        ${qObj.opts.map((optText, oIdx) => `
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-xl border hover:border-rose-400 cursor-pointer text-xs">
+                                <input type="radio" name="res_q_${idx}" value="${4 - oIdx}" ${oIdx === 0 ? 'checked' : ''} class="text-rose-600 focus:ring-rose-500">
+                                <span>${optText}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function calculateResilienceScore(event) {
+            event.preventDefault();
+            const staffName = document.getElementById('res-staff-name').value || "מטפל/ת";
+            const questions = resilienceQuestionsData[currentLang] || resilienceQuestionsData['he'];
+            let totalPoints = 0;
+
+            questions.forEach((_, idx) => {
+                const selected = document.querySelector(`input[name="res_q_${idx}"]:checked`);
+                if (selected) totalPoints += parseInt(selected.value);
+            });
+
+            const scorePercent = Math.round((totalPoints / (questions.length * 4)) * 100);
+
+            document.getElementById('resilience-result-box').classList.remove('hidden');
+            document.getElementById('res-result-score-txt').innerText = `מציג תוצאות עבור: ${staffName} | מדד חוסן: ${scorePercent}%`;
+
+            const recBox = document.getElementById('res-recommendation-box');
+            if (scorePercent >= 75) {
+                recBox.className = "p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 leading-relaxed";
+                recBox.innerHTML = `<strong>חוסן נפשי גבוה ותמיכה טובה! ✅</strong><br>המשך לשמור על איזון בין העבודה לבית, לנצל את ההפסקות ולשתף את צוות הסיעוד בקשיים קטנים.`;
+            } else {
+                recBox.className = "p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 leading-relaxed";
+                recBox.innerHTML = `<strong>זיהוי עומס רגשי ושחיקה – מומלצת שיחת תמיכה 💬</strong><br>מומלץ לפנות לאחות האחראית/עובדת סוציאלית לשיחת אוורור רגשי, ולהקפיד על יציאה להפסקות מנוחה מסודרות במשמרת.`;
+            }
+        }
+
+        function printResilienceCert() {
+            const staffName = document.getElementById('res-staff-name').value || "מטפל/ת";
+            const printWin = window.open('', '', 'width=800,height=600');
+            printWin.document.write(`
+                <html dir="rtl" lang="he">
+                <head>
+                    <title>אישור השלמת סדנת חוסן - נוהל 1.2.1.2</title>
+                    <style>
+                        body { font-family: sans-serif; text-align: center; padding: 40px; border: 8px solid #e11d48; margin: 20px; }
+                        h1 { color: #be123c; }
+                    </style>
+                </head>
+                <body>
+                    <h1>אישור השלמת סדנת חוסן נפשי ומניעת שחיקה</h1>
+                    <p>חלק מתוכנית הכשרת המשך 40 שעות - נוהל משרד הבריאות 1.2.1.2</p>
+                    <hr>
+                    <h2>מאושר כי: <u>${staffName}</u></h2>
+                    <p>השלים/ה בהצלחה את השאלון האינטראקטיבי וקיבל/ה כלים להתמודדות עם עומס רגשי בטיפול</p>
+                    <br><br>
+                    <p>עמותת האחיות לקידום הסיעוד הגריאטרי בישראל (IANG)</p>
+                    <p>תאריך: ${new Date().toLocaleDateString('he-IL')}</p>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+            printWin.print();
+        }
+
+        // DEPARTMENT MANAGEMENT LOGIC
+        function populateDepartmentSelects() {
+            const filterSelect = document.getElementById('tracker-dept-filter');
+            const addCgSelect = document.getElementById('new-cg-dept');
+            if(!filterSelect || !addCgSelect) return;
+
+            filterSelect.innerHTML = `<option value="ALL">${i18n[currentLang].allDept}</option>`;
+            addCgSelect.innerHTML = '';
+
+            departmentList.forEach(dept => {
+                filterSelect.innerHTML += `<option value="${dept}">${dept}</option>`;
+                addCgSelect.innerHTML += `<option value="${dept}">${dept}</option>`;
+            });
+        }
+
+        function openManageDeptsModal() {
+            renderDeptListManager();
+            document.getElementById('modal-manage-depts').classList.remove('hidden');
+        }
+
+        function closeManageDeptsModal() {
+            document.getElementById('modal-manage-depts').classList.add('hidden');
+        }
+
+        function renderDeptListManager() {
+            const list = document.getElementById('dept-list-manager');
+            if(!list) return;
+            list.innerHTML = '';
+            departmentList.forEach((dept, idx) => {
+                const li = document.createElement('li');
+                li.className = "py-2 px-1 flex justify-between items-center text-slate-800 font-medium";
+                li.innerHTML = `
+                    <span>🏢 ${dept}</span>
+                    <button onclick="removeDepartment(${idx})" class="text-rose-500 hover:text-rose-700 font-bold px-2 py-1"><i class="fa-solid fa-trash"></i></button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        function addNewDepartment() {
+            const val = document.getElementById('input-new-dept-name').value.trim();
+            if (val && !departmentList.includes(val)) {
+                departmentList.push(val);
+                document.getElementById('input-new-dept-name').value = '';
+                renderDeptListManager();
+                populateDepartmentSelects();
+                renderTrackerTable();
+            }
+        }
+
+        function removeDepartment(idx) {
+            departmentList.splice(idx, 1);
+            renderDeptListManager();
+            populateDepartmentSelects();
+            renderTrackerTable();
+        }
+
+        // TRACKER DASHBOARD RENDER (FULL PARITY WITH ALL EXCEL COLUMNS)
+        function renderTrackerTable() {
             const tbody = document.getElementById('tracker-tbody');
-            tbody.innerHTML = trackerData.map(c => `
-                <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="px-3 py-3 font-medium text-slate-500">${c.id}</td>
-                    <td class="px-3 py-3 font-bold text-slate-900">${c.name}</td>
-                    <td class="px-3 py-3">${c.dept}</td>
+            if(!tbody) return;
+            const searchVal = document.getElementById('tracker-search').value.toLowerCase();
+            const deptVal = document.getElementById('tracker-dept-filter').value;
+
+            let filtered = trackerData.filter(item => {
+                const matchName = item.name.toLowerCase().includes(searchVal);
+                const matchDept = deptVal === 'ALL' || item.dept === deptVal;
+                return matchName && matchDept;
+            });
+
+            // UPDATE KPIS
+            document.getElementById('kpi-total').innerText = trackerData.length;
+            const tenureCount = trackerData.filter(i => i.tenure).length;
+            document.getElementById('kpi-tenure').innerText = Math.round((tenureCount / trackerData.length) * 100) + '%';
+            const basicCount = trackerData.filter(i => i.basicStatus === 'הושלם').length;
+            document.getElementById('kpi-basic').innerText = Math.round((basicCount / trackerData.length) * 100) + '%';
+            const passExamCount = trackerData.filter(i => i.score >= 80).length;
+            document.getElementById('kpi-exam').innerText = Math.round((passExamCount / trackerData.length) * 100) + '%';
+            const nightFitCount = trackerData.filter(i => i.fitNight).length;
+            document.getElementById('kpi-night').innerText = Math.round((nightFitCount / trackerData.length) * 100) + '%';
+
+            tbody.innerHTML = '';
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="11" class="text-center py-6 text-slate-400">לא נמצאו נתונים תואמים</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const isExamPassed = item.score >= 80;
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition-all border-b border-slate-100";
+                
+                // Helper badge function for course statuses
+                const getStatusPill = (status, date) => {
+                    if (status === "הושלם") {
+                        return `<span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-bold rounded-md text-[10px] block">הושלם ✅</span>${date ? `<span class="text-[9px] text-slate-400 block mt-0.5">${date}</span>` : ''}`;
+                    } else if (status === "בתהליך") {
+                        return `<span class="px-2 py-0.5 bg-amber-100 text-amber-800 font-bold rounded-md text-[10px] block">בתהליך ⏳</span>`;
+                    } else {
+                        return `<span class="px-2 py-0.5 bg-slate-100 text-slate-500 font-medium rounded-md text-[10px] block">לא התחיל ❌</span>`;
+                    }
+                };
+
+                tr.innerHTML = `
+                    <td class="px-3 py-3 font-mono text-slate-400 font-bold">#${item.id}</td>
+                    <td class="px-3 py-3 font-bold text-slate-900">${item.name}</td>
+                    <td class="px-3 py-3 text-slate-600 font-medium">${item.dept}</td>
+                    <td class="px-3 py-3 text-center font-bold">${item.tenure ? 'כן ✅' : 'לא ❌'}</td>
+                    <td class="px-3 py-3 text-center font-bold">${item.bls ? 'כן ✅' : 'לא ❌'}</td>
+                    <td class="px-3 py-3 text-center">${getStatusPill(item.basicStatus, item.basicDate)}</td>
+                    <td class="px-3 py-3 text-center">${getStatusPill(item.advStatus, item.advDate)}</td>
+                    <td class="px-3 py-3 text-center">${getStatusPill(item.nightStatus, item.nightDate)}</td>
                     <td class="px-3 py-3 text-center">
-                        <span class="inline-flex w-5 h-5 rounded-full items-center justify-center ${c.tenure ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-400'}"><i class="fa-solid ${c.tenure ? 'fa-check' : 'fa-xmark'} text-[10px]"></i></span>
+                        <span class="font-bold ${isExamPassed ? 'text-emerald-700' : 'text-rose-600'}">${item.score > 0 ? item.score + '%' : '0%'}</span>
+                        <span class="block text-[9px] font-bold ${isExamPassed ? 'text-emerald-600' : 'text-rose-500'}">${isExamPassed ? 'עבר ✅' : 'לא עבר ❌'}</span>
                     </td>
                     <td class="px-3 py-3 text-center">
-                        <span class="inline-flex w-5 h-5 rounded-full items-center justify-center ${c.bls ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}"><i class="fa-solid ${c.bls ? 'fa-check' : 'fa-xmark'} text-[10px]"></i></span>
+                        <span class="font-bold">${item.eval ? 'כן ✅' : 'לא ❌'}</span>
+                        ${item.evalDate ? `<span class="text-[9px] text-slate-400 block">${item.evalDate}</span>` : ''}
                     </td>
-                    <td class="px-3 py-3 text-center font-medium">${c.basicStatus}</td>
-                    <td class="px-3 py-3 text-center">
-                        <span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold ${c.score >= 80 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${c.score}</span>
+                    <td class="px-3 py-3 text-center font-bold">
+                        <button onclick="toggleNightFit(${item.id})" class="px-2.5 py-1 rounded-full text-[10px] ${item.fitNight ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'}">
+                            ${item.fitNight ? 'כשיר/ה ✅' : 'לא כשיר/ה ❌'}
+                        </button>
                     </td>
-                    <td class="px-3 py-3 text-center">
-                        <span class="inline-flex px-2 py-1 rounded-lg text-[10px] font-bold ${c.fitNight ? 'bg-medical-100 text-medical-800' : 'bg-slate-100 text-slate-500'}">${c.fitNight ? 'כשיר/ה ללילה' : 'לא מוסמך/ת'}</span>
-                    </td>
-                </tr>
-            `).join('');
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function toggleNightFit(id) {
+            const caregiver = trackerData.find(c => c.id === id);
+            if (caregiver) {
+                caregiver.fitNight = !caregiver.fitNight;
+                renderTrackerTable();
+            }
         }
 
         function openAddCaregiverModal() {
@@ -636,38 +1909,366 @@
 
         function closeAddCaregiverModal() {
             document.getElementById('modal-add-caregiver').classList.add('hidden');
-            document.getElementById('form-add-caregiver').reset();
         }
 
-        function handleSaveCaregiver(e) {
-            e.preventDefault();
+        function handleSaveCaregiver(event) {
+            event.preventDefault();
             const name = document.getElementById('new-cg-name').value;
             const dept = document.getElementById('new-cg-dept').value;
             const tenure = document.getElementById('new-cg-tenure').checked;
             const bls = document.getElementById('new-cg-bls').checked;
-
-            const newId = trackerData.length ? Math.max(...trackerData.map(d => d.id)) + 1 : 101;
             
-            trackerData.push({
-                id: newId,
-                name,
-                dept,
-                tenure,
-                bls,
-                basicStatus: 'טרם הוחל',
-                score: 0,
-                fitNight: false
-            });
+            const basicStatus = document.getElementById('new-cg-basic-status').value;
+            const basicDate = document.getElementById('new-cg-basic-date').value;
+            const advStatus = document.getElementById('new-cg-adv-status').value;
+            const advDate = document.getElementById('new-cg-adv-date').value;
+            const nightStatus = document.getElementById('new-cg-night-status').value;
+            const nightDate = document.getElementById('new-cg-night-date').value;
 
-            localStorage.setItem('trackerData', JSON.stringify(trackerData));
-            renderTracker();
+            const score = parseInt(document.getElementById('new-cg-score').value) || 0;
+            const evalChecked = document.getElementById('new-cg-eval').checked;
+            const evalDate = document.getElementById('new-cg-eval-date').value;
+
+            const isFit = tenure && bls && basicStatus === 'הושלם' && nightStatus === 'הושלם' && score >= 80 && evalChecked;
+
+            const newCaregiver = {
+                id: 100 + trackerData.length + 1,
+                name: name,
+                dept: dept,
+                tenure: tenure,
+                bls: bls,
+                basicStatus: basicStatus, basicDate: basicDate,
+                advStatus: advStatus, advDate: advDate,
+                nightStatus: nightStatus, nightDate: nightDate,
+                score: score,
+                eval: evalChecked, evalDate: evalDate,
+                fitNight: isFit
+            };
+
+            trackerData.push(newCaregiver);
+            renderTrackerTable();
             closeAddCaregiverModal();
+            document.getElementById('form-add-caregiver').reset();
         }
 
-        // Init
-        document.addEventListener('DOMContentLoaded', () => {
-            setLanguage('he');
-        });
+        // FULL SEMI-ANNUAL CLINICAL EVALUATION CRITERIA RENDER (6 DOMAINS WITH 1-5 SCORING)
+        function renderObservationCriteria() {
+            const container = document.getElementById('obs-criteria-container');
+            if(!container) return;
+            const domains = evaluationDomainsData[currentLang] || evaluationDomainsData['he'];
+
+            container.innerHTML = '';
+            domains.forEach((dom, idx) => {
+                const div = document.createElement('div');
+                div.className = "p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3";
+                div.innerHTML = `
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">${dom.title}</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">${dom.desc}</p>
+                        </div>
+                        <div class="flex items-center gap-1.5 shrink-0 bg-white px-3 py-1.5 rounded-xl border">
+                            <span class="text-xs font-bold text-slate-700">דירוג (1-5):</span>
+                            <select id="obs-score-${dom.id}" onchange="calculateObservationScore()" class="text-xs font-bold text-teal-800 bg-transparent focus:outline-none">
+                                <option value="5" selected>5 - מצוין ✅</option>
+                                <option value="4">4 - טוב מאד</option>
+                                <option value="3">3 - מספק</option>
+                                <option value="2">2 - טעון שיפור ⚠️</option>
+                                <option value="1">1 - לא מספק ❌</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            calculateObservationScore();
+        }
+
+        function calculateObservationScore() {
+            const domains = evaluationDomainsData[currentLang] || evaluationDomainsData['he'];
+            let sum = 0;
+            domains.forEach(d => {
+                const sel = document.getElementById(`obs-score-${d.id}`);
+                if (sel) sum += parseInt(sel.value);
+            });
+
+            const percent = Math.round((sum / (domains.length * 5)) * 100);
+            const liveBox = document.getElementById('obs-score-live');
+            if (liveBox) {
+                if (percent >= 80) {
+                    liveBox.className = "text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200";
+                    liveBox.innerText = `ציון משוקלל: ${percent}% | הערכה חיובית - כשירוּת מאושרת ✅`;
+                } else {
+                    liveBox.className = "text-xs font-bold text-rose-800 bg-rose-50 px-3 py-2 rounded-xl border border-rose-200";
+                    liveBox.innerText = `ציון משוקלל: ${percent}% | נדרש ריענון והדרכה חוזרת ⚠️`;
+                }
+            }
+        }
+
+        function saveAndPrintObservation() {
+            const staffName = document.getElementById('obs-staff-name').value || "מטפל/ת";
+            const nurseName = document.getElementById('obs-nurse-name').value || "אחות מעריכה";
+            const evalDate = document.getElementById('obs-eval-date').value || new Date().toISOString().split('T')[0];
+            const notes = document.getElementById('obs-notes').value || "ללא הערות נוספות";
+
+            const domains = evaluationDomainsData[currentLang] || evaluationDomainsData['he'];
+            let domainSummaryHtml = "";
+            let sum = 0;
+
+            domains.forEach(d => {
+                const sel = document.getElementById(`obs-score-${d.id}`);
+                const val = sel ? sel.value : "5";
+                sum += parseInt(val);
+                domainSummaryHtml += `<tr><td style="padding:6px; border:1px solid #ccc;">${d.title}</td><td style="padding:6px; border:1px solid #ccc; text-align:center; font-weight:bold;">${val} / 5</td></tr>`;
+            });
+
+            const percent = Math.round((sum / (domains.length * 5)) * 100);
+
+            const printWin = window.open('', '', 'width=800,height=750');
+            printWin.document.write(`
+                <html dir="rtl" lang="he">
+                <head>
+                    <title>טופס הערכת תפקוד ותצפית חצי-שנתית</title>
+                    <style>
+                        body { font-family: sans-serif; padding: 30px; border: 6px solid #0369a1; margin: 10px; }
+                        h2 { color: #0369a1; text-align: center; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
+                        .badge { padding: 5px 10px; background: #e0f2fe; color: #0369a1; font-weight: bold; border-radius: 5px; }
+                    </style>
+                </head>
+                <body>
+                    <h2>טופס הערכת תפקוד ותצפית חצי-שנתית - כוחות עזר</h2>
+                    <p style="text-align:center;"><strong>מבוסס על נוהל משרד הבריאות 1.2.1.2 והכשרת עמותת האחיות</strong></p>
+                    <hr>
+                    <p><strong>שם המטפל/ת המוערך/ת:</strong> ${staffName}</p>
+                    <p><strong>שם האחות המעריכה:</strong> ${nurseName}</p>
+                    <p><strong>תאריך הערכה:</strong> ${evalDate}</p>
+                    <p><strong>ציון משוקלל:</strong> <span class="badge">${percent}%</span> (${percent >= 80 ? 'כשיר/ה ✅' : 'נדרש חיזוק ⚠️'})</p>
+                    
+                    <table>
+                        <thead>
+                            <tr style="background:#f1f5f9;">
+                                <th style="padding:8px; border:1px solid #ccc; text-align:right;">תחום הערכה קליני</th>
+                                <th style="padding:8px; border:1px solid #ccc; text-align:center;">דירוג</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${domainSummaryHtml}
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top:20px; padding:10px; border:1px solid #eee; background:#fafafa;">
+                        <strong>הערות והמלצות האחות המעריכה:</strong>
+                        <p>${notes}</p>
+                    </div>
+
+                    <br><br><br>
+                    <div style="display:flex; justify-content:space-between; margin-top:30px;">
+                        <span>חתימת האחות המעריכה: ____________</span>
+                        <span>חתימת המטפל/ת: ____________</span>
+                    </div>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+            printWin.print();
+        }
+
+        // NEAR MISS LOGIC
+        function renderNearMissList() {
+            const listContainer = document.getElementById('nearmiss-list');
+            const typeSelect = document.getElementById('nm-input-type');
+
+            if (typeSelect) {
+                typeSelect.innerHTML = `
+                    <option value="רצפה רטובה / סכנת החלקה">רצפה רטובה / סכנת החלקה</option>
+                    <option value="פעמון מצוקה תקול">פעמון מצוקה תקול</option>
+                    <option value="בלם מיטה/כורסה משוחרר">בלם מיטה/כורסה משוחרר</option>
+                    <option value="מעקה מיטה פגום">מעקה מיטה פגום</option>
+                    <option value="תאורת לילה לקויה">תאורת לילה לקויה</option>
+                    <option value="אחר">אחר</option>
+                `;
+            }
+
+            if(!listContainer) return;
+            listContainer.innerHTML = '';
+            nearMissData.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between";
+                div.innerHTML = `
+                    <div>
+                        <span class="font-bold text-slate-800">${item.type}</span>
+                        <span class="text-slate-500 mr-2 ml-2">(${item.loc})</span>
+                    </div>
+                    <span class="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200 font-bold rounded-lg text-[11px]">${item.status}</span>
+                `;
+                listContainer.appendChild(div);
+            });
+        }
+
+        function addNearMissReport() {
+            const loc = document.getElementById('nm-input-loc').value;
+            const type = document.getElementById('nm-input-type').value;
+            if (!loc) {
+                alert("אנא הזן מיקום/חדר לדיווח המפגע");
+                return;
+            }
+            nearMissData.unshift({
+                id: nearMissData.length + 1,
+                loc: loc,
+                type: type,
+                status: "נרשם לדיון 5 דקות 💬"
+            });
+            document.getElementById('nm-input-loc').value = '';
+            renderNearMissList();
+        }
+
+        // EXPANDED QUIZ LOGIC
+        function loadQuizQuestion() {
+            const questions = quizQuestions[currentLang] || quizQuestions['he'];
+            const q = questions[quizCurrentIndex];
+
+            if(document.getElementById('quiz-chapter-badge')) document.getElementById('quiz-chapter-badge').innerText = q.chapter || "מבדק ידע";
+            if(document.getElementById('quiz-step-indicator')) document.getElementById('quiz-step-indicator').innerText = `שאלה ${quizCurrentIndex + 1} מתוך ${questions.length}`;
+            if(document.getElementById('quiz-q-title')) document.getElementById('quiz-q-title').innerText = q.title;
+
+            const container = document.getElementById('quiz-options-container');
+            if(!container) return;
+            container.innerHTML = '';
+
+            const feedback = document.getElementById('quiz-feedback');
+            if(feedback) feedback.classList.add('hidden');
+            if(document.getElementById('btn-quiz-next')) document.getElementById('btn-quiz-next').classList.add('hidden');
+
+            q.options.forEach((optText, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-right p-3.5 rounded-xl border border-slate-200 hover:border-medical-500 hover:bg-sky-50/50 transition-all text-xs sm:text-sm font-medium text-slate-700 flex items-center justify-between";
+                btn.innerHTML = `<span>${optText}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+                btn.onclick = () => checkQuizAnswer(index, q.correct, q.explain);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkQuizAnswer(selectedIndex, correctIndex, explainText) {
+            const questions = quizQuestions[currentLang] || quizQuestions['he'];
+            const container = document.getElementById('quiz-options-container');
+            const buttons = container.querySelectorAll('button');
+            const feedback = document.getElementById('quiz-feedback');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correctIndex) {
+                    btn.className = "w-full text-right p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 font-bold text-xs sm:text-sm flex items-center justify-between";
+                    btn.querySelector('i').className = "fa-solid fa-circle-check text-emerald-600";
+                } else if (idx === selectedIndex) {
+                    btn.className = "w-full text-right p-3.5 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-900 font-bold text-xs sm:text-sm flex items-center justify-between";
+                    btn.querySelector('i').className = "fa-solid fa-circle-xmark text-rose-600";
+                } else {
+                    btn.className = "w-full text-right p-3.5 rounded-xl border border-slate-200 text-slate-400 opacity-60 text-xs sm:text-sm";
+                }
+            });
+
+            const pointsPerQ = Math.round(100 / questions.length);
+
+            if (selectedIndex === correctIndex) {
+                quizScore += pointsPerQ;
+                feedback.className = "p-4 rounded-xl text-xs sm:text-sm font-medium leading-relaxed bg-emerald-100 text-emerald-900 border border-emerald-300";
+                feedback.innerHTML = `<strong>תשובה נכונה! ✅</strong><br>${explainText}`;
+            } else {
+                feedback.className = "p-4 rounded-xl text-xs sm:text-sm font-medium leading-relaxed bg-rose-100 text-rose-900 border border-rose-300";
+                feedback.innerHTML = `<strong>תשובה שגויה ❌</strong><br>${explainText}`;
+            }
+
+            feedback.classList.remove('hidden');
+            document.getElementById('btn-quiz-next').classList.remove('hidden');
+            document.getElementById('btn-quiz-next').classList.add('flex');
+        }
+
+        function nextQuestion() {
+            const questions = quizQuestions[currentLang] || quizQuestions['he'];
+            quizCurrentIndex++;
+
+            if (quizCurrentIndex < questions.length) {
+                loadQuizQuestion();
+            } else {
+                if (quizScore > 100) quizScore = 100;
+                document.getElementById('quiz-box').classList.add('hidden');
+                document.getElementById('quiz-result-box').classList.remove('hidden');
+                document.getElementById('res-score-txt').innerText = `הציון הכללי שלך: ${quizScore}%`;
+            }
+        }
+
+        function restartQuiz() {
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            document.getElementById('quiz-box').classList.remove('hidden');
+            loadQuizQuestion();
+        }
+
+        function printCertificate() {
+            const userName = document.getElementById('cert-user-name').value || "מטפל/ת סיעודי/ת";
+            const printWin = window.open('', '', 'width=800,height=600');
+            printWin.document.write(`
+                <html dir="rtl" lang="he">
+                <head>
+                    <title>אישור כשירות לימודית - נוהל 1.2.1.2</title>
+                    <style>
+                        body { font-family: sans-serif; text-align: center; padding: 40px; border: 10px solid #0369a1; margin: 20px; }
+                        h1 { color: #0369a1; }
+                    </style>
+                </head>
+                <body>
+                    <h1>אישור כשירות לימודית ובטיחות בגריאטריה</h1>
+                    <p>מבוסס על נוהל משרד הבריאות 1.2.1.2 (כולל מצבי חירום ומשמרת לילה)</p>
+                    <hr>
+                    <h2>מאושר כי: <u>${userName}</u></h2>
+                    <p>השלים/ה בהצלחה את מבדק הידע והבטיחות הדיגיטלי לכוחות עזר</p>
+                    <p>ציון מבדק: ${quizScore}%</p>
+                    <br><br>
+                    <p>עמותת האחיות לקידום הסיעוד הגריאטרי בישראל (IANG)</p>
+                    <p>תאריך: ${new Date().toLocaleDateString('he-IL')}</p>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+            printWin.print();
+        }
+
+        // CHECKLIST RENDER
+        function renderChecklist() {
+            const container = document.getElementById('checklist-items-container');
+            if(!container) return;
+            const items = checklistItemsData[currentLang] || checklistItemsData['he'];
+            container.innerHTML = '';
+
+            items.forEach((itemText, index) => {
+                const div = document.createElement('div');
+                div.className = "flex items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:border-medical-400 transition-all cursor-pointer";
+                div.onclick = (e) => {
+                    const chk = div.querySelector('input');
+                    if (e.target !== chk) chk.checked = !chk.checked;
+                    updateChecklistProgress();
+                };
+                div.innerHTML = `
+                    <input type="checkbox" id="chk-${index}" onchange="updateChecklistProgress()" class="w-4 h-4 text-medical-600 rounded border-slate-300 focus:ring-medical-500 shrink-0">
+                    <label for="chk-${index}" class="mr-3 ml-3 text-xs sm:text-sm font-medium text-slate-700 cursor-pointer select-none">${itemText}</label>
+                `;
+                container.appendChild(div);
+            });
+            updateChecklistProgress();
+        }
+
+        function updateChecklistProgress() {
+            const total = (checklistItemsData[currentLang] || checklistItemsData['he']).length;
+            const checked = document.querySelectorAll('#checklist-items-container input[type="checkbox"]:checked').length;
+            if(document.getElementById('chk-progress')) document.getElementById('chk-progress').innerText = `הושלמו ${checked} מתוך ${total} משימות`;
+        }
+
+        function resetChecklist() {
+            document.querySelectorAll('#checklist-items-container input[type="checkbox"]').forEach(c => c.checked = false);
+            updateChecklistProgress();
+        }
     </script>
 </body>
 </html>
