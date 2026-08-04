@@ -2342,10 +2342,19 @@
         }
 
         // FULL SEMI-ANNUAL CLINICAL EVALUATION CRITERIA RENDER (6 DOMAINS WITH 1-5 SCORING)
+        const obsDropdownData = {
+            he: { lbl: 'דירוג (1-5):', r5: '5 - מצוין ✅', r4: '4 - טוב מאד', r3: '3 - מספק', r2: '2 - טעון שיפור ⚠️', r1: '1 - לא מספק ❌' },
+            en: { lbl: 'Rating (1-5):', r5: '5 - Excellent ✅', r4: '4 - Very Good', r3: '3 - Satisfactory', r2: '2 - Needs Improvement ⚠️', r1: '1 - Unsatisfactory ❌' },
+            ru: { lbl: 'Оценка (1-5):', r5: '5 - Отлично ✅', r4: '4 - Очень хорошо', r3: '3 - Удовлетворительно', r2: '2 - Требует улучшения ⚠️', r1: '1 - Неудовлетворительно ❌' },
+            ar: { lbl: 'التقييم (1-5):', r5: '5 - ممتاز ✅', r4: '4 - جيد جداً', r3: '3 - مرضٍ', r2: '2 - بحاجة لتحسين ⚠️', r1: '1 - غير مرضٍ ❌' },
+            ne: { lbl: 'मूल्याङ्कन (१-५):', r5: '५ - उत्कृष्ट ✅', r4: '४ - धेरै राम्रो', r3: '३ - सन्तोषजनक', r2: '२ - सुधार आवश्यक ⚠️', r1: '१ - असन्तोषजनक ❌' }
+        };
+
         function renderObservationCriteria() {
             const container = document.getElementById('obs-criteria-container');
             if(!container) return;
             const domains = evaluationDomainsData[currentLang] || evaluationDomainsData['he'];
+            const dd = obsDropdownData[currentLang] || obsDropdownData['he'];
 
             container.innerHTML = '';
             domains.forEach((dom, idx) => {
@@ -2358,13 +2367,13 @@
                             <p class="text-xs text-slate-500 leading-relaxed">${dom.desc}</p>
                         </div>
                         <div class="flex items-center gap-1.5 shrink-0 bg-white px-3 py-1.5 rounded-xl border">
-                            <span class="text-xs font-bold text-slate-700">דירוג (1-5):</span>
+                            <span class="text-xs font-bold text-slate-700">${dd.lbl}</span>
                             <select id="obs-score-${dom.id}" onchange="calculateObservationScore()" class="text-xs font-bold text-teal-800 bg-transparent focus:outline-none">
-                                <option value="5" selected>5 - מצוין ✅</option>
-                                <option value="4">4 - טוב מאד</option>
-                                <option value="3">3 - מספק</option>
-                                <option value="2">2 - טעון שיפור ⚠️</option>
-                                <option value="1">1 - לא מספק ❌</option>
+                                <option value="5" selected>${dd.r5}</option>
+                                <option value="4">${dd.r4}</option>
+                                <option value="3">${dd.r3}</option>
+                                <option value="2">${dd.r2}</option>
+                                <option value="1">${dd.r1}</option>
                             </select>
                         </div>
                     </div>
