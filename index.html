@@ -1571,12 +1571,97 @@
             }
         ];
 
+        const nmStaticData = {
+            he: { 
+                placeholder: "מיקום/חדר (למשל: במסדרון ליד חדר 12)",
+                hint: "לחץ לדיון 5 דקות בהעברת משמרת",
+                alert: "אנא הזן מיקום/חדר לדיווח המפגע",
+                added: "נרשם לדיון 5 דקות 💬",
+                opt1: "רצפה רטובה / סכנת החלקה",
+                opt2: "פעמון מצוקה תקול",
+                opt3: "בלם מיטה/כורסה משוחרר",
+                opt4: "מעקה מיטה פגום",
+                opt5: "תאורת לילה לקויה",
+                opt6: "אחר"
+            },
+            en: { 
+                placeholder: "Location/Room (e.g. Corridor near room 12)",
+                hint: "Click for a 5-minute shift handover discussion",
+                alert: "Please enter location/room to report the hazard",
+                added: "Logged for 5-min discussion 💬",
+                opt1: "Wet floor / slip hazard",
+                opt2: "Faulty distress bell",
+                opt3: "Loose bed/chair brake",
+                opt4: "Defective bed rail",
+                opt5: "Poor night lighting",
+                opt6: "Other"
+            },
+            ru: { 
+                placeholder: "Местоположение/Комната (напр. Коридор у комнаты 12)",
+                hint: "Нажмите для 5-минутного обсуждения при передаче смены",
+                alert: "Пожалуйста, введите местоположение/комнату для сообщения об опасности",
+                added: "Записано на 5-мин обсуждение 💬",
+                opt1: "Мокрый пол / опасность поскользнуться",
+                opt2: "Неисправный звонок вызова",
+                opt3: "Ослабленный тормоз кровати/кресла",
+                opt4: "Неисправный поручень кровати",
+                opt5: "Плохое ночное освещение",
+                opt6: "Другое"
+            },
+            ar: { 
+                placeholder: "الموقع/الغرفة (مثل: ممر بالقرب من غرفة 12)",
+                hint: "انقر لمناقشة 5 دقائق عند تسليم الوردية",
+                alert: "يرجى إدخال الموقع/الغرفة للإبلاغ عن الخطر",
+                added: "تم التسجيل لمناقشة 5 دقائق 💬",
+                opt1: "أرضية مبللة / خطر الانزلاق",
+                opt2: "جرس الاستدعاء معطل",
+                opt3: "فرامل السرير/الكرسي مفكوكة",
+                opt4: "حاجز السرير معيب",
+                opt5: "إضاءة ليلية ضعيفة",
+                opt6: "آخر"
+            },
+            ne: { 
+                placeholder: "स्थान/कोठा (जस्तै: कोठा १२ नजिकैको कोरिडोर)",
+                hint: "५-मिनेट सिफ्ट हस्तान्तरण छलफलको लागि क्लिक गर्नुहोस्",
+                alert: "कृपया खतरा रिपोर्ट गर्न स्थान/कोठा प्रविष्ट गर्नुहोस्",
+                added: "५ मिनेट छलफलको लागि लग गरियो 💬",
+                opt1: "भिजेको भुइँ / चिप्लिने खतरा",
+                opt2: "खराब डिस्ट्रेस बेल",
+                opt3: "ओछ्यान/कुर्सीको ब्रेक खुकुलो",
+                opt4: "ओछ्यानको रेल दोषपूर्ण",
+                opt5: "खराब रातको प्रकाश",
+                opt6: "अन्य"
+            }
+        };
+
         // NEAR-MISS LOG DATA
-        let nearMissData = [
-            { id: 1, loc: "במסדרון ב' ליד חדר 14", type: "רצפה רטובה / סכנת החלקה", status: "טופל במחלקה ✅" },
-            { id: 2, loc: "חדר 202 - מיטה 1", type: "בלם מיטה/כורסה משוחרר", status: "עלה לדיון 5 דקות 💬" },
-            { id: 3, loc: "מקלחת דיירים מרכזית", type: "פעמון מצוקה תקול", status: "בטיפול אחזקה 🛠️" }
-        ];
+        let nearMissData = {
+            he: [
+                { id: 1, loc: "במסדרון ב' ליד חדר 14", type: "רצפה רטובה / סכנת החלקה", status: "טופל במחלקה ✅" },
+                { id: 2, loc: "חדר 202 - מיטה 1", type: "בלם מיטה/כורסה משוחרר", status: "עלה לדיון 5 דקות 💬" },
+                { id: 3, loc: "מקלחת דיירים מרכזית", type: "פעמון מצוקה תקול", status: "בטיפול אחזקה 🛠️" }
+            ],
+            en: [
+                { id: 1, loc: "Corridor B near Room 14", type: "Wet floor / slip hazard", status: "Resolved in dept ✅" },
+                { id: 2, loc: "Room 202 - Bed 1", type: "Loose bed/chair brake", status: "Up for 5-min discussion 💬" },
+                { id: 3, loc: "Main resident shower", type: "Faulty distress bell", status: "Maintenance handling 🛠️" }
+            ],
+            ru: [
+                { id: 1, loc: "Коридор Б у комнаты 14", type: "Мокрый пол / опасность поскользнуться", status: "Решено в отделении ✅" },
+                { id: 2, loc: "Комната 202 - Кровать 1", type: "Ослабленный тормоз кровати/кресла", status: "Вынесено на 5-мин обсуждение 💬" },
+                { id: 3, loc: "Главная душевая", type: "Неисправный звонок вызова", status: "В ремонте 🛠️" }
+            ],
+            ar: [
+                { id: 1, loc: "ممر ب بجوار غرفة 14", type: "أرضية مبللة / خطر الانزلاق", status: "تم الحل في القسم ✅" },
+                { id: 2, loc: "غرفة 202 - سرير 1", type: "فرامل السرير/الكرسي مفكوكة", status: "طُرح لمناقشة 5 دقائق 💬" },
+                { id: 3, loc: "دش المقيمين الرئيسي", type: "جرس الاستدعاء معطل", status: "قيد الصيانة 🛠️" }
+            ],
+            ne: [
+                { id: 1, loc: "कोठा १४ नजिकैको कोरिडोर बी", type: "भिजेको भुइँ / चिप्लिने खतरा", status: "विभागमा समाधान गरियो ✅" },
+                { id: 2, loc: "कोठा २०२ - ओछ्यान १", type: "ओछ्यान/कुर्सीको ब्रेक खुकुलो", status: "५ मिनेट छलफलको लागि ल्याइएको 💬" },
+                { id: 3, loc: "मुख्य निवासी नुहाउने ठाउँ", type: "खराब डिस्ट्रेस बेल", status: "मर्मत ह्यान्डलिङ 🛠️" }
+            ]
+        };
 
         // EXPANDED INTERACTIVE QUIZ DATA
         const quizQuestions = {
@@ -2504,21 +2589,29 @@
         function renderNearMissList() {
             const listContainer = document.getElementById('nearmiss-list');
             const typeSelect = document.getElementById('nm-input-type');
+            const nmInputLoc = document.getElementById('nm-input-loc');
+            const nmSubHint = document.getElementById('nm-sub-hint');
+            const sd = nmStaticData[currentLang] || nmStaticData['he'];
+
+            if (nmInputLoc) nmInputLoc.placeholder = sd.placeholder;
+            if (nmSubHint) nmSubHint.innerText = sd.hint;
 
             if (typeSelect) {
                 typeSelect.innerHTML = `
-                    <option value="רצפה רטובה / סכנת החלקה">רצפה רטובה / סכנת החלקה</option>
-                    <option value="פעמון מצוקה תקול">פעמון מצוקה תקול</option>
-                    <option value="בלם מיטה/כורסה משוחרר">בלם מיטה/כורסה משוחרר</option>
-                    <option value="מעקה מיטה פגום">מעקה מיטה פגום</option>
-                    <option value="תאורת לילה לקויה">תאורת לילה לקויה</option>
-                    <option value="אחר">אחר</option>
+                    <option value="${sd.opt1}">${sd.opt1}</option>
+                    <option value="${sd.opt2}">${sd.opt2}</option>
+                    <option value="${sd.opt3}">${sd.opt3}</option>
+                    <option value="${sd.opt4}">${sd.opt4}</option>
+                    <option value="${sd.opt5}">${sd.opt5}</option>
+                    <option value="${sd.opt6}">${sd.opt6}</option>
                 `;
             }
 
             if(!listContainer) return;
             listContainer.innerHTML = '';
-            nearMissData.forEach(item => {
+            
+            const currentData = nearMissData[currentLang] || nearMissData['he'];
+            currentData.forEach(item => {
                 const div = document.createElement('div');
                 div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between";
                 div.innerHTML = `
@@ -2535,15 +2628,19 @@
         function addNearMissReport() {
             const loc = document.getElementById('nm-input-loc').value;
             const type = document.getElementById('nm-input-type').value;
+            const sd = nmStaticData[currentLang] || nmStaticData['he'];
+
             if (!loc) {
-                alert("אנא הזן מיקום/חדר לדיווח המפגע");
+                alert(sd.alert);
                 return;
             }
-            nearMissData.unshift({
-                id: nearMissData.length + 1,
+            
+            const currentData = nearMissData[currentLang] || nearMissData['he'];
+            currentData.unshift({
+                id: currentData.length + 1,
                 loc: loc,
                 type: type,
-                status: "נרשם לדיון 5 דקות 💬"
+                status: sd.added
             });
             document.getElementById('nm-input-loc').value = '';
             renderNearMissList();
