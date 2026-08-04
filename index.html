@@ -865,8 +865,10 @@
                 headerTitle: 'הדרכת כוחות עזר - אדריכלות של בטיחות',
                 btnAssocTop: 'אתר עמותת האחיות (IANG)',
                 btnProcTop: 'נוהל 1.2.1.2 הרשמי (PDF)',
+                btnBrochureTop: 'חוברת בטיחות (PDF)',
                 btnProcHero: 'קובץ נוהל 1.2.1.2',
                 btnAssocHero: 'אתר העמותה (IANG)',
+                btnBrochureHero: 'חוברת בטיחות',
                 heroTag: 'עמותת האחיות לקידום הסיעוד הגריאטרי בישראל',
                 heroTitle: 'הכשרה, בטיחות ובקרת כשירות למטפלים וכוחות עזר בגריאטריה',
                 heroDesc: 'כוחות העזר הסיעודיים הם חומת המגן האמיתית השומרת על איכות חייהם, כבודם ובטיחותם של המטופלים. פורטל זה מנגיש את תוכניות ההכשרה, דרישות נוהל 1.2.1.2 ובקרת הכשירות הרב-לשונית במקום אחד.',
@@ -941,7 +943,9 @@
                 headerTitle: 'Assistive Personnel Training - Safety Architecture',
                 btnAssocTop: 'IANG Nurses Website',
                 btnProcTop: 'Official Procedure 1.2.1.2 (PDF)',
+                btnBrochureTop: 'Safety Brochure (PDF)',
                 btnProcHero: 'Procedure 1.2.1.2 PDF',
+                btnBrochureHero: 'Safety Brochure',
                 btnAssocHero: 'IANG Website',
                 heroTag: 'Association of Nurses for Geriatric Advancement in Israel',
                 heroTitle: 'Training, Safety & Competency Control for Geriatric Caregivers',
@@ -1017,7 +1021,9 @@
                 headerTitle: 'Обучение персонала - Архитектура безопасности',
                 btnAssocTop: 'Сайт ассоциации медсестер (IANG)',
                 btnProcTop: 'Официальная процедура 1.2.1.2 (PDF)',
+                btnBrochureTop: 'Брошюра по безопасности (PDF)',
                 btnProcHero: 'Процедура 1.2.1.2 (PDF)',
+                btnBrochureHero: 'Брошюра по безопасности',
                 btnAssocHero: 'Сайт ассоциации (IANG)',
                 heroTag: 'Ассоциация медсестер по развитию гериатрии в Израиле',
                 heroTitle: 'Обучение, безопасность и контроль компетенции сиделок в гериатрии',
@@ -1093,7 +1099,9 @@
                 headerTitle: 'تدريب المساعدين - هندسة السلامة',
                 btnAssocTop: 'موقع جمعية الممرضين (IANG)',
                 btnProcTop: 'الإجراء الرسمي 1.2.1.2 (PDF)',
+                btnBrochureTop: 'كتيب السلامة (PDF)',
                 btnProcHero: 'ملف الإجراء 1.2.1.2',
+                btnBrochureHero: 'كتيب السلامة',
                 btnAssocHero: 'موقع الجمعية (IANG)',
                 heroTag: 'جمعية الممرضين لتعزيز طب الشيخوخة في إسرائيل',
                 heroTitle: 'التدريب، السلامة ومراقبة الكفاءة للمساعدين في طب الشيخوخة',
@@ -1169,7 +1177,9 @@
                 headerTitle: 'स्याहारकर्ता प्रशिक्षण - सुरक्षा वास्तुकला',
                 btnAssocTop: 'नर्सिङ संघ वेबसाइट (IANG)',
                 btnProcTop: 'आधिकारिक प्रक्रिया (PDF)',
+                btnBrochureTop: 'सुरक्षा ब्रोशर (PDF)',
                 btnProcHero: 'प्रक्रिया 1.2.1.2 (PDF)',
+                btnBrochureHero: 'सुरक्षा ब्रोशर',
                 btnAssocHero: 'संघ वेबसाइट (IANG)',
                 heroTag: 'इजरायलमा जेरियाट्रिक प्रगति को लागी नर्स संघ',
                 heroTitle: 'जेरियाट्रिक स्याहारकर्ताहरूका लागि प्रशिक्षण र सुरक्षा',
@@ -1770,8 +1780,10 @@
             document.getElementById('header-title').innerText = dict.headerTitle;
             document.getElementById('btn-assoc-txt').innerText = dict.btnAssocTop;
             document.getElementById('btn-proc-txt-top').innerText = dict.btnProcTop;
+            if (document.getElementById('btn-brochure-txt-top')) document.getElementById('btn-brochure-txt-top').innerText = dict.btnBrochureTop;
             document.getElementById('btn-proc-txt-hero').innerText = dict.btnProcHero;
             document.getElementById('btn-assoc-txt-hero').innerText = dict.btnAssocHero;
+            if (document.getElementById('btn-brochure-txt-hero')) document.getElementById('btn-brochure-txt-hero').innerText = dict.btnBrochureHero;
             document.getElementById('hero-tag').innerText = dict.heroTag;
             document.getElementById('hero-main-title').innerText = dict.heroTitle;
             document.getElementById('hero-description').innerText = dict.heroDesc;
