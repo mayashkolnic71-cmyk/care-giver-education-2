@@ -1384,49 +1384,35 @@
 
         // EMERGENCY SIMULATION DATA
         const emergencySimulations = {
-            choking: {
-                q: "בזמן שהאכלת דייר בחדר האוכל, הוא מתחיל להשתעל בחוזקה, פניו מאדימות והוא מחזיק בגרונו בחוסר אונים. מה הצעד המיידי הנכון ביותר?",
-                opts: [
-                    "א. להמשיך להאכיל בזהירות לאט יותר ולתת כוס מים",
-                    "ב. להפסיק האכלה מיד, לוודא שהדייר יושב ב-90 מעלות, לקרוא בדחיפות לאחות ולהישאר צמוד אליו",
-                    "ג. שטוף את פניו במים קרים והשכב אותו שטוח על הגב",
-                    "ד. לטפוח בחוזקה על גבו בזמן שהוא שוכב"
-                ],
-                correct: 1,
-                explain: "נכון מאוד! בחשד לחנק חובה להפסיק האכלה מיידית, לשמור על מנח זקוף (90 מעלות), להזעיק אחות ולא לנטוש את המטופל ברגע קריטי זה."
+            he: {
+                choking: { q: "בזמן שהאכלת דייר בחדר האוכל, הוא מתחיל להשתעל בחוזקה, פניו מאדימות והוא מחזיק בגרונו בחוסר אונים. מה הצעד המיידי הנכון ביותר?", opts: ["א. להמשיך להאכיל בזהירות לאט יותר ולתת כוס מים", "ב. להפסיק האכלה מיד, לוודא שהדייר יושב ב-90 מעלות, לקרוא בדחיפות לאחות ולהישאר צמוד אליו", "ג. שטוף את פניו במים קרים והשכב אותו שטוח על הגב", "ד. לטפוח בחוזקה על גבו בזמן שהוא שוכב"], correct: 1, explain: "נכון מאוד! בחשד לחנק חובה להפסיק האכלה מיידית, לשמור על מנח זקוף (90 מעלות), להזעיק אחות ולא לנטוש את המטופל ברגע קריטי זה." },
+                fall: { q: "נכנסת לחדר וראית דייר שרוע על הרצפה ליד המיטה. הוא גונח מכאב וטוען שאינו יכול להזיז את רגל ימין. מה עליך לעשות?", opts: ["א. להרים אותו מיד יחד עם מטפל נוסף ולהושיב אותו בכורסה", "ב. לא להזיז את הדייר! לקרוא מיד לאחות להערכת ראש/עמוד שדרה/חשד לשבר, להרגיע אותו ולכסות בשמיכה", "ג. לבקש ממנו לקום בכוחות עצמו לאט לאט", "ד. להחזיר אותו למיטה ולבדוק בעוד שעה"], correct: 1, explain: "כל הכבוד! חל איסור מוחלט להרים מטופל לאחר נפילה לפני בדיקת אחות מוסמכת, כדי למנוע החמרה של שבר בצוואר הירך או פגיעת עמוד שדרה." },
+                decline: { q: "במהלך סבב בוקר, גילית מטופל שאוריינטטיבי בדרך כלל, כשהוא אפתי לחלוטין, שפתיו סגולות-כחולות ונשימתו מהירה מאד. מה הצעד הנכון?", opts: ["א. להשכיב אותו לישון ולחזור לבדוק בתום החלוקה", "ב. לקרוא מיידית לאחות האחראית לדיווח על הידרדרות קלינית ומצוקה נשימתית", "ג. לתת לו כוס מים קרים ולפתוח חלון", "ד. לחכות לביקור הרופא בצהריים"], correct: 1, explain: "מדויק! ציאנוזיס (כחלון) ואפתיה חריפה הם סימני אזהרה קריטיים להידרדרות קלינית הדורשים התערבות אחות רפואית דחופה." },
+                fire: { q: "במשמרת לילה בשעה 03:00 נשמעה אזעקת אש וזיהית עשן סמיך היוצא מחדר כבסים. מהי הפעולה הראשונית לפי נוהל בטיחות?", opts: ["א. לפתוח את כל החלונות והדלתות במחלקה כדי שאוויר יכנס", "ב. לדווח מיד לאחות תורנית, לסגור את הדלתות לתחימת העשן (RACE), ולסייע בפינוי דיירים ממוקד", "ג. לברוח מהבניין לבד ללא דיווח", "ד. לחכות לצוות הבוקר שיתפעל את האירוע"], correct: 1, explain: "מצוין! סגירת דלתות תוחמת את האש והעשן, מונעת התפשטות במזדרונות ומאפשרת פינוי בטוח בהובלת האחות." }
             },
-            fall: {
-                q: "נכנסת לחדר וראית דייר שרוע על הרצפה ליד המיטה. הוא גונח מכאב וטוען שאינו יכול להזיז את רגל ימין. מה עליך לעשות?",
-                opts: [
-                    "א. להרים אותו מיד יחד עם מטפל נוסף ולהושיב אותו בכורסה",
-                    "ב. לא להזיז את הדייר! לקרוא מיד לאחות להערכת ראש/עמוד שדרה/חשד לשבר, להרגיע אותו ולכסות בשמיכה",
-                    "ג. לבקש ממנו לקום בכוחות עצמו לאט לאט",
-                    "ד. להחזיר אותו למיטה ולבדוק בעוד שעה"
-                ],
-                correct: 1,
-                explain: "כל הכבוד! חל איסור מוחלט להרים מטופל לאחר נפילה לפני בדיקת אחות מוסמכת, כדי למנוע החמרה של שבר בצוואר הירך או פגיעת עמוד שדרה."
+            en: {
+                choking: { q: "While feeding a resident in the dining room, they start coughing violently, face turns red and they clutch their throat helplessly. What is the correct immediate step?", opts: ["a. Continue feeding carefully slower and give a cup of water", "b. Stop feeding immediately, ensure sitting at 90 degrees, urgently call the nurse and stay with them", "c. Wash face with cold water and lay them flat on their back", "d. Pat their back hard while they lie down"], correct: 1, explain: "Very correct! Suspected choking requires immediate cessation of feeding, maintaining upright position (90 degrees), calling the nurse and not leaving the patient at this critical moment." },
+                fall: { q: "You entered a room and saw a resident lying on the floor near the bed, groaning in pain, claiming inability to move their right leg. What should you do?", opts: ["a. Lift them immediately with another caregiver and seat them in a chair", "b. Do not move the resident! Call the nurse immediately for head/spine/fracture assessment, calm them and cover with a blanket", "c. Ask them to get up on their own slowly", "d. Return them to bed and check in an hour"], correct: 1, explain: "Well done! It is strictly forbidden to lift a patient after a fall before a registered nurse checks them, to prevent worsening of a hip fracture or spinal injury." },
+                decline: { q: "During morning rounds, you found a normally oriented patient completely apathetic, lips purplish-blue, breathing very fast. What is the correct step?", opts: ["a. Put them to sleep and check back after distribution", "b. Call the charge nurse immediately to report clinical deterioration and respiratory distress", "c. Give a cup of cold water and open a window", "d. Wait for doctor's visit at noon"], correct: 1, explain: "Accurate! Cyanosis (bluish tint) and acute apathy are critical warning signs of clinical deterioration requiring urgent nursing intervention." },
+                fire: { q: "On night shift at 03:00, a fire alarm sounded and you identified thick smoke from the laundry room. What is the initial action according to safety protocol?", opts: ["a. Open all windows and doors for air", "b. Report immediately to duty nurse, close doors to contain smoke (RACE), and assist in focused resident evacuation", "c. Flee the building alone without reporting", "d. Wait for morning staff to handle it"], correct: 1, explain: "Excellent! Closing doors contains fire and smoke, prevents spread in corridors and allows safe evacuation led by the nurse." }
             },
-            decline: {
-                q: "במהלך סבב בוקר, גילית מטופל שאוריינטטיבי בדרך כלל, כשהוא אפתי לחלוטין, שפתיו סגולות-כחולות ונשימתו מהירה מאד. מה הצעד הנכון?",
-                opts: [
-                    "א. להשכיב אותו לישון ולחזור לבדוק בתום החלוקה",
-                    "ב. לקרוא מיידית לאחות האחראית לדיווח על הידרדרות קלינית ומצוקה נשימתית",
-                    "ג. לתת לו כוס מים קרים ולפתוח חלון",
-                    "ד. לחכות לביקור הרופא בצהריים"
-                ],
-                correct: 1,
-                explain: "מדויק! ציאנוזיס (כחלון) ואפתיה חריפה הם סימני אזהרה קריטיים להידרדרות קלינית הדורשים התערבות אחות רפואית דחופה."
+            ru: {
+                choking: { q: "Во время кормления подопечного в столовой он начинает сильно кашлять, лицо краснеет, он беспомощно хватается за горло. Каков правильный немедленный шаг?", opts: ["а. Продолжать кормить медленнее и дать стакан воды", "б. Немедленно прекратить кормление, убедиться, что он сидит под углом 90 градусов, срочно позвать медсестру и оставаться с ним", "в. Умыть лицо холодной водой и положить ровно на спину", "г. Сильно похлопать по спине, пока он лежит"], correct: 1, explain: "Очень верно! Подозрение на удушье требует немедленного прекращения кормления, поддержания вертикального положения (90 градусов), вызова медсестры и неотлучения от пациента в этот критический момент." },
+                fall: { q: "Вы вошли в комнату и увидели подопечного, лежащего на полу возле кровати, стонущего от боли, жалующегося на невозможность пошевелить правой ногой. Что вам следует сделать?", opts: ["а. Немедленно поднять его с другой сиделкой и посадить в кресло", "б. Не перемещать подопечного! Немедленно позвать медсестру для оценки травмы головы/позвоночника/перелома, успокоить и укрыть одеялом", "в. Попросить его встать самостоятельно", "г. Вернуть его в кровать и проверить через час"], correct: 1, explain: "Молодец! Категорически запрещается поднимать пациента после падения до осмотра дипломированной медсестрой, чтобы предотвратить ухудшение перелома шейки бедра или травмы позвоночника." },
+                decline: { q: "Во время утреннего обхода вы обнаружили обычно ориентированного пациента полностью апатичным, губы сине-фиолетовые, дыхание очень частое. Каков правильный шаг?", opts: ["а. Уложить спать и проверить позже", "б. Немедленно позвать старшую медсестру, чтобы сообщить о клиническом ухудшении и дыхательной недостаточности", "в. Дать стакан холодной воды и открыть окно", "г. Дождаться визита врача в полдень"], correct: 1, explain: "Точно! Цианоз и острая апатия - критические признаки ухудшения, требующие срочного вмешательства медсестры." },
+                fire: { q: "В ночную смену в 03:00 прозвучала пожарная тревога, вы обнаружили густой дым из прачечной. Каково первоначальное действие по протоколу безопасности?", opts: ["а. Открыть все окна и двери для воздуха", "б. Немедленно сообщить дежурной медсестре, закрыть двери для локализации дыма (RACE) и помочь в эвакуации жильцов", "в. Убежать из здания в одиночку", "г. Дождаться утреннего персонала"], correct: 1, explain: "Отлично! Закрытие дверей сдерживает огонь и дым, предотвращает распространение и обеспечивает безопасную эвакуацию под руководством медсестры." }
             },
-            fire: {
-                q: "במשמרת לילה בשעה 03:00 נשמעה אזעקת אש וזיהית עשן סמיך היוצא מחדר כבסים. מהי הפעולה הראשונית לפי נוהל בטיחות?",
-                opts: [
-                    "א. לפתוח את כל החלונות והדלתות במחלקה כדי שאוויר יכנס",
-                    "ב. לדווח מיד לאחות תורנית, לסגור את הדלתות לתחימת העשן (RACE), ולסייע בפינוי דיירים ממוקד",
-                    "ג. לברוח מהבניין לבד ללא דיווח",
-                    "ד. לחכות לצוות הבוקר שיתפעל את האירוע"
-                ],
-                correct: 1,
-                explain: "מצוין! סגירת דלתות תוחמת את האש והעשן, מונעת התפשטות במזדרונות ומאפשרת פינוי בטוח בהובלת האחות."
+            ar: {
+                choking: { q: "أثناء إطعام مقيم في غرفة الطعام، بدأ يسعل بشدة، واحمَرّ وجهه ويمسك بحنجرته بيأس. ما هي الخطوة الفورية الصحيحة؟", opts: ["أ. الاستمرار في الإطعام بحذر أبطأ وإعطاء كوب ماء", "ب. إيقاف الإطعام فوراً، والتأكد من جلوسه بزاوية 90 درجة، واستدعاء الممرضة بشكل عاجل والبقاء معه", "ج. غسل وجهه بماء بارد وإلقاؤه على ظهره", "د. التربيت بقوة على ظهره وهو مستلقٍ"], correct: 1, explain: "صحيح جداً! يتطلب الاشتباه في الاختناق التوقف الفوري عن الإطعام، والحفاظ على الوضع المستقيم (90 درجة)، واستدعاء الممرضة وعدم ترك المريض في هذه اللحظة الحرجة." },
+                fall: { q: "دخلت غرفة فرأيت مقيماً ملقى على الأرض بالقرب من السرير يئن من الألم ويدعي عدم قدرته على تحريك ساقه اليمنى. ماذا يجب أن تفعل؟", opts: ["أ. رفعه فوراً مع مقدم رعاية آخر وإجلاسه في كرسي", "ب. عدم تحريك المقيم! استدعاء الممرضة فوراً لتقييم الرأس/العمود الفقري/الكسر المحتمل، وتهدئته وتغطيته ببطانية", "ج. الطلب منه النهوض بمفرده ببطء", "د. إعادته إلى السرير والتحقق بعد ساعة"], correct: 1, explain: "أحسنت! يُمنع منعاً باتاً رفع المريض بعد السقوط قبل فحصه من قبل ممرضة مسجلة لمنع تفاقم كسر الورك أو إصابة العمود الفقري." },
+                decline: { q: "أثناء الجولات الصباحية، وجدت مريضاً واعياً عادةً، لا مبالياً تماماً، شفتاه زرقاء مائلة للبنفسجي، ويتنفس بسرعة كبيرة. ما هي الخطوة الصحيحة؟", opts: ["أ. تنويمه والتحقق بعد الانتهاء", "ب. استدعاء الممرضة المسؤولة فوراً للإبلاغ عن التدهور السريري وضيق التنفس", "ج. إعطاؤه كوب ماء بارد وفتح نافذة", "د. انتظار زيارة الطبيب ظهراً"], correct: 1, explain: "دقيق! الازرقاق واللامبالاة الحادة هي علامات تحذير حرجة للتدهور السريري وتتطلب تدخلاً تمريضياً عاجلاً." },
+                fire: { q: "في نوبة ليلية الساعة 03:00 دَقّ إنذار حريق ولاحظت دخاناً كثيفاً يخرج من غرفة الغسيل. ما هو الإجراء الأولي وفقاً لبروتوكول السلامة؟", opts: ["أ. فتح جميع النوافذ والأبواب للتهوية", "ب. الإبلاغ فوراً للممرضة المناوبة، وإغلاق الأبواب لاحتواء الدخان (RACE)، والمساعدة في إخلاء المقيمين", "ج. الفرار من المبنى بمفردك", "د. انتظار طاقم الصباح للتعامل معه"], correct: 1, explain: "ممتاز! إغلاق الأبواب يحتوي النار والدخان، ويمنع الانتشار في الممرات ويسمح بالإخلاء الآمن بقيادة الممرضة." }
+            },
+            ne: {
+                choking: { q: "भोजन कक्षमा निवासीलाई खुवाउँदा, तिनीहरू अचानक खोक्न थाल्छन्, अनुहार रातो हुन्छ र घाँटी समात्छन्। सही तत्काल कदम के हो?", opts: ["क. सावधानीपूर्वक खुवाउन जारी राख्नुहोस् र पानी दिनुहोस्", "ख. खुवाउन तुरुन्तै रोक्नुहोस्, ९० डिग्रीमा बसेको सुनिश्चित गर्नुहोस्, तुरुन्तै नर्सलाई कल गर्नुहोस् र उनीहरूसँगै रहनुहोस्", "ग. अनुहार चिसो पानीले धुनुहोस् र समतल पल्टाउनुहोस्", "घ. सुतेको बेला पिठ्युँमा कडा थपथपाउनुहोस्"], correct: 1, explain: "धेरै सही! निसास्सिने शंकामा तुरुन्तै खुवाउन रोक्न, ठाडो स्थिति (९० डिग्री) कायम राख्न, नर्सलाई बोलाउन र बिरामीलाई नछोड्न आवश्यक छ।" },
+                fall: { q: "तपाईं एउटा कोठामा पस्नुभयो र ओछ्यान नजिकै भुइँमा पीडाले कराउँदै, दाहिने खुट्टा चलाउन नसक्ने निवासी देख्नुभयो। तपाईंले के गर्नुपर्छ?", opts: ["क. तुरुन्तै अर्को हेरचाहकर्तासँग उठाउनुहोस् र कुर्सीमा बसाल्नुहोस्", "ख. निवासीलाई नसार्नुहोस्! टाउको/मेरुदण्ड/भाँचिएको मूल्याङ्कनको लागि तुरुन्तै नर्सलाई कल गर्नुहोस्, शान्त पार्नुहोस् र कम्बलले छोप्नुहोस्", "ग. आफैं बिस्तारै उठ्न सोध्नुहोस्", "घ. ओछ्यानमा फर्काउनुहोस् र एक घण्टा पछि जाँच गर्नुहोस्"], correct: 1, explain: "स्याबास! हिप फ्याक्चर वा मेरुदण्डको चोट बिग्रनबाट रोक्न नर्सले जाँच गर्नु अघि लडेको बिरामीलाई उठाउन सख्त रूपमा निषेध गरिएको छ।" },
+                decline: { q: "बिहानको राउन्डको क्रममा, तपाईंले बिरामीलाई पूर्ण रूपमा उदास, ओठहरू बैजनी-नीलो, र धेरै छिटो सास फेरिरहेको पाउनुभयो। सही कदम के हो?", opts: ["क. सुत्न लगाउनुहोस् र पछि जाँच गर्नुहोस्", "ख. क्लिनिकल गिरावट र श्वासप्रश्वासको समस्या रिपोर्ट गर्न तुरुन्तै चार्ज नर्सलाई कल गर्नुहोस्", "ग. चिसो पानी दिनुहोस् र झ्याल खोल्नुहोस्", "घ. दिउँसो डाक्टरको भ्रमण पर्खनुहोस्"], correct: 1, explain: "सटीक! साइनोसिस र तीव्र उदासी भनेको क्लिनिकल गिरावटको महत्वपूर्ण चेतावनी संकेतहरू हुन् जसलाई तत्काल नर्सिङ हस्तक्षेप आवश्यक पर्दछ।" },
+                fire: { q: "राती ३:०० बजे फायर अलार्म बज्यो र धुने कोठाबाट बाक्लो धुवाँ निस्किएको देख्नुभयो। सुरक्षा प्रोटोकल अनुसार प्रारम्भिक कार्य के हो?", opts: ["क. हावाको लागि सबै झ्याल र ढोका खोल्नुहोस्", "ख. ड्युटी नर्सलाई तुरुन्तै रिपोर्ट गर्नुहोस्, धुवाँ रोक्न ढोकाहरू बन्द गर्नुहोस् र निकासी गर्न मद्दत गर्नुहोस्", "ग. रिपोर्ट नगरी एक्लै भवनबाट भाग्नुहोस्", "घ. बिहानको टोलीलाई पर्खनुहोस्"], correct: 1, explain: "उत्कृष्ट! ढोकाहरू बन्द गर्नाले आगो र धुवाँ रोक्छ, कोरिडोरहरूमा फैलिनबाट रोक्छ र नर्सको नेतृत्वमा सुरक्षित निकासी गर्न अनुमति दिन्छ।" }
             }
         };
 
@@ -1817,12 +1803,42 @@
             });
         }
 
+        const emgStaticData = {
+            he: { tag: "מדריך קליני ותרגול אינטראקטיבי", head: "זיהוי וניהול מצבי חירום קליניים בגריאטריה", sub: "כיצד מזהים בזמן ומהן פעולות החירום המיידיות שעל המטפל/ת לבצע לפני הגעת הצוות הרפואי", idenLbl: "🔍 איך מזהים?", actLbl: "🚨 מה עושים? (צעדים מיידיים):", simSelectLbl: "בחר תרחיש לתרגול:", s1: "1. חנק פתאומי בזמן האכלה בחדר האוכל", s2: "2. מטופל שנמצא שרוע על הרצפה ליד המיטה", s3: "3. מטופל אפתי עם קוצר נשימה חריף", s4: "4. עשן סמיך בוקע מחדר דייר במשמרת לילה", correct: "תשובה נכונה! ✅", wrong: "תשובה שגויה ❌", simTitle: "תרחיש: " },
+            en: { tag: "Clinical Guide & Interactive Practice", head: "Identifying and Managing Geriatric Clinical Emergencies", sub: "How to identify in time and what immediate emergency actions the caregiver must perform before the medical team arrives", idenLbl: "🔍 How to identify?", actLbl: "🚨 Immediate Actions:", simSelectLbl: "Select a practice scenario:", s1: "1. Sudden choking while feeding in dining room", s2: "2. Patient found lying on the floor near the bed", s3: "3. Apathetic patient with acute shortness of breath", s4: "4. Thick smoke emerging from a resident's room on night shift", correct: "Correct Answer! ✅", wrong: "Wrong Answer ❌", simTitle: "Scenario: " },
+            ru: { tag: "Клиническое руководство и интерактивная практика", head: "Выявление и управление клиническими чрезвычайными ситуациями в гериатрии", sub: "Как вовремя распознать и какие неотложные действия должен выполнить сиделка до прибытия медицинской бригады", idenLbl: "🔍 Как определить?", actLbl: "🚨 Неотложные действия:", simSelectLbl: "Выберите сценарий для практики:", s1: "1. Внезапное удушье во время кормления в столовой", s2: "2. Пациент найден лежащим на полу возле кровати", s3: "3. Апатичный пациент с острой одышкой", s4: "4. Густой дым из комнаты жильца в ночную смену", correct: "Правильный ответ! ✅", wrong: "Неправильный ответ ❌", simTitle: "Сценарий: " },
+            ar: { tag: "دليل سريري وممارسة تفاعلية", head: "تحديد وإدارة حالات الطوارئ السريرية للشيخوخة", sub: "كيفية التحديد في الوقت المناسب وما هي إجراءات الطوارئ الفورية التي يجب على مقدم الرعاية القيام بها قبل وصول الفريق الطبي", idenLbl: "🔍 كيف تحدد؟", actLbl: "🚨 إجراءات فورية:", simSelectLbl: "حدد سيناريو ممارسة:", s1: "1. اختناق مفاجئ أثناء الإطعام في غرفة الطعام", s2: "2. مريض ملقى على الأرض بالقرب من السرير", s3: "3. مريض لا مبالٍ يعاني من ضيق تنفس حاد", s4: "4. دخان كثيف ينبعث من غرفة مقيم في مناوبة ليلية", correct: "إجابة صحيحة! ✅", wrong: "إجابة خاطئة ❌", simTitle: "سيناريو: " },
+            ne: { tag: "क्लिनिकल गाइड र अन्तरक्रियात्मक अभ्यास", head: "जेरियाट्रिक क्लिनिकल आपतकालिनहरूको पहिचान र व्यवस्थापन", sub: "कसरी समयमै पहिचान गर्ने र मेडिकल टोली आउनु अघि हेरचाहकर्ताले कस्ता तत्काल आपतकालीन कार्यहरू गर्नुपर्छ", idenLbl: "🔍 कसरी पहिचान गर्ने?", actLbl: "🚨 तत्काल कार्यहरू:", simSelectLbl: "अभ्यास परिदृश्य चयन गर्नुहोस्:", s1: "१. भोजन कक्षमा खाना खुवाउँदा अचानक निसास्सिने", s2: "२. ओछ्यान नजिकै भुइँमा लडिरहेको बिरामी", s3: "३. तीव्र सास फेर्न गाह्रो भएको उदास बिरामी", s4: "४. रातीको सिफ्टमा निवासीको कोठाबाट निस्किरहेको बाक्लो धुवाँ", correct: "सही उत्तर! ✅", wrong: "गलत उत्तर ❌", simTitle: "परिदृश्य: " }
+        };
+
         // RENDER EMERGENCY CARDS
         function renderEmergencyCards() {
             const container = document.getElementById('emergency-cards-container');
             if(!container) return;
             const data = emergencyCardsData[currentLang] || emergencyCardsData['he'];
+            const sd = emgStaticData[currentLang] || emgStaticData['he'];
             container.innerHTML = '';
+
+            // Update static headers
+            const badgeTop = document.getElementById('emg-badge-top');
+            if(badgeTop) badgeTop.innerText = sd.tag;
+            const emgHeading = document.getElementById('emg-heading');
+            if(emgHeading) emgHeading.innerText = sd.head;
+            const emgSubheading = document.getElementById('emg-subheading');
+            if(emgSubheading) emgSubheading.innerText = sd.sub;
+            const simSelectLabel = document.getElementById('sim-select-label');
+            if(simSelectLabel) simSelectLabel.innerText = sd.simSelectLbl;
+
+            // Update select options
+            const select = document.getElementById('sim-scenario-select');
+            if (select) {
+                const currentVal = select.value;
+                select.options[0].text = sd.s1;
+                select.options[1].text = sd.s2;
+                select.options[2].text = sd.s3;
+                select.options[3].text = sd.s4;
+                select.value = currentVal;
+            }
 
             data.forEach(item => {
                 const div = document.createElement('div');
@@ -1836,11 +1852,11 @@
                         <span class="px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full text-[11px]">${item.badge}</span>
                     </div>
                     <div class="p-3 bg-slate-50 rounded-xl space-y-1 text-xs">
-                        <p class="font-bold text-slate-800">🔍 איך מזהים?</p>
+                        <p class="font-bold text-slate-800">${sd.idenLbl}</p>
                         <p class="text-slate-600">${item.identify}</p>
                     </div>
                     <div class="p-3 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1 text-xs">
-                        <p class="font-bold text-rose-900">🚨 מה עושים? (צעדים מיידיים):</p>
+                        <p class="font-bold text-rose-900">${sd.actLbl}</p>
                         <p class="text-rose-950 font-medium whitespace-pre-line">${item.action}</p>
                     </div>
                 `;
@@ -1856,11 +1872,13 @@
             if (!select || !box) return;
 
             const scenarioKey = select.value;
-            const simObj = emergencySimulations[scenarioKey];
+            const simObj = emergencySimulations[currentLang][scenarioKey];
+            const sd = emgStaticData[currentLang] || emgStaticData['he'];
+            
             feedbackBox.classList.add('hidden');
 
             box.innerHTML = `
-                <p class="font-bold text-slate-900 text-xs sm:text-sm leading-relaxed">תרחיש: ${simObj.q}</p>
+                <p class="font-bold text-slate-900 text-xs sm:text-sm leading-relaxed">${sd.simTitle}${simObj.q}</p>
                 <div class="space-y-2 pt-2">
                     ${simObj.opts.map((optText, idx) => `
                         <button onclick="checkEmergencySim(${idx}, ${simObj.correct}, '${encodeURIComponent(simObj.explain)}')" class="w-full text-right p-3 bg-white border border-slate-200 hover:border-rose-400 rounded-xl text-xs font-medium text-slate-800 transition-all flex items-center justify-between">
@@ -1876,6 +1894,7 @@
             const explain = decodeURIComponent(encodedExplain);
             const feedbackBox = document.getElementById('sim-feedback-box');
             const buttons = document.querySelectorAll('#sim-content-box button');
+            const sd = emgStaticData[currentLang] || emgStaticData['he'];
 
             buttons.forEach((btn, idx) => {
                 btn.disabled = true;
@@ -1891,10 +1910,10 @@
             feedbackBox.classList.remove('hidden');
             if (selectedIdx === correctIdx) {
                 feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
-                feedbackBox.innerHTML = `<strong>תשובה נכונה! ✅</strong><br>${explain}`;
+                feedbackBox.innerHTML = `<strong>${sd.correct}</strong><br>${explain}`;
             } else {
                 feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 text-rose-950 border border-rose-300";
-                feedbackBox.innerHTML = `<strong>תשובה שגויה ❌</strong><br>${explain}`;
+                feedbackBox.innerHTML = `<strong>${sd.wrong}</strong><br>${explain}`;
             }
         }
 
