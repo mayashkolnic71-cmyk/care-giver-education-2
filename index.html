@@ -413,6 +413,7 @@
                         <button onclick="switchResilienceModule('dynamics')" id="res-btn-dynamics" class="res-nav-btn whitespace-nowrap">דינמיקה קבוצתית</button>
                         <button onclick="switchResilienceModule('listening')" id="res-btn-listening" class="res-nav-btn whitespace-nowrap">תקשורת והקשבה</button>
                         <button onclick="switchResilienceModule('simulations')" id="res-btn-simulations" class="res-nav-btn whitespace-nowrap">סימולציות לחץ</button>
+                        <button onclick="switchResilienceModule('cards')" id="res-btn-cards" class="res-nav-btn whitespace-nowrap">קלפי השלכה (Points of You)</button>
                     </div>
                 </div>
 
@@ -478,20 +479,25 @@
                         <h4 class="text-xl font-bold text-slate-800">סולמות וחבלים - למידה יצירתית</h4>
                         <p class="text-xs text-slate-600">ענה נכונה על שאלות ידע קליני ובטיחות כדי להתקדם בסולמות! טעות תוריד אותך בחבל.</p>
                         
-                        <div class="flex flex-col items-center justify-center py-8 bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl relative">
+                        <div class="flex flex-col items-center justify-center py-6 bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl relative">
                             <!-- Progress Bar -->
                             <div class="w-full max-w-xs bg-slate-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
                                 <div id="snakes-progress" class="bg-indigo-600 h-2.5 rounded-full" style="width: 1%"></div>
                             </div>
 
                             <div class="text-6xl font-black text-rose-600 mb-2 drop-shadow-md" id="snakes-position">1</div>
-                            <div class="text-xs text-slate-500 mb-6 uppercase tracking-widest font-bold">משבצת נוכחית מתוך 100</div>
+                            <div class="text-xs text-slate-500 mb-4 uppercase tracking-widest font-bold">משבצת נוכחית מתוך 100</div>
                             
+                            <!-- Visual Grid Map -->
+                            <div id="snakes-grid-map" class="grid grid-cols-10 gap-1 mb-6 p-2 bg-white rounded-xl shadow-inner border border-slate-200 w-full max-w-md" dir="ltr">
+                                <!-- Populated by JS -->
+                            </div>
+
                             <button onclick="rollDiceAndPlay()" id="btn-roll-dice" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-bold rounded-2xl shadow-lg transition-transform transform active:scale-95 flex items-center gap-3 cursor-pointer z-10">
                                 <i class="fa-solid fa-dice"></i>
                                 גלגל קובייה!
                             </button>
-                            <div id="dice-result-ui" class="text-2xl font-bold text-indigo-800 mt-4 h-8 transition-all"></div>
+                            <div id="dice-result-ui" class="text-xl font-bold text-indigo-800 mt-4 h-8 transition-all"></div>
                         </div>
 
                         <!-- Question Modal area -->
@@ -516,6 +522,29 @@
                         <p class="text-sm text-slate-600">קראו את המשפטים הבאים. כל עובד מסמן את רמת ההסכמה שלו, והמנחה פותח בדיון.</p>
                         <div id="dynamics-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                             <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- MODULE 7: CARDS (Points of You style) -->
+                    <div id="res-mod-cards" class="res-module hidden space-y-4">
+                        <h4 class="text-xl font-bold text-slate-800">קלפי השלכה (Points of You)</h4>
+                        <p class="text-sm text-slate-600">בחר קלף שמתחבר לאיך שאתה מרגיש כעת. הקלפים עוזרים להציף רגשות ומחשבות בדרך עקיפה ובטוחה.</p>
+                        <div id="cards-container" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div id="card-focus-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900 bg-opacity-75 p-4 backdrop-blur-sm">
+                            <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative">
+                                <button onclick="closeCardFocus()" class="absolute top-4 right-4 w-10 h-10 bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition flex items-center justify-center">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                                <div id="focused-card-visual" class="h-64 w-full bg-cover bg-center flex flex-col justify-end p-6">
+                                    <h3 id="focused-card-word" class="text-4xl font-black text-white drop-shadow-lg"></h3>
+                                </div>
+                                <div class="p-6 space-y-4">
+                                    <p class="font-bold text-indigo-900 text-lg">שאלת התבוננות:</p>
+                                    <p id="focused-card-question" class="text-slate-700 leading-relaxed"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1768,14 +1797,36 @@
                 questions: [
                     { q: "איזה בידוד דורש חצבת?", opts: ["אווירני", "מגע", "טיפתי"], correct: 0, msg: "עלית בסולם! בידוד אווירני נדרש בחצבת." },
                     { q: "האם מותר לתת תרופה מבלי לזהות את המטופל?", opts: ["כן", "לא"], correct: 1, msg: "עלית בסולם! חובה לזהות מטופל ב-2 מזהים." },
-                    { q: "הגעת לחדר ושפכת מים. מה תעשה?", opts: ["אדווח מיד ואחסום", "אתעלם", "אחכה למנקה"], correct: 0, msg: "עלית בסולם! דיווח על כמעט ונפגע מונע אסון." },
+                    { q: "הגעת לחדר ושפכת מים. מה תעשה?", opts: ["אדווח מיד ואחסום את האזור", "אתעלם", "אחכה למנקה"], correct: 0, msg: "עלית בסולם! דיווח על כמעט ונפגע מונע אסון." },
                     { q: "מהו פרכוס טוני-קלוני?", opts: ["התעלפות", "רעד ואיבוד הכרה"], correct: 1, msg: "עלית בסולם! זיהית נכון סוג פרכוס." },
-                    { q: "שכחת לרחוץ ידיים. מה קרה?", opts: ["לא נורא", "זיהום צולב!"], correct: 1, msg: "עלית בסולם! היגיינת ידיים מצילה חיים." }
+                    { q: "שכחת לרחוץ ידיים לפני מגע. מה קרה?", opts: ["לא נורא", "זיהום צולב!"], correct: 1, msg: "עלית בסולם! היגיינת ידיים מצילה חיים." },
+                    { q: "מטופל מונשם נראה במצוקה. מהי הפעולה הראשונה?", opts: ["להתקשר למשפחה", "לקרוא מיד לאחות/רופא"], correct: 1, msg: "עלית בסולם! זיהוי מהיר מציל חיים." },
+                    { q: "את/ה חש/ה עומס נפשי קיצוני. למי תפנה/י?", opts: ["אשמור בבטן", "לאחות אחראית או עו\"ס"], correct: 1, msg: "עלית בסולם! שיתוף הוא הצעד הראשון בחוסן נפשי." },
+                    { q: "כיצד תרים מטופל כבד מהרצפה?", opts: ["לבד ומהר", "בעזרת מנוף וצוות"], correct: 1, msg: "עלית בסולם! ארגונומיה שומרת על הבריאות שלך." },
+                    { q: "מה יש לוודא לפני האכלת מטופל?", opts: ["שהטלוויזיה דולקת", "שהמטופל יושב ב-90 מעלות"], correct: 1, msg: "עלית בסולם! ישיבה נכונה מונעת אספירציה." },
+                    { q: "מטופל עם דמנציה מסרב להתקלח וצועק. מה תעשה?", opts: ["אכריח אותו", "ארפה ואנסה שוב מאוחר יותר בגישה מרגיעה"], correct: 1, msg: "עלית בסולם! גישה סבלנית חשובה בדמנציה." },
+                    { q: "מתי יש לבצע היגיינת ידיים?", opts: ["רק לפני מגע", "לפני ואחרי מגע במטופל ובסביבתו"], correct: 1, msg: "עלית בסולם! שמירה על כל 5 הרגעים של ארגון הבריאות העולמי." },
+                    { q: "מה חשוב לבדוק בבלון חמצן לפני העברה?", opts: ["שהוא צבוע ירוק", "שיש בו מספיק חמצן והווסת תקין"], correct: 1, msg: "עלית בסולם! בטיחות בשינוע מטופלים מונשמים היא קריטית." },
+                    { q: "משפחה כועסת על העיכוב בטיפול. מה תגיד/י?", opts: ["תצעק עליהם בחזרה", "תקשיב, תשקף את הקושי ותדווח לצוות"], correct: 1, msg: "עלית בסולם! תקשורת מקרבת מונעת אלימות." },
+                    { q: "כיצד מזהים שחיקה (Burnout)?", opts: ["צינון וחום", "תשישות כרונית, ניתוק רגשי וחוסר סיפוק"], correct: 1, msg: "עלית בסולם! מודעות עצמית לשחיקה עוזרת במניעתה." },
+                    { q: "אתה שם לב שמטופל מרייר בזמן האכלה. מה תעשה?", opts: ["אמשיך להאכיל לאט", "אפסיק מיד, אשאב ואקרא לאחות"], correct: 1, msg: "עלית בסולם! מנעת חנק חמור (אספירציה)." }
                 ],
                 bad_actions: [
-                    "השארת מטופל בסיכון ללא השגחה - ירדת בחבל!",
-                    "לא נעלת גלגלים בכיסא הגלגלים - ירדת בחבל!",
-                    "שכחת לרחוץ ידיים לפני טיפול - ירדת בחבל!"
+                    "השארת מטופל בסיכון לנפילה ללא השגחה",
+                    "לא נעלת את גלגלי המיטה או הכיסא",
+                    "שכחת לרחוץ ידיים לפני ואחרי הטיפול",
+                    "הרמת מטופל לבדך ללא ציוד ארגונומי ועיקמת את הגב",
+                    "האכלת מטופל בשכיבה מלאה",
+                    "התעלמת מתלונות של מטופל על כאב חדש",
+                    "העברת משמרת מבלי לדווח על חום גוף חריג של המטופל",
+                    "נכנסת לחדר בידוד ללא ציוד מגן מתאים",
+                    "לא לקחת הפסקה כל המשמרת והגעת לאפיסת כוחות",
+                    "הגבת בכעס למשפחה לחוצה במקום להשתמש בתקשורת מקרבת",
+                    "השארת חומרי ניקוי מסוכנים בהישג יד במחלקה דמנטית",
+                    "התעלמת מסימני אזהרה להידרדרות נשימתית",
+                    "לא דיווחת על טעות בזיהוי מטופל מחשש לעונש",
+                    "עבדת 3 משמרות כפולות רצופות בלי לבקש עזרה",
+                    "לא נשארת צמוד למטופל בזמן מקלחת והוא החליק"
                 ]
             }
         };
@@ -1784,31 +1835,61 @@
         const groupDynamicsData = {
             he: {
                 barometer: [
-                    "אני מרגיש מוערך בעבודתי", 
-                    "הצוות במחלקה תומך בי ברגעי משבר", 
-                    "לעתים קרובות אני חושב לעזוב את המקצוע", 
-                    "אני מצליח למצוא איזון בין בית לעבודה"
+                    "אני מרגיש מוערך בעבודתי על ידי הצוות וההנהלה", 
+                    "הצוות במחלקה תומך בי ברגעי משבר וקושי", 
+                    "לעתים קרובות אני מרגיש עומס שמוביל לתסכול מול מטופלים", 
+                    "אני מצליח למצוא איזון בריא בין בית לעבודה",
+                    "יש לי למי לפנות כשאני חווה חרדה או תשישות נפשית",
+                    "אני מרגיש שאני ממצה את היכולות שלי בעבודה",
+                    "לפעמים אני מרגיש שקוף - שהעבודה הקשה שלי לא נראית",
+                    "הייתי ממליץ לחבר/ה קרוב/ה לעבוד במקצוע הזה"
                 ],
                 listening: [
-                    "להקשיב בלי לקטוע את הדובר", 
-                    "לשקף את מה שנאמר 'אני שומע ש...'", 
-                    "לא לשפוט ולא לתת ביקורת מיידית", 
-                    "לשמור על קשר עין ושפת גוף פתוחה"
+                    "להקשיב בלי לקטוע את הדובר בשום שלב", 
+                    "לשקף את מה שנאמר: 'אני שומע שאתה אומר ש...'", 
+                    "לא לשפוט ולא לתת ביקורת או עצה מיידית", 
+                    "לשמור על קשר עין, שפת גוף פתוחה והנהון קל",
+                    "לזהות את הרגש שמאחורי המילים (כעס, פחד, אכזבה)",
+                    "להימנע מהסחות דעת (כמו להסתכל בטלפון הסלולרי)",
+                    "לשאול שאלות פתוחות: 'תוכל להרחיב על זה?'",
+                    "לתת לגיטימציה לרגש: 'זה הגיוני שתרגיש כך במצב כזה'"
                 ],
                 askMe5: [
                     "מהו התחביב האהוב עליך מחוץ לעבודה?", 
-                    "ספר על רגע מצחיק שחווית במחלקה", 
+                    "ספר על רגע מצחיק או מרגש שחווית במחלקה", 
                     "מהו המאכל שתמיד משפר את מצב הרוח שלך?", 
-                    "מה הכי מרגיע אותך אחרי משמרת קשה?", 
-                    "חלום אחד שטרם הגשמת"
+                    "מה הכי מרגיע אותך אחרי משמרת קשה ומעייפת?", 
+                    "חלום אחד שטרם הגשמת",
+                    "איזה שיר תמיד גורם לך לחייך?",
+                    "מי האדם שהכי מעורר בך השראה ולמה?",
+                    "מהי התכונה שאתה הכי אוהב בעצמך?",
+                    "אם לא היית בתחום הסיעוד, במה היית עובד?",
+                    "מה הדבר הקטן שחבר לצוות יכול לעשות כדי לעשות לך את היום?"
                 ],
                 scenarios: [
-                    "מטופל מסרב בתוקף לקבל טיפול וצועק עליך במסדרון. כיצד תגיב/י?",
-                    "משפחת המטופל מתלוננת שאתם לא עושים מספיק. כיצד תנהל/י את השיחה?",
-                    "את/ה מרגיש/ה עומס בלתי נסבל במשמרת, וחבר צוות מבקש עזרה. כיצד תתעדף/י?"
+                    "מטופל מסרב בתוקף לקבל טיפול וצועק עליך במסדרון בנוכחות מטופלים אחרים. כיצד תגיב/י?",
+                    "משפחת המטופל מתלוננת שאתם לא עושים מספיק והטון עולה. כיצד תנהל/י את השיחה?",
+                    "את/ה מרגיש/ה עומס בלתי נסבל במשמרת, וחבר צוות מבקש עזרה דחופה. כיצד תתעדף/י?",
+                    "זיהית שחבר לצוות עושה טעות בטיפול (כמעט ונפגע) אבל הוא מכחיש. כיצד תפעל/י?",
+                    "מטופל אהוב שהענקת לו טיפול מסור נפטר במהלך המשמרת שלך. איך תתמודד/י רגשית?",
+                    "קיבלת ביקורת נוקבת מול חולים אחרים מהאחות האחראית. איך תנהג/י?",
+                    "אחרי שבוע רצוף של משמרות קשות, את/ה קם/ה בבוקר בלי כוח ללכת לעבודה. מה תעשה/י?",
+                    "משפחה מתעקשת לתת למטופל אוכל בניגוד להוראות הרפואיות (סכנת חנק). איך תסביר/י להם את המצב ברוגע?"
                 ]
             }
         };
+
+        // ASSOCIATION CARDS DATA (Points of You style)
+        const associationCardsData = [
+            { word: "מסע", color: "from-blue-400 to-indigo-600", icon: "fa-route", question: "איך התמונה/המילה הזו מתחברת לדרך שעברת במחלקה השנה?" },
+            { word: "קושי", color: "from-slate-600 to-slate-900", icon: "fa-mountain", question: "מהו האתגר המרכזי שאתה חווה כרגע, ואיזה כוח עוזר לך להתמודד איתו?" },
+            { word: "תקווה", color: "from-amber-300 to-orange-500", icon: "fa-sun", question: "מה נותן לך אור או כוח להמשיך ברגעים עמוסים?" },
+            { word: "שחיקה", color: "from-rose-500 to-red-800", icon: "fa-battery-quarter", question: "היכן בגוף אתה מרגיש את העומס, ומה יכול להטעין אותך מחדש?" },
+            { word: "חיבור", color: "from-teal-400 to-emerald-600", icon: "fa-hands-holding-circle", question: "מי האדם בצוות שגורם לך להרגיש שייך, ומה מיוחד בקשר הזה?" },
+            { word: "שליטה", color: "from-purple-500 to-fuchsia-700", icon: "fa-anchor", question: "מהו הדבר האחד במשמרת שיש לך עליו שליטה מלאה?" },
+            { word: "צמיחה", color: "from-lime-400 to-green-700", icon: "fa-seedling", question: "איזה דבר חדש למדת על עצמך כמטפל/ת בחודש האחרון?" },
+            { word: "הפסקה", color: "from-cyan-400 to-blue-500", icon: "fa-mug-hot", question: "איך נראית ההפסקה האידיאלית שלך, ואיך אפשר להתקרב אליה במציאות?" }
+        ];
 
         // CLINICAL MODULE CARDS DATA
         const modulesCardsData = {
@@ -2611,6 +2692,8 @@
             if(modId === 'dynamics') renderDynamics();
             if(modId === 'listening') renderListening();
             if(modId === 'simulations') renderSimulations();
+            if(modId === 'cards') renderCards();
+            if(modId === 'snakes') renderSnakesGrid();
         }
 
         function switchAssessmentTab(type) {
@@ -2695,6 +2778,40 @@
         function updateSnakesBoard() {
             document.getElementById('snakes-position').innerText = snakesPosition;
             document.getElementById('snakes-progress').style.width = snakesPosition + '%';
+            
+            // Update visual grid map
+            for(let i=1; i<=100; i++) {
+                const cell = document.getElementById(`snake-cell-${i}`);
+                if(cell) {
+                    if(i === snakesPosition) {
+                        cell.className = "h-6 sm:h-8 flex items-center justify-center text-[10px] sm:text-xs font-black rounded bg-rose-500 text-white shadow-md transform scale-125 transition-all z-10 relative ring-2 ring-rose-300";
+                    } else if (i < snakesPosition) {
+                        cell.className = "h-6 sm:h-8 flex items-center justify-center text-[10px] sm:text-xs font-bold rounded bg-indigo-50 text-indigo-300 border border-indigo-100";
+                    } else {
+                        cell.className = "h-6 sm:h-8 flex items-center justify-center text-[10px] sm:text-xs font-bold rounded bg-slate-50 text-slate-400 border border-slate-200";
+                    }
+                }
+            }
+        }
+
+        function renderSnakesGrid() {
+            const grid = document.getElementById('snakes-grid-map');
+            if(!grid || grid.innerHTML.trim() !== '') return; // Already rendered
+            
+            let html = '';
+            for (let r = 9; r >= 0; r--) {
+                let isEven = r % 2 === 0;
+                let rowHtml = '';
+                for (let c = 1; c <= 10; c++) {
+                    // Zig-zag pattern: if even row (e.g. 0-9), left-to-right (1-10). If odd, right-to-left.
+                    // Wait, RTL layout: 1 is on the right.
+                    let num = r * 10 + (isEven ? c : (11 - c));
+                    rowHtml += `<div id="snake-cell-${num}"></div>`;
+                }
+                html += rowHtml;
+            }
+            grid.innerHTML = html;
+            updateSnakesBoard();
         }
 
         function showSnakesQuestion() {
@@ -2772,6 +2889,31 @@
             document.getElementById('dice-result-ui').innerText = '';
             document.getElementById('snakes-victory').classList.add('hidden');
             document.getElementById('snakes-question-area').classList.add('hidden');
+        }
+
+        // CARDS MODULE (Points of You)
+        function renderCards() {
+            const container = document.getElementById('cards-container');
+            if(!container) return;
+            container.innerHTML = associationCardsData.map((c, i) => `
+                <div onclick="openCardFocus(${i})" class="cursor-pointer group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-32 sm:h-40 bg-gradient-to-br ${c.color} flex flex-col items-center justify-center text-white">
+                    <i class="fa-solid ${c.icon} text-3xl sm:text-4xl opacity-50 group-hover:opacity-100 transition-opacity mb-2"></i>
+                    <h5 class="text-lg sm:text-xl font-black tracking-wide drop-shadow-md">${c.word}</h5>
+                </div>
+            `).join('');
+        }
+
+        function openCardFocus(idx) {
+            const c = associationCardsData[idx];
+            const visual = document.getElementById('focused-card-visual');
+            visual.className = `h-64 w-full flex flex-col items-center justify-center p-6 bg-gradient-to-br ${c.color}`;
+            document.getElementById('focused-card-word').innerHTML = `<i class="fa-solid ${c.icon} text-5xl mb-4 opacity-75"></i><br>${c.word}`;
+            document.getElementById('focused-card-question').innerText = c.question;
+            document.getElementById('card-focus-modal').classList.remove('hidden');
+        }
+
+        function closeCardFocus() {
+            document.getElementById('card-focus-modal').classList.add('hidden');
         }
 
         // RENDER MODULES 4-6
