@@ -117,6 +117,9 @@
                     <button onclick="setLanguage('ne')" id="btn-lang-ne" class="px-2 py-1 rounded-lg transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
                         <span>🇳🇵</span> <span>नेपाली</span>
                     </button>
+                    <button onclick="setLanguage('am')" id="btn-lang-am" class="px-2 py-1 rounded-lg transition-all flex items-center gap-1 text-slate-600 hover:text-slate-900">
+                        <span>🇪🇹</span> <span>አማርኛ</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -837,8 +840,8 @@
             <div class="text-slate-400 text-center md:text-left space-y-1">
                 <p id="ft-author">נכתב ע"י מאיה שקולניק גזית MHA, BA, RN</p>
                 <div class="flex gap-3 justify-center md:justify-end text-emerald-400">
-                    <a href="https://www.iang.co.il/" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-globe"></i> אתר העמותה (IANG)</a>
-                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-file-pdf"></i> נוהל משרד הבריאות</a>
+                    <a href="https://www.iang.co.il/" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-globe"></i> <span id="ft-link-assoc">אתר העמותה (IANG)</span></a>
+                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-file-pdf"></i> <span id="ft-link-proc">נוהל משרד הבריאות</span></a>
                 </div>
                 <p class="text-slate-500 text-[11px] pt-1" id="ft-copy">כל הזכויות שמורות © 2026 | מוקדש לבטיחות המטופל האזרח הוותיק</p>
             </div>
@@ -933,6 +936,11 @@
                 quizSubheading: 'בחן את בקיאותך בכללי הבטיחות, מצבי חירום ומשמרת לילה (נוהל 1.2.1.2)',
                 chkHeading: "צ'ק-ליסט בטיחות למשמרת (בקרת חובה)",
                 chkSubheading: 'עשה זאת בעצמך: פעולות קריטיות למניעת נזק למטופל במהלך המשמרת',
+                nmBoxTitle: 'מדריך דיון 5 דקות בהעברת משמרת (Shift Handover 5-Min Discussion):',
+                nmBoxSteps: '<li>האחות האחראית מעלה פתק "כמעט ונפגע" אחד שנאסף מהלוח.</li><li>הצוות דן במשך 3-5 דקות: מה גרם למפגע? כיצד למנוע הישנות?</li><li>מגדירים פתרון מחלקתי קבוע (למשל: החלפת בלם תקול ע"י אחזקה).</li>',
+                ftLinkAssoc: 'אתר העמותה (IANG)',
+                ftLinkProc: 'נוהל משרד הבריאות',
+                ftCopy: 'כל הזכויות שמורות © 2026 | מוקדש לבטיחות המטופל האזרח הוותיק',
                 ftTitle: 'עמותת האחיות לקידום הסיעוד הגריאטרי בישראל',
                 ftSub: 'מבוסס על נוהל האגף לגריאטריה, משרד הבריאות 1.2.1.2 מ-12.2025 וסקר תרבות בטיחות ארגונית',
                 ftAuthor: 'נכתב ע"י מאיה שקולניק גזית MHA, BA, RN',
@@ -1011,6 +1019,11 @@
                 quizSubheading: 'Test your knowledge on safety standards, emergency situations, and night shift duty (Procedure 1.2.1.2)',
                 chkHeading: 'Shift Safety Control Checklist',
                 chkSubheading: 'Do-It-Yourself: Critical checklist to prevent resident harm during shift hours',
+                nmBoxTitle: 'Shift Handover 5-Min Discussion Guide:',
+                nmBoxSteps: '<li>The charge nurse brings up one "near-miss" note from the board.</li><li>The team discusses for 3-5 mins: what caused it? how to prevent?</li><li>Define a permanent solution (e.g. maintenance replacing faulty brake).</li>',
+                ftLinkAssoc: 'Assoc Website (IANG)',
+                ftLinkProc: 'MoH Procedure',
+                ftCopy: 'All rights reserved © 2026 | Dedicated to older adult patient safety',
                 ftTitle: 'Association of Nurses for Geriatric Advancement in Israel',
                 ftSub: 'Based on MoH Geriatric Department Procedure 1.2.1.2 (12/2025)',
                 ftAuthor: 'Authored by Maya Shkolnik Gazit MHA, BA, RN',
@@ -1089,6 +1102,11 @@
                 quizSubheading: 'Проверьте свои знания стандартов безопасности',
                 chkHeading: 'Чек-лист безопасности смены',
                 chkSubheading: 'Сделай сам: Критические шаги для предотвращения вреда',
+                nmBoxTitle: 'Руководство по 5-минутному обсуждению при передаче смены:',
+                nmBoxSteps: '<li>Старшая медсестра берет одну записку "чуть не случилось" с доски.</li><li>Команда обсуждает 3-5 мин: в чем причина? как предотвратить?</li><li>Определяется постоянное решение (напр. ремонт тормоза).</li>',
+                ftLinkAssoc: 'Сайт Ассоциации (IANG)',
+                ftLinkProc: 'Процедура Минздрава',
+                ftCopy: 'Все права защищены © 2026 | Посвящается безопасности пожилых пациентов',
                 ftTitle: 'Ассоциация медсестер по развитию гериатрии в Израиле',
                 ftSub: 'На основе процедуры Минздрава 1.2.1.2',
                 ftAuthor: 'Автор: Майя Школьник Газит MHA, BA, RN',
@@ -1167,6 +1185,11 @@
                 quizSubheading: 'اختبر معرفتك بمعايير السلامة وحالات الطوارئ',
                 chkHeading: 'قائمة التحقق للسلامة خلال المناوبة',
                 chkSubheading: 'خطوات حاسمة لمنع ضرر المرضى',
+                nmBoxTitle: 'دليل مناقشة 5 دقائق عند تسليم الوردية:',
+                nmBoxSteps: '<li>تحضر الممرضة المسؤولة ملاحظة "حدث وشيك" واحدة من اللوحة.</li><li>يناقش الفريق لمدة 3-5 دقائق: ما السبب؟ كيف نمنع التكرار؟</li><li>تحديد حل جذري (مثل إرسال الفرامل للصيانة).</li>',
+                ftLinkAssoc: 'موقع الجمعية (IANG)',
+                ftLinkProc: 'إجراء وزارة الصحة',
+                ftCopy: 'جميع الحقوق محفوظة © 2026 | مخصص لسلامة المرضى المسنين',
                 ftTitle: 'جمعية الممرضين لتعزيز طب الشيخوخة في إسرائيل',
                 ftSub: 'بناءً على إجراء قسم الشيخوخة بوزارة الصحة 1.2.1.2',
                 ftAuthor: 'تأليف: مايا شكولنيك جازيت',
@@ -1245,9 +1268,97 @@
                 quizSubheading: 'सुरक्षा मापदण्डहरूमा आफ्नो ज्ञान परीक्षण गर्नुहोस्',
                 chkHeading: 'सिफ्ट सुरक्षा चेकलिस्ट',
                 chkSubheading: 'बिरामीलाई हानिबाट जोगाउन महत्त्वपूर्ण कदमहरू',
+                nmBoxTitle: 'सिफ्ट हस्तान्तरण ५ मिनेट छलफल गाइड:',
+                nmBoxSteps: '<li>इन्चार्ज नर्सले बोर्डबाट एउटा "नजिकैको-खतरा" नोट ल्याउँछिन्।</li><li>टोलीले ३-५ मिनेट छलफल गर्छ: कारण के हो? कसरी रोक्ने?</li><li>स्थायी समाधान परिभाषित गर्नुहोस् (जस्तै मर्मतद्वारा ब्रेक परिवर्तन)।</li>',
+                ftLinkAssoc: 'संघ वेबसाइट (IANG)',
+                ftLinkProc: 'स्वास्थ्य मन्त्रालय प्रक्रिया',
+                ftCopy: 'सबै अधिकार सुरक्षित © २०२६ | वृद्ध बिरामीको सुरक्षामा समर्पित',
                 ftTitle: 'इजरायलमा जेरियाट्रिक प्रगति को लागी नर्स संघ',
                 ftSub: 'स्वास्थ्य मन्त्रालयको प्रक्रिया 1.2.1.2 मा आधारित',
                 ftAuthor: 'लेखक: माया स्कोलनिक गाजिट',
+            },
+            am: {
+                dir: 'ltr',
+                headerBadge: 'የጤና ጥበቃ ሚኒስቴር አሰራር 1.2.1.2',
+                headerTitle: 'የረዳት ሰራተኞች ስልጠና - የደህንነት አርክቴክቸር',
+                btnAssocTop: 'IANG የነርሶች ድር ጣቢያ',
+                btnProcTop: 'ኦፊሴላዊ አሰራር 1.2.1.2 (PDF)',
+                btnBrochureTop: 'የደህንነት ብሮሹር (PDF)',
+                btnProcHero: 'አሰራር 1.2.1.2 (PDF)',
+                btnBrochureHero: 'የደህንነት ብሮሹር',
+                btnAssocHero: 'IANG ድር ጣቢያ',
+                heroTag: 'በእስራኤል የጄሪያትሪክ እድገት የነርሶች ማህበር',
+                heroTitle: 'ለጄሪያትሪክ ተንከባካቢዎች ስልጠና፣ ደህንነት እና የብቃት ቁጥጥር',
+                heroDesc: 'ረዳት ሰራተኞች የታካሚዎችን የህይወት ጥራት፣ ክብር እና ደህንነት የሚጠብቁ እውነተኛ ጋሻዎች ናቸው። ይህ ፖርታል የስልጠና ፕሮግራሞችን፣ የአሰራር 1.2.1.2 መስፈርቶችን እና የብዝሃ-ቋንቋ የብቃት ክትትልን በአንድ ቦታ ያዋህዳል።',
+                stat1: '18 ሰዓታት መሰረታዊ ስልጠና',
+                stat2: '40 ሰዓታት የላቀ ስልጠና',
+                stat3: '4 ሰዓታት የሌሊት ፈረቃ ማረጋገጫ',
+                authorTitle: 'የፕሮግራም እና ፖሊሲ አዘጋጅ',
+                authorName: 'ማያ ሽኮልኒክ ጋዚት',
+                authorRole: 'MHA, BA, RN | የፖሊሲ እና አስተዳደር ስፔሻሊስት',
+                authorQuote: '"ነርሷ እንደ የጥራት መሪ፣ ከረዳት ሰራተኞች ጋር በመተባበር - ያልተፈለጉ ክስተቶችን ለመከላከል እና የነዋሪዎችን ህይወት ለመጠበቅ ቁልፍ ነች።"',
+                tabModules: 'የስልጠና ፕሮግራሞች እና ህጎች',
+                tabEmergencies: 'ድንገተኛ አደጋዎች እና ልምምድ',
+                tabCurriculum: 'ዝርዝር ስርአተ ትምህርት እና ልምምድ',
+                tabResilience: 'የተንከባካቢ ጽናት ስልጠና',
+                tabObservation: 'በየስድስት ወሩ ክሊኒካዊ ግምገማ',
+                tabNearMiss: 'አደጋ ሊያደርሱ የነበሩ ክስተቶች እና የፈረቃ ውይይት',
+                tabQuiz: 'በይነተገናኝ የደህንነት ጥያቄዎች',
+                tabChecklist: 'የፈረቃ ደህንነት ማረጋገጫ ዝርዝር',
+                tabTracker: 'የብቃት ክትትል መዝገብ',
+                modHeading: 'የአሰራር 1.2.1.2 ዋና ምሰሶዎች',
+                modSubheading: 'በጄሪያትሪክስ የታካሚ ደህንነትን እና የአደጋ መከላከልን የሚያረጋግጥ የተዋቀረ ድብልቅ የስልጠና መንገድ',
+                infoTitle: 'የደህንነት ባህል እና ያለ ፍርሃት መናገር (Speak Up)',
+                infoBody: 'የደህንነት ባህል ጥናቶች እንደሚያሳዩት፣ ረዳት ሰራተኞች አደጋዎችን እና ሊያደርሱ የነበሩ ክስተቶችን ቀድመው ይለያሉ። የደህንነት አርክቴክቸር እያንዳንዱ ተንከባካቢ ቀደም ብሎ ማሳወቅ ህይወትን እንደሚያድን በማወቅ ያለ ፍርሃት ማንኛውንም አደጋ ወዲያውኑ እንዲያሳውቅ ያበረታታል።',
+                trHeading: 'የተንከባካቢ ብቃት ክትትል ዳሽቦርድ',
+                trSubheading: 'ከ Excel የቁጥጥር ፋይሎች ጋር የሚዛመዱ 12ቱን መለኪያዎች የያዘ ሙሉ የክትትል ሲሙሌተር',
+                btnManageDepts: 'ክፍሎችን አስተዳድር',
+                btnAddStaff: 'አዲስ ተንከባካቢ አክል',
+                allDept: 'ሁሉም ክፍሎች',
+                kpiTotalLbl: 'አጠቃላይ ሰራተኞች',
+                kpiTenureLbl: 'የስራ ጊዜ > 3 ወራት',
+                kpiBasicLbl: 'መሰረታዊ (18ሰ) ተጠናቋል',
+                kpiExamLbl: 'የፈተና ማለፊያ መጠን (>=80%)',
+                kpiNightLbl: 'ለሌሊት ስራ ብቁ',
+                thName: 'የተንከባካቢ ስም',
+                thDept: 'ክፍል',
+                thTenure: 'የስራ ጊዜ > 3ወ?',
+                thBls: 'BLS CPR',
+                thBasic: 'መሰረታዊ (18ሰ)',
+                thAdvanced: 'የላቀ (40ሰ)',
+                thNight: 'ሌሊት (4ሰ)',
+                thScore: 'የፈተና ውጤት እና ሁኔታ',
+                thEval: 'የግማሽ አመት ግምገማ',
+                thStatus: 'ለሌሊት ስራ ብቁ?',
+                resTag: 'የ40-ሰዓት የላቀ ኮርስ አካል',
+                resHeading: 'የተንከባካቢ ስሜታዊ ጽናት እና ድጋፍ ስልጠና',
+                resSubheading: 'በጄሪያትሪክ እንክብካቤ ውስጥ የስራ ጫናን ለመከላከል እና ስሜታዊ መቋቋም ራስን መገምገሚያ መጠይቅ',
+                resLblName: 'የተንከባካቢ ስም:',
+                btnSubmitResilience: 'የጽናት ጥናቱን አስገባ',
+                btnPrintResilience: 'የጽናት ማጠናቀቂያ አትም',
+                obsHeading: 'የተንከባካቢ የግማሽ አመት የስራ አፈፃፀም ግምገማ',
+                obsSubheading: 'በዋና ነርስ / አስተማሪ በአልጋ አጠገብ የሚሞላ ክሊኒካዊ ግምገማ',
+                obsLblStaff: 'የተንከባካቢ ስም:',
+                obsLblNurse: 'ገምጋሚ ነርስ ስም:',
+                obsLblNotes: 'የነርስ ገምጋሚ ማስታወሻዎች:',
+                btnPrintObs: 'የግማሽ አመት ግምገማ አትም',
+                nmHeading: 'አደጋ ሊያደርሱ የነበሩ ክስተቶች ሪፖርት ማቅረብ',
+                nmSubheading: 'ለ5-ደቂቃ ፈጣን የፈረቃ ውይይቶች አደጋዎችን ሪፖርት ያድርጉ',
+                nmFormTitle: '📝 የእለታዊ አደጋ ይመዝገቡ:',
+                btnSendNm: 'ሪፖርት አስገባ',
+                nmListTitle: '📋 የተመዘገቡ አደጋዎች:',
+                quizHeading: 'የተንከባካቢ የደህንነት እውቀት ጥያቄዎች',
+                quizSubheading: 'በደህንነት መስፈርቶች ላይ ያለዎትን እውቀት ይፈትኑ',
+                chkHeading: 'የፈረቃ ደህንነት ማረጋገጫ ዝርዝር',
+                chkSubheading: 'በፈረቃ ሰዓታት ጉዳት ለመከላከል ወሳኝ እርምጃዎች',
+                nmBoxTitle: 'የፈረቃ ርክክብ የ5-ደቂቃ ውይይት መመሪያ:',
+                nmBoxSteps: '<li>ኃላፊዋ ነርስ ከቦርዱ አንድ ማስታወሻ ታነሳለች።</li><li>ቡדኑ ከ3-5 ደቂቃዎች ይወያያል፡ መንስኤው ምንድን ነው?</li><li>ዘላቂ መፍትሄ ይግለጹ (ለምሳሌ፡ የተበላሸ ፍሬን መጠገን)።</li>',
+                ftLinkAssoc: 'የማህበሩ ድር ጣቢያ (IANG)',
+                ftLinkProc: 'MoH አሰራር',
+                ftCopy: 'መብቱ በህግ የተጠበቀ ነው © 2026',
+                ftTitle: 'በእስራኤል የጄሪያትሪክ እድገት የነርሶች ማህበር',
+                ftSub: 'በጤና ጥበቃ ሚኒስቴር አሰራር 1.2.1.2 ላይ የተመሰረተ',
+                ftAuthor: 'በማያ ሽኮልኒክ ጋዚት የተዘጋጀ',
             }
         };
 
@@ -1764,7 +1875,7 @@
             document.documentElement.dir = dict.dir;
             document.documentElement.lang = lang;
 
-            ['he', 'en', 'ru', 'ar', 'ne'].forEach(l => {
+            ['he', 'en', 'ru', 'ar', 'ne', 'am'].forEach(l => {
                 const btn = document.getElementById(`btn-lang-${l}`);
                 if (btn) {
                     if (l === lang) {
@@ -1857,13 +1968,19 @@
             document.getElementById('nm-list-title').innerText = dict.nmListTitle;
 
             // Quiz & Checklist & Footer
-            document.getElementById('quiz-heading').innerText = dict.quizHeading;
-            document.getElementById('quiz-subheading').innerText = dict.quizSubheading;
-            document.getElementById('chk-heading').innerText = dict.chkHeading;
-            document.getElementById('chk-subheading').innerText = dict.chkSubheading;
-            document.getElementById('ft-title').innerText = dict.ftTitle;
-            document.getElementById('ft-sub').innerText = dict.ftSub;
-            document.getElementById('ft-author').innerText = dict.ftAuthor;
+            if(document.getElementById('quiz-heading')) document.getElementById('quiz-heading').innerText = dict.quizHeading;
+            if(document.getElementById('quiz-subheading')) document.getElementById('quiz-subheading').innerText = dict.quizSubheading;
+            if(document.getElementById('chk-heading')) document.getElementById('chk-heading').innerText = dict.chkHeading;
+            if(document.getElementById('chk-subheading')) document.getElementById('chk-subheading').innerText = dict.chkSubheading;
+            if(document.getElementById('ft-title')) document.getElementById('ft-title').innerText = dict.ftTitle;
+            if(document.getElementById('ft-sub')) document.getElementById('ft-sub').innerText = dict.ftSub;
+            if(document.getElementById('ft-author')) document.getElementById('ft-author').innerText = dict.ftAuthor;
+            
+            if(document.getElementById('nm-box-title')) document.getElementById('nm-box-title').innerText = dict.nmBoxTitle;
+            if(document.getElementById('nm-box-steps')) document.getElementById('nm-box-steps').innerHTML = dict.nmBoxSteps;
+            if(document.getElementById('ft-link-assoc')) document.getElementById('ft-link-assoc').innerText = dict.ftLinkAssoc;
+            if(document.getElementById('ft-link-proc')) document.getElementById('ft-link-proc').innerText = dict.ftLinkProc;
+            if(document.getElementById('ft-copy')) document.getElementById('ft-copy').innerText = dict.ftCopy;
 
             // Re-render Dynamic Sub-components
             renderOverviewModules();
@@ -2804,6 +2921,28 @@
             document.querySelectorAll('#checklist-items-container input[type="checkbox"]').forEach(c => c.checked = false);
             updateChecklistProgress();
         }
+
+        // Apply Amharic fallbacks to prevent errors on unimplemented sections
+        const objectsToFallback = [
+            (typeof emergencyCardsData !== 'undefined' ? emergencyCardsData : null),
+            (typeof modulesCardsData !== 'undefined' ? modulesCardsData : null),
+            (typeof emergencySimulations !== 'undefined' ? emergencySimulations : null),
+            (typeof curriculumSimulations !== 'undefined' ? curriculumSimulations : null),
+            (typeof resilienceQuestionsData !== 'undefined' ? resilienceQuestionsData : null),
+            (typeof evaluationDomainsData !== 'undefined' ? evaluationDomainsData : null),
+            (typeof obsDropdownData !== 'undefined' ? obsDropdownData : null),
+            (typeof nearMissHazardTypes !== 'undefined' ? nearMissHazardTypes : null),
+            (typeof quizData !== 'undefined' ? quizData : null),
+            (typeof checklistData !== 'undefined' ? checklistData : null),
+            (typeof emgStaticData !== 'undefined' ? emgStaticData : null),
+            (typeof currSimStaticData !== 'undefined' ? currSimStaticData : null)
+        ];
+        
+        objectsToFallback.forEach(obj => {
+            if (obj && !obj['am']) {
+                obj['am'] = obj['he'] || obj['en'];
+            }
+        });
     </script>
 </body>
 </html>
