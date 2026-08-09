@@ -2804,11 +2804,7 @@
                 const selected = document.querySelector(`input[name="assess_q_${idx}"]:checked`);
                 if (selected) {
                     let val = parseInt(selected.value);
-                    if (currentAssessmentType === 'burnout') {
-                        totalPoints += val; // Higher index (always) = Higher burnout
-                    } else {
-                        totalPoints += (3 - val); // Lower index = Higher resilience
-                    }
+                    totalPoints += val; // Higher index always correlates to higher trait (burnout or resilience)
                 }
             });
 
