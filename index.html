@@ -237,6 +237,10 @@
                     <i class="fa-solid fa-table shadow-xs"></i>
                     <span id="tab-title-tracker">יומן מעקב ובקרת כשירות</span>
                 </button>
+                <button onclick="switchTab('stats')" id="tab-btn-stats" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
+                    <i class="fa-solid fa-chart-line text-medical-600"></i>
+                    <span id="tab-title-stats">המגמות שלי</span>
+                </button>
             </nav>
         </div>
     </div>
@@ -1137,6 +1141,7 @@
                 tabQuiz: 'מבדק ידע אינטראקטיבי',
                 tabChecklist: "צ'ק-ליסט במשמרת",
                 tabTracker: 'יומן מעקב ובקרת כשירות',
+                tabStats: 'המגמות שלי',
                 modHeading: 'עקרונות הליבה של נוהל 1.2.1.2',
                 modSubheading: 'מסלול הכשרה היברידי מובנה להבטחת בטיחות המטופל ומניעת סיכונים בגריאטריה',
                 infoTitle: 'תרבות בטיחות ודיווח ללא פחד (Speak Up)',
@@ -1641,8 +1646,8 @@
             he: {
                 p18: [
                     { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "מטופל מורכב במיטה שאינו משתף פעולה נדרש לעבור לכורסה. לפי עקרונות הארגונומיה והבטיחות, מה הצעד הנכון ביותר?", opts: ["א. לכופף גב ישר לבד, להרים אותו בכוח זרועות ולהעביר במהירות", "ב. לבדוק את תוכנית הטיפול האישית, להיעזר בסדין החלקה ובמטפל נוסף או מנוף, ולנעול בלמים במיטה ובכורסה", "ג. לבקש ממנו להתאמץ ולקום לבד", "ד. להעביר ללא נעילת בלמים כדי לחסוך זמן"], correct: 1, explain: "נכון מאוד! מעבר בטוח דורש בדיקת תוכנית טיפול אישית, נעילת בלמים במיטה ובכורסה, שימוש באביזרי עזר (סדין החלקה/מנוף) ועבודה בשני מטפלים במידת הצורך.", img: "assets/safe_patient_transfer_ergonomics.jpg" },
-                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "מטופל המתהלך בעזרת הליכון מתלונן פתאום על סחרחורת ומתחיל לאבד שיווי משקל. כיצד נכון להגיב?", opts: ["א. לתפוס אותו בידיים ולנסות למשוך אותו למעלה בכוח", "ב. לצעוק עליו שיעמוד יציב", "ג. לתמוך בו מאחור, להחליק אותו בזהירות לאורך גופך לרצפה ולקרוא לעזרה", "ד. לעזוב אותו ולרוץ להביא כיסא"], correct: 2, explain: "מעולה! כשמטופל נופל, הניסיון לבלום אותו בכוח עלול לפצוע את המטפל והמטופל. יש להחליקו בעדינות לרצפה." },
-                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "יש להעלות מטופל כבד כלפי מעלה לכיוון ראש המיטה. מהי הדרך הארגונומית הנכונה?", opts: ["א. למשוך אותו בבתי השחי", "ב. לבצע את הפעולה בעזרת מטפל נוסף וסדין החלקה, תוך תיאום (1,2,3) וכיפוף ברכיים", "ג. לעמוד בקצה המיטה ולמשוך אותו ברגליים", "ד. להרים לו את הראש ולדחוף מהכתפיים"], correct: 1, explain: "בדיוק! שימוש בסדין החלקה ושני מטפלים מונע פציעות גב ומונע נזק לעור המטופל (Shear)." },
+                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "מטופל המתהלך בעזרת הליכון מתלונן פתאום על סחרחורת ומתחיל לאבד שיווי משקל. כיצד נכון להגיב?", opts: ["א. לתפוס אותו בידיים ולנסות למשוך אותו למעלה בכוח", "ב. לצעוק עליו שיעמוד יציב", "ג. לתמוך בו מאחור, להחליק אותו בזהירות לאורך גופך לרצפה ולקרוא לעזרה", "ד. לעזוב אותו ולרוץ להביא כיסא"], correct: 2, explain: "מעולה! כשמטופל נופל, הניסיון לבלום אותו בכוח עלול לפצוע את המטפל והמטופל. יש להחליקו בעדינות לרצפה.", img: "assets/patient_falling_support.jpg" },
+                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "יש להעלות מטופל כבד כלפי מעלה לכיוון ראש המיטה. מהי הדרך הארגונומית הנכונה?", opts: ["א. למשוך אותו בבתי השחי", "ב. לבצע את הפעולה בעזרת מטפל נוסף וסדין החלקה, תוך תיאום (1,2,3) וכיפוף ברכיים", "ג. לעמוד בקצה המיטה ולמשוך אותו ברגליים", "ד. להרים לו את הראש ולדחוף מהכתפיים"], correct: 1, explain: "בדיוק! שימוש בסדין החלקה ושני מטפלים מונע פציעות גב ומונע נזק לעור המטופל (Shear).", img: "assets/patient_transfer_ergonomics.jpg" },
                     { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "לפני שימוש במנוף להעברת מטופל, מהי פעולת החובה המקדימה?", opts: ["א. בדיקת תקינות הערסל (קרעים), טעינת סוללה, ונעילת בלמי המיטה", "ב. כיבוי המזגן בחדר", "ג. בקשת אישור מהמשפחה", "ד. שימון גלגלי המנוף"], correct: 0, explain: "נכון! בטיחות במנוף מתחילה בבדיקת ציוד. בנוסף, חובה לפי נהלי הבטיחות שעבודה במעברים עם מנוף תתבצע תמיד בזוג <strong class=\"text-base text-rose-700 underline\">(שני אנשי צוות)</strong>, תוך הקפדה יתרה על תמיכה ושמירה על ראשו של המטופל במהלך כל ההעברה." }
                 ],
                 p40: [
@@ -2448,6 +2453,7 @@
             if(document.getElementById('tab-title-nearmiss')) document.getElementById('tab-title-nearmiss').innerText = dict.tabNearMiss;
             if(document.getElementById('tab-title-quiz')) document.getElementById('tab-title-quiz').innerText = dict.tabQuiz;
             if(document.getElementById('tab-title-checklist')) document.getElementById('tab-title-checklist').innerText = dict.tabChecklist;
+            if(document.getElementById('tab-title-stats')) document.getElementById('tab-title-stats').innerText = dict.tabStats;
 
             // Overview Section
             if(document.getElementById('mod-heading')) document.getElementById('mod-heading').innerText = dict.modHeading;
@@ -2889,7 +2895,7 @@
                 
                 let imgHtml = '';
                 if (isCorrect && imgUrl) {
-                    imgHtml = `<div class="mt-3"><img src="${imgUrl}" class="w-full h-auto max-h-48 object-cover rounded-xl border shadow-sm" alt="המחשה לתשובה"></div>`;
+                    imgHtml = `<div class="mt-3"><img src="${imgUrl}" class="w-full h-auto max-h-96 object-contain rounded-xl border shadow-sm bg-slate-50" alt="המחשה לתשובה"></div>`;
                 }
 
                 if (isCorrect) {
