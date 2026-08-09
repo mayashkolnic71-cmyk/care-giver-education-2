@@ -57,6 +57,7 @@
             font-family: 'Rubik', 'Noto Sans Devanagari', sans-serif;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
@@ -893,6 +894,39 @@
             </div>
         </section>
 
+        <!-- TAB 5: STATS -->
+        <section id="tab-stats" class="hidden space-y-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <div class="text-center max-w-3xl mx-auto space-y-2 mb-8">
+                    <h3 class="text-2xl font-bold text-slate-900" id="stats-heading">לוח בקרה ומגמות אישי</h3>
+                    <p class="text-slate-600 text-sm" id="stats-subheading">עקבי אחרי ההתקדמות שלך וקבלי המלצות חכמות לחיזוק</p>
+                </div>
+                
+                <!-- CHART CONTAINER -->
+                <div class="relative h-80 w-full max-w-2xl mx-auto mb-8">
+                    <canvas id="trendsChart"></canvas>
+                </div>
+
+                <!-- SMART AGENT RECOMMENDATIONS -->
+                <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-6" id="agent-recommendations">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-indigo-600 text-white p-3 rounded-full flex-shrink-0">
+                            <i class="fa-solid fa-robot text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-indigo-900 text-lg mb-2">הסוכן החכם שלך</h4>
+                            <p class="text-indigo-800 text-sm leading-relaxed" id="agent-text">
+                                עדיין אין מספיק נתונים. בצעי מספר סימולציות ומצבי חירום, וחזרי לכאן כדי לראות את המגמות ולקבל המלצות!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button onclick="resetStats()" class="text-xs text-rose-500 hover:text-rose-700 underline"><i class="fa-solid fa-trash-can ml-1"></i> איפוס נתונים</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- MODAL 1: ADD NEW CAREGIVER -->
@@ -2420,13 +2454,16 @@
         // TAB SWITCHING
         function switchTab(tabId) {
             currentTab = tabId;
-            ['modules', 'emergencies', 'curriculum', 'resilience', 'observation', 'nearmiss', 'quiz', 'checklist', 'tracker'].forEach(t => {
+            ['modules', 'emergencies', 'curriculum', 'resilience', 'observation', 'nearmiss', 'quiz', 'checklist', 'tracker', 'stats'].forEach(t => {
                 const section = document.getElementById(`tab-${t}`);
                 const btn = document.getElementById(`tab-btn-${t}`);
                 if (section && btn) {
                     if (t === tabId) {
                         section.classList.remove('hidden');
                         btn.className = "tab-active py-2 px-3 border-b-2 border-medical-600 text-medical-700 flex items-center gap-2 whitespace-nowrap font-bold";
+                        if (tabId === 'stats' && typeof renderStatsChart === 'function') {
+                            renderStatsChart();
+                        }
                     } else {
                         section.classList.add('hidden');
                         btn.className = "py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600";
@@ -2562,7 +2599,10 @@
             });
 
             feedbackBox.classList.remove('hidden');
-            if (selectedIdx === correctIdx) {
+            const isCorrect = selectedIdx === correctIdx;
+            if (typeof recordStat === 'function') recordStat('emergencies', isCorrect);
+
+            if (isCorrect) {
                 feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
                 feedbackBox.innerHTML = `<strong>${sd.correct}</strong><br>${explain}`;
                 confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
@@ -2761,7 +2801,11 @@
 
             if (fb) {
                 fb.classList.remove('hidden');
-                if (selectedIdx === correctIdx) {
+                const isCorrect = selectedIdx === correctIdx;
+                const cat = qIdx.split('_')[0]; // 'p18', 'p40', or 'p4n'
+                if (typeof recordStat === 'function') recordStat(cat, isCorrect);
+
+                if (isCorrect) {
                     fb.className = "mt-3 p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
                     fb.innerHTML = `<strong>${sd.correct}</strong><br>${explain}`;
                     confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
@@ -3761,6 +3805,114 @@
                 obj['am'] = obj['he'] || obj['en'];
             }
         });
+        // STATS AND SMART AGENT LOGIC
+        let trendsChartInstance = null;
+
+        function getStats() {
+            const stats = localStorage.getItem('caregiverStats');
+            if (stats) return JSON.parse(stats);
+            return {
+                emergencies: { correct: 0, wrong: 0, name: 'מצבי חירום' },
+                p18: { correct: 0, wrong: 0, name: 'ארגונומיה ומעברים (18 שעות)' },
+                p40: { correct: 0, wrong: 0, name: 'סיבוכים ודמנציה (40 שעות)' },
+                p4n: { correct: 0, wrong: 0, name: 'החייאה (4 שעות)' }
+            };
+        }
+
+        function saveStats(stats) {
+            localStorage.setItem('caregiverStats', JSON.stringify(stats));
+        }
+
+        function recordStat(category, isCorrect) {
+            const stats = getStats();
+            if (stats[category]) {
+                if (isCorrect) stats[category].correct++;
+                else stats[category].wrong++;
+                saveStats(stats);
+            }
+        }
+
+        function resetStats() {
+            if(confirm('האם את בטוחה שברצונך לאפס את כל הנתונים?')) {
+                localStorage.removeItem('caregiverStats');
+                if (currentTab === 'stats') renderStatsChart();
+            }
+        }
+
+        function renderStatsChart() {
+            const stats = getStats();
+            const labels = [];
+            const successRates = [];
+            
+            let totalAnswers = 0;
+            let weakestCategory = null;
+            let lowestScore = 100;
+            let strongestCategory = null;
+            let highestScore = -1;
+
+            for (const key in stats) {
+                const s = stats[key];
+                const total = s.correct + s.wrong;
+                totalAnswers += total;
+                if (total > 0) {
+                    labels.push(s.name);
+                    const rate = Math.round((s.correct / total) * 100);
+                    successRates.push(rate);
+                    
+                    if (rate < lowestScore) { lowestScore = rate; weakestCategory = s.name; }
+                    if (rate > highestScore) { highestScore = rate; strongestCategory = s.name; }
+                }
+            }
+
+            // Update chart
+            const ctx = document.getElementById('trendsChart').getContext('2d');
+            if (trendsChartInstance) trendsChartInstance.destroy();
+
+            if (labels.length === 0) {
+                document.getElementById('agent-text').innerText = 'עדיין אין מספיק נתונים. בצעי מספר סימולציות ומצבי חירום, וחזרי לכאן כדי לראות את המגמות ולקבל המלצות!';
+                // Empty chart
+                trendsChartInstance = new Chart(ctx, { type: 'bar', data: { labels: [], datasets: [] }});
+                return;
+            }
+
+            trendsChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'אחוזי הצלחה (%)',
+                        data: successRates,
+                        backgroundColor: 'rgba(99, 102, 241, 0.6)',
+                        borderColor: 'rgb(99, 102, 241)',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, max: 100 }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // Update smart agent
+            let recText = `כל הכבוד על התרגול! ענית עד כה על ${totalAnswers} שאלות.<br><br>`;
+            if (strongestCategory) {
+                recText += `ראינו שאת שולטת בנושא **${strongestCategory}** (${highestScore}% הצלחה).<br>`;
+            }
+            if (weakestCategory && lowestScore < 80) {
+                recText += `עם זאת, זיהינו שיש צורך בחיזוק בנושא **${weakestCategory}** (${lowestScore}% הצלחה בלבד). הסוכן החכם ממליץ לך לחזור ולבצע סימולציות בנושא זה כדי לשפר את המיומנות.`;
+            } else {
+                recText += `נראה שאת שולטת היטב בכל החומר (מעל 80% בכולם)! המשיכי לתרגל כדי לשמור על רמה גבוהה.`;
+            }
+            
+            document.getElementById('agent-text').innerHTML = recText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
     </script>
 </body>
 </html>
