@@ -2936,18 +2936,20 @@
                 fb.innerText = `תשובה נכונה! התקדמת ${pendingDiceValue} משבצות.` + (isLadder ? " מצאת סולם! עלית עוד 10 משבצות 🪜" : "");
                 
                 if (isLadder) {
-                    try {
-                        confetti({
-                            particleCount: 150,
-                            spread: 80,
-                            origin: { y: 0.6 },
-                            zIndex: 10000
-                        });
-                        const applause = new Audio('https://actions.google.com/sounds/v1/crowds/light_applause.ogg');
-                        applause.play().catch(e => console.log('Audio play blocked:', e));
-                    } catch (e) {
-                        console.error('Confetti error:', e);
-                    }
+                    // Bonus was given
+                }
+                
+                try {
+                    confetti({
+                        particleCount: 150,
+                        spread: 80,
+                        origin: { y: 0.6 },
+                        zIndex: 10000
+                    });
+                    const applause = new Audio('https://actions.google.com/sounds/v1/crowds/light_applause.ogg');
+                    applause.play().catch(e => console.log('Audio play blocked:', e));
+                } catch (e) {
+                    console.error('Confetti error:', e);
                 }
                 
                 updateSnakesBoard();
