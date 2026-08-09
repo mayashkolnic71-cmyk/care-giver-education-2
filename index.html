@@ -359,9 +359,9 @@
 
                 <div class="space-y-4">
                     <div class="flex flex-wrap gap-2" id="curr-sim-program-pills">
-                        <button onclick="selectCurriculumPractice('p18')" id="btn-prog-p18" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-700 text-white shadow-xs">18 שעות: בסיסית וארגונומיה</button>
-                        <button onclick="selectCurriculumPractice('p40')" id="btn-prog-p40" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">40 שעות: הידרדרות, דמנציה וחוסן</button>
-                        <button onclick="selectCurriculumPractice('p4n')" id="btn-prog-p4n" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">4 שעות: השגחת לילה ותקשורת</button>
+                        <button onclick="selectCurriculumPractice('p18')" id="btn-prog-p18" class="px-4 py-2.5 rounded-xl text-sm sm:text-base font-bold bg-sky-700 text-white shadow-md">18 שעות: בסיסית וארגונומיה</button>
+                        <button onclick="selectCurriculumPractice('p40')" id="btn-prog-p40" class="px-4 py-2.5 rounded-xl text-sm sm:text-base font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 shadow-sm">40 שעות: הידרדרות, דמנציה וחוסן</button>
+                        <button onclick="selectCurriculumPractice('p4n')" id="btn-prog-p4n" class="px-4 py-2.5 rounded-xl text-sm sm:text-base font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 shadow-sm">4 שעות: השגחת לילה ותקשורת</button>
                     </div>
 
                     <div id="curr-sim-content-box" class="p-4 bg-slate-50 border rounded-xl space-y-4 text-xs">
@@ -2830,9 +2830,9 @@
                 if (btn) {
                     btn.innerText = k === 'p18' ? sd.b18 : (k === 'p40' ? sd.b40 : sd.b4n);
                     if (k === progKey) {
-                        btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-700 text-white shadow-xs";
+                        btn.className = "px-4 py-2.5 rounded-xl text-sm sm:text-base font-bold bg-sky-700 text-white shadow-md";
                     } else {
-                        btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
+                        btn.className = "px-4 py-2.5 rounded-xl text-sm sm:text-base font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 shadow-sm";
                     }
                 }
             });
