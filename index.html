@@ -2851,7 +2851,7 @@
                     </div>
                     <div class="space-y-2 pt-2" id="curr-opts-${qIdx}">
                         ${simObj.opts.map((optText, idx) => `
-                            <button onclick="checkCurriculumSim(${qIdx}, ${idx}, ${simObj.correct}, '${encodeURIComponent(simObj.explain)}')" class="w-full text-right p-3 bg-white border border-slate-200 hover:border-sky-400 rounded-xl text-xs font-medium text-slate-800 transition-all flex items-center justify-between">
+                            <button onclick="checkCurriculumSim('${progKey}', ${qIdx}, ${idx}, ${simObj.correct}, '${encodeURIComponent(simObj.explain)}')" class="w-full text-right p-3 bg-white border border-slate-200 hover:border-sky-400 rounded-xl text-xs font-medium text-slate-800 transition-all flex items-center justify-between">
                                 <span>${optText}</span>
                                 <i class="fa-regular fa-circle text-slate-300"></i>
                             </button>
@@ -2865,7 +2865,7 @@
             if(feedbackBox) feedbackBox.classList.add('hidden');
         }
 
-        function checkCurriculumSim(qIdx, selectedIdx, correctIdx, encodedExplain) {
+        function checkCurriculumSim(cat, qIdx, selectedIdx, correctIdx, encodedExplain) {
             const explain = decodeURIComponent(encodedExplain);
             const fb = document.getElementById('curr-fb-' + qIdx);
             const buttons = document.querySelectorAll('#curr-opts-' + qIdx + ' button');
@@ -2885,7 +2885,6 @@
             if (fb) {
                 fb.classList.remove('hidden');
                 const isCorrect = selectedIdx === correctIdx;
-                const cat = qIdx.split('_')[0]; // 'p18', 'p40', or 'p4n'
                 if (typeof recordStat === 'function') recordStat(cat, isCorrect);
 
                 if (isCorrect) {
