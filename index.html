@@ -1565,9 +1565,24 @@
         // INTERACTIVE CURRICULUM PRACTICE SIMULATION DATA
         const curriculumSimulations = {
             he: {
-                p18: { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "מטופל מורכב במיטה שאינו משתף פעולה נדרש לעבור לכורסה. לפי עקרונות הארגונומיה והבטיחות, מה הצעד הנכון ביותר?", opts: ["א. לכופף גב ישר לבד, להרים אותו בכוח זרועות ולהעביר במהירות", "ב. לבדוק את תוכנית הטיפול האישית, להיעזר בסדין החלקה ובמטפל נוסף או מנוף, ולנעול בלמים במיטה ובכורסה", "ג. לבקש ממנו להתאמץ ולקום לבד", "ד. להעביר ללא נעילת בלמים כדי לחסוך זמן"], correct: 1, explain: "נכון מאוד! מעבר בטוח דורש בדיקת תוכנית טיפול אישית, נעילת בלמים במיטה ובכורסה, שימוש באביזרי עזר (סדין החלקה/מנוף) ועבודה בשני מטפלים במידת הצורך." },
-                p40: { title: "תרגול תוכנית 40 שעות: האכלה בטוחה בדמנציה/דיספגיה", q: "בזמן האכלת דייר עם דמנציה וקשיי בליעה (דיספגיה), הדייר אוגר מזון בפה ומראה סימני השתעלות. מה הפעולה הנכונה?", opts: ["א. להמשיך להאכיל כף אחר כף במהירות", "ב. לוודא הושבה ב-90 מעלות, להאכיל בכפיות קטנות, לוודא סיום בליעה לפני כפית נוספת ולדווח לאחות אם יש שיעול חוזר", "ג. להשכיב אותו שטוח ולהאכיל בשכיבה", "ד. לתת מים זורמים מהר בכוס"], correct: 1, explain: "מדויק! מניעת אספירציה וחנק דורשת מנח זקוף (90°), האכלה איטית, וידוא פינוי הפה לפני מתן כפית נוספת ודיווח לאחות על סימני קושי בליעה." },
-                p4n: { title: "תרגול תוכנית 4 שעות: עבודת לילה וסבבי השגחה", q: "בשעה 02:00 בלילה במהלך סבב השגחה שעתי, גילית דייר מבולבל שיצא ממיטתו ומנסה ללכת בחושך. כיצד תפעל?", opts: ["א. תצעק עליו שיחזור מיד למיטה ולנעול את החדר", "ב. תפנה אליו ברוגע, תדליק תאורת לילה רכה, תלווה אותו בבטחה, תבדוק אם נדרש מים/שירותים ותדווח לאחות התורנית", "ג. להתעלם ולהמשיך בסבב", "ד. להשאיר אותו על הרצפה"], correct: 1, explain: "כל הכבוד! גישה רגועה, שמירה על תאורת לילה בטוחה, מניעת נפילה, ומענה לצרכים פיזיולוגיים בשילוב דיווח לאחות מבטיחים את שלומו בלילה." }
+                p18: [
+                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "מטופל מורכב במיטה שאינו משתף פעולה נדרש לעבור לכורסה. לפי עקרונות הארגונומיה והבטיחות, מה הצעד הנכון ביותר?", opts: ["א. לכופף גב ישר לבד, להרים אותו בכוח זרועות ולהעביר במהירות", "ב. לבדוק את תוכנית הטיפול האישית, להיעזר בסדין החלקה ובמטפל נוסף או מנוף, ולנעול בלמים במיטה ובכורסה", "ג. לבקש ממנו להתאמץ ולקום לבד", "ד. להעביר ללא נעילת בלמים כדי לחסוך זמן"], correct: 1, explain: "נכון מאוד! מעבר בטוח דורש בדיקת תוכנית טיפול אישית, נעילת בלמים במיטה ובכורסה, שימוש באביזרי עזר (סדין החלקה/מנוף) ועבודה בשני מטפלים במידת הצורך." },
+                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "מטופל המתהלך בעזרת הליכון מתלונן פתאום על סחרחורת ומתחיל לאבד שיווי משקל. כיצד נכון להגיב?", opts: ["א. לתפוס אותו בידיים ולנסות למשוך אותו למעלה בכוח", "ב. לצעוק עליו שיעמוד יציב", "ג. לתמוך בו מאחור, להחליק אותו בזהירות לאורך גופך לרצפה ולקרוא לעזרה", "ד. לעזוב אותו ולרוץ להביא כיסא"], correct: 2, explain: "מעולה! כשמטופל נופל, הניסיון לבלום אותו בכוח עלול לפצוע את המטפל והמטופל. יש להחליקו בעדינות לרצפה." },
+                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "יש להעלות מטופל כבד כלפי מעלה לכיוון ראש המיטה. מהי הדרך הארגונומית הנכונה?", opts: ["א. למשוך אותו בבתי השחי", "ב. לבצע את הפעולה בעזרת מטפל נוסף וסדין החלקה, תוך תיאום (1,2,3) וכיפוף ברכיים", "ג. לעמוד בקצה המיטה ולמשוך אותו ברגליים", "ד. להרים לו את הראש ולדחוף מהכתפיים"], correct: 1, explain: "בדיוק! שימוש בסדין החלקה ושני מטפלים מונע פציעות גב ומונע נזק לעור המטופל (Shear)." },
+                    { title: "תרגול תוכנית 18 שעות: ארגונומיה ומעברים בטוחים", q: "לפני שימוש במנוף להעברת מטופל, מהי פעולת החובה המקדימה?", opts: ["א. בדיקת תקינות הערסל (קרעים), טעינת סוללה, ונעילת בלמי המיטה", "ב. כיבוי המזגן בחדר", "ג. בקשת אישור מהמשפחה", "ד. שימון גלגלי המנוף"], correct: 0, explain: "נכון! בטיחות בשימוש במנוף מתחילה בבדיקת ציוד קפדנית לפני כל שימוש." }
+                ],
+                p40: [
+                    { title: "תרגול תוכנית 40 שעות: האכלה בטוחה בדמנציה/דיספגיה", q: "בזמן האכלת דייר עם דמנציה וקשיי בליעה (דיספגיה), הדייר אוגר מזון בפה ומראה סימני השתעלות. מה הפעולה הנכונה?", opts: ["א. להמשיך להאכיל כף אחר כף במהירות", "ב. לוודא הושבה ב-90 מעלות, להאכיל בכפיות קטנות, לוודא סיום בליעה לפני כפית נוספת ולדווח לאחות אם יש שיעול חוזר", "ג. להשכיב אותו שטוח ולהאכיל בשכיבה", "ד. לתת מים זורמים מהר בכוס"], correct: 1, explain: "מדויק! מניעת אספירציה וחנק דורשת מנח זקוף (90°), האכלה איטית, וידוא פינוי הפה לפני מתן כפית נוספת ודיווח לאחות על סימני קושי בליעה." },
+                    { title: "תרגול תוכנית 40 שעות: דליריום (בלבול חריף)", q: "מטופל שהיה צלול וחיוני בבוקר, הופך לקראת הצהריים למבולבל מאוד, חסר שקט וטוען שיש חרקים בחדר. מהי המסקנה?", opts: ["א. הוא מפתח דמנציה פתאומית", "ב. זהו כנראה מצב של דליריום (בלבול חריף) המחייב דיווח מיידי לאחות לחיפוש סיבה רפואית", "ג. הוא סתם עייף ויש לתת לו לישון", "ד. הוא עושה דווקא ויש להתעלם"], correct: 1, explain: "נכון! שינוי מצב הכרה חריף הוא נורת אזהרה קריטית (דליריום) הדורשת בירור רפואי דחוף." },
+                    { title: "תרגול תוכנית 40 שעות: אלימות והתנגדות לטיפול", q: "מטופלת עם דמנציה מתנגדת בתוקף למקלחת בבוקר, צועקת ודוחפת את המטפל. כיצד יש לנהוג?", opts: ["א. להכניס אותה למקלחת בכוח כי חובה לשמור על ניקיון", "ב. לצעוק עליה בחזרה כדי שתירגע", "ג. להרפות, להרגיע אותה, ולנסות שוב מאוחר יותר או בגישה שונה, תוך דיווח לצוות", "ד. לא לקלח אותה לעולם יותר"], correct: 2, explain: "מעולה! מאבקי כוח עם חולי דמנציה רק מחמירים את ההתנגדות. יש להשתמש בטכניקות הסחה ולנסות שנית." },
+                    { title: "תרגול תוכנית 40 שעות: חוסן ושחיקה", q: "לאחר שבוע של משמרות כפולות ומטופלים מורכבים, אתה חש עצבנות, חוסר סבלנות ועייפות קיצונית. כיצד נכון לפעול?", opts: ["א. להסתיר את המצב ולהמשיך לסבול", "ב. להוציא את העצבים על המטופלים", "ג. לשתף אחראי/צוות תומך, לדאוג להפסקות מסודרות ולא לחשוש לבקש עזרה", "ד. להתפטר מיד"], correct: 2, explain: "נכון מאוד! חוסן נפשי (Resilience) מתחיל בזיהוי השחיקה ובקשת תמיכה מהצוות כחלק מההיגיינה הנפשית שלנו." }
+                ],
+                p4n: [
+                    { title: "תרגול תוכנית 4 שעות: עבודת לילה וסבבי השגחה", q: "בשעה 02:00 בלילה במהלך סבב השגחה שעתי, גילית דייר מבולבל שיצא ממיטתו ומנסה ללכת בחושך. כיצד תפעל?", opts: ["א. תצעק עליו שיחזור מיד למיטה ולנעול את החדר", "ב. תפנה אליו ברוגע, תדליק תאורת לילה רכה, תלווה אותו בבטחה, תבדוק אם נדרש מים/שירותים ותדווח לאחות התורנית", "ג. להתעלם ולהמשיך בסבב", "ד. להשאיר אותו על הרצפה"], correct: 1, explain: "כל הכבוד! גישה רגועה, שמירה על תאורת לילה בטוחה, מניעת נפילה, ומענה לצרכים פיזיולוגיים בשילוב דיווח לאחות מבטיחים את שלומו בלילה." },
+                    { title: "תרגול תוכנית 4 שעות: תלונות כאב בלילה", q: "בסבב השגחה ב-3:00, מטופל מתלונן על כאב עז בברך שאינו חולף לאחר שינוי תנוחה. מה עליך לעשות?", opts: ["א. לומר לו שייקח כדור בבוקר", "ב. לדווח לאחות הלילה על הכאב כדי שתעריך ותיתן טיפול במידת הצורך", "ג. לתת לו כדור נגד כאבים מהארון בעצמך", "ד. לכבות את האור ולצאת"], correct: 1, explain: "בדיוק! כאב הוא סימן חיוני שיש להתייחס אליו. חובה לדווח לאחות וחל איסור על מטפל לחלק תרופות בעצמו." },
+                    { title: "תרגול תוכנית 4 שעות: תקשורת עם משפחות", q: "ב-11 בלילה, משפחה מתקשרת למחלקה מודאגת מאוד ודורשת מידע רפואי מפורט על מצב אמם בעקבות נפילה קלה. כיצד תגיב?", opts: ["א. לנתק את הטלפון", "ב. להמציא מידע כדי שיירגעו", "ג. לענות באדיבות, להסביר שאינך מוסמך לתת מידע רפואי ולהעביר את השיחה לאחות התורנית", "ד. למסור את כל המידע שמופיע בתיק"], correct: 2, explain: "מעולה! תקשורת יעילה וגבולות מקצועיים: מסירת מידע רפואי תיעשה על ידי הצוות הרפואי/הסיעודי המוסמך בלבד." },
+                    { title: "תרגול תוכנית 4 שעות: השכמת בוקר", q: "לקראת סוף משמרת הלילה, מתחילים השכמה והכנות לטיפול בוקר. כיצד יש לבצע זאת בצורה בטיחותית?", opts: ["א. להדליק אורות בבת אחת ולזרז את כולם לקום", "ב. להקים אותם מהר כדי לסיים את המשמרת", "ג. להשכים בעדינות, לתת להם לשבת מספר דקות במיטה לפני הקימה (למניעת ירידת לחץ דם) וללוות בבטחה", "ד. להשאיר את כולם במיטה עד לצוות בוקר"], correct: 2, explain: "נכון מאוד! קימה חפוזה עלולה לגרום לירידת לחץ דם תנוחתית (אורתוסטטיזם) ונפילות קשות בבוקר." }
+                ]
             },
             en: {
                 p18: { title: "18h Program: Ergonomics & Safe Transfers", q: "A non-cooperative bedbound complex patient needs to be transferred to a chair. According to ergonomics and safety principles, what is the best course of action?", opts: ["a. Bend with a straight back alone, lift him using arm strength, and transfer quickly", "b. Check the personal care plan, use a slide sheet and another caregiver or a hoist, and lock the bed and chair brakes", "c. Ask him to make an effort and get up on his own", "d. Transfer without locking brakes to save time"], correct: 1, explain: "Very correct! A safe transfer requires checking the personal care plan, locking brakes on the bed and chair, using assistive devices (slide sheet/hoist) and working with two caregivers if needed." },
@@ -2684,29 +2699,41 @@
             const feedbackBox = document.getElementById('curr-sim-feedback-box');
             if(!box) return;
 
-            const simObj = curriculumSimulations[currentLang][progKey];
+            let simData = curriculumSimulations[currentLang][progKey];
+            if (!simData) simData = curriculumSimulations['he'][progKey];
+            
+            const questions = Array.isArray(simData) ? simData : [simData];
+            
+            box.innerHTML = '';
+            
+            questions.forEach((simObj, qIdx) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = "mb-6 pb-6 border-b border-slate-200 last:border-0 last:pb-0 last:mb-0";
+                qDiv.innerHTML = `
+                    <div class="space-y-2">
+                        <p class="font-bold text-sky-900 text-xs">${simObj.title}</p>
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm leading-relaxed">${simObj.q}</p>
+                    </div>
+                    <div class="space-y-2 pt-2" id="curr-opts-${qIdx}">
+                        ${simObj.opts.map((optText, idx) => `
+                            <button onclick="checkCurriculumSim(${qIdx}, ${idx}, ${simObj.correct}, '${encodeURIComponent(simObj.explain)}')" class="w-full text-right p-3 bg-white border border-slate-200 hover:border-sky-400 rounded-xl text-xs font-medium text-slate-800 transition-all flex items-center justify-between">
+                                <span>${optText}</span>
+                                <i class="fa-regular fa-circle text-slate-300"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="curr-fb-${qIdx}" class="hidden mt-3 p-4 rounded-xl text-xs leading-relaxed font-medium"></div>
+                `;
+                box.appendChild(qDiv);
+            });
+            
             if(feedbackBox) feedbackBox.classList.add('hidden');
-
-            box.innerHTML = `
-                <div class="space-y-2">
-                    <p class="font-bold text-sky-900 text-xs">${simObj.title}</p>
-                    <p class="font-bold text-slate-800 text-xs sm:text-sm leading-relaxed">${simObj.q}</p>
-                </div>
-                <div class="space-y-2 pt-2">
-                    ${simObj.opts.map((optText, idx) => `
-                        <button onclick="checkCurriculumSim(${idx}, ${simObj.correct}, '${encodeURIComponent(simObj.explain)}')" class="w-full text-right p-3 bg-white border border-slate-200 hover:border-sky-400 rounded-xl text-xs font-medium text-slate-800 transition-all flex items-center justify-between">
-                            <span>${optText}</span>
-                            <i class="fa-regular fa-circle text-slate-300"></i>
-                        </button>
-                    `).join('')}
-                </div>
-            `;
         }
 
-        function checkCurriculumSim(selectedIdx, correctIdx, encodedExplain) {
+        function checkCurriculumSim(qIdx, selectedIdx, correctIdx, encodedExplain) {
             const explain = decodeURIComponent(encodedExplain);
-            const feedbackBox = document.getElementById('curr-sim-feedback-box');
-            const buttons = document.querySelectorAll('#curr-sim-content-box button');
+            const fb = document.getElementById('curr-fb-' + qIdx);
+            const buttons = document.querySelectorAll('#curr-opts-' + qIdx + ' button');
             const sd = currSimStaticData[currentLang] || currSimStaticData['he'];
 
             buttons.forEach((btn, idx) => {
@@ -2716,18 +2743,18 @@
                 } else if (idx === selectedIdx) {
                     btn.className = "w-full text-right p-3 bg-rose-50 border-2 border-rose-500 rounded-xl text-xs font-bold text-rose-900 flex items-center justify-between";
                 } else {
-                    btn.className = "w-full text-right p-3 bg-slate-50 border text-slate-400 rounded-xl text-xs opacity-60";
+                    btn.className = "w-full text-right p-3 bg-slate-50 border text-slate-400 rounded-xl text-xs opacity-60 flex items-center justify-between";
                 }
             });
 
-            if (feedbackBox) {
-                feedbackBox.classList.remove('hidden');
+            if (fb) {
+                fb.classList.remove('hidden');
                 if (selectedIdx === correctIdx) {
-                    feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
-                    feedbackBox.innerHTML = `<strong>${sd.correct}</strong><br>${explain}`;
+                    fb.className = "mt-3 p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
+                    fb.innerHTML = `<strong>${sd.correct}</strong><br>${explain}`;
                 } else {
-                    feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 text-rose-950 border border-rose-300";
-                    feedbackBox.innerHTML = `<strong>${sd.wrong}</strong><br>${explain}`;
+                    fb.className = "mt-3 p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 text-rose-950 border border-rose-300";
+                    fb.innerHTML = `<strong>${sd.wrong}</strong><br>${explain}`;
                 }
             }
         }
