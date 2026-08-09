@@ -3807,6 +3807,8 @@
             if (isCorrect) {
                 feedbackDiv.className = `p-3 mt-3 rounded-xl text-xs font-bold leading-relaxed bg-emerald-100 text-emerald-900 border border-emerald-200`;
                 feedbackDiv.innerHTML = `<i class="fa-solid fa-check-circle ml-1"></i> ${caseData.explain}`;
+                confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+                new Audio('assets/applause.mp3').play().catch(e => console.log(e));
             } else {
                 feedbackDiv.className = `p-3 mt-3 rounded-xl text-xs font-bold leading-relaxed bg-rose-100 text-rose-900 border border-rose-200`;
                 feedbackDiv.innerHTML = `<i class="fa-solid fa-xmark-circle ml-1"></i> לא מדויק. ${caseData.explain}`;
