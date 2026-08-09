@@ -305,18 +305,12 @@
                 </div>
 
                 <div class="space-y-4">
-                    <label class="block font-bold text-xs text-slate-700" id="sim-select-label">בחר תרחיש לתרגול:</label>
-                    <select id="sim-scenario-select" onchange="loadEmergencySimulation()" class="w-full px-3 py-2 border rounded-xl bg-slate-50 text-xs font-bold text-slate-800">
-                        <option value="choking">1. חנק פתאומי בזמן האכלה בחדר האוכל</option>
-                        <option value="fall">2. מטופל שנמצא שרוע על הרצפה ליד המיטה</option>
-                        <option value="decline">3. מטופל אפתי עם קוצר נשימה חריף</option>
-                        <option value="fire">4. עשן סמיך בוקע מחדר דייר במשמרת לילה</option>
-                        <option value="stroke">5. חשד לשבץ מוחי (צניחת פנים וחולשת גפיים)</option>
-                        <option value="hypo">6. רעד והזעה פתאומיים (חשד להיפוגליקמיה)</option>
-                        <option value="aggression">7. אי-שקט ואלימות מצד דייר עם דמנציה</option>
-                    </select>
+                    <label class="block font-bold text-xs text-slate-700 hidden" id="sim-select-label">בחר תרחיש לתרגול:</label>
+                    <div id="sim-scenario-buttons" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                        <!-- Buttons will be dynamically generated -->
+                    </div>
 
-                    <div id="sim-content-box" class="p-4 bg-slate-50 border rounded-xl space-y-4 text-xs">
+                    <div id="sim-content-box" class="p-4 bg-slate-50 border rounded-xl space-y-4 text-xs mt-4">
                         <!-- Dynamic Simulation Options & Questions -->
                     </div>
 
@@ -2468,20 +2462,24 @@
             const simSelectLabel = document.getElementById('sim-select-label');
             if(simSelectLabel) simSelectLabel.innerText = sd.simSelectLbl;
 
-            // Update select options
-            const select = document.getElementById('sim-scenario-select');
-            if (select) {
-                const currentVal = select.value;
-                select.options[0].text = sd.s1;
-                select.options[1].text = sd.s2;
-                select.options[2].text = sd.s3;
-                select.options[3].text = sd.s4;
-                if(select.options.length > 4) {
-                    select.options[4].text = sd.s5 || "5. חשד לשבץ מוחי (צניחת פנים וחולשת גפיים)";
-                    select.options[5].text = sd.s6 || "6. רעד והזעה פתאומיים (חשד להיפוגליקמיה)";
-                    select.options[6].text = sd.s7 || "7. אי-שקט ואלימות מצד דייר עם דמנציה";
-                }
-                select.value = currentVal;
+            // Render scenario buttons
+            const btnContainer = document.getElementById('sim-scenario-buttons');
+            if (btnContainer) {
+                const scenarios = [
+                    { id: 'choking', text: sd.s1 },
+                    { id: 'fall', text: sd.s2 },
+                    { id: 'decline', text: sd.s3 },
+                    { id: 'fire', text: sd.s4 },
+                    { id: 'stroke', text: sd.s5 || "5. חשד לשבץ מוחי (צניחת פנים וחולשת גפיים)" },
+                    { id: 'hypo', text: sd.s6 || "6. רעד והזעה פתאומיים (חשד להיפוגליקמיה)" },
+                    { id: 'aggression', text: sd.s7 || "7. אי-שקט ואלימות מצד דייר עם דמנציה" }
+                ];
+                
+                btnContainer.innerHTML = scenarios.map(s => `
+                    <button onclick="loadEmergencySimulation('${s.id}')" id="btn-sim-${s.id}" class="p-3 text-right border-2 rounded-xl text-xs font-bold transition-all bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-rose-300">
+                        ${s.text}
+                    </button>
+                `).join('');
             }
 
             data.forEach(item => {
@@ -2509,17 +2507,29 @@
         }
 
         // EMERGENCY SIMULATION LOGIC
-        function loadEmergencySimulation() {
-            const select = document.getElementById('sim-scenario-select');
+        let activeEmergencyScenario = 'choking';
+        function loadEmergencySimulation(scenarioKey = activeEmergencyScenario) {
+            activeEmergencyScenario = scenarioKey;
             const box = document.getElementById('sim-content-box');
             const feedbackBox = document.getElementById('sim-feedback-box');
-            if (!select || !box) return;
+            if (!box) return;
 
-            const scenarioKey = select.value;
+            // Highlight active button
+            const btnContainer = document.getElementById('sim-scenario-buttons');
+            if(btnContainer) {
+                Array.from(btnContainer.children).forEach(btn => {
+                    if(btn.id === 'btn-sim-' + scenarioKey) {
+                        btn.className = "p-3 text-right border-2 rounded-xl text-xs font-bold transition-all bg-rose-50 border-rose-500 text-rose-800";
+                    } else {
+                        btn.className = "p-3 text-right border-2 rounded-xl text-xs font-bold transition-all bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-rose-300";
+                    }
+                });
+            }
+
             const simObj = (emergencySimulations[currentLang] && emergencySimulations[currentLang][scenarioKey]) ? emergencySimulations[currentLang][scenarioKey] : emergencySimulations['he'][scenarioKey];
             const sd = emgStaticData[currentLang] || emgStaticData['he'];
             
-            feedbackBox.classList.add('hidden');
+            if(feedbackBox) feedbackBox.classList.add('hidden');
 
             box.innerHTML = `
                 <p class="font-bold text-slate-900 text-xs sm:text-sm leading-relaxed">${sd.simTitle}${simObj.q}</p>
