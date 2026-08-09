@@ -2969,7 +2969,7 @@
             const resultBox = document.getElementById('assessment-result');
             resultBox.classList.remove('hidden');
 
-            if (currentAssessmentType === 'burnout') {
+            if (currentAssessmentType.startsWith('burnout')) {
                 if (scorePercent < 40) {
                     resultBox.className = "p-4 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl font-bold text-sm mt-4";
                     resultBox.innerHTML = `רמת שחיקה מוערכת נמוכה (${scorePercent}%) ✅ המשיכו לשמור על עצמכם.`;
