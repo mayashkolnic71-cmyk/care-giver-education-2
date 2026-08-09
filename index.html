@@ -371,54 +371,184 @@
             </div>
         </section>
 
-        <!-- TAB 4: INTERACTIVE RESILIENCE WORKSHOP -->
-        <section id="tab-resilience" class="space-y-6 hidden max-w-3xl mx-auto">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6">
-                <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
-                    <div>
-                        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-50 text-rose-700 rounded-full text-xs font-bold mb-1">
+        <!-- TAB 4: EXPANDED 40-HOUR RESILIENCE WORKSHOP -->
+        <section id="tab-resilience" class="hidden w-full max-w-5xl mx-auto">
+            <style>
+                .res-nav-btn {
+                    width: 100%;
+                    text-align: right;
+                    padding: 0.75rem 1rem;
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    border-radius: 0.75rem;
+                    transition: all 0.2s ease;
+                    color: #475569;
+                    background: transparent;
+                    border: none;
+                }
+                .res-nav-btn:hover {
+                    background-color: #ffe4e6;
+                }
+                .res-nav-btn.active {
+                    background-color: #ffe4e6;
+                    color: #9f1239;
+                    border-right: 4px solid #e11d48;
+                }
+            </style>
+            <div class="bg-white rounded-2xl border border-slate-200 card-shadow overflow-hidden flex flex-col md:flex-row min-h-[600px]" style="direction: rtl;">
+                
+                <!-- SIDE MENU -->
+                <div class="w-full md:w-64 bg-slate-50 border-b md:border-b-0 md:border-l border-slate-200 shrink-0 flex flex-col">
+                    <div class="p-4 border-b border-slate-200 bg-rose-50">
+                        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold mb-2">
                             <i class="fa-solid fa-heart"></i>
-                            <span id="res-tag">חלק מהכשרת המשך 40 שעות</span>
+                            <span id="res-tag-full">תוכנית מורחבת (40 שעות)</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900" id="res-heading">סדנת חוסן נפשי ותמיכה בצוות המטפל</h3>
-                        <p class="text-xs text-slate-500 mt-1" id="res-subheading">שאלון חוסן אישי, מניעת שחיקה וכלים להתמודדות עם עומס רגשי בטיפול הגריאטרי</p>
+                        <h3 class="text-base font-bold text-slate-900" id="res-heading-full">סדנת חוסן למטפל/ת</h3>
+                    </div>
+                    <div class="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible p-2 gap-1 scrollbar-hide" id="resilience-side-menu">
+                        <button onclick="switchResilienceModule('intro')" id="res-btn-intro" class="res-nav-btn active whitespace-nowrap">מדריך למנחה ולו"ז</button>
+                        <button onclick="switchResilienceModule('assessment')" id="res-btn-assessment" class="res-nav-btn whitespace-nowrap">שאלוני שחיקה וחוסן</button>
+                        <button onclick="switchResilienceModule('snakes')" id="res-btn-snakes" class="res-nav-btn whitespace-nowrap">סולמות וחבלים</button>
+                        <button onclick="switchResilienceModule('dynamics')" id="res-btn-dynamics" class="res-nav-btn whitespace-nowrap">דינמיקה קבוצתית</button>
+                        <button onclick="switchResilienceModule('listening')" id="res-btn-listening" class="res-nav-btn whitespace-nowrap">תקשורת והקשבה</button>
+                        <button onclick="switchResilienceModule('simulations')" id="res-btn-simulations" class="res-nav-btn whitespace-nowrap">סימולציות לחץ</button>
                     </div>
                 </div>
 
-                <form id="form-resilience" onsubmit="calculateResilienceScore(event)" class="space-y-5 text-xs sm:text-sm">
-                    <div class="space-y-4" id="resilience-questions-container">
-                        <!-- Questions injected dynamically based on language -->
+                <!-- MAIN CONTENT AREA -->
+                <div class="flex-1 p-4 md:p-8 relative bg-white overflow-y-auto" id="resilience-content-area">
+                    
+                    <!-- MODULE 1: INTRO / FACILITATOR GUIDE -->
+                    <div id="res-mod-intro" class="res-module space-y-4">
+                        <h4 class="text-xl font-bold text-slate-800">מדריך למנחה: פריסת הסדנה ל-40 שעות</h4>
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl text-sm leading-relaxed text-blue-900">
+                            <strong>מבוא:</strong> סדנה זו נועדה לחיזוק החוסן הנפשי ומניעת שחיקה בקרב כוחות העזר, על פי ספרות מקצועית ותוכנית משרד הבריאות.
+                        </div>
+                        <div class="p-4 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed text-slate-700 shadow-sm">
+                            <strong>📚 סימוכין ומקורות ספרות לסדנה:</strong>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong>Maslach & Jackson (1981):</strong> מודל MBI להערכת שחיקה בעבודה (Burnout Inventory).</li>
+                                <li><strong>Connor & Davidson (2003):</strong> מדד CD-RISC להערכת חוסן נפשי (Resilience Scale).</li>
+                                <li><strong>מודל מעוז:</strong> עקרונות תקשורת מקרבת והקשבה פעילה (Active Listening) לצוותים רפואיים.</li>
+                                <li><strong>IANG & משרד הבריאות:</strong> נוהל 1.2.1.2 למתן סמכויות והכשרת כוחות עזר במערכת הבריאות, פרק הדרכה קלינית (2020).</li>
+                                <li><strong>Gamification in Nursing Education:</strong> מחקרים על למידה יצירתית (משחקי לוח כדוגמת "סולמות וחבלים") ככלי להטמעת נהלי בטיחות בארגוני בריאות.</li>
+                            </ul>
+                        </div>
+                        <div class="overflow-x-auto mt-4">
+                            <table class="w-full text-xs text-right border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="p-2 border">נושא</th>
+                                        <th class="p-2 border">שעות</th>
+                                        <th class="p-2 border">פירוט פעילות</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="p-2 border font-bold">אבחון אישי ושחיקה</td><td class="p-2 border">8 שעות</td><td class="p-2 border">מילוי שאלוני שחיקה וחוסן, הרצאת מבוא על סימני שחיקה.</td></tr>
+                                    <tr><td class="p-2 border font-bold">למידה יצירתית (משחק)</td><td class="p-2 border">8 שעות</td><td class="p-2 border">משחק 'סולמות וחבלים' בקבוצות, שילוב ידע קליני ותחרותיות.</td></tr>
+                                    <tr><td class="p-2 border font-bold">דינמיקה קבוצתית</td><td class="p-2 border">8 שעות</td><td class="p-2 border">תרגיל ברומטר אישי, יצירת מרחב בטוח לשיתוף (חשיבה קבוצתית).</td></tr>
+                                    <tr><td class="p-2 border font-bold">תקשורת והקשבה</td><td class="p-2 border">8 שעות</td><td class="p-2 border">תרגילי הקשבה פעילה (מעוז), תרגיל 'שאל אותי 5', מודל משוב בונה.</td></tr>
+                                    <tr><td class="p-2 border font-bold">סימולציות חוסן</td><td class="p-2 border">8 שעות</td><td class="p-2 border">ניתוח מקרי בוחן, קונפליקטים מול משפחות, עומס תפקודי ותרגול תגובות.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
-                    <div class="pt-2 border-t">
-                        <label class="block font-bold text-slate-700 mb-1" id="res-lbl-name">שם המטפל/ת הממלא/ת:</label>
-                        <input type="text" id="res-staff-name" required placeholder="שם מלא..." class="w-full px-3 py-2 border rounded-xl text-xs">
+                    <!-- MODULE 2: ASSESSMENT -->
+                    <div id="res-mod-assessment" class="res-module hidden space-y-6">
+                        <h4 class="text-xl font-bold text-slate-800">אבחון עצמי: שחיקה וחוסן</h4>
+                        
+                        <div class="flex gap-2 border-b">
+                            <button onclick="switchAssessmentTab('burnout')" id="tab-btn-burnout" class="py-2 px-4 border-b-2 border-rose-500 font-bold text-rose-700">שאלון שחיקה</button>
+                            <button onclick="switchAssessmentTab('resilience_q')" id="tab-btn-resilience_q" class="py-2 px-4 border-b-2 border-transparent text-slate-500 font-medium">שאלון חוסן</button>
+                        </div>
+                        
+                        <form id="form-assessment" onsubmit="calculateAssessment(event)" class="space-y-5 text-xs sm:text-sm">
+                            <div class="space-y-4" id="assessment-questions-container">
+                                <!-- Populated by JS -->
+                            </div>
+                            <button type="submit" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold shadow-md transition-all">הגש לקבלת משוב</button>
+                        </form>
+                        <div id="assessment-result" class="hidden p-4 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl font-bold text-sm"></div>
                     </div>
 
-                    <button type="submit" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-check-circle"></i>
-                        <span id="btn-submit-resilience">הגש סדנת חוסן וקבל משוב</span>
-                    </button>
-                </form>
+                    <!-- MODULE 3: SNAKES AND LADDERS -->
+                    <div id="res-mod-snakes" class="res-module hidden space-y-4 text-center">
+                        <h4 class="text-xl font-bold text-slate-800">סולמות וחבלים - למידה יצירתית</h4>
+                        <p class="text-xs text-slate-600">ענה נכונה על שאלות ידע קליני ובטיחות כדי להתקדם בסולמות! טעות תוריד אותך בחבל.</p>
+                        
+                        <div class="flex flex-col items-center justify-center py-8 bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl relative">
+                            <!-- Progress Bar -->
+                            <div class="w-full max-w-xs bg-slate-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
+                                <div id="snakes-progress" class="bg-indigo-600 h-2.5 rounded-full" style="width: 1%"></div>
+                            </div>
 
-                <!-- RESILIENCE RESULT BOX -->
-                <div id="resilience-result-box" class="hidden p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-4 text-xs">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 font-bold flex items-center justify-center text-xl shrink-0">
-                            💖
+                            <div class="text-6xl font-black text-rose-600 mb-2 drop-shadow-md" id="snakes-position">1</div>
+                            <div class="text-xs text-slate-500 mb-6 uppercase tracking-widest font-bold">משבצת נוכחית מתוך 100</div>
+                            
+                            <button onclick="rollDiceAndPlay()" id="btn-roll-dice" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-bold rounded-2xl shadow-lg transition-transform transform active:scale-95 flex items-center gap-3 cursor-pointer z-10">
+                                <i class="fa-solid fa-dice"></i>
+                                גלגל קובייה!
+                            </button>
+                            <div id="dice-result-ui" class="text-2xl font-bold text-indigo-800 mt-4 h-8 transition-all"></div>
+                        </div>
+
+                        <!-- Question Modal area -->
+                        <div id="snakes-question-area" class="hidden bg-white p-6 rounded-2xl shadow-xl border-2 border-indigo-200 text-right space-y-4 mt-4 transition-all">
+                            <h5 id="snakes-q-text" class="text-base font-bold text-slate-900"></h5>
+                            <div id="snakes-options" class="space-y-2"></div>
+                            <div id="snakes-feedback" class="hidden p-3 rounded-xl text-sm font-bold mt-3"></div>
+                        </div>
+                        
+                        <!-- Victory Modal -->
+                        <div id="snakes-victory" class="hidden bg-emerald-50 border border-emerald-200 p-6 rounded-2xl shadow-xl mt-4 text-center space-y-3">
+                            <div class="text-4xl">🏆</div>
+                            <h4 class="text-xl font-bold text-emerald-800">ניצחון! סיימת את המסלול!</h4>
+                            <p class="text-sm text-emerald-700">הפגנת ידע קליני ומקצועיות ברמה הגבוהה ביותר.</p>
+                            <button onclick="resetSnakesGame()" class="px-6 py-2 bg-emerald-600 text-white font-bold rounded-xl text-sm">שחק שוב</button>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 4: DYNAMICS -->
+                    <div id="res-mod-dynamics" class="res-module hidden space-y-4">
+                        <h4 class="text-xl font-bold text-slate-800">דינמיקה קבוצתית: ברומטר אישי</h4>
+                        <p class="text-sm text-slate-600">קראו את המשפטים הבאים. כל עובד מסמן את רמת ההסכמה שלו, והמנחה פותח בדיון.</p>
+                        <div id="dynamics-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- MODULE 5: LISTENING -->
+                    <div id="res-mod-listening" class="res-module hidden space-y-6">
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-800">תקשורת: איך אני מקשיב?</h4>
+                            <p class="text-xs text-slate-500 mb-3">מודל להקשבה פעילה ולמתן משוב מקדם.</p>
+                            <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 shadow-sm">
+                                <h5 class="font-bold text-amber-900 mb-3">כללי הקשבה פעילה:</h5>
+                                <ul id="listening-list" class="list-disc list-inside text-sm text-amber-800 space-y-2 font-medium">
+                                    <!-- Populated by JS -->
+                                </ul>
+                            </div>
                         </div>
                         <div>
-                            <h4 class="text-base font-bold text-slate-900" id="res-result-title">תוצאות סדנת החוסן הנפשי</h4>
-                            <p class="text-slate-600" id="res-result-score-txt">רמת חוסן מוערכת: 85/100</p>
+                            <h4 class="text-xl font-bold text-slate-800">תרגיל היכרות: שאל אותי 5</h4>
+                            <p class="text-xs text-slate-500 mb-3">בזוגות, שאלו זה את זה את השאלות הבאות כדי לחזק את ההיכרות בצוות:</p>
+                            <div class="flex flex-wrap gap-3" id="askme5-list">
+                                <!-- Populated by JS -->
+                            </div>
                         </div>
                     </div>
-                    <div id="res-recommendation-box" class="p-4 rounded-xl bg-white border text-slate-700 leading-relaxed">
-                        <!-- Dynamic tips -->
+
+                    <!-- MODULE 6: SIMULATIONS -->
+                    <div id="res-mod-simulations" class="res-module hidden space-y-4">
+                        <h4 class="text-xl font-bold text-slate-800">סימולציות חוסן וקונפליקטים</h4>
+                        <p class="text-sm text-slate-600">כרטיסיות הנחיה לתרגול מצבי אמת במחלקה. דנו בקבוצות קטנות כיצד הייתם פועלים.</p>
+                        <div id="simulations-list" class="space-y-4 mt-4">
+                            <!-- Populated by JS -->
+                        </div>
                     </div>
-                    <button onclick="printResilienceCert()" class="px-4 py-2 bg-medical-700 text-white font-bold rounded-xl flex items-center gap-2">
-                        <i class="fa-solid fa-print"></i>
-                        <span id="btn-print-resilience">הדפס אישור השלמת סדנת חוסן</span>
-                    </button>
+
                 </div>
             </div>
         </section>
@@ -1610,6 +1740,76 @@
             ]
         };
 
+        // BURNOUT QUESTIONNAIRE
+        const burnoutQuestionnaireData = {
+            he: [
+                { q: "1. עד כמה אתה מרגיש עייף עוד לפני שהמשמרת התחילה?", opts: ["אף פעם", "לפעמים", "לעיתים קרובות", "תמיד"] },
+                { q: "2. האם אתה מרגיש חוסר סבלנות כלפי דיירים/מטופלים?", opts: ["אף פעם", "לפעמים", "לעיתים קרובות", "תמיד"] },
+                { q: "3. באיזו מידה אתה מרגיש תסכול מהעבודה?", opts: ["אף פעם", "לפעמים", "לעיתים קרובות", "תמיד"] },
+                { q: "4. האם יש לך כאבי ראש או שרירים בסוף היום?", opts: ["אף פעם", "לפעמים", "לעיתים קרובות", "תמיד"] },
+                { q: "5. עד כמה העבודה שואבת ממך אנרגיות חיוניות?", opts: ["אף פעם", "לפעמים", "לעיתים קרובות", "תמיד"] }
+            ]
+        };
+
+        // RESILIENCE FULL QUESTIONNAIRE
+        const resilienceFullQuestionnaire = {
+            he: [
+                { q: "1. אני מרגיש שיש לי למי לפנות לעזרה כשאני בלחץ.", opts: ["ממש לא", "מעט", "במידה סבירה", "מאוד"] },
+                { q: "2. אני מצליח למצוא פתרונות יצירתיים לבעיות שעולות.", opts: ["ממש לא", "מעט", "במידה סבירה", "מאוד"] },
+                { q: "3. אני שומר על אופטימיות גם ברגעים קשים במחלקה.", opts: ["ממש לא", "מעט", "במידה סבירה", "מאוד"] },
+                { q: "4. אני מסוגל להפריד בין חיי האישיים לעבודה.", opts: ["ממש לא", "מעט", "במידה סבירה", "מאוד"] },
+                { q: "5. אני מאמין בעשייה שלי ובמשמעות שלה.", opts: ["ממש לא", "מעט", "במידה סבירה", "מאוד"] }
+            ]
+        };
+
+        // SNAKES AND LADDERS GAME DATA
+        const snakesAndLaddersData = {
+            he: {
+                questions: [
+                    { q: "איזה בידוד דורש חצבת?", opts: ["אווירני", "מגע", "טיפתי"], correct: 0, msg: "עלית בסולם! בידוד אווירני נדרש בחצבת." },
+                    { q: "האם מותר לתת תרופה מבלי לזהות את המטופל?", opts: ["כן", "לא"], correct: 1, msg: "עלית בסולם! חובה לזהות מטופל ב-2 מזהים." },
+                    { q: "הגעת לחדר ושפכת מים. מה תעשה?", opts: ["אדווח מיד ואחסום", "אתעלם", "אחכה למנקה"], correct: 0, msg: "עלית בסולם! דיווח על כמעט ונפגע מונע אסון." },
+                    { q: "מהו פרכוס טוני-קלוני?", opts: ["התעלפות", "רעד ואיבוד הכרה"], correct: 1, msg: "עלית בסולם! זיהית נכון סוג פרכוס." },
+                    { q: "שכחת לרחוץ ידיים. מה קרה?", opts: ["לא נורא", "זיהום צולב!"], correct: 1, msg: "עלית בסולם! היגיינת ידיים מצילה חיים." }
+                ],
+                bad_actions: [
+                    "השארת מטופל בסיכון ללא השגחה - ירדת בחבל!",
+                    "לא נעלת גלגלים בכיסא הגלגלים - ירדת בחבל!",
+                    "שכחת לרחוץ ידיים לפני טיפול - ירדת בחבל!"
+                ]
+            }
+        };
+
+        // GROUP DYNAMICS DATA
+        const groupDynamicsData = {
+            he: {
+                barometer: [
+                    "אני מרגיש מוערך בעבודתי", 
+                    "הצוות במחלקה תומך בי ברגעי משבר", 
+                    "לעתים קרובות אני חושב לעזוב את המקצוע", 
+                    "אני מצליח למצוא איזון בין בית לעבודה"
+                ],
+                listening: [
+                    "להקשיב בלי לקטוע את הדובר", 
+                    "לשקף את מה שנאמר 'אני שומע ש...'", 
+                    "לא לשפוט ולא לתת ביקורת מיידית", 
+                    "לשמור על קשר עין ושפת גוף פתוחה"
+                ],
+                askMe5: [
+                    "מהו התחביב האהוב עליך מחוץ לעבודה?", 
+                    "ספר על רגע מצחיק שחווית במחלקה", 
+                    "מהו המאכל שתמיד משפר את מצב הרוח שלך?", 
+                    "מה הכי מרגיע אותך אחרי משמרת קשה?", 
+                    "חלום אחד שטרם הגשמת"
+                ],
+                scenarios: [
+                    "מטופל מסרב בתוקף לקבל טיפול וצועק עליך במסדרון. כיצד תגיב/י?",
+                    "משפחת המטופל מתלוננת שאתם לא עושים מספיק. כיצד תנהל/י את השיחה?",
+                    "את/ה מרגיש/ה עומס בלתי נסבל במשמרת, וחבר צוות מבקש עזרה. כיצד תתעדף/י?"
+                ]
+            }
+        };
+
         // CLINICAL MODULE CARDS DATA
         const modulesCardsData = {
             he: [
@@ -2061,7 +2261,7 @@
             renderEmergencyCards();
             renderCurriculum();
             selectCurriculumPractice(activeCurrPractice);
-            renderResilienceQuestions();
+            initResilienceWorkshop();
             populateDepartmentSelects();
             renderTrackerTable();
             renderObservationCriteria();
@@ -2392,14 +2592,44 @@
             }
         }
 
-        // RESILIENCE WORKSHOP LOGIC
-        function renderResilienceQuestions() {
-            const container = document.getElementById('resilience-questions-container');
-            const questions = resilienceQuestionsData[currentLang] || resilienceQuestionsData['he'];
+        // EXPANDED RESILIENCE WORKSHOP LOGIC
+        let currentAssessmentType = 'burnout';
+        let snakesPosition = 1;
+
+        function switchResilienceModule(modId) {
+            // Update active state of side menu buttons
+            document.querySelectorAll('.res-nav-btn').forEach(btn => btn.classList.remove('active'));
+            const btn = document.getElementById(`res-btn-${modId}`);
+            if (btn) btn.classList.add('active');
+
+            // Hide all modules
+            document.querySelectorAll('.res-module').forEach(mod => mod.classList.add('hidden'));
+            const activeMod = document.getElementById(`res-mod-${modId}`);
+            if (activeMod) activeMod.classList.remove('hidden');
+
+            if(modId === 'assessment') renderAssessmentQuestions();
+            if(modId === 'dynamics') renderDynamics();
+            if(modId === 'listening') renderListening();
+            if(modId === 'simulations') renderSimulations();
+        }
+
+        function switchAssessmentTab(type) {
+            currentAssessmentType = type;
+            document.getElementById('tab-btn-burnout').className = "py-2 px-4 border-b-2 " + (type === 'burnout' ? "border-rose-500 font-bold text-rose-700" : "border-transparent text-slate-500 font-medium");
+            document.getElementById('tab-btn-resilience_q').className = "py-2 px-4 border-b-2 " + (type === 'resilience_q' ? "border-rose-500 font-bold text-rose-700" : "border-transparent text-slate-500 font-medium");
+            
+            document.getElementById('assessment-result').classList.add('hidden');
+            renderAssessmentQuestions();
+        }
+
+        function renderAssessmentQuestions() {
+            const container = document.getElementById('assessment-questions-container');
+            const data = currentAssessmentType === 'burnout' ? burnoutQuestionnaireData['he'] : resilienceFullQuestionnaire['he'];
+            
             if(!container) return;
             container.innerHTML = '';
 
-            questions.forEach((qObj, idx) => {
+            data.forEach((qObj, idx) => {
                 const div = document.createElement('div');
                 div.className = "p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2";
                 div.innerHTML = `
@@ -2407,7 +2637,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                         ${qObj.opts.map((optText, oIdx) => `
                             <label class="flex items-center gap-2 p-2.5 bg-white rounded-xl border hover:border-rose-400 cursor-pointer text-xs">
-                                <input type="radio" name="res_q_${idx}" value="${4 - oIdx}" ${oIdx === 0 ? 'checked' : ''} class="text-rose-600 focus:ring-rose-500">
+                                <input type="radio" name="assess_q_${idx}" value="${4 - oIdx}" ${oIdx === 0 ? 'checked' : ''} class="text-rose-600 focus:ring-rose-500">
                                 <span>${optText}</span>
                             </label>
                         `).join('')}
@@ -2417,58 +2647,159 @@
             });
         }
 
-        function calculateResilienceScore(event) {
+        function calculateAssessment(event) {
             event.preventDefault();
-            const staffName = document.getElementById('res-staff-name').value || "מטפל/ת";
-            const questions = resilienceQuestionsData[currentLang] || resilienceQuestionsData['he'];
+            const data = currentAssessmentType === 'burnout' ? burnoutQuestionnaireData['he'] : resilienceFullQuestionnaire['he'];
             let totalPoints = 0;
 
-            questions.forEach((_, idx) => {
-                const selected = document.querySelector(`input[name="res_q_${idx}"]:checked`);
+            data.forEach((_, idx) => {
+                const selected = document.querySelector(`input[name="assess_q_${idx}"]:checked`);
                 if (selected) totalPoints += parseInt(selected.value);
             });
 
-            const scorePercent = Math.round((totalPoints / (questions.length * 4)) * 100);
+            const maxPoints = data.length * 4;
+            const scorePercent = Math.round((totalPoints / maxPoints) * 100);
 
-            document.getElementById('resilience-result-box').classList.remove('hidden');
-            document.getElementById('res-result-score-txt').innerText = `מציג תוצאות עבור: ${staffName} | מדד חוסן: ${scorePercent}%`;
+            const resultBox = document.getElementById('assessment-result');
+            resultBox.classList.remove('hidden');
 
-            const recBox = document.getElementById('res-recommendation-box');
-            if (scorePercent >= 75) {
-                recBox.className = "p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 leading-relaxed";
-                recBox.innerHTML = `<strong>חוסן נפשי גבוה ותמיכה טובה! ✅</strong><br>המשך לשמור על איזון בין העבודה לבית, לנצל את ההפסקות ולשתף את צוות הסיעוד בקשיים קטנים.`;
+            if (currentAssessmentType === 'burnout') {
+                if (scorePercent > 70) {
+                    resultBox.className = "p-4 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl font-bold text-sm mt-4";
+                    resultBox.innerHTML = `רמת שחיקה מוערכת נמוכה (${scorePercent}%) ✅ המשיכו לשמור על עצמכם.`;
+                } else {
+                    resultBox.className = "p-4 bg-amber-50 text-amber-900 border border-amber-200 rounded-xl font-bold text-sm mt-4";
+                    resultBox.innerHTML = `רמת שחיקה גבוהה (${scorePercent}%) 💬 מומלץ ליזום שיחת אוורור רגשי ולדאוג להפסקות במשמרת.`;
+                }
             } else {
-                recBox.className = "p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 leading-relaxed";
-                recBox.innerHTML = `<strong>זיהוי עומס רגשי ושחיקה – מומלצת שיחת תמיכה 💬</strong><br>מומלץ לפנות לאחות האחראית/עובדת סוציאלית לשיחת אוורור רגשי, ולהקפיד על יציאה להפסקות מנוחה מסודרות במשמרת.`;
+                if (scorePercent >= 75) {
+                    resultBox.className = "p-4 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl font-bold text-sm mt-4";
+                    resultBox.innerHTML = `חוסן נפשי גבוה (${scorePercent}%) 🌟 הפגנתם כלים טובים להתמודדות עם מצבי עומס.`;
+                } else {
+                    resultBox.className = "p-4 bg-blue-50 text-blue-900 border border-blue-200 rounded-xl font-bold text-sm mt-4";
+                    resultBox.innerHTML = `חוסן בינוני (${scorePercent}%) - מומלץ להיעזר במודל המשוב ובטכניקות תקשורת מהסדנה.`;
+                }
             }
         }
 
-        function printResilienceCert() {
-            const staffName = document.getElementById('res-staff-name').value || "מטפל/ת";
-            const printWin = window.open('', '', 'width=800,height=600');
-            printWin.document.write(`
-                <html dir="rtl" lang="he">
-                <head>
-                    <title>אישור השלמת סדנת חוסן - נוהל 1.2.1.2</title>
-                    <style>
-                        body { font-family: sans-serif; text-align: center; padding: 40px; border: 8px solid #e11d48; margin: 20px; }
-                        h1 { color: #be123c; }
-                    </style>
-                </head>
-                <body>
-                    <h1>אישור השלמת סדנת חוסן נפשי ומניעת שחיקה</h1>
-                    <p>חלק מתוכנית הכשרת המשך 40 שעות - נוהל משרד הבריאות 1.2.1.2</p>
-                    <hr>
-                    <h2>מאושר כי: <u>${staffName}</u></h2>
-                    <p>השלים/ה בהצלחה את השאלון האינטראקטיבי וקיבל/ה כלים להתמודדות עם עומס רגשי בטיפול</p>
-                    <br><br>
-                    <p>עמותת האחיות לקידום הסיעוד הגריאטרי בישראל (IANG)</p>
-                    <p>תאריך: ${new Date().toLocaleDateString('he-IL')}</p>
-                </body>
-                </html>
-            `);
-            printWin.document.close();
-            printWin.print();
+        // SNAKES & LADDERS LOGIC
+        function rollDiceAndPlay() {
+            const diceValue = Math.floor(Math.random() * 6) + 1;
+            document.getElementById('dice-result-ui').innerText = `🎲 יצא לך: ${diceValue}`;
+            snakesPosition += diceValue;
+            if (snakesPosition >= 100) snakesPosition = 100;
+            
+            updateSnakesBoard();
+            
+            if (snakesPosition === 100) {
+                document.getElementById('snakes-question-area').classList.add('hidden');
+                document.getElementById('snakes-victory').classList.remove('hidden');
+                return;
+            }
+
+            // Decide if land on ladder/snake (25% chance)
+            const r = Math.random();
+            if (r < 0.25) {
+                showSnakesQuestion();
+            } else {
+                document.getElementById('snakes-question-area').classList.add('hidden');
+            }
+        }
+
+        function updateSnakesBoard() {
+            document.getElementById('snakes-position').innerText = snakesPosition;
+            document.getElementById('snakes-progress').style.width = snakesPosition + '%';
+        }
+
+        function showSnakesQuestion() {
+            const questions = snakesAndLaddersData.he.questions;
+            const bad = snakesAndLaddersData.he.bad_actions;
+            
+            // Randomly pick good (ladder question) or bad (snake)
+            if (Math.random() > 0.4) {
+                // LADDER QUESTION
+                const qObj = questions[Math.floor(Math.random() * questions.length)];
+                document.getElementById('snakes-q-text').innerText = "🪜 הגעת לסולם! ענה נכון כדי לעלות:";
+                document.getElementById('snakes-q-text').innerHTML += `<br><span class="font-normal mt-2 block">${qObj.q}</span>`;
+                
+                const optsDiv = document.getElementById('snakes-options');
+                optsDiv.innerHTML = qObj.opts.map((opt, idx) => `
+                    <button onclick="answerSnakesQuestion(${idx}, ${qObj.correct}, '${qObj.msg}')" class="block w-full text-right p-3 bg-slate-50 hover:bg-indigo-50 border rounded-xl text-sm transition-all shadow-sm">${opt}</button>
+                `).join('');
+                document.getElementById('snakes-feedback').classList.add('hidden');
+                document.getElementById('snakes-question-area').classList.remove('hidden');
+            } else {
+                // SNAKE 
+                const msg = bad[Math.floor(Math.random() * bad.length)];
+                snakesPosition -= 15;
+                if(snakesPosition < 1) snakesPosition = 1;
+                updateSnakesBoard();
+                
+                document.getElementById('snakes-q-text').innerText = "🐍 חבל! משבצת מסוכנת, ירדת למטה.";
+                document.getElementById('snakes-options').innerHTML = `<div class="p-4 bg-rose-50 text-rose-800 rounded-xl font-bold shadow-sm">${msg}</div>`;
+                document.getElementById('snakes-feedback').classList.add('hidden');
+                document.getElementById('snakes-question-area').classList.remove('hidden');
+            }
+        }
+
+        function answerSnakesQuestion(selectedIdx, correctIdx, msg) {
+            const fb = document.getElementById('snakes-feedback');
+            fb.classList.remove('hidden');
+            document.getElementById('snakes-options').innerHTML = '';
+            if (selectedIdx === correctIdx) {
+                snakesPosition += 10;
+                if(snakesPosition > 100) snakesPosition = 100;
+                fb.className = "p-3 rounded-xl text-sm font-bold mt-3 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                fb.innerText = "תשובה נכונה! " + msg;
+                updateSnakesBoard();
+                
+                if (snakesPosition === 100) {
+                    setTimeout(() => {
+                        document.getElementById('snakes-question-area').classList.add('hidden');
+                        document.getElementById('snakes-victory').classList.remove('hidden');
+                    }, 1000);
+                }
+            } else {
+                fb.className = "p-3 rounded-xl text-sm font-bold mt-3 bg-rose-50 text-rose-800 border border-rose-200";
+                fb.innerText = "טעות! פספסת את ההזדמנות לעלות בסולם.";
+            }
+        }
+
+        function resetSnakesGame() {
+            snakesPosition = 1;
+            updateSnakesBoard();
+            document.getElementById('dice-result-ui').innerText = '';
+            document.getElementById('snakes-victory').classList.add('hidden');
+            document.getElementById('snakes-question-area').classList.add('hidden');
+        }
+
+        // RENDER MODULES 4-6
+        function renderDynamics() {
+            const dList = document.getElementById('dynamics-list');
+            dList.innerHTML = groupDynamicsData.he.barometer.map(statement => `
+                <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center font-bold text-slate-800 shadow-sm text-lg">${statement}</div>
+            `).join('');
+        }
+
+        function renderListening() {
+            document.getElementById('listening-list').innerHTML = groupDynamicsData.he.listening.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('askme5-list').innerHTML = groupDynamicsData.he.askMe5.map(q => `
+                <div class="px-5 py-3 bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full text-sm font-bold shadow-sm cursor-pointer hover:bg-indigo-100 transition-colors">${q}</div>
+            `).join('');
+        }
+
+        function renderSimulations() {
+            document.getElementById('simulations-list').innerHTML = groupDynamicsData.he.scenarios.map((sc, i) => `
+                <div class="flex gap-4 p-5 bg-slate-50 border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-black text-xl shrink-0">${i+1}</div>
+                    <p class="text-base text-slate-800 pt-2 font-medium">${sc}</p>
+                </div>
+            `).join('');
+        }
+
+        // INIT WORKSHOP
+        function initResilienceWorkshop() {
+            switchResilienceModule('intro');
         }
 
         // DEPARTMENT MANAGEMENT LOGIC
