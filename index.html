@@ -2690,6 +2690,9 @@
         // EXPANDED RESILIENCE WORKSHOP LOGIC
         let currentAssessmentType = 'burnout';
         let snakesPosition = 1;
+        let pendingDiceValue = 0;
+        let availableSnakesQuestions = [];
+        let availableSnakesBadActions = [];
 
         function switchResilienceModule(modId) {
             // Update active state of side menu buttons
@@ -2830,8 +2833,10 @@
         }
 
         function showSnakesQuestion() {
-            const questions = snakesAndLaddersData.he.questions;
-            const qObj = questions[Math.floor(Math.random() * questions.length)];
+            if (availableSnakesQuestions.length === 0) {
+                availableSnakesQuestions = [...snakesAndLaddersData.he.questions].sort(() => Math.random() - 0.5);
+            }
+            const qObj = availableSnakesQuestions.pop();
             
             document.getElementById('snakes-q-text').innerText = "❓ שאלת התקדמות:";
             document.getElementById('snakes-q-text').innerHTML += `<br><span class="font-normal mt-2 block text-indigo-900">${qObj.q}</span>`;
@@ -2881,8 +2886,10 @@
             } else {
                 // Snake chance (50% on wrong answer)
                 const isSnake = Math.random() > 0.5;
-                const bad = snakesAndLaddersData.he.bad_actions;
-                const badMsg = bad[Math.floor(Math.random() * bad.length)];
+                if (availableSnakesBadActions.length === 0) {
+                    availableSnakesBadActions = [...snakesAndLaddersData.he.bad_actions].sort(() => Math.random() - 0.5);
+                }
+                const badMsg = availableSnakesBadActions.pop();
                 
                 if (isSnake) {
                     snakesPosition -= 15;
@@ -2900,6 +2907,8 @@
         function resetSnakesGame() {
             snakesPosition = 1;
             pendingDiceValue = 0;
+            availableSnakesQuestions = [];
+            availableSnakesBadActions = [];
             updateSnakesBoard();
             document.getElementById('dice-result-ui').innerText = '';
             document.getElementById('snakes-victory').classList.add('hidden');
