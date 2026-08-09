@@ -724,6 +724,17 @@
                     </ol>
                 </div>
             </div>
+            
+            <!-- NEAR MISS & SECOND VICTIM PRACTICE (Multiple Choice) -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 card-shadow space-y-6 mt-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h3 class="text-xl font-bold text-slate-900">תרגול מקרי בוחן: "כמעט ונפגע" והקורבן השני</h3>
+                    <p class="text-xs text-slate-500 mt-1">תרגול תרחישים לפיתוח תרבות דיווח (Speak Up) ותמיכה בצוות</p>
+                </div>
+                <div id="nearmiss-practice-container" class="space-y-6">
+                    <!-- Dynamic Practice Cases -->
+                </div>
+            </div>
         </section>
 
         <!-- TAB 7: INTERACTIVE QUIZ -->
@@ -905,8 +916,13 @@
                 </div>
                 
                 <!-- CHART CONTAINER -->
-                <div class="relative h-80 w-full max-w-2xl mx-auto mb-8">
-                    <canvas id="trendsChart"></canvas>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="relative h-80 w-full mx-auto">
+                        <canvas id="trendsChart"></canvas>
+                    </div>
+                    <div class="relative h-80 w-full mx-auto">
+                        <canvas id="assessmentStatsChart"></canvas>
+                    </div>
                 </div>
 
                 <!-- SMART AGENT RECOMMENDATIONS -->
@@ -1593,6 +1609,34 @@
         };
 
         // INTERACTIVE CURRICULUM PRACTICE SIMULATION DATA
+        // NEAR MISS PRACTICE CASES (Speak Up & Second Victim)
+        const nearMissPracticeCases = [
+            {
+                title: "מקרה 1: טעות בחלוקת מגשי אוכל",
+                q: "עמיתה שלך חילקה בטעות מגש עם לחם רגיל למטופל שזקוק לכלכלה דייסתית. המטופל השתעל אך לא נחנק. העמיתה מבועתת ובוכה בצד, היא אומרת: 'כמעט הרגתי אותו, אני לא מתאימה למקצוע'. מה הדרך הנכונה לפעול כעת?",
+                opts: [
+                    "א. להגיד לה שהיא באמת הייתה צריכה לשים לב יותר ושלא תספר לאף אחד כדי לא להסתבך.",
+                    "ב. לדווח מיד לאחות האחראית מאחורי גבה כדי שהיא תיענש.",
+                    "ג. לעצור, להרגיע אותה, להזכיר לה שטעויות קורות לכולם (הקורבן השני), לעזור לה לדווח לאחות יחד כדי לתקן את התהליך (Speak Up).",
+                    "ד. להגיד לה ללכת הביתה לנוח ולשכוח מזה."
+                ],
+                correct: 2,
+                explain: "נכון מאוד! העמיתה היא 'הקורבן השני' וזקוקה לתמיכה מיידית כדי למנוע טראומה ושחיקה. בנוסף, חובה לדווח כדי למנוע מהטעות לקרות שוב (כשל מערכתי ולא רק אישי)."
+            },
+            {
+                title: "מקרה 2: מעבר לא בטיחותי",
+                q: "במהלך משמרת לילה עמוסה, אתה רואה איש צוות מנסה להרים לבד מטופל כבד מהרצפה מבלי להשתמש במנוף כנדרש בתוכנית הטיפול. הוא אומר 'זה ייקח שניה, אין לי זמן להביא מנוף'. מה תעשה?",
+                opts: [
+                    "א. לעזור לו להרים בידיים כדי לסיים מהר ולמנוע ממנו להיפצע לבד.",
+                    "ב. לומר: 'עצור. זה מסוכן לך ולו. אני הולך להביא את המנוף עכשיו ובוא נעשה את זה יחד בבטחה' (Speak Up).",
+                    "ג. להתעלם, כל אחד אחראי על המטופלים שלו.",
+                    "ד. לצלם אותו בסתר כדי להראות למנהלת בבוקר."
+                ],
+                correct: 1,
+                explain: "בדיוק! מודל Speak Up דורש מאיתנו לעצור מצבים לא בטיחותיים בזמן אמת, אך לעשות זאת תוך הצעת עזרה ושותפות (בוא נעשה זאת יחד בבטחה) במקום האשמה."
+            }
+        ];
+
         const curriculumSimulations = {
             he: {
                 p18: [
@@ -1605,7 +1649,9 @@
                     { title: "תרגול תוכנית 40 שעות: האכלה בטוחה בדמנציה/דיספגיה", q: "בזמן האכלת דייר עם דמנציה וקשיי בליעה (דיספגיה), הדייר אוגר מזון בפה ומראה סימני השתעלות. מה הפעולה הנכונה?", opts: ["א. להמשיך להאכיל כף אחר כף במהירות", "ב. לוודא הושבה ב-90 מעלות, להאכיל בכפיות קטנות, לוודא סיום בליעה לפני כפית נוספת ולדווח לאחות אם יש שיעול חוזר", "ג. להשכיב אותו שטוח ולהאכיל בשכיבה", "ד. לתת מים זורמים מהר בכוס"], correct: 1, explain: "מדויק! מניעת אספירציה וחנק דורשת מנח זקוף (90°), האכלה איטית, וידוא פינוי הפה לפני מתן כפית נוספת ודיווח לאחות על סימני קושי בליעה." },
                     { title: "תרגול תוכנית 40 שעות: דליריום (בלבול חריף)", q: "מטופל שהיה צלול וחיוני בבוקר, הופך לקראת הצהריים למבולבל מאוד, חסר שקט וטוען שיש חרקים בחדר. מהי המסקנה?", opts: ["א. הוא מפתח דמנציה פתאומית", "ב. זהו כנראה מצב של דליריום (בלבול חריף) המחייב דיווח מיידי לאחות לחיפוש סיבה רפואית", "ג. הוא סתם עייף ויש לתת לו לישון", "ד. הוא עושה דווקא ויש להתעלם"], correct: 1, explain: "נכון! שינוי מצב הכרה חריף הוא נורת אזהרה קריטית (דליריום) הדורשת בירור רפואי דחוף." },
                     { title: "תרגול תוכנית 40 שעות: אלימות והתנגדות לטיפול", q: "מטופלת עם דמנציה מתנגדת בתוקף למקלחת בבוקר, צועקת ודוחפת את המטפל. כיצד יש לנהוג?", opts: ["א. להכניס אותה למקלחת בכוח כי חובה לשמור על ניקיון", "ב. לצעוק עליה בחזרה כדי שתירגע", "ג. להרפות, להרגיע אותה, ולנסות שוב מאוחר יותר או בגישה שונה, תוך דיווח לצוות", "ד. לא לקלח אותה לעולם יותר"], correct: 2, explain: "מעולה! מאבקי כוח עם חולי דמנציה רק מחמירים את ההתנגדות. יש להשתמש בטכניקות הסחה, לנסות שנית במועד מאוחר יותר, וכמובן חובה לדווח מיד לצוות ולאחות על כל מקרה של התנגדות." },
-                    { title: "תרגול תוכנית 40 שעות: חוסן ושחיקה", q: "לאחר שבוע של משמרות כפולות ומטופלים מורכבים, אתה חש עצבנות, חוסר סבלנות ועייפות קיצונית. כיצד נכון לפעול?", opts: ["א. להסתיר את המצב ולהמשיך לסבול", "ב. להוציא את העצבים על המטופלים", "ג. לשתף אחראי/צוות תומך, לדאוג להפסקות מסודרות ולא לחשוש לבקש עזרה", "ד. להתפטר מיד"], correct: 2, explain: "נכון מאוד! חוסן נפשי (Resilience) מתחיל בזיהוי השחיקה ובקשת תמיכה מהצוות כחלק מההיגיינה הנפשית שלנו." }
+                    { title: "תרגול תוכנית 40 שעות: חוסן ושחיקה", q: "לאחר שבוע של משמרות כפולות ומטופלים מורכבים, אתה חש עצבנות, חוסר סבלנות ועייפות קיצונית. כיצד נכון לפעול?", opts: ["א. להסתיר את המצב ולהמשיך לסבול", "ב. להוציא את העצבים על המטופלים", "ג. לשתף אחראי/צוות תומך, לדאוג להפסקות מסודרות ולא לחשוש לבקש עזרה", "ד. להתפטר מיד"], correct: 2, explain: "נכון מאוד! חוסן נפשי (Resilience) מתחיל בזיהוי השחיקה ובקשת תמיכה מהצוות כחלק מההיגיינה הנפשית שלנו." },
+                    { title: "תרגול תוכנית 40 שעות: אי-שליטה על סוגרים (IAD)", q: "מטופל דמנטי עשה את צרכיו במיטה. במהלך ההחלפה, אתה מבחין באדמומיות וגירוי קשה באזור העכוז (IAD). מהי הדרך הנכונה לפעול?", opts: ["א. לנקות מהר עם סבון רגיל חזק כדי לחטא את האזור", "ב. לנקות בעדינות עם מגבונים ייעודיים או מים וסבון עדין, לייבש בטפיחות, למרוח משחת מגן (Barrier cream) ולדווח לאחות", "ג. לשפשף חזק עם מגבת כדי להסיר הכל", "ד. להתעלם, זה טבעי אצל מי שמשתמש במוצרי ספיגה"], correct: 1, explain: "מדויק! הגירוי נובע מחשיפה להפרשות (IAD). שפשוף וסבון חזק יחמירו את הנזק. יש לנקות בעדינות, להגן על העור ולדווח לאחות להמשך מעקב." },
+                    { title: "תרגול תוכנית 40 שעות: כבוד המטופל ומניעת תחושת בושה", q: "בזמן שניקית מטופל שסובל מאי-שליטה על סוגרים, המטופל בוכה ואומר 'אני מתבייש בעצמי, אני כמו תינוק'. כיצד תגיב/י?", opts: ["א. 'באמת קצת מסריח פה, אבל אין מה לעשות, נסיים מהר'", "ב. להתעלם לגמרי ולעבוד בשתיקה כדי לא להביך אותו יותר", "ג. להרגיע אותו בקול נעים, לומר לו 'זה בסדר, אנחנו כאן בשביל לעזור לך, זה יכול לקרות לכולם', ולהקפיד לכסות חלקים שאינם מטופלים לשמירה על צנעת הפרט", "ד. לומר לו 'אל תבכה, יש מטופלים במצב גרוע יותר משלך'"], correct: 2, explain: "נכון מאוד! אובדן שליטה על סוגרים הוא חוויה משפילה מאוד. שמירה על כבוד המטופל ומתן אמפתיה מפחיתים את החרדה והבושה." }
                 ],
                 p4n: [
                     { title: "תרגול תוכנית 4 שעות: עבודת לילה וסבבי השגחה", q: "בשעה 02:00 בלילה במהלך סבב השגחה שעתי, גילית דייר מבולבל שיצא ממיטתו ומנסה ללכת בחושך. כיצד תפעל?", opts: ["א. תצעק עליו שיחזור מיד למיטה ולנעול את החדר", "ב. תפנה אליו ברוגע, תדליק תאורת לילה רכה, תלווה אותו בבטחה, תבדוק אם נדרש מים/שירותים ותדווח לאחות התורנית", "ג. להתעלם ולהמשיך בסבב", "ד. להשאיר אותו על הרצפה"], correct: 1, explain: "כל הכבוד! גישה רגועה, שמירה על תאורת לילה בטוחה, מניעת נפילה, ומענה לצרכים פיזיולוגיים בשילוב דיווח לאחות מבטיחים את שלומו בלילה." },
@@ -2478,6 +2524,9 @@
             renderTrackerTable();
             renderObservationCriteria();
             renderNearMissList();
+            if (typeof renderNearMissPractice === 'function') {
+                renderNearMissPractice();
+            }
             quizCurrentIndex = 0;
             quizScore = 0;
             loadQuizQuestion();
@@ -2965,6 +3014,14 @@
             // Save to localStorage
             const today = new Date().toLocaleDateString('he-IL');
             localStorage.setItem(`prev_score_${currentAssessmentType}`, JSON.stringify({ score: scorePercent, date: today }));
+            
+            // Save to history array for graph
+            let history = [];
+            try { history = JSON.parse(localStorage.getItem(`history_${currentAssessmentType}`)) || []; } catch(e){}
+            history.push({ score: scorePercent, date: today });
+            // Keep last 10 records
+            if(history.length > 10) history = history.slice(history.length - 10);
+            localStorage.setItem(`history_${currentAssessmentType}`, JSON.stringify(history));
 
             const resultBox = document.getElementById('assessment-result');
             resultBox.classList.remove('hidden');
@@ -3688,6 +3745,73 @@
             renderNearMissList();
         }
 
+        function renderNearMissPractice() {
+            const container = document.getElementById('nearmiss-practice-container');
+            if(!container) return;
+            container.innerHTML = '';
+            
+            // Note: Currently nearMissPracticeCases is only in Hebrew as specified, we can add lang support later if needed
+            const cases = typeof nearMissPracticeCases !== 'undefined' ? nearMissPracticeCases : [];
+            
+            cases.forEach((c, idx) => {
+                const div = document.createElement('div');
+                div.className = "p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-3";
+                div.innerHTML = `
+                    <h4 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-scale-balanced text-amber-500 ml-1"></i> ${c.title}</h4>
+                    <p class="text-xs text-slate-700 leading-relaxed font-medium">${c.q}</p>
+                    <div class="space-y-2 mt-2">
+                        ${c.opts.map((opt, oIdx) => `
+                            <button onclick="checkNearMissAnswer(${idx}, ${oIdx}, this)" class="w-full text-right p-3 bg-white border border-slate-200 rounded-xl hover:border-amber-400 hover:bg-amber-50 transition-all text-xs text-slate-600 font-medium nm-opt-btn-${idx}">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="nm-feedback-${idx}" class="hidden p-3 mt-3 rounded-xl text-xs font-bold leading-relaxed"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function checkNearMissAnswer(caseIdx, optIdx, btn) {
+            const cases = typeof nearMissPracticeCases !== 'undefined' ? nearMissPracticeCases : [];
+            const caseData = cases[caseIdx];
+            if (!caseData) return;
+
+            const isCorrect = (caseData.correct === optIdx);
+            
+            // Reset buttons
+            const allBtns = document.querySelectorAll(`.nm-opt-btn-${caseIdx}`);
+            allBtns.forEach(b => {
+                b.classList.remove('border-emerald-500', 'bg-emerald-50', 'border-rose-500', 'bg-rose-50', 'text-emerald-800', 'text-rose-800');
+                b.disabled = true;
+                b.classList.add('opacity-70', 'cursor-not-allowed');
+            });
+
+            // Highlight selected
+            if (isCorrect) {
+                btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-800');
+            } else {
+                btn.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-800');
+                // Also highlight correct
+                allBtns[caseData.correct].classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-800');
+            }
+
+            const feedbackDiv = document.getElementById(`nm-feedback-${caseIdx}`);
+            feedbackDiv.classList.remove('hidden');
+            if (isCorrect) {
+                feedbackDiv.className = `p-3 mt-3 rounded-xl text-xs font-bold leading-relaxed bg-emerald-100 text-emerald-900 border border-emerald-200`;
+                feedbackDiv.innerHTML = `<i class="fa-solid fa-check-circle ml-1"></i> ${caseData.explain}`;
+            } else {
+                feedbackDiv.className = `p-3 mt-3 rounded-xl text-xs font-bold leading-relaxed bg-rose-100 text-rose-900 border border-rose-200`;
+                feedbackDiv.innerHTML = `<i class="fa-solid fa-xmark-circle ml-1"></i> לא מדויק. ${caseData.explain}`;
+            }
+            
+            // Record stats globally
+            if(typeof recordStat === 'function') {
+                recordStat('nearmiss', isCorrect);
+            }
+        }
+
         // EXPANDED QUIZ LOGIC
         function loadQuizQuestion() {
             const questions = quizQuestions[currentLang] || quizQuestions['he'];
@@ -3858,6 +3982,7 @@
         });
         // STATS AND SMART AGENT LOGIC
         let trendsChartInstance = null;
+        let assessmentChartInstance = null;
 
         function getStats() {
             const stats = localStorage.getItem('caregiverStats');
@@ -3963,6 +4088,81 @@
             }
             
             document.getElementById('agent-text').innerHTML = recText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // --- ASSESSMENT CHART (Resilience & Burnout History) ---
+            const assessCtx = document.getElementById('assessmentStatsChart').getContext('2d');
+            if (assessmentChartInstance) assessmentChartInstance.destroy();
+            
+            let mbiHistory = [];
+            let rsqHistory = [];
+            try { mbiHistory = JSON.parse(localStorage.getItem('history_burnout_mbi')) || []; } catch(e){}
+            try { rsqHistory = JSON.parse(localStorage.getItem('history_resilience_rsq')) || []; } catch(e){}
+            
+            // Collect all unique dates from both histories
+            const allDatesSet = new Set([...mbiHistory.map(h => h.date), ...rsqHistory.map(h => h.date)]);
+            let allDates = Array.from(allDatesSet);
+            // Simple sort (assuming DD.MM.YYYY string formatting from he-IL locale)
+            allDates.sort((a,b) => {
+                const partsA = a.split('.');
+                const partsB = b.split('.');
+                if(partsA.length === 3 && partsB.length === 3) {
+                    return new Date(`${partsA[2]}-${partsA[1]}-${partsA[0]}`) - new Date(`${partsB[2]}-${partsB[1]}-${partsB[0]}`);
+                }
+                return 0;
+            });
+            
+            if (allDates.length === 0) {
+                 assessmentChartInstance = new Chart(assessCtx, { type: 'line', data: { labels: [], datasets: [] }});
+                 return;
+            }
+
+            // Map data to align with allDates
+            const mbiData = allDates.map(d => {
+                const entry = mbiHistory.slice().reverse().find(h => h.date === d); // Get most recent for that date
+                return entry ? entry.score : null;
+            });
+            
+            const rsqData = allDates.map(d => {
+                const entry = rsqHistory.slice().reverse().find(h => h.date === d);
+                return entry ? entry.score : null;
+            });
+
+            assessmentChartInstance = new Chart(assessCtx, {
+                type: 'line',
+                data: {
+                    labels: allDates,
+                    datasets: [
+                        {
+                            label: 'ציון שחיקה (MBI)',
+                            data: mbiData,
+                            borderColor: 'rgb(244, 63, 94)', // rose-500
+                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            spanGaps: true
+                        },
+                        {
+                            label: 'ציון חוסן (RSQ)',
+                            data: rsqData,
+                            borderColor: 'rgb(16, 185, 129)', // emerald-500
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            spanGaps: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, max: 100 }
+                    },
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { family: 'Assistant' } } }
+                    }
+                }
+            });
         }
     </script>
 </body>
