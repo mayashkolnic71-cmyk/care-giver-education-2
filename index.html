@@ -482,10 +482,18 @@
                         <div id="assessment-result" class="hidden p-4 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl font-bold text-sm"></div>
                     </div>
 
-                    <!-- MODULE 3: SNAKES AND LADDERS -->
+                    <!-- MODULE 3: CREATIVE LEARNING (GAMES) -->
                     <div id="res-mod-snakes" class="res-module hidden space-y-4 text-center">
-                        <h4 class="text-xl font-bold text-slate-800">סולמות וחבלים - למידה יצירתית</h4>
-                        <p class="text-xs text-slate-600">ענה נכונה על שאלות ידע קליני ובטיחות כדי להתקדם בסולמות! טעות תוריד אותך בחבל.</p>
+                        <h4 class="text-xl font-bold text-slate-800">למידה יצירתית - משחקים</h4>
+                        
+                        <div class="flex gap-2 justify-center border-b pb-2 mb-4">
+                            <button onclick="switchCreativeGame('snakes')" id="btn-game-snakes" class="py-2 px-4 border-b-2 border-rose-500 font-bold text-rose-700">סולמות וחבלים</button>
+                            <button onclick="switchCreativeGame('sentence')" id="btn-game-sentence" class="py-2 px-4 border-b-2 border-transparent text-slate-500 font-medium">השלם את המשפט</button>
+                        </div>
+
+                        <!-- SNAKES AND LADDERS GAME -->
+                        <div id="game-snakes-container" class="space-y-4">
+                            <p class="text-xs text-slate-600">ענה נכונה על שאלות ידע קליני ובטיחות כדי להתקדם בסולמות! טעות תוריד אותך בחבל.</p>
                         
                         <div class="flex flex-col items-center justify-center py-6 bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl relative">
                             <!-- Progress Bar -->
@@ -521,6 +529,26 @@
                             <h4 class="text-xl font-bold text-emerald-800">ניצחון! סיימת את המסלול!</h4>
                             <p class="text-sm text-emerald-700">הפגנת ידע קליני ומקצועיות ברמה הגבוהה ביותר.</p>
                             <button onclick="resetSnakesGame()" class="px-6 py-2 bg-emerald-600 text-white font-bold rounded-xl text-sm">שחק שוב</button>
+                        </div>
+                        </div> <!-- End of Snakes Game Container -->
+
+                        <!-- COMPLETE THE SENTENCE GAME -->
+                        <div id="game-sentence-container" class="hidden space-y-4">
+                            <p class="text-xs text-slate-600">בחרו את המילה הנכונה ביותר להשלמת המשפט בנושאי חוסן וטיפול.</p>
+                            <div class="bg-white p-6 rounded-2xl shadow-xl border-2 border-teal-200 text-right">
+                                <div id="sentence-progress" class="text-xs text-teal-600 font-bold mb-4">שאלה 1 מתוך 5</div>
+                                <h5 id="sentence-text" class="text-lg font-bold text-slate-900 leading-relaxed mb-6"></h5>
+                                <div id="sentence-options" class="grid grid-cols-1 md:grid-cols-3 gap-3"></div>
+                                <div id="sentence-feedback" class="hidden p-3 rounded-xl text-sm font-bold mt-4"></div>
+                                <button id="btn-next-sentence" onclick="nextSentence()" class="hidden w-full mt-4 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition-all">למשפט הבא <i class="fa-solid fa-arrow-left mr-2"></i></button>
+                            </div>
+                            
+                            <div id="sentence-victory" class="hidden bg-emerald-50 border border-emerald-200 p-6 rounded-2xl shadow-xl mt-4 text-center space-y-3">
+                                <div class="text-4xl">🎉</div>
+                                <h4 class="text-xl font-bold text-emerald-800">כל הכבוד! סיימתם!</h4>
+                                <p class="text-sm text-emerald-700">השלמתם את כל המשפטים בהצלחה.</p>
+                                <button onclick="resetSentenceGame()" class="px-6 py-2 bg-emerald-600 text-white font-bold rounded-xl text-sm">התחל מחדש</button>
+                            </div>
                         </div>
                     </div>
 
@@ -2913,6 +2941,118 @@
             document.getElementById('dice-result-ui').innerText = '';
             document.getElementById('snakes-victory').classList.add('hidden');
             document.getElementById('snakes-question-area').classList.add('hidden');
+        }
+
+        // COMPLETE THE SENTENCE GAME LOGIC
+        const sentenceGameData = [
+            { text: "כאשר מטופל דמנטי מתעצבן וצועק, הדרך הטובה ביותר היא ____ ולא להתעמת איתו.", opts: ["להכיל ולהרגיע", "לצעוק בחזרה", "לעזוב אותו לבד"], correct: 0, explain: "הכלה ושינוי נושא הן טכניקות מפתח בהתמודדות עם אגיטציה." },
+            { text: "מניעת פצעי לחץ בחולה מרותק דורשת שינוי תנוחה כל ____ שעות לפחות.", opts: ["שעתיים", "4", "6"], correct: 0, explain: "שינוי תנוחה כל שעתיים הוא הסטנדרט למניעת פצעי לחץ." },
+            { text: "כדי למנוע שחיקה בעבודה היומיומית, חשוב לדעת לבקש ____ מהצוות כשצריך.", opts: ["עזרה ותמיכה", "הלוואה", "חופשה לשנה"], correct: 0, explain: "תמיכת עמיתים (Peer Support) היא גורם חוסן משמעותי." },
+            { text: "אם הבחנתי בסימני התעמרות בקשיש מצד איש צוות אחר, עלי ____ מיד לממונה.", opts: ["לדווח", "להתעלם", "להעיר לעובד בעצמי בלבד"], correct: 0, explain: "חובת הדיווח היא חוקית ומוסרית, אי-דיווח משמעו שותפות למעשה." },
+            { text: "לפני האכלת קשיש, יש לוודא שהוא יושב בזווית של ____ מעלות כדי למנוע חנק.", opts: ["90", "45", "180 (שכיבה)"], correct: 0, explain: "ישיבה זקופה קריטית למניעת אספירציה (שאיפת מזון לריאות)." },
+            { text: "שמירה על כבוד המטופל כוללת קריאה בשמו והימנעות משימוש ב____.", opts: ["שפת ילדים מקטינה (Elderspeak)", "כפפות רפואיות", "מד לחץ דם"], correct: 0, explain: "שפת ילדים (Elderspeak) פוגעת בתחושת המסוגלות של הקשיש." },
+            { text: "אם מטופל חווה ירידה פתאומית במצב ההכרה, הדבר הראשון שאעשה הוא ____.", opts: ["לקרוא לעזרה רפואית", "לתת לו לשתות מים", "לכסות אותו בשמיכה"], correct: 0, explain: "שינוי פתאומי בהכרה דורש התערבות רפואית מיידית." },
+            { text: "טיפול אישי (כמו רחצה) בקשיש המתנגד לכך דורש המון ____.", opts: ["סבלנות, גמישות ושכנוע עדין", "כוח פיזי", "ויתור מוחלט"], correct: 0, explain: "אסור להפעיל כוח, יש לנסות שוב מאוחר מאוחר יותר בגישה שונה." }
+        ];
+        
+        let currentSentenceIndex = 0;
+
+        function switchCreativeGame(gameType) {
+            document.getElementById('btn-game-snakes').classList.remove('border-rose-500', 'font-bold', 'text-rose-700');
+            document.getElementById('btn-game-snakes').classList.add('border-transparent', 'text-slate-500');
+            
+            document.getElementById('btn-game-sentence').classList.remove('border-teal-500', 'font-bold', 'text-teal-700');
+            document.getElementById('btn-game-sentence').classList.add('border-transparent', 'text-slate-500');
+
+            document.getElementById('game-snakes-container').classList.add('hidden');
+            document.getElementById('game-sentence-container').classList.add('hidden');
+
+            if(gameType === 'snakes') {
+                document.getElementById('btn-game-snakes').classList.add('border-rose-500', 'font-bold', 'text-rose-700');
+                document.getElementById('btn-game-snakes').classList.remove('border-transparent', 'text-slate-500');
+                document.getElementById('game-snakes-container').classList.remove('hidden');
+            } else {
+                document.getElementById('btn-game-sentence').classList.add('border-teal-500', 'font-bold', 'text-teal-700');
+                document.getElementById('btn-game-sentence').classList.remove('border-transparent', 'text-slate-500');
+                document.getElementById('game-sentence-container').classList.remove('hidden');
+                
+                if(currentSentenceIndex === 0) {
+                    renderSentenceGame();
+                }
+            }
+        }
+
+        function renderSentenceGame() {
+            if (currentSentenceIndex >= sentenceGameData.length) {
+                document.getElementById('sentence-text').parentElement.classList.add('hidden');
+                document.getElementById('sentence-victory').classList.remove('hidden');
+                return;
+            }
+            
+            document.getElementById('sentence-victory').classList.add('hidden');
+            document.getElementById('sentence-text').parentElement.classList.remove('hidden');
+            
+            const q = sentenceGameData[currentSentenceIndex];
+            document.getElementById('sentence-progress').innerText = `משפט ${currentSentenceIndex + 1} מתוך ${sentenceGameData.length}`;
+            
+            // Highlight the blank space
+            const formattedText = q.text.replace('____', '<span class="inline-block w-16 border-b-2 border-teal-500 mx-1"></span>');
+            document.getElementById('sentence-text').innerHTML = formattedText;
+            
+            const optsDiv = document.getElementById('sentence-options');
+            optsDiv.innerHTML = q.opts.map((opt, idx) => `
+                <button onclick="checkSentence(${idx}, ${q.correct})" id="sent-opt-${idx}" class="p-3 bg-slate-50 hover:bg-teal-50 border rounded-xl text-sm transition-all shadow-sm font-medium text-slate-700 hover:text-teal-700 w-full text-center">${opt}</button>
+            `).join('');
+            
+            document.getElementById('sentence-feedback').classList.add('hidden');
+            document.getElementById('btn-next-sentence').classList.add('hidden');
+        }
+
+        function checkSentence(selectedIdx, correctIdx) {
+            const fb = document.getElementById('sentence-feedback');
+            const btnNext = document.getElementById('btn-next-sentence');
+            const q = sentenceGameData[currentSentenceIndex];
+            
+            fb.classList.remove('hidden');
+            
+            // Disable buttons
+            const buttons = document.getElementById('sentence-options').querySelectorAll('button');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                btn.classList.add('opacity-70', 'cursor-not-allowed');
+                if(idx === correctIdx) {
+                    btn.classList.replace('bg-slate-50', 'bg-emerald-100');
+                    btn.classList.add('border-emerald-500', 'text-emerald-800');
+                }
+            });
+
+            if (selectedIdx === correctIdx) {
+                fb.className = "p-3 rounded-xl text-sm font-bold mt-4 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                fb.innerHTML = `✅ נכון מאוד! <br><span class="font-normal mt-1 block">${q.explain}</span>`;
+                
+                // Fill in the blank
+                const filledText = q.text.replace('____', `<span class="text-emerald-600 font-black border-b-2 border-emerald-600 px-1">${q.opts[correctIdx]}</span>`);
+                document.getElementById('sentence-text').innerHTML = filledText;
+                
+                btnNext.classList.remove('hidden');
+            } else {
+                document.getElementById(`sent-opt-${selectedIdx}`).classList.replace('bg-slate-50', 'bg-rose-100');
+                document.getElementById(`sent-opt-${selectedIdx}`).classList.add('border-rose-500', 'text-rose-800');
+                
+                fb.className = "p-3 rounded-xl text-sm font-bold mt-4 bg-rose-50 text-rose-800 border border-rose-200";
+                fb.innerHTML = `❌ טעות. התשובה הנכונה היא "${q.opts[correctIdx]}". <br><span class="font-normal mt-1 block">${q.explain}</span>`;
+                btnNext.classList.remove('hidden');
+            }
+        }
+
+        function nextSentence() {
+            currentSentenceIndex++;
+            renderSentenceGame();
+        }
+
+        function resetSentenceGame() {
+            currentSentenceIndex = 0;
+            renderSentenceGame();
         }
 
         // CARDS MODULE (Points of You)
