@@ -3303,6 +3303,8 @@
                 fb.innerHTML = `❌ טעות. התשובה הנכונה היא "${q.opts[correctIdx]}". <br><span class="font-normal mt-1 block">${q.explain}</span>`;
                 btnNext.classList.remove('hidden');
             }
+            
+            if (typeof recordStat === 'function') recordStat('sentence', selectedIdx === correctIdx);
         }
 
         function nextSentence() {
@@ -3866,6 +3868,8 @@
             });
 
             const pointsPerQ = Math.round(100 / questions.length);
+            
+            if (typeof recordStat === 'function') recordStat('quiz', selectedIndex === correctIndex);
 
             if (selectedIndex === correctIndex) {
                 quizScore += pointsPerQ;
@@ -3995,13 +3999,22 @@
         let assessmentChartInstance = null;
 
         function getStats() {
-            const stats = localStorage.getItem('caregiverStats');
-            if (stats) return JSON.parse(stats);
+            let stats = localStorage.getItem('caregiverStats');
+            if (stats) {
+                stats = JSON.parse(stats);
+                if (!stats.nearmiss) stats.nearmiss = { correct: 0, wrong: 0, name: 'כמעט ונפגע' };
+                if (!stats.quiz) stats.quiz = { correct: 0, wrong: 0, name: 'מבדק ידע אינטראקטיבי' };
+                if (!stats.sentence) stats.sentence = { correct: 0, wrong: 0, name: 'השלם את המשפט' };
+                return stats;
+            }
             return {
                 emergencies: { correct: 0, wrong: 0, name: 'מצבי חירום' },
                 p18: { correct: 0, wrong: 0, name: 'ארגונומיה ומעברים (18 שעות)' },
                 p40: { correct: 0, wrong: 0, name: 'סיבוכים ודמנציה (40 שעות)' },
-                p4n: { correct: 0, wrong: 0, name: 'החייאה (4 שעות)' }
+                p4n: { correct: 0, wrong: 0, name: 'החייאה (4 שעות)' },
+                nearmiss: { correct: 0, wrong: 0, name: 'כמעט ונפגע' },
+                quiz: { correct: 0, wrong: 0, name: 'מבדק ידע אינטראקטיבי' },
+                sentence: { correct: 0, wrong: 0, name: 'השלם את המשפט' }
             };
         }
 
