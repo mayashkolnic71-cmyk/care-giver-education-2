@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+<script>
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    var errorMsg = "JavaScript Error: " + msg + " at line: " + lineNo + ":" + columnNo;
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = errorMsg;
+    document.body.prepend(d);
+    return false;
+};
+window.addEventListener('unhandledrejection', function(event) {
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:40px;left:0;right:0;background:orange;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = 'Unhandled Promise Rejection: ' + event.reason;
+    document.body.prepend(d);
+});
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>פורטל בטיחות והכשרת כוחות עזר סיעודיים | נוהל 1.2.1.2</title>
@@ -12,6 +28,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -60,6 +78,22 @@
 
     <!-- TOP BAR / LINKS & LANGUAGE SWITCHER -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-slate-200">
+<script>
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    var errorMsg = "JavaScript Error: " + msg + " at line: " + lineNo + ":" + columnNo;
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = errorMsg;
+    document.body.prepend(d);
+    return false;
+};
+window.addEventListener('unhandledrejection', function(event) {
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:40px;left:0;right:0;background:orange;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = 'Unhandled Promise Rejection: ' + event.reason;
+    document.body.prepend(d);
+});
+</script>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap justify-between items-center gap-3">
             
             <!-- LOGO & BRANDING -->
@@ -2284,100 +2318,100 @@
             });
 
             // Update Top Header & Hero Text
-            document.getElementById('header-badge').innerText = dict.headerBadge;
-            document.getElementById('header-title').innerText = dict.headerTitle;
-            document.getElementById('btn-assoc-txt').innerText = dict.btnAssocTop;
-            document.getElementById('btn-proc-txt-top').innerText = dict.btnProcTop;
-            if (document.getElementById('btn-brochure-txt-top')) document.getElementById('btn-brochure-txt-top').innerText = dict.btnBrochureTop;
-            document.getElementById('btn-proc-txt-hero').innerText = dict.btnProcHero;
-            document.getElementById('btn-assoc-txt-hero').innerText = dict.btnAssocHero;
-            if (document.getElementById('btn-brochure-txt-hero')) document.getElementById('btn-brochure-txt-hero').innerText = dict.btnBrochureHero;
-            document.getElementById('hero-tag').innerText = dict.heroTag;
-            document.getElementById('hero-main-title').innerText = dict.heroTitle;
-            document.getElementById('hero-description').innerText = dict.heroDesc;
-            document.getElementById('hero-stat-1').innerText = dict.stat1;
-            document.getElementById('hero-stat-2').innerText = dict.stat2;
-            document.getElementById('hero-stat-3').innerText = dict.stat3;
-            document.getElementById('author-title').innerText = dict.authorTitle;
-            document.getElementById('author-name').innerText = dict.authorName;
-            document.getElementById('author-role').innerText = dict.authorRole;
-            document.getElementById('author-quote').innerText = dict.authorQuote;
+            if(document.getElementById('header-badge')) document.getElementById('header-badge').innerText = dict.headerBadge;
+            if(document.getElementById('header-title')) document.getElementById('header-title').innerText = dict.headerTitle;
+            if(document.getElementById('btn-assoc-txt')) document.getElementById('btn-assoc-txt').innerText = dict.btnAssocTop;
+            if(document.getElementById('btn-proc-txt-top')) document.getElementById('btn-proc-txt-top').innerText = dict.btnProcTop;
+            if (document.getElementById('btn-brochure-txt-top')) if(document.getElementById('btn-brochure-txt-top')) document.getElementById('btn-brochure-txt-top').innerText = dict.btnBrochureTop;
+            if(document.getElementById('btn-proc-txt-hero')) document.getElementById('btn-proc-txt-hero').innerText = dict.btnProcHero;
+            if(document.getElementById('btn-assoc-txt-hero')) document.getElementById('btn-assoc-txt-hero').innerText = dict.btnAssocHero;
+            if (document.getElementById('btn-brochure-txt-hero')) if(document.getElementById('btn-brochure-txt-hero')) document.getElementById('btn-brochure-txt-hero').innerText = dict.btnBrochureHero;
+            if(document.getElementById('hero-tag')) document.getElementById('hero-tag').innerText = dict.heroTag;
+            if(document.getElementById('hero-main-title')) document.getElementById('hero-main-title').innerText = dict.heroTitle;
+            if(document.getElementById('hero-description')) document.getElementById('hero-description').innerText = dict.heroDesc;
+            if(document.getElementById('hero-stat-1')) document.getElementById('hero-stat-1').innerText = dict.stat1;
+            if(document.getElementById('hero-stat-2')) document.getElementById('hero-stat-2').innerText = dict.stat2;
+            if(document.getElementById('hero-stat-3')) document.getElementById('hero-stat-3').innerText = dict.stat3;
+            if(document.getElementById('author-title')) document.getElementById('author-title').innerText = dict.authorTitle;
+            if(document.getElementById('author-name')) document.getElementById('author-name').innerText = dict.authorName;
+            if(document.getElementById('author-role')) document.getElementById('author-role').innerText = dict.authorRole;
+            if(document.getElementById('author-quote')) document.getElementById('author-quote').innerText = dict.authorQuote;
 
             // Nav Tabs
-            document.getElementById('tab-title-modules').innerText = dict.tabModules;
-            if(document.getElementById('tab-title-emergencies')) document.getElementById('tab-title-emergencies').innerText = dict.tabEmergencies;
-            document.getElementById('tab-title-curriculum').innerText = dict.tabCurriculum;
-            document.getElementById('tab-title-resilience').innerText = dict.tabResilience;
-            document.getElementById('tab-title-tracker').innerText = dict.tabTracker;
-            document.getElementById('tab-title-observation').innerText = dict.tabObservation;
-            document.getElementById('tab-title-nearmiss').innerText = dict.tabNearMiss;
-            document.getElementById('tab-title-quiz').innerText = dict.tabQuiz;
-            document.getElementById('tab-title-checklist').innerText = dict.tabChecklist;
+            if(document.getElementById('tab-title-modules')) document.getElementById('tab-title-modules').innerText = dict.tabModules;
+            if(document.getElementById('tab-title-emergencies')) if(document.getElementById('tab-title-emergencies')) document.getElementById('tab-title-emergencies').innerText = dict.tabEmergencies;
+            if(document.getElementById('tab-title-curriculum')) document.getElementById('tab-title-curriculum').innerText = dict.tabCurriculum;
+            if(document.getElementById('tab-title-resilience')) document.getElementById('tab-title-resilience').innerText = dict.tabResilience;
+            if(document.getElementById('tab-title-tracker')) document.getElementById('tab-title-tracker').innerText = dict.tabTracker;
+            if(document.getElementById('tab-title-observation')) document.getElementById('tab-title-observation').innerText = dict.tabObservation;
+            if(document.getElementById('tab-title-nearmiss')) document.getElementById('tab-title-nearmiss').innerText = dict.tabNearMiss;
+            if(document.getElementById('tab-title-quiz')) document.getElementById('tab-title-quiz').innerText = dict.tabQuiz;
+            if(document.getElementById('tab-title-checklist')) document.getElementById('tab-title-checklist').innerText = dict.tabChecklist;
 
             // Overview Section
-            document.getElementById('mod-heading').innerText = dict.modHeading;
-            document.getElementById('mod-subheading').innerText = dict.modSubheading;
-            document.getElementById('info-title').innerText = dict.infoTitle;
-            document.getElementById('info-body').innerText = dict.infoBody;
+            if(document.getElementById('mod-heading')) document.getElementById('mod-heading').innerText = dict.modHeading;
+            if(document.getElementById('mod-subheading')) document.getElementById('mod-subheading').innerText = dict.modSubheading;
+            if(document.getElementById('info-title')) document.getElementById('info-title').innerText = dict.infoTitle;
+            if(document.getElementById('info-body')) document.getElementById('info-body').innerText = dict.infoBody;
 
             // Resilience Section
-            document.getElementById('res-tag').innerText = dict.resTag;
-            document.getElementById('res-heading').innerText = dict.resHeading;
-            document.getElementById('res-subheading').innerText = dict.resSubheading;
-            document.getElementById('res-lbl-name').innerText = dict.resLblName;
-            document.getElementById('btn-submit-resilience').innerText = dict.btnSubmitResilience;
-            document.getElementById('btn-print-resilience').innerText = dict.btnPrintResilience;
+            if (document.getElementById('res-tag')) if(document.getElementById('res-tag')) document.getElementById('res-tag').innerText = dict.resTag;
+            if (document.getElementById('res-heading')) if(document.getElementById('res-heading')) document.getElementById('res-heading').innerText = dict.resHeading;
+            if (document.getElementById('res-subheading')) if(document.getElementById('res-subheading')) document.getElementById('res-subheading').innerText = dict.resSubheading;
+            if (document.getElementById('res-lbl-name')) if(document.getElementById('res-lbl-name')) document.getElementById('res-lbl-name').innerText = dict.resLblName;
+            if (document.getElementById('btn-submit-resilience')) if(document.getElementById('btn-submit-resilience')) document.getElementById('btn-submit-resilience').innerText = dict.btnSubmitResilience;
+            if (document.getElementById('btn-print-resilience')) if(document.getElementById('btn-print-resilience')) document.getElementById('btn-print-resilience').innerText = dict.btnPrintResilience;
 
             // Tracker
-            document.getElementById('tr-heading').innerText = dict.trHeading;
-            document.getElementById('tr-subheading').innerText = dict.trSubheading;
-            document.getElementById('btn-manage-depts').innerText = dict.btnManageDepts;
-            document.getElementById('btn-add-staff').innerText = dict.btnAddStaff;
-            document.getElementById('kpi-total-lbl').innerText = dict.kpiTotalLbl;
-            document.getElementById('kpi-tenure-lbl').innerText = dict.kpiTenureLbl;
-            document.getElementById('kpi-basic-lbl').innerText = dict.kpiBasicLbl;
-            document.getElementById('kpi-exam-lbl').innerText = dict.kpiExamLbl;
-            document.getElementById('kpi-night-lbl').innerText = dict.kpiNightLbl;
-            document.getElementById('th-name').innerText = dict.thName;
-            document.getElementById('th-dept').innerText = dict.thDept;
-            document.getElementById('th-tenure').innerText = dict.thTenure;
-            document.getElementById('th-bls').innerText = dict.thBls;
-            document.getElementById('th-basic').innerText = dict.thBasic;
-            document.getElementById('th-advanced').innerText = dict.thAdvanced;
-            document.getElementById('th-night').innerText = dict.thNight;
-            document.getElementById('th-score').innerText = dict.thScore;
-            document.getElementById('th-eval').innerText = dict.thEval;
-            document.getElementById('th-status').innerText = dict.thStatus;
+            if(document.getElementById('tr-heading')) document.getElementById('tr-heading').innerText = dict.trHeading;
+            if(document.getElementById('tr-subheading')) document.getElementById('tr-subheading').innerText = dict.trSubheading;
+            if(document.getElementById('btn-manage-depts')) document.getElementById('btn-manage-depts').innerText = dict.btnManageDepts;
+            if(document.getElementById('btn-add-staff')) document.getElementById('btn-add-staff').innerText = dict.btnAddStaff;
+            if(document.getElementById('kpi-total-lbl')) document.getElementById('kpi-total-lbl').innerText = dict.kpiTotalLbl;
+            if(document.getElementById('kpi-tenure-lbl')) document.getElementById('kpi-tenure-lbl').innerText = dict.kpiTenureLbl;
+            if(document.getElementById('kpi-basic-lbl')) document.getElementById('kpi-basic-lbl').innerText = dict.kpiBasicLbl;
+            if(document.getElementById('kpi-exam-lbl')) document.getElementById('kpi-exam-lbl').innerText = dict.kpiExamLbl;
+            if(document.getElementById('kpi-night-lbl')) document.getElementById('kpi-night-lbl').innerText = dict.kpiNightLbl;
+            if(document.getElementById('th-name')) document.getElementById('th-name').innerText = dict.thName;
+            if(document.getElementById('th-dept')) document.getElementById('th-dept').innerText = dict.thDept;
+            if(document.getElementById('th-tenure')) document.getElementById('th-tenure').innerText = dict.thTenure;
+            if(document.getElementById('th-bls')) document.getElementById('th-bls').innerText = dict.thBls;
+            if(document.getElementById('th-basic')) document.getElementById('th-basic').innerText = dict.thBasic;
+            if(document.getElementById('th-advanced')) document.getElementById('th-advanced').innerText = dict.thAdvanced;
+            if(document.getElementById('th-night')) document.getElementById('th-night').innerText = dict.thNight;
+            if(document.getElementById('th-score')) document.getElementById('th-score').innerText = dict.thScore;
+            if(document.getElementById('th-eval')) document.getElementById('th-eval').innerText = dict.thEval;
+            if(document.getElementById('th-status')) document.getElementById('th-status').innerText = dict.thStatus;
 
             // Observation
-            document.getElementById('obs-heading').innerText = dict.obsHeading;
-            document.getElementById('obs-subheading').innerText = dict.obsSubheading;
-            document.getElementById('obs-lbl-staff').innerText = dict.obsLblStaff;
-            document.getElementById('obs-lbl-nurse').innerText = dict.obsLblNurse;
-            document.getElementById('obs-lbl-notes').innerText = dict.obsLblNotes;
-            document.getElementById('btn-print-obs').innerText = dict.btnPrintObs;
+            if(document.getElementById('obs-heading')) document.getElementById('obs-heading').innerText = dict.obsHeading;
+            if(document.getElementById('obs-subheading')) document.getElementById('obs-subheading').innerText = dict.obsSubheading;
+            if(document.getElementById('obs-lbl-staff')) document.getElementById('obs-lbl-staff').innerText = dict.obsLblStaff;
+            if(document.getElementById('obs-lbl-nurse')) document.getElementById('obs-lbl-nurse').innerText = dict.obsLblNurse;
+            if(document.getElementById('obs-lbl-notes')) document.getElementById('obs-lbl-notes').innerText = dict.obsLblNotes;
+            if(document.getElementById('btn-print-obs')) document.getElementById('btn-print-obs').innerText = dict.btnPrintObs;
 
             // Near Miss
-            document.getElementById('nm-heading').innerText = dict.nmHeading;
-            document.getElementById('nm-subheading').innerText = dict.nmSubheading;
-            document.getElementById('nm-form-title').innerText = dict.nmFormTitle;
-            document.getElementById('btn-send-nm').innerText = dict.btnSendNm;
-            document.getElementById('nm-list-title').innerText = dict.nmListTitle;
+            if(document.getElementById('nm-heading')) document.getElementById('nm-heading').innerText = dict.nmHeading;
+            if(document.getElementById('nm-subheading')) document.getElementById('nm-subheading').innerText = dict.nmSubheading;
+            if(document.getElementById('nm-form-title')) document.getElementById('nm-form-title').innerText = dict.nmFormTitle;
+            if(document.getElementById('btn-send-nm')) document.getElementById('btn-send-nm').innerText = dict.btnSendNm;
+            if(document.getElementById('nm-list-title')) document.getElementById('nm-list-title').innerText = dict.nmListTitle;
 
             // Quiz & Checklist & Footer
-            if(document.getElementById('quiz-heading')) document.getElementById('quiz-heading').innerText = dict.quizHeading;
-            if(document.getElementById('quiz-subheading')) document.getElementById('quiz-subheading').innerText = dict.quizSubheading;
-            if(document.getElementById('chk-heading')) document.getElementById('chk-heading').innerText = dict.chkHeading;
-            if(document.getElementById('chk-subheading')) document.getElementById('chk-subheading').innerText = dict.chkSubheading;
-            if(document.getElementById('ft-title')) document.getElementById('ft-title').innerText = dict.ftTitle;
-            if(document.getElementById('ft-sub')) document.getElementById('ft-sub').innerText = dict.ftSub;
-            if(document.getElementById('ft-author')) document.getElementById('ft-author').innerText = dict.ftAuthor;
+            if(document.getElementById('quiz-heading')) if(document.getElementById('quiz-heading')) document.getElementById('quiz-heading').innerText = dict.quizHeading;
+            if(document.getElementById('quiz-subheading')) if(document.getElementById('quiz-subheading')) document.getElementById('quiz-subheading').innerText = dict.quizSubheading;
+            if(document.getElementById('chk-heading')) if(document.getElementById('chk-heading')) document.getElementById('chk-heading').innerText = dict.chkHeading;
+            if(document.getElementById('chk-subheading')) if(document.getElementById('chk-subheading')) document.getElementById('chk-subheading').innerText = dict.chkSubheading;
+            if(document.getElementById('ft-title')) if(document.getElementById('ft-title')) document.getElementById('ft-title').innerText = dict.ftTitle;
+            if(document.getElementById('ft-sub')) if(document.getElementById('ft-sub')) document.getElementById('ft-sub').innerText = dict.ftSub;
+            if(document.getElementById('ft-author')) if(document.getElementById('ft-author')) document.getElementById('ft-author').innerText = dict.ftAuthor;
             
-            if(document.getElementById('nm-box-title')) document.getElementById('nm-box-title').innerText = dict.nmBoxTitle;
+            if(document.getElementById('nm-box-title')) if(document.getElementById('nm-box-title')) document.getElementById('nm-box-title').innerText = dict.nmBoxTitle;
             if(document.getElementById('nm-box-steps')) document.getElementById('nm-box-steps').innerHTML = dict.nmBoxSteps;
-            if(document.getElementById('ft-link-assoc')) document.getElementById('ft-link-assoc').innerText = dict.ftLinkAssoc;
-            if(document.getElementById('ft-link-proc')) document.getElementById('ft-link-proc').innerText = dict.ftLinkProc;
-            if(document.getElementById('ft-copy')) document.getElementById('ft-copy').innerText = dict.ftCopy;
+            if(document.getElementById('ft-link-assoc')) if(document.getElementById('ft-link-assoc')) document.getElementById('ft-link-assoc').innerText = dict.ftLinkAssoc;
+            if(document.getElementById('ft-link-proc')) if(document.getElementById('ft-link-proc')) document.getElementById('ft-link-proc').innerText = dict.ftLinkProc;
+            if(document.getElementById('ft-copy')) if(document.getElementById('ft-copy')) document.getElementById('ft-copy').innerText = dict.ftCopy;
 
             // Re-render Dynamic Sub-components
             renderOverviewModules();
@@ -2754,7 +2788,26 @@
             const data = currentAssessmentType === 'burnout' ? burnoutQuestionnaireData['he'] : resilienceFullQuestionnaire['he'];
             
             if(!container) return;
-            container.innerHTML = '';
+            
+            let html = '';
+            
+            const prevDataStr = localStorage.getItem(`prev_score_${currentAssessmentType}`);
+            if (prevDataStr) {
+                try {
+                    const prevData = JSON.parse(prevDataStr);
+                    html += `<div class="p-3 mb-4 bg-blue-50 text-blue-800 rounded-xl text-xs border border-blue-200">
+                        <strong>היסטוריית מילוי:</strong> בפעם הקודמת שמילאת שאלון זה ב-${prevData.date}, קיבלת ציון של ${prevData.score}%.
+                    </div>`;
+                } catch(e) {}
+            }
+            
+            if (currentAssessmentType === 'burnout') {
+                html += `<p class="text-xs text-slate-500 mb-4">* מבוסס על שאלון שחיקה MBI (Maslach Burnout Inventory)</p>`;
+            } else {
+                html += `<p class="text-xs text-slate-500 mb-4">* מבוסס על סולם חוסן CD-RISC (Connor-Davidson Resilience Scale)</p>`;
+            }
+            
+            container.innerHTML = html;
 
             data.forEach((qObj, idx) => {
                 const div = document.createElement('div');
@@ -2764,7 +2817,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                         ${qObj.opts.map((optText, oIdx) => `
                             <label class="flex items-center gap-2 p-2.5 bg-white rounded-xl border hover:border-rose-400 cursor-pointer text-xs">
-                                <input type="radio" name="assess_q_${idx}" value="${4 - oIdx}" ${oIdx === 0 ? 'checked' : ''} class="text-rose-600 focus:ring-rose-500">
+                                <input type="radio" name="assess_q_${idx}" value="${oIdx}" ${oIdx === 0 ? 'checked' : ''} class="text-rose-600 focus:ring-rose-500">
                                 <span>${optText}</span>
                             </label>
                         `).join('')}
@@ -2781,17 +2834,28 @@
 
             data.forEach((_, idx) => {
                 const selected = document.querySelector(`input[name="assess_q_${idx}"]:checked`);
-                if (selected) totalPoints += parseInt(selected.value);
+                if (selected) {
+                    let val = parseInt(selected.value);
+                    if (currentAssessmentType === 'burnout') {
+                        totalPoints += val; // Higher index (always) = Higher burnout
+                    } else {
+                        totalPoints += (3 - val); // Lower index = Higher resilience
+                    }
+                }
             });
 
-            const maxPoints = data.length * 4;
+            const maxPoints = data.length * 3;
             const scorePercent = Math.round((totalPoints / maxPoints) * 100);
+
+            // Save to localStorage
+            const today = new Date().toLocaleDateString('he-IL');
+            localStorage.setItem(`prev_score_${currentAssessmentType}`, JSON.stringify({ score: scorePercent, date: today }));
 
             const resultBox = document.getElementById('assessment-result');
             resultBox.classList.remove('hidden');
 
             if (currentAssessmentType === 'burnout') {
-                if (scorePercent > 70) {
+                if (scorePercent < 40) {
                     resultBox.className = "p-4 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl font-bold text-sm mt-4";
                     resultBox.innerHTML = `רמת שחיקה מוערכת נמוכה (${scorePercent}%) ✅ המשיכו לשמור על עצמכם.`;
                 } else {
@@ -2799,7 +2863,7 @@
                     resultBox.innerHTML = `רמת שחיקה גבוהה (${scorePercent}%) 💬 מומלץ ליזום שיחת אוורור רגשי ולדאוג להפסקות במשמרת.`;
                 }
             } else {
-                if (scorePercent >= 75) {
+                if (scorePercent >= 70) {
                     resultBox.className = "p-4 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl font-bold text-sm mt-4";
                     resultBox.innerHTML = `חוסן נפשי גבוה (${scorePercent}%) 🌟 הפגנתם כלים טובים להתמודדות עם מצבי עומס.`;
                 } else {
@@ -2807,6 +2871,8 @@
                     resultBox.innerHTML = `חוסן בינוני (${scorePercent}%) - מומלץ להיעזר במודל המשוב ובטכניקות תקשורת מהסדנה.`;
                 }
             }
+            
+            resultBox.innerHTML += `<div class="mt-3"><button type="button" onclick="renderAssessmentQuestions(); document.getElementById('assessment-result').classList.add('hidden');" class="px-4 py-2 bg-white text-slate-800 border border-slate-300 rounded-lg text-xs font-bold hover:bg-slate-100 transition-all">מלא שוב / עדכן שאלון</button></div>`;
         }
 
         // SNAKES & LADDERS LOGIC
@@ -2901,6 +2967,21 @@
                 
                 fb.className = "p-3 rounded-xl text-sm font-bold mt-3 bg-emerald-50 text-emerald-800 border border-emerald-200";
                 fb.innerText = `תשובה נכונה! התקדמת ${pendingDiceValue} משבצות.` + (isLadder ? " מצאת סולם! עלית עוד 10 משבצות 🪜" : "");
+                
+                if (isLadder) {
+                    try {
+                        confetti({
+                            particleCount: 150,
+                            spread: 80,
+                            origin: { y: 0.6 },
+                            zIndex: 10000
+                        });
+                        const applause = new Audio('https://actions.google.com/sounds/v1/crowds/light_applause.ogg');
+                        applause.play().catch(e => console.log('Audio play blocked:', e));
+                    } catch (e) {
+                        console.error('Confetti error:', e);
+                    }
+                }
                 
                 updateSnakesBoard();
                 
@@ -3383,6 +3464,22 @@
             printWin.document.write(`
                 <html dir="rtl" lang="he">
                 <head>
+<script>
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    var errorMsg = "JavaScript Error: " + msg + " at line: " + lineNo + ":" + columnNo;
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = errorMsg;
+    document.body.prepend(d);
+    return false;
+};
+window.addEventListener('unhandledrejection', function(event) {
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:40px;left:0;right:0;background:orange;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = 'Unhandled Promise Rejection: ' + event.reason;
+    document.body.prepend(d);
+});
+</script>
                     <title>טופס הערכת תפקוד ותצפית חצי-שנתית</title>
                     <style>
                         body { font-family: sans-serif; padding: 30px; border: 6px solid #0369a1; margin: 10px; }
@@ -3579,6 +3676,22 @@
             printWin.document.write(`
                 <html dir="rtl" lang="he">
                 <head>
+<script>
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    var errorMsg = "JavaScript Error: " + msg + " at line: " + lineNo + ":" + columnNo;
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = errorMsg;
+    document.body.prepend(d);
+    return false;
+};
+window.addEventListener('unhandledrejection', function(event) {
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:40px;left:0;right:0;background:orange;color:white;z-index:999999;padding:20px;font-weight:bold;font-size:20px;';
+    d.innerText = 'Unhandled Promise Rejection: ' + event.reason;
+    document.body.prepend(d);
+});
+</script>
                     <title>אישור כשירות לימודית - נוהל 1.2.1.2</title>
                     <style>
                         body { font-family: sans-serif; text-align: center; padding: 40px; border: 10px solid #0369a1; margin: 20px; }
@@ -3661,3 +3774,4 @@
     </script>
 </body>
 </html>
+
