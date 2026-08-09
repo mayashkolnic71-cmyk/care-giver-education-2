@@ -3282,6 +3282,8 @@
             if (selectedIdx === correctIdx) {
                 fb.className = "p-3 rounded-xl text-sm font-bold mt-4 bg-emerald-50 text-emerald-800 border border-emerald-200";
                 fb.innerHTML = `✅ נכון מאוד! <br><span class="font-normal mt-1 block">${q.explain}</span>`;
+                confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+                new Audio('assets/applause.mp3').play().catch(e => console.log(e));
                 
                 // Fill in the blank
                 const filledText = q.text.replace('____', `<span class="text-emerald-600 font-black border-b-2 border-emerald-600 px-1">${q.opts[correctIdx]}</span>`);
