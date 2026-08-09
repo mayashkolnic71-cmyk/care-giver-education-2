@@ -2683,27 +2683,13 @@
         }
 
         // SNAKES & LADDERS LOGIC
-        function rollDiceAndPlay() {
-            const diceValue = Math.floor(Math.random() * 6) + 1;
-            document.getElementById('dice-result-ui').innerText = `🎲 יצא לך: ${diceValue}`;
-            snakesPosition += diceValue;
-            if (snakesPosition >= 100) snakesPosition = 100;
-            
-            updateSnakesBoard();
-            
-            if (snakesPosition === 100) {
-                document.getElementById('snakes-question-area').classList.add('hidden');
-                document.getElementById('snakes-victory').classList.remove('hidden');
-                return;
-            }
+        let pendingDiceValue = 0;
 
-            // Decide if land on ladder/snake (25% chance)
-            const r = Math.random();
-            if (r < 0.25) {
-                showSnakesQuestion();
-            } else {
-                document.getElementById('snakes-question-area').classList.add('hidden');
-            }
+        function rollDiceAndPlay() {
+            pendingDiceValue = Math.floor(Math.random() * 6) + 1;
+            document.getElementById('dice-result-ui').innerText = `🎲 יצא לך: ${pendingDiceValue} - ענה על השאלה כדי להתקדם!`;
+            
+            showSnakesQuestion();
         }
 
         function updateSnakesBoard() {
@@ -2713,60 +2699,75 @@
 
         function showSnakesQuestion() {
             const questions = snakesAndLaddersData.he.questions;
-            const bad = snakesAndLaddersData.he.bad_actions;
+            const qObj = questions[Math.floor(Math.random() * questions.length)];
             
-            // Randomly pick good (ladder question) or bad (snake)
-            if (Math.random() > 0.4) {
-                // LADDER QUESTION
-                const qObj = questions[Math.floor(Math.random() * questions.length)];
-                document.getElementById('snakes-q-text').innerText = "🪜 הגעת לסולם! ענה נכון כדי לעלות:";
-                document.getElementById('snakes-q-text').innerHTML += `<br><span class="font-normal mt-2 block">${qObj.q}</span>`;
-                
-                const optsDiv = document.getElementById('snakes-options');
-                optsDiv.innerHTML = qObj.opts.map((opt, idx) => `
-                    <button onclick="answerSnakesQuestion(${idx}, ${qObj.correct}, '${qObj.msg}')" class="block w-full text-right p-3 bg-slate-50 hover:bg-indigo-50 border rounded-xl text-sm transition-all shadow-sm">${opt}</button>
-                `).join('');
-                document.getElementById('snakes-feedback').classList.add('hidden');
-                document.getElementById('snakes-question-area').classList.remove('hidden');
-            } else {
-                // SNAKE 
-                const msg = bad[Math.floor(Math.random() * bad.length)];
-                snakesPosition -= 15;
-                if(snakesPosition < 1) snakesPosition = 1;
-                updateSnakesBoard();
-                
-                document.getElementById('snakes-q-text').innerText = "🐍 חבל! משבצת מסוכנת, ירדת למטה.";
-                document.getElementById('snakes-options').innerHTML = `<div class="p-4 bg-rose-50 text-rose-800 rounded-xl font-bold shadow-sm">${msg}</div>`;
-                document.getElementById('snakes-feedback').classList.add('hidden');
-                document.getElementById('snakes-question-area').classList.remove('hidden');
-            }
+            document.getElementById('snakes-q-text').innerText = "❓ שאלת התקדמות:";
+            document.getElementById('snakes-q-text').innerHTML += `<br><span class="font-normal mt-2 block text-indigo-900">${qObj.q}</span>`;
+            
+            const optsDiv = document.getElementById('snakes-options');
+            optsDiv.innerHTML = qObj.opts.map((opt, idx) => `
+                <button onclick="answerSnakesQuestion(${idx}, ${qObj.correct}, '${qObj.msg}')" class="block w-full text-right p-3 bg-slate-50 hover:bg-indigo-50 border rounded-xl text-sm transition-all shadow-sm font-medium text-slate-700 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400">${opt}</button>
+            `).join('');
+            document.getElementById('snakes-feedback').classList.add('hidden');
+            document.getElementById('snakes-question-area').classList.remove('hidden');
+            
+            // Disable roll button while answering
+            const btnRoll = document.getElementById('btn-roll-dice');
+            btnRoll.disabled = true;
+            btnRoll.classList.add('opacity-50', 'cursor-not-allowed');
         }
 
         function answerSnakesQuestion(selectedIdx, correctIdx, msg) {
             const fb = document.getElementById('snakes-feedback');
             fb.classList.remove('hidden');
             document.getElementById('snakes-options').innerHTML = '';
+            
+            // Re-enable roll button
+            const btnRoll = document.getElementById('btn-roll-dice');
+            btnRoll.disabled = false;
+            btnRoll.classList.remove('opacity-50', 'cursor-not-allowed');
+
             if (selectedIdx === correctIdx) {
-                snakesPosition += 10;
+                // Ladder chance (30%)
+                const isLadder = Math.random() > 0.7;
+                let bonus = isLadder ? 10 : 0;
+                
+                snakesPosition += pendingDiceValue + bonus;
                 if(snakesPosition > 100) snakesPosition = 100;
+                
                 fb.className = "p-3 rounded-xl text-sm font-bold mt-3 bg-emerald-50 text-emerald-800 border border-emerald-200";
-                fb.innerText = "תשובה נכונה! " + msg;
+                fb.innerText = `תשובה נכונה! התקדמת ${pendingDiceValue} משבצות.` + (isLadder ? " מצאת סולם! עלית עוד 10 משבצות 🪜" : "");
+                
                 updateSnakesBoard();
                 
                 if (snakesPosition === 100) {
                     setTimeout(() => {
                         document.getElementById('snakes-question-area').classList.add('hidden');
                         document.getElementById('snakes-victory').classList.remove('hidden');
-                    }, 1000);
+                    }, 1500);
                 }
             } else {
-                fb.className = "p-3 rounded-xl text-sm font-bold mt-3 bg-rose-50 text-rose-800 border border-rose-200";
-                fb.innerText = "טעות! פספסת את ההזדמנות לעלות בסולם.";
+                // Snake chance (50% on wrong answer)
+                const isSnake = Math.random() > 0.5;
+                const bad = snakesAndLaddersData.he.bad_actions;
+                const badMsg = bad[Math.floor(Math.random() * bad.length)];
+                
+                if (isSnake) {
+                    snakesPosition -= 15;
+                    if(snakesPosition < 1) snakesPosition = 1;
+                    fb.className = "p-3 rounded-xl text-sm font-bold mt-3 bg-rose-50 text-rose-800 border border-rose-200";
+                    fb.innerText = `טעות! 🐍 נתקלת בנחש: ${badMsg} ירדת למטה.`;
+                } else {
+                    fb.className = "p-3 rounded-xl text-sm font-bold mt-3 bg-amber-50 text-amber-800 border border-amber-200";
+                    fb.innerText = "טעות! נשארת במקומך הפעם. נסה שוב בתור הבא.";
+                }
+                updateSnakesBoard();
             }
         }
 
         function resetSnakesGame() {
             snakesPosition = 1;
+            pendingDiceValue = 0;
             updateSnakesBoard();
             document.getElementById('dice-result-ui').innerText = '';
             document.getElementById('snakes-victory').classList.add('hidden');
