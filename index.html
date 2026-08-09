@@ -468,9 +468,11 @@
                     <div id="res-mod-assessment" class="res-module hidden space-y-6">
                         <h4 class="text-xl font-bold text-slate-800">אבחון עצמי: שחיקה וחוסן</h4>
                         
-                        <div class="flex gap-2 border-b">
-                            <button onclick="switchAssessmentTab('burnout')" id="tab-btn-burnout" class="py-2 px-4 border-b-2 border-rose-500 font-bold text-rose-700">שאלון שחיקה</button>
-                            <button onclick="switchAssessmentTab('resilience_q')" id="tab-btn-resilience_q" class="py-2 px-4 border-b-2 border-transparent text-slate-500 font-medium">שאלון חוסן</button>
+                        <div class="flex flex-wrap gap-2 border-b">
+                            <button onclick="switchAssessmentTab('burnout')" id="tab-btn-burnout" class="py-2 px-4 border-b-2 border-transparent text-slate-500 font-medium whitespace-nowrap text-xs sm:text-sm">שחיקה (כללי)</button>
+                            <button onclick="switchAssessmentTab('burnout_mbi')" id="tab-btn-burnout_mbi" class="py-2 px-4 border-b-2 border-transparent text-slate-500 font-medium whitespace-nowrap text-xs sm:text-sm">שחיקה (MBI)</button>
+                            <button onclick="switchAssessmentTab('resilience_q')" id="tab-btn-resilience_q" class="py-2 px-4 border-b-2 border-transparent text-slate-500 font-medium whitespace-nowrap text-xs sm:text-sm">חוסן (כללי)</button>
+                            <button onclick="switchAssessmentTab('resilience_rsq')" id="tab-btn-resilience_rsq" class="py-2 px-4 border-b-2 border-rose-500 font-bold text-rose-700 whitespace-nowrap text-xs sm:text-sm">חוסן (RSQ)</button>
                         </div>
                         
                         <form id="form-assessment" onsubmit="calculateAssessment(event)" class="space-y-5 text-xs sm:text-sm">
@@ -1156,7 +1158,7 @@
                 obsLblNotes: 'הערות והמלצות האחות המעריכה (נקודות לשימור/לשיפור):',
                 btnPrintObs: 'שמור והדפס טופס הערכה חצי-שנתי',
                 nmHeading: 'דיווח "כמעט ונפגע" וכרטיס דיון 5 דקות במשמרת',
-                nmSubheading: 'דיווח ללא פחד (Speak Up) ותמיכה בצוות על פי מודל "הקורבן השני" של ד"ר רינת כהן',
+                nmSubheading: 'דיווח ללא פחד (Speak Up) ותמיכה בצוות על פי מודל "הקורבן השני"',
                 nmFormTitle: '📝 הוסף דיווח יומי על מפגע / "כמעט ונפגע":',
                 btnSendNm: 'שלח דיווח ללוח',
                 nmListTitle: '📋 מפגעים ואירועי "כמעט ונפגע" שנרשמו השבוע:',
@@ -1878,6 +1880,30 @@
             ]
         };
 
+        // MBI BURNOUT QUESTIONNAIRE
+        const mbiBurnoutQuestionnaire = {
+            he: [
+                { q: "1. (תשישות) אני מרגיש מרוקן מבחינה רגשית בסוף המשמרת.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "2. (תשישות) לקום בבוקר לעוד יום עבודה נראה לי מעייף מדי.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "3. (ציניות) מאז שהתחלתי לעבוד כאן, הפכתי לפחות רגיש למטופלים.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "4. (ציניות) אני מתייחס לחלק מהמטופלים כאילו היו חפצים ולא אנשים.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "5. (מסוגלות - ניקוד הפוך) אני מצליח להבין בקלות איך המטופלים מרגישים.", opts: ["כמעט כל יום", "לעיתים קרובות", "מדי פעם", "לעולם לא"] },
+                { q: "6. (מסוגלות - ניקוד הפוך) אני מרגיש שאני פותר ביעילות בעיות של מטופלים.", opts: ["כמעט כל יום", "לעיתים קרובות", "מדי פעם", "לעולם לא"] }
+            ]
+        };
+
+        // RSQ RESILIENCE QUESTIONNAIRE
+        const rsqResilienceQuestionnaire = {
+            he: [
+                { q: "1. (מסוגלות עצמית) אני בטוח ביכולתי להתמודד גם עם משמרות עמוסות וכאוטיות.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "2. (מסוגלות עצמית) כשיש שינויים בלתי צפויים במחלקה, אני מסתגל אליהם בקלות.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "3. (ויסות עצמי) כשאני כועס או לחוץ, אני מצליח להרגיע את עצמי.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "4. (ויסות עצמי) אני מצליח לשמור על מיקוד גם תחת עומס רב.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "5. (תמיכה חברתית) כשאני זקוק לעזרה, אני יודע לבקש אותה מהצוות או מהממונה.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] },
+                { q: "6. (תמיכה חברתית) אני מרגיש בנוח לדבר על הקשיים הרגשיים שלי עם קולגות.", opts: ["לעולם לא", "מדי פעם", "לעיתים קרובות", "כמעט כל יום"] }
+            ]
+        };
+
         // SNAKES AND LADDERS GAME DATA
         const snakesAndLaddersData = {
             he: {
@@ -1900,7 +1926,7 @@
                     { q: "קשיש חסר ישע מתלונן שמטפל אחר צועק עליו ומושך אותו בכוח.", opts: ["זה בטח בגלל הדמנציה שלו, אתעלם", "אדווח מיד לממונה כדי למנוע התעמרות"], correct: 1, msg: "עלית בסולם! דיווח על התעמרות בחסר ישע הוא חובה מוסרית וחוקית." },
                     { q: "מהי דוגמה להתעמרות נפשית בקשיש?", opts: ["לומר לו 'אם לא תאכל, לא יבואו לבקר אותך'", "להסביר לו בעדינות על חשיבות התזונה"], correct: 0, msg: "עלית בסולם! איומים על קשיש הם התעמרות ופגיעה קשה בנפשו." },
                     { q: "אתה מבחין שמטפל מתעלם מקריאות של קשיש מרותק במשך זמן רב.", opts: ["אתעלם, זה לא התפקיד שלי להתערב", "אגש לקשיש ואדווח לאחראי על הזנחה"], correct: 1, msg: "עלית בסולם! הזנחת קשיש חסר ישע שוות ערך להתעמרות." },
-                    { q: "אחרי משמרת עמוסה ואירוע חריג, אתה מרגיש שחיקה כבדה. מה מומלץ לעשות?", opts: ["לשמור הכל בפנים ולהמשיך", "לשתף את הצוות ולקיים שיחת עיבוד (לפי מחקריה של פרופ' מיכל יצחקי)"], correct: 1, msg: "עלית בסולם! שיתוף רגשי ועיבוד עם הקולגות בונים חוסן נפשי אישי וצוותי." },
+                    { q: "אחרי משמרת עמוסה ואירוע חריג, אתה מרגיש שחיקה כבדה. מה מומלץ לעשות?", opts: ["לשמור הכל בפנים ולהמשיך", "לשתף את הצוות ולקיים שיחת עיבוד פתוחה"], correct: 1, msg: "עלית בסולם! שיתוף רגשי ועיבוד עם הקולגות בונים חוסן נפשי אישי וצוותי." },
                     { q: "מטפל חילק בטעות מגש מזון רגיל למטופל עם קשיי בליעה. הטעות התגלתה רגע לפני שהמטופל החל לאכול. המטפל חווה מועקה, בושה וחרדה עמוקה ממה שעלול היה לקרות. כיצד נכון להגיב כלפיו?", opts: ["לנזוף בו בפומבי, להאשים אותו בחוסר תשומת לב, ולהזהיר אותו כדי שילמד לקח", "להעניק לו תמיכה רגשית, לקיים תחקיר בונה ללא האשמה, וליצור סביבה בטוחה לדיווח"], correct: 1, msg: "עלית בסולם! המטפל החווה מצוקה בעקבות טעות נקרא ׳הקורבן השני׳. תמיכה בו היא קריטית לבריאותו הנפשית ולתרבות הבטיחות בארגון." },
                     { q: "מטופל הסובל מאי-שליטה על סוגרים עשה את צרכיו במיטה. כיצד תנהג?", opts: ["אעיר לו על כך ואבקש שישתדל להתאפק", "אחליף לו בסבלנות תוך שמירה על פרטיותו, ואמרח קרם הגנה לעור"], correct: 1, msg: "עלית בסולם! כבוד המטופל ומניעת גירויים בעור (IAD) הם קריטיים." },
                     { q: "סיימת משמרת לילה קשה מאוד עם מספר אירועים חריגים. את/ה מרגיש/ה הצפה רגשית ושחיקה. מה הפעולה הנכונה עבורך?", opts: ["לשמור בבטן ולהמשיך, זה חלק מהתפקיד", "לגשת לאחראית, לדווח על העומס ולבקש תמיכה מנהלית (Psychosocial Support)"], correct: 1, msg: "עלית בסולם! מחקרים קובעים שאקלים של תמיכה ממנהלים הוא קריטי למניעת שחיקה. לדרוש תמיכה זו זכותך." },
@@ -2848,8 +2874,13 @@
 
         function switchAssessmentTab(type) {
             currentAssessmentType = type;
-            document.getElementById('tab-btn-burnout').className = "py-2 px-4 border-b-2 " + (type === 'burnout' ? "border-rose-500 font-bold text-rose-700" : "border-transparent text-slate-500 font-medium");
-            document.getElementById('tab-btn-resilience_q').className = "py-2 px-4 border-b-2 " + (type === 'resilience_q' ? "border-rose-500 font-bold text-rose-700" : "border-transparent text-slate-500 font-medium");
+            const tabs = ['burnout', 'burnout_mbi', 'resilience_q', 'resilience_rsq'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (btn) {
+                    btn.className = "py-2 px-4 border-b-2 whitespace-nowrap text-xs sm:text-sm " + (type === t ? "border-rose-500 font-bold text-rose-700" : "border-transparent text-slate-500 font-medium");
+                }
+            });
             
             document.getElementById('assessment-result').classList.add('hidden');
             renderAssessmentQuestions();
@@ -2857,7 +2888,11 @@
 
         function renderAssessmentQuestions() {
             const container = document.getElementById('assessment-questions-container');
-            const data = currentAssessmentType === 'burnout' ? burnoutQuestionnaireData['he'] : resilienceFullQuestionnaire['he'];
+            let data;
+            if (currentAssessmentType === 'burnout') data = burnoutQuestionnaireData['he'];
+            else if (currentAssessmentType === 'burnout_mbi') data = mbiBurnoutQuestionnaire['he'];
+            else if (currentAssessmentType === 'resilience_q') data = resilienceFullQuestionnaire['he'];
+            else data = rsqResilienceQuestionnaire['he'];
             
             if(!container) return;
             
@@ -2874,9 +2909,13 @@
             }
             
             if (currentAssessmentType === 'burnout') {
-                html += `<p class="text-xs text-slate-500 mb-4">* מבוסס על שאלון שחיקה MBI (Maslach Burnout Inventory)</p>`;
+                html += `<p class="text-xs text-slate-500 mb-4">* שאלון שחיקה כללי למעקב יומי</p>`;
+            } else if (currentAssessmentType === 'burnout_mbi') {
+                html += `<p class="text-xs text-slate-500 mb-4">* מבוסס על שאלון שחיקה מתוקף לעובדי בריאות MBI-HSS (Maslach Burnout Inventory)</p>`;
+            } else if (currentAssessmentType === 'resilience_q') {
+                html += `<p class="text-xs text-slate-500 mb-4">* שאלון חוסן כללי לזיהוי כוחות ותמיכה</p>`;
             } else {
-                html += `<p class="text-xs text-slate-500 mb-4">* מבוסס על סולם חוסן CD-RISC ומחקריה של פרופ' מיכל יצחקי בנושא חוסן וניהול רגשות</p>`;
+                html += `<p class="text-xs text-slate-500 mb-4">* מבוסס על מדד חוסן לאנשי רפואה RSQ (Resilience Skills Questionnaire)</p>`;
             }
             
             container.innerHTML = html;
@@ -2901,7 +2940,11 @@
 
         function calculateAssessment(event) {
             event.preventDefault();
-            const data = currentAssessmentType === 'burnout' ? burnoutQuestionnaireData['he'] : resilienceFullQuestionnaire['he'];
+            let data;
+            if (currentAssessmentType === 'burnout') data = burnoutQuestionnaireData['he'];
+            else if (currentAssessmentType === 'burnout_mbi') data = mbiBurnoutQuestionnaire['he'];
+            else if (currentAssessmentType === 'resilience_q') data = resilienceFullQuestionnaire['he'];
+            else data = rsqResilienceQuestionnaire['he'];
             let totalPoints = 0;
 
             data.forEach((_, idx) => {
