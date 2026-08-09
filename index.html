@@ -407,13 +407,13 @@
                         <h3 class="text-base font-bold text-slate-900" id="res-heading-full">סדנת חוסן למטפל/ת</h3>
                     </div>
                     <div class="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible p-2 gap-1 scrollbar-hide" id="resilience-side-menu">
-                        <button onclick="switchResilienceModule('intro')" id="res-btn-intro" class="res-nav-btn active whitespace-nowrap">מדריך למנחה ולו"ז</button>
-                        <button onclick="switchResilienceModule('assessment')" id="res-btn-assessment" class="res-nav-btn whitespace-nowrap">שאלוני שחיקה וחוסן</button>
-                        <button onclick="switchResilienceModule('snakes')" id="res-btn-snakes" class="res-nav-btn whitespace-nowrap">סולמות וחבלים</button>
-                        <button onclick="switchResilienceModule('dynamics')" id="res-btn-dynamics" class="res-nav-btn whitespace-nowrap">דינמיקה קבוצתית</button>
-                        <button onclick="switchResilienceModule('listening')" id="res-btn-listening" class="res-nav-btn whitespace-nowrap">תקשורת והקשבה</button>
-                        <button onclick="switchResilienceModule('simulations')" id="res-btn-simulations" class="res-nav-btn whitespace-nowrap">סימולציות לחץ</button>
-                        <button onclick="switchResilienceModule('cards')" id="res-btn-cards" class="res-nav-btn whitespace-nowrap">קלפי השלכה (Points of You)</button>
+                        <button onclick="switchResilienceModule('intro')" id="res-btn-intro" class="res-nav-btn active whitespace-nowrap">1. מדריך למנחה ולו"ז</button>
+                        <button onclick="switchResilienceModule('assessment')" id="res-btn-assessment" class="res-nav-btn whitespace-nowrap">2. שאלוני שחיקה וחוסן</button>
+                        <button onclick="switchResilienceModule('snakes')" id="res-btn-snakes" class="res-nav-btn whitespace-nowrap">3. למידה יצירתית (סולמות וחבלים)</button>
+                        <button onclick="switchResilienceModule('dynamics')" id="res-btn-dynamics" class="res-nav-btn whitespace-nowrap">4. דינמיקה קבוצתית</button>
+                        <button onclick="switchResilienceModule('listening')" id="res-btn-listening" class="res-nav-btn whitespace-nowrap">5. תקשורת והקשבה</button>
+                        <button onclick="switchResilienceModule('simulations')" id="res-btn-simulations" class="res-nav-btn whitespace-nowrap">6. סימולציות חוסן</button>
+                        <button onclick="switchResilienceModule('cards')" id="res-btn-cards" class="res-nav-btn whitespace-nowrap">7. קלפי השלכה (Points of You)</button>
                     </div>
                 </div>
 
@@ -445,12 +445,13 @@
                                         <th class="p-2 border">פירוט פעילות</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr><td class="p-2 border font-bold">אבחון אישי ושחיקה</td><td class="p-2 border">8 שעות</td><td class="p-2 border">מילוי שאלוני שחיקה וחוסן, הרצאת מבוא על סימני שחיקה.</td></tr>
-                                    <tr><td class="p-2 border font-bold">למידה יצירתית (משחק)</td><td class="p-2 border">8 שעות</td><td class="p-2 border">משחק 'סולמות וחבלים' בקבוצות, שילוב ידע קליני ותחרותיות.</td></tr>
-                                    <tr><td class="p-2 border font-bold">דינמיקה קבוצתית</td><td class="p-2 border">8 שעות</td><td class="p-2 border">תרגיל ברומטר אישי, יצירת מרחב בטוח לשיתוף (חשיבה קבוצתית).</td></tr>
-                                    <tr><td class="p-2 border font-bold">תקשורת והקשבה</td><td class="p-2 border">8 שעות</td><td class="p-2 border">תרגילי הקשבה פעילה (מעוז), תרגיל 'שאל אותי 5', מודל משוב בונה.</td></tr>
-                                    <tr><td class="p-2 border font-bold">סימולציות חוסן</td><td class="p-2 border">8 שעות</td><td class="p-2 border">ניתוח מקרי בוחן, קונפליקטים מול משפחות, עומס תפקודי ותרגול תגובות.</td></tr>
+                                    <tr><td class="p-2 border font-bold">1. מדריך למנחה ולו"ז</td><td class="p-2 border">2 שעות</td><td class="p-2 border">פתיחה והסבר על מהלך הסדנה.</td></tr>
+                                    <tr><td class="p-2 border font-bold">2. שאלוני שחיקה וחוסן</td><td class="p-2 border">6 שעות</td><td class="p-2 border">מילוי שאלוני שחיקה וחוסן, הרצאת מבוא על סימני שחיקה.</td></tr>
+                                    <tr><td class="p-2 border font-bold">3. למידה יצירתית (סולמות וחבלים)</td><td class="p-2 border">8 שעות</td><td class="p-2 border">משחק 'סולמות וחבלים' בקבוצות, שילוב ידע קליני ותחרותיות.</td></tr>
+                                    <tr><td class="p-2 border font-bold">4. דינמיקה קבוצתית</td><td class="p-2 border">6 שעות</td><td class="p-2 border">תרגיל ברומטר אישי, יצירת מרחב בטוח לשיתוף.</td></tr>
+                                    <tr><td class="p-2 border font-bold">5. תקשורת והקשבה</td><td class="p-2 border">6 שעות</td><td class="p-2 border">תרגילי הקשבה פעילה (מעוז), תרגיל 'שאל אותי 5', מודל משוב בונה.</td></tr>
+                                    <tr><td class="p-2 border font-bold">6. סימולציות חוסן</td><td class="p-2 border">8 שעות</td><td class="p-2 border">ניתוח מקרי בוחן, קונפליקטים מול משפחות, עומס תפקודי ותרגול תגובות.</td></tr>
+                                    <tr><td class="p-2 border font-bold">7. קלפי השלכה (Points of You)</td><td class="p-2 border">4 שעות</td><td class="p-2 border">עבודה עם תמונות ומילים, הבעת רגשות מורכבים ועיבוד משותף לסיכום הסדנה.</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1881,14 +1882,14 @@
 
         // ASSOCIATION CARDS DATA (Points of You style)
         const associationCardsData = [
-            { word: "מסע", color: "from-blue-400 to-indigo-600", icon: "fa-route", question: "איך התמונה/המילה הזו מתחברת לדרך שעברת במחלקה השנה?" },
-            { word: "קושי", color: "from-slate-600 to-slate-900", icon: "fa-mountain", question: "מהו האתגר המרכזי שאתה חווה כרגע, ואיזה כוח עוזר לך להתמודד איתו?" },
-            { word: "תקווה", color: "from-amber-300 to-orange-500", icon: "fa-sun", question: "מה נותן לך אור או כוח להמשיך ברגעים עמוסים?" },
-            { word: "שחיקה", color: "from-rose-500 to-red-800", icon: "fa-battery-quarter", question: "היכן בגוף אתה מרגיש את העומס, ומה יכול להטעין אותך מחדש?" },
-            { word: "חיבור", color: "from-teal-400 to-emerald-600", icon: "fa-hands-holding-circle", question: "מי האדם בצוות שגורם לך להרגיש שייך, ומה מיוחד בקשר הזה?" },
-            { word: "שליטה", color: "from-purple-500 to-fuchsia-700", icon: "fa-anchor", question: "מהו הדבר האחד במשמרת שיש לך עליו שליטה מלאה?" },
-            { word: "צמיחה", color: "from-lime-400 to-green-700", icon: "fa-seedling", question: "איזה דבר חדש למדת על עצמך כמטפל/ת בחודש האחרון?" },
-            { word: "הפסקה", color: "from-cyan-400 to-blue-500", icon: "fa-mug-hot", question: "איך נראית ההפסקה האידיאלית שלך, ואיך אפשר להתקרב אליה במציאות?" }
+            { word: "מסע", img: "./assets/cards_journey_1786299891743.jpg", icon: "fa-route", question: "איך התמונה/המילה הזו מתחברת לדרך שעברת במחלקה השנה?" },
+            { word: "קושי", img: "./assets/cards_difficulty_1786299902905.jpg", icon: "fa-mountain", question: "מהו האתגר המרכזי שאתה חווה כרגע, ואיזה כוח עוזר לך להתמודד איתו?" },
+            { word: "תקווה", img: "./assets/cards_hope_1786299912248.jpg", icon: "fa-sun", question: "מה נותן לך אור או כוח להמשיך ברגעים עמוסים?" },
+            { word: "שחיקה", img: "./assets/cards_burnout_1786299920936.jpg", icon: "fa-battery-quarter", question: "היכן בגוף אתה מרגיש את העומס, ומה יכול להטעין אותך מחדש?" },
+            { word: "חיבור", img: "./assets/cards_connection_1786299931675.jpg", icon: "fa-hands-holding-circle", question: "מי האדם בצוות שגורם לך להרגיש שייך, ומה מיוחד בקשר הזה?" },
+            { word: "שליטה", img: "./assets/cards_control_1786299943007.jpg", icon: "fa-anchor", question: "מהו הדבר האחד במשמרת שיש לך עליו שליטה מלאה?" },
+            { word: "צמיחה", img: "./assets/cards_growth_1786299952176.jpg", icon: "fa-seedling", question: "איזה דבר חדש למדת על עצמך כמטפל/ת בחודש האחרון?" },
+            { word: "הפסקה", img: "./assets/cards_break_1786299961653.jpg", icon: "fa-mug-hot", question: "איך נראית ההפסקה האידיאלית שלך, ואיך אפשר להתקרב אליה במציאות?" }
         ];
 
         // CLINICAL MODULE CARDS DATA
@@ -2790,6 +2791,7 @@
                     } else {
                         cell.className = "h-6 sm:h-8 flex items-center justify-center text-[10px] sm:text-xs font-bold rounded bg-slate-50 text-slate-400 border border-slate-200";
                     }
+                    cell.innerText = i;
                 }
             }
         }
@@ -2896,7 +2898,7 @@
             const container = document.getElementById('cards-container');
             if(!container) return;
             container.innerHTML = associationCardsData.map((c, i) => `
-                <div onclick="openCardFocus(${i})" class="cursor-pointer group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-32 sm:h-40 bg-gradient-to-br ${c.color} flex flex-col items-center justify-center text-white">
+                <div onclick="openCardFocus(${i})" class="cursor-pointer group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-32 sm:h-40 flex flex-col items-center justify-center text-white bg-slate-800 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('${c.img}')">
                     <i class="fa-solid ${c.icon} text-3xl sm:text-4xl opacity-50 group-hover:opacity-100 transition-opacity mb-2"></i>
                     <h5 class="text-lg sm:text-xl font-black tracking-wide drop-shadow-md">${c.word}</h5>
                 </div>
@@ -2906,7 +2908,8 @@
         function openCardFocus(idx) {
             const c = associationCardsData[idx];
             const visual = document.getElementById('focused-card-visual');
-            visual.className = `h-64 w-full flex flex-col items-center justify-center p-6 bg-gradient-to-br ${c.color}`;
+            visual.className = `h-64 w-full flex flex-col items-center justify-center p-6 bg-slate-800 bg-cover bg-center`;
+            visual.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('${c.img}')`;
             document.getElementById('focused-card-word').innerHTML = `<i class="fa-solid ${c.icon} text-5xl mb-4 opacity-75"></i><br>${c.word}`;
             document.getElementById('focused-card-question').innerText = c.question;
             document.getElementById('card-focus-modal').classList.remove('hidden');
