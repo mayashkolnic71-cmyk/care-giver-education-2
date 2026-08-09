@@ -2566,7 +2566,7 @@
                 feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
                 feedbackBox.innerHTML = `<strong>${sd.correct}</strong><br>${explain}`;
                 confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-                new Audio('https://actions.google.com/sounds/v1/crowds/light_applause.ogg').play().catch(e => console.log(e));
+                new Audio('assets/applause.mp3').play().catch(e => console.log(e));
             } else {
                 feedbackBox.className = "p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 text-rose-950 border border-rose-300";
                 feedbackBox.innerHTML = `<strong>${sd.wrong}</strong><br>${explain}`;
@@ -2765,7 +2765,7 @@
                     fb.className = "mt-3 p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 text-emerald-950 border border-emerald-300";
                     fb.innerHTML = `<strong>${sd.correct}</strong><br>${explain}`;
                     confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-                    new Audio('https://actions.google.com/sounds/v1/crowds/light_applause.ogg').play().catch(e => console.log(e));
+                    new Audio('assets/applause.mp3').play().catch(e => console.log(e));
                 } else {
                     fb.className = "mt-3 p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 text-rose-950 border border-rose-300";
                     fb.innerHTML = `<strong>${sd.wrong}</strong><br>${explain}`;
