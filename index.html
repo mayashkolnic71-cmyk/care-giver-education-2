@@ -105,7 +105,7 @@
                 </a>
 
                 <!-- Safety Brochure Link -->
-                <a href="safety-brochure-assistive-personnel-v3.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs">
+                <a href="safety-brochure-assistive-personnel-v3.pdf" target="_blank" rel="noopener noreferrer" id="btn-brochure-link-top" class="px-3 py-1.5 bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs">
                     <i class="fa-solid fa-book-medical text-amber-600 text-sm"></i>
                     <span id="btn-brochure-txt-top">חוברת בטיחות (PDF)</span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -188,11 +188,11 @@
                             <i class="fa-solid fa-house-medical ml-1"></i>
                             <span id="btn-portal-txt-hero">משמרת בטוחה - מדריך למטפל</span>
                         </a>
-                        <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="flex-1 text-center py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition-all text-xs">
+                        <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" id="btn-proc-link-hero" target="_blank" class="flex-1 text-center py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition-all text-xs">
                             <i class="fa-solid fa-file-pdf ml-1"></i>
                             <span id="btn-proc-txt-hero">קובץ נוהל 1.2.1.2</span>
                         </a>
-                        <a href="safety-brochure-assistive-personnel-v3.pdf" target="_blank" class="flex-1 text-center py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold transition-all text-xs">
+                        <a href="safety-brochure-assistive-personnel-v3.pdf" id="btn-brochure-link-hero" target="_blank" class="flex-1 text-center py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold transition-all text-xs">
                             <i class="fa-solid fa-book-medical ml-1"></i>
                             <span id="btn-brochure-txt-hero">חוברת בטיחות</span>
                         </a>
@@ -277,7 +277,7 @@
                         <span class="text-2xl">💡</span>
                         <h4 class="text-xl font-bold" id="info-title">תרבות בטיחות ודיווח ללא פחד (Speak Up)</h4>
                     </div>
-                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" id="btn-proc-link-box" target="_blank" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
                         <i class="fa-solid fa-file-pdf text-rose-400"></i>
                         <span id="btn-proc-txt-box">הצג נוהל משרד הבריאות הרשמי</span>
                     </a>
@@ -1102,7 +1102,7 @@
                 <div class="flex gap-3 justify-center md:justify-end text-emerald-400">
                     <a href="https://safety-treatment-by-care-giver.vercel.app/" id="ft-link-portal-a" target="_blank" class="hover:underline flex items-center gap-1 text-rose-400"><i class="fa-solid fa-house-medical"></i> <span id="ft-link-portal">משמרת בטוחה - מדריך למטפל</span></a>
                     <a href="https://www.iang.co.il/" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-globe"></i> <span id="ft-link-assoc">אתר העמותה (IANG)</span></a>
-                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-file-pdf"></i> <span id="ft-link-proc">נוהל משרד הבריאות</span></a>
+                    <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" id="ft-link-proc-a" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-file-pdf"></i> <span id="ft-link-proc">נוהל משרד הבריאות</span></a>
                 </div>
                 <p class="text-slate-500 text-[11px] pt-1" id="ft-copy">כל הזכויות שמורות © 2026 | מוקדש לבטיחות המטופל האזרח הוותיק</p>
             </div>
@@ -2478,6 +2478,23 @@
             
             const portalFooter = document.getElementById('ft-link-portal-a');
             if (portalFooter) portalFooter.href = `https://safety-treatment-by-care-giver.vercel.app/?lang=${lang}`;
+
+            // Update Brochure and Procedure links based on active language
+            const brochureLinkTop = document.getElementById('btn-brochure-link-top');
+            const brochureLinkHero = document.getElementById('btn-brochure-link-hero');
+            const brochureUrl = lang === 'he' ? 'safety-brochure-assistive-personnel-v3.pdf' : `safety-brochure-${lang}.md`;
+            if (brochureLinkTop) brochureLinkTop.href = brochureUrl;
+            if (brochureLinkHero) brochureLinkHero.href = brochureUrl;
+
+            const procLinkTop = document.getElementById('btn-proc-link-top');
+            const procLinkHero = document.getElementById('btn-proc-link-hero');
+            const procLinkBox = document.getElementById('btn-proc-link-box');
+            const procLinkFooter = document.getElementById('ft-link-proc-a');
+            const procUrl = lang === 'he' ? 'https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf' : `procedure-1-2-1-2-${lang}.md`;
+            if (procLinkTop) procLinkTop.href = procUrl;
+            if (procLinkHero) procLinkHero.href = procUrl;
+            if (procLinkBox) procLinkBox.href = procUrl;
+            if (procLinkFooter) procLinkFooter.href = procUrl;
             if(document.getElementById('hero-tag')) document.getElementById('hero-tag').innerText = dict.heroTag;
             if(document.getElementById('hero-main-title')) document.getElementById('hero-main-title').innerText = dict.heroTitle;
             if(document.getElementById('hero-description')) document.getElementById('hero-description').innerText = dict.heroDesc;
