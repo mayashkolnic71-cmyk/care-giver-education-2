@@ -227,7 +227,7 @@
                 </button>
                 <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
                     <i class="fa-solid fa-circle-question"></i>
-                    <span id="tab-title-quiz">מבדק ידע אינטראקטיבי</span>
+                    <span id="tab-title-quiz">מיבדק ידע מסכם</span>
                 </button>
                 <button onclick="switchTab('checklist')" id="tab-btn-checklist" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
                     <i class="fa-solid fa-list-check"></i>
@@ -1138,7 +1138,7 @@
                 tabResilience: 'סדנת חוסן 40 שעות למטפל/ת',
                 tabObservation: 'הערכה חצי-שנתית ותצפית',
                 tabNearMiss: 'דיווח כמעט-ונפגע ודיון',
-                tabQuiz: 'מבדק ידע אינטראקטיבי',
+                tabQuiz: 'מיבדק ידע מסכם',
                 tabChecklist: "צ'ק-ליסט במשמרת",
                 tabTracker: 'יומן מעקב ובקרת כשירות',
                 tabStats: 'המגמות שלי',
@@ -4010,7 +4010,7 @@
             if (stats) {
                 stats = JSON.parse(stats);
                 if (!stats.nearmiss) stats.nearmiss = { correct: 0, wrong: 0, name: 'כמעט ונפגע' };
-                if (!stats.quiz) stats.quiz = { correct: 0, wrong: 0, name: 'מבדק ידע אינטראקטיבי' };
+                if (!stats.quiz) stats.quiz = { correct: 0, wrong: 0, name: 'מיבדק ידע מסכם' };
                 if (!stats.sentence) stats.sentence = { correct: 0, wrong: 0, name: 'השלם את המשפט' };
                 return stats;
             }
@@ -4020,7 +4020,7 @@
                 p40: { correct: 0, wrong: 0, name: 'סיבוכים ודמנציה (40 שעות)' },
                 p4n: { correct: 0, wrong: 0, name: 'החייאה (4 שעות)' },
                 nearmiss: { correct: 0, wrong: 0, name: 'כמעט ונפגע' },
-                quiz: { correct: 0, wrong: 0, name: 'מבדק ידע אינטראקטיבי' },
+                quiz: { correct: 0, wrong: 0, name: 'מיבדק ידע מסכם' },
                 sentence: { correct: 0, wrong: 0, name: 'השלם את המשפט' }
             };
         }
