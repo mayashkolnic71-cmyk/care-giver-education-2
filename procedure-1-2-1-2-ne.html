@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="ne" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>procedure 1 2 1 2 ne</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --teal-primary: #0d9488;
+            --teal-hover: #0f766e;
+            --rose-primary: #e11d48;
+            --rose-bg: #ffe4e6;
+            --amber-primary: #d97706;
+            --amber-bg: #fef3c7;
+            --sky-primary: #0284c7;
+            --sky-bg: #e0f2fe;
+            --font-size-base: 16px;
+        }
+        .dark {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --teal-primary: #2dd4bf;
+            --teal-hover: #14b8a6;
+            --rose-primary: #fb7185;
+            --rose-bg: #4c0519;
+            --amber-primary: #fbbf24;
+            --amber-bg: #78350f;
+            --sky-primary: #38bdf8;
+            --sky-bg: #0c4a6e;
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', 'system-ui', sans-serif;
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s, font-size 0.2s;
+            text-align: left;
+        }
+        .controls-panel {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border-radius: 9999px;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .dark .controls-panel {
+            background-color: rgba(30, 41, 59, 0.85);
+        }
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            transition: color 0.2s, background-color 0.2s;
+            text-decoration: none;
+        }
+        .control-btn:hover {
+            color: var(--teal-primary);
+            background-color: rgba(13, 148, 136, 0.1);
+        }
+        .divider {
+            width: 1px;
+            height: 1.5rem;
+            background-color: var(--border-color);
+        }
+        .reader-container {
+            max-width: 800px;
+            margin: 6rem auto 4rem auto;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: var(--teal-primary);
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        h2 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--teal-primary);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        ul {
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+            padding-left: 2rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: rgba(13, 148, 136, 0.05);
+            color: var(--teal-primary);
+            font-weight: 700;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background-color: rgba(13, 148, 136, 0.02);
+        }
+        .quote-block {
+            padding: 1.25rem 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--border-color);
+            border-right: 5px solid var(--border-color);
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        .dir-rtl .quote-block {
+            border-left: none;
+        }
+        .dir-ltr .quote-block {
+            border-right: none;
+        }
+        .alert-important {
+            border-color: var(--rose-primary);
+            background-color: var(--rose-bg);
+            color: var(--rose-primary);
+        }
+        .alert-important p {
+            color: inherit;
+        }
+        .alert-warning {
+            border-color: var(--amber-primary);
+            background-color: var(--amber-bg);
+            color: var(--amber-primary);
+        }
+        .alert-warning p {
+            color: inherit;
+        }
+        .alert-note, .alert-tip {
+            border-color: var(--sky-primary);
+            background-color: var(--sky-bg);
+            color: var(--sky-primary);
+        }
+        .alert-note p, .alert-tip p {
+            color: inherit;
+        }
+        @media print {
+            .controls-panel {
+                display: none !important;
+            }
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12pt !important;
+            }
+            .reader-container {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="dir-ltr">
+    <div class="controls-panel">
+        <a href="index.html" class="control-btn" title="Back to Portal">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="divider"></div>
+        <button class="control-btn" id="btn-zoom-out" title="Decrease Font">
+            <i class="fa-solid fa-minus"></i>
+        </button>
+        <button class="control-btn" id="btn-zoom-in" title="Increase Font">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="divider"></div>
+        <button class="control-btn" id="btn-theme" title="Toggle Light/Dark Mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="control-btn" id="btn-print" title="Print / Save PDF">
+            <i class="fa-solid fa-print"></i>
+        </button>
+    </div>
+    <div class="reader-container">
+<h1>स्वास्थ्य मन्त्रालय - जेरियाट्रिक्स विभाग</h1>
+<p>वृद्ध हेरचाह सुविधाहरूको लागि प्रक्रियाहरू – नर्सिङ र मानसिक रूपमा कमजोर विभागहरू</p>
+<p><strong>व्यावसायिक क्षेत्र:</strong> नर्सिङ</p>
+<p><strong>प्रक्रियाको नाम:</strong> जेरियाट्रिक सुविधामा केयरगिभर (सहायक कर्मचारी) को भूमिका</p>
+<p><strong>अनुमोदन मिति:</strong> 18/12/2025</p>
+<p><strong>संस्करण:</strong> 1</p>
+<p><strong>प्रक्रिया नम्बर:</strong> 1.2.1.2</p>
+<p>---</p>
+<h2>1. पृष्ठभूमि:</h2>
+<p>जेरियाट्रिक सुविधाले संज्ञानात्मक वा कार्यात्मक गिरावट र पुरानो रोगहरूको सामना गरिरहेका वृद्ध जनसंख्यालाई हेरचाह र समर्थन प्रदान गर्दछ। बासिन्दाहरूको जीवनको गुणस्तर र सुरक्षा ठूलो मात्रामा केयरगिभरहरूको (सहायक कर्मचारी) काममा निर्भर गर्दछ, जो बासिन्दाहरूसँग दैनिक, प्रत्यक्ष, र निरन्तर सम्पर्कमा हुन्छन्।</p>
+<p>केयरगिभरको काम दर्ता गरिएको नर्सको निर्देशन र सुपरिवेक्षणमा गरिन्छ, जसले नर्सलाई बिरामीको हेरचाह व्यवस्थापन, उन्नत क्लिनिकल सीपहरू, र दर्ता गरिएको नर्सद्वारा गर्नुपर्ने अन्य गतिविधिहरूमा ध्यान केन्द्रित गर्न अनुमति दिन्छ।</p>
+<h2>2. प्रक्रियाको उद्देश्यहरू:</h2>
+<p>2.1. जेरियाट्रिक सुविधामा केयरगिभर (सहायक कर्मचारी) को लागि काम र जिम्मेवारीको क्षेत्र परिभाषित गर्न।</p>
+<p>2.2. केयरगिभरको व्यावसायिक अधीनता परिभाषित गर्न।</p>
+<p>2.3. भर्ना र कामको समयमा केयरगिभर भूमिकाको लागि आवश्यक प्रशिक्षण परिभाषित गर्न।</p>
+<h2>3. सर्तहरूको परिभाषा:</h2>
+<p>3.1. <strong>"जेरियाट्रिक सुविधामा केयरगिभर"</strong> - जेरियाट्रिक सुविधामा कार्यरत कर्मचारी जसले विशेष प्रशिक्षण लिएका छन् र जसलाई आफ्नो प्रशिक्षण अनुसार गतिविधिहरू गर्न अनुमति दिइएको छ।</p>
+<p>3.2. <strong>"दैनिक जीवनका गतिविधिहरू (ADL - Activities of Daily Living)"</strong> - स्वास्थ्य, सरसफाइ, र शारीरिक कार्य कायम राख्नको लागि एक व्यक्तिले आफ्नो लागि गर्ने सबैभन्दा आधारभूत र आवश्यक दैनिक कार्यहरू।</p>
+<p>3.3. <strong>"केयरगिभर प्रशिक्षण प्रमाणपत्र"</strong> - सुविधाको नर्सिङ म्यान्जरद्वारा हस्ताक्षर गरिएको केयरगिभर प्रशिक्षण पूरा भएको प्रमाणित गर्ने कागजात।</p>
+<h2>4. अधिकार र जिम्मेवारी:</h2>
+<p>4.1. सुविधाको व्यवस्थापनले आफ्ना आन्तरिक प्रक्रियाहरूमा, यस प्रक्रिया अनुसार, केयरगिभरको भूमिकाहरू परिभाषित गर्नेछ।</p>
+<p>4.2. सुविधा व्यवस्थापनले केयरगिभरहरूले उपयुक्त प्रशिक्षण प्राप्त गरेपछि मात्र काम गरेको सुनिश्चित गर्नेछ।</p>
+<p>4.3. इन्चार्ज नर्स केयरगिभरहरूको कामको प्रबन्ध र सुपरिवेक्षणको लागि जिम्मेवार हुन्छ।</p>
+<p>4.4. इन्चार्ज नर्सले केयरगिभरले आफ्ना कार्यहरूको रेकर्ड राख्ने र आवश्यक अनुसार घटनाहरू रिपोर्ट गर्ने सुनिश्चित गर्नेछ।</p>
+<p>4.5. केयरगिभरले बासिन्दाहरूलाई दैनिक हेरचाह प्रदान गर्ने जिम्मेवारी लिन्छ।</p>
+<p>4.6. केयरगिभरले स्वतन्त्र रूपमा क्लिनिकल हेरचाह निर्णयहरू गर्न अधिकृत छैन।</p>
+<h2>5. दर्ता गरिएको नर्सको निर्देशन र सुपरिवेक्षणमा केयरगिभरका मुख्य गतिविधिहरू:</h2>
+<p>5.1. आधारभूत व्यक्तिगत हेरचाह, व्यावसायिक दिशानिर्देशहरू र बासिन्दाको व्यक्तिगत हेरचाह योजना अनुसार:</p>
+<p>5.1.1. बासिन्दाको क्षमता अनुसार कार्यक्षमता कायम राख्ने।</p>
+<p>5.1.2. सरसफाइ र नुहाउने - व्यक्तिगत सरसफाइ, नुहाउन सहयोग, र बासिन्दा र उनीहरूको व्यक्तिगत वातावरणको सरसफाई।</p>
+<p>5.1.3. लुगा लगाउने - लुगा लगाउन र फुकाल्न मद्दत गर्ने।</p>
+<p>5.1.4. गतिशीलता र स्थानान्तरण - ठाउँबाट ठाउँमा सर्ने, ओछ्यान वा कुर्सीमा उठ्न वा बस्न सहयोग।</p>
+<p>5.1.5. छालाको अखण्डता कायम राख्नको लागि स्थिति परिवर्तन गर्ने।</p>
+<p>5.1.6. दिसापिसाब नियन्त्रण।</p>
+<p>5.1.7. खाना खान र पिउन सहयोग गर्ने।</p>
+<p>5.2. बासिन्दाको दैनिक अनुगमन, बासिन्दाको अवस्थामा परिवर्तनहरू पहिचान गर्ने र आधिकारिक कर्मचारीहरूलाई तत्काल रिपोर्ट गर्ने।</p>
+<p>5.3. दुर्व्यवहार, असामान्य घटना, उजुरी, वा आपतकालिन अवस्थाको कुनै पनि शंकाको रिपोर्ट गर्ने।</p>
+<p>5.4. संचार र समर्थन।</p>
+<p>5.5. आधारभूत सामाजिक, फुर्सद, र पेशागत गतिविधिहरूमा बासिन्दालाई एकीकृत गर्न सहयोग गर्ने।</p>
+<h2>6. केयरगिभर प्रशिक्षण कार्यक्रम:</h2>
+<p>6.1. केयरगिभरहरूको लागि आधारभूत प्रारम्भिक प्रशिक्षण:</p>
+<p>6.1.1. सुविधामा भर्ना हुने प्रत्येक केयरगिभरले विभागमा स्वतन्त्र रूपमा काम सुरु गर्नु अघि कम्तिमा 18 घण्टाको सैद्धान्तिक र व्यावहारिक प्रशिक्षण लिनुपर्छ।</p>
+<p>6.2. केयरगिभरहरूको लागि निरन्तर प्रशिक्षण (भर्ना भएको पहिलो वर्ष भित्र):</p>
+<p>6.2.1. प्रत्येक केयरगिभरले भर्ना भएको पहिलो वर्ष भित्र कम्तिमा 40 घण्टाको निरन्तर प्रशिक्षण लिनुपर्छ।</p>
+<h2>7. केयरगिभर कर्मचारीहरू कायम राख्ने र बर्नआउट रोक्ने:</h2>
+<p>7.1. सुविधा व्यवस्थापनले केयरगिभरहरूको लचिलोपन र बर्नआउट रोक्न प्रोत्साहन गर्नेछ।</p>
+<p>7.2. सुविधा व्यवस्थापन र नर्सिङ व्यवस्थापनले केयरगिभरहरूको व्यावसायिक र व्यक्तिगत प्रवर्द्धनको लागि काम गर्नेछ।</p>
+<h2>8. बहु-अनुशासनात्मक टोलीमा सहयोग:</h2>
+<p>8.1. केयरगिभर सुविधा टोलीसँग पूर्ण समन्वयमा काम गर्न बाध्य छ।</p>
+<h2>9. बासिन्दाको सम्मान, अधिकार र गोपनीयता कायम राख्ने:</h2>
+<p>9.1. केयरगिभरले बासिन्दाको सम्मान र अधिकार कायम राख्न कार्य गर्नेछ।</p>
+<h2>10. रिपोर्टिङ, दस्तावेजीकरण, नियन्त्रण र सुपरिवेक्षण:</h2>
+<p>10.1. केयरगिभरले रिपोर्ट गर्न र दस्तावेजीकरण गर्न बाध्य छ।</p>
+<h2>11. एपेन्डिक्स र सन्दर्भहरू:</h2>
+<p>11.1. एपेन्डिक्स A: केयरगिभर (सहायक कर्मचारी) प्रशिक्षण - केन्द्रीय तालिका</p>
+<p>11.2. एपेन्डिक्स B: रातीको सिफ्टको लागि केयरगिभर प्रशिक्षणका लागि दिशानिर्देशहरू</p>
+<p>---</p>
+<h3>एपेन्डिक्स A - केयरगिभर (सहायक कर्मचारी) प्रशिक्षण - केन्द्रीय तालिका</h3>
+<div class='table-container'><table><thead><tr>
+<th>प्रशिक्षणको प्रकार</th>
+<th>आवश्यक न्यूनतम घण्टा</th>
+<th>टिप्पणीहरू</th>
+</tr></thead><tbody>
+<tr>
+<td>आधारभूत प्रारम्भिक प्रशिक्षण</td>
+<td>18 घण्टा</td>
+<td>स्वतन्त्र काम सुरु गर्न सर्त</td>
+</tr>
+<tr>
+<td>निरन्तर प्रशिक्षण</td>
+<td>40 घण्टा</td>
+<td>भर्ना भएको एक वर्ष भित्र</td>
+</tr>
+<tr>
+<td>रात्रि सिफ्ट प्रशिक्षण</td>
+<td>4 घण्टा</td>
+<td>-</td>
+</tr>
+<tr>
+<td>रात्रि सिफ्टको लागि ज्ञान पुनरताजगी</td>
+<td>-</td>
+<td>वर्षमा कम्तिमा एक पटक</td>
+</tr>
+</tbody></table></div>
+<h3>एपेन्डिक्स B - रात्रि सिफ्ट प्रशिक्षण</h3>
+<p><strong>सास फेर्न गाह्रो पहिचान:</strong></p>
+<ul>
+<li>लक्षण: सास फेर्न गाह्रो, छिटो सास फेर्न, ओठ वरिपरि नीलोपन।</li>
+<li>प्राथमिक उपचार: स्थिति सुधार गर्ने, ओछ्यानको टाउको उठाउने।</li>
+<li>नर्सलाई कल र रिपोर्ट: तुरुन्तै कल गर्ने।</li>
+</ul>
+<p><strong>स्ट्रोकको शंका:</strong></p>
+<ul>
+<li>लक्षण: अनुहारको एक तर्फ झर्नु, बोल्न गाह्रो हुनु।</li>
+<li>प्राथमिक उपचार: बासिन्दालाई ढाडमा सुताउने, टाउको अलिकति माथि उठाउने।</li>
+<li>नर्सलाई कल र रिपोर्ट: तुरुन्तै कल गर्ने।</li>
+</ul>
+<p><strong>छाती दुखाइ / हृदयघातको शंका:</strong></p>
+<ul>
+<li>लक्षण: छातीमा दबाब, दुखाइ।</li>
+<li>प्राथमिक उपचार: स्थिति सुधार गर्ने, आराम गराउने।</li>
+<li>नर्सलाई कल र रिपोर्ट: तुरुन्तै कल गर्ने।</li>
+</ul>
+<p><strong>हृदयघात (Seizures):</strong></p>
+<ul>
+<li>लक्षण: अचानक बेहोस हुनु, शरीर काँप्नु।</li>
+<li>प्राथमिक उपचार: चोटपटकबाट बचाउने, छेउमा सुताउने।</li>
+<li>नर्सलाई कल र रिपोर्ट: तुरुन्तै कल गर्ने।</li>
+</ul>
+<p><strong>हाइपोग्लाइसेमिया (Hypoglycemia):</strong></p>
+<ul>
+<li>लक्षण: अचानक भोक लाग्नु, पसिना आउनु, छिटो मुटुको धड्कन।</li>
+<li>प्राथमिक उपचार: नर्सले रगतको चिनी जाँच नगरेसम्म खाना वा पेय नदिने।</li>
+<li>नर्सलाई कल र रिपोर्ट: तुरुन्तै कल गर्ने।</li>
+</ul>
+<p><strong>गम्भीर रक्तस्राव:</strong></p>
+<ul>
+<li>लक्षण: लुगा वा ओछ्यानमा धेरै रगत देखिनु।</li>
+<li>प्राथमिक उपचार: रक्तस्राव भएको ठाउँमा सीधा दबाब दिने।</li>
+<li>नर्सलाई कल र रिपोर्ट: तुरुन्तै कल गर्ने।</li>
+</ul>
+    </div>
+    <script>
+        var currentSize = 16;
+        var body = document.body;
+        document.getElementById('btn-zoom-in').addEventListener('click', function() {
+            if(currentSize < 24) {
+                currentSize += 2;
+                document.documentElement.style.setProperty('--font-size-base', currentSize + 'px');
+            }
+        });
+        document.getElementById('btn-zoom-out').addEventListener('click', function() {
+            if(currentSize > 12) {
+                currentSize -= 2;
+                document.documentElement.style.setProperty('--font-size-base', currentSize + 'px');
+            }
+        });
+        var themeBtn = document.getElementById('btn-theme');
+        themeBtn.addEventListener('click', function() {
+            body.classList.toggle('dark');
+            var icon = themeBtn.querySelector('i');
+            if(body.classList.contains('dark')) {
+                icon.className = 'fa-solid fa-sun';
+            } else {
+                icon.className = 'fa-solid fa-moon';
+            }
+        });
+        document.getElementById('btn-print').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>

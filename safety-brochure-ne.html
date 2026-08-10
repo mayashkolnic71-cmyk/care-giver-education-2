@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="ne" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>safety brochure ne</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --teal-primary: #0d9488;
+            --teal-hover: #0f766e;
+            --rose-primary: #e11d48;
+            --rose-bg: #ffe4e6;
+            --amber-primary: #d97706;
+            --amber-bg: #fef3c7;
+            --sky-primary: #0284c7;
+            --sky-bg: #e0f2fe;
+            --font-size-base: 16px;
+        }
+        .dark {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --teal-primary: #2dd4bf;
+            --teal-hover: #14b8a6;
+            --rose-primary: #fb7185;
+            --rose-bg: #4c0519;
+            --amber-primary: #fbbf24;
+            --amber-bg: #78350f;
+            --sky-primary: #38bdf8;
+            --sky-bg: #0c4a6e;
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', 'system-ui', sans-serif;
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s, font-size 0.2s;
+            text-align: left;
+        }
+        .controls-panel {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border-radius: 9999px;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .dark .controls-panel {
+            background-color: rgba(30, 41, 59, 0.85);
+        }
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            transition: color 0.2s, background-color 0.2s;
+            text-decoration: none;
+        }
+        .control-btn:hover {
+            color: var(--teal-primary);
+            background-color: rgba(13, 148, 136, 0.1);
+        }
+        .divider {
+            width: 1px;
+            height: 1.5rem;
+            background-color: var(--border-color);
+        }
+        .reader-container {
+            max-width: 800px;
+            margin: 6rem auto 4rem auto;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: var(--teal-primary);
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        h2 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--teal-primary);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        ul {
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+            padding-left: 2rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: rgba(13, 148, 136, 0.05);
+            color: var(--teal-primary);
+            font-weight: 700;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background-color: rgba(13, 148, 136, 0.02);
+        }
+        .quote-block {
+            padding: 1.25rem 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--border-color);
+            border-right: 5px solid var(--border-color);
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        .dir-rtl .quote-block {
+            border-left: none;
+        }
+        .dir-ltr .quote-block {
+            border-right: none;
+        }
+        .alert-important {
+            border-color: var(--rose-primary);
+            background-color: var(--rose-bg);
+            color: var(--rose-primary);
+        }
+        .alert-important p {
+            color: inherit;
+        }
+        .alert-warning {
+            border-color: var(--amber-primary);
+            background-color: var(--amber-bg);
+            color: var(--amber-primary);
+        }
+        .alert-warning p {
+            color: inherit;
+        }
+        .alert-note, .alert-tip {
+            border-color: var(--sky-primary);
+            background-color: var(--sky-bg);
+            color: var(--sky-primary);
+        }
+        .alert-note p, .alert-tip p {
+            color: inherit;
+        }
+        @media print {
+            .controls-panel {
+                display: none !important;
+            }
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12pt !important;
+            }
+            .reader-container {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="dir-ltr">
+    <div class="controls-panel">
+        <a href="index.html" class="control-btn" title="Back to Portal">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="divider"></div>
+        <button class="control-btn" id="btn-zoom-out" title="Decrease Font">
+            <i class="fa-solid fa-minus"></i>
+        </button>
+        <button class="control-btn" id="btn-zoom-in" title="Increase Font">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="divider"></div>
+        <button class="control-btn" id="btn-theme" title="Toggle Light/Dark Mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="control-btn" id="btn-print" title="Print / Save PDF">
+            <i class="fa-solid fa-print"></i>
+        </button>
+    </div>
+    <div class="reader-container">
+<h1>हेरचाहकर्ताहरूको लागि हाइब्रिड प्रशिक्षण कार्यक्रम - जेरियाट्रिक नर्सिङ प्रवर्द्धनको लागि नर्सहरूको संघ</h1>
+<p>(स्वास्थ्य मन्त्रालयको जेरियाट्रिक्स विभागको प्रक्रिया 1.2.1.2 र इजरायलमा जेरियाट्रिक नर्सहरूको संघको हाइब्रिड प्रशिक्षणमा आधारित)</p>
+<h2>सहायक कर्मचारी/हेरचाहकर्ताहरूलाई नर्सिङ म्यान्जरबाट व्यक्तिगत परिचयात्मक पत्र</h2>
+<p>हाम्रो समर्पित हेरचाहकर्ता टोलीलाई नमस्कार,</p>
+<p>तपाईंहरू जेरियाट्रिक केयरको आधारशीला हुनुहुन्छ। तपाईंहरू बासिन्दाहरूको जीवनको गुणस्तर, व्यक्तिगत सुरक्षा र सम्मानको रक्षा गर्ने वास्तविक ढाल हुनुहुन्छ।</p>
+<p>...</p>
+<h2>भाग १: दैनिक दिनचर्यामा सुरक्षा र जोखिम रोकथाम (ADL)</h2>
+<h3>खुवाउने र पिउने सहायता (धारा 5.1.7) - एस्पिरेसन रोकथाम</h3>
+<ul>
+<li>खाना खाँदा र त्यसको ३० मिनेट पछि ९० डिग्रीको कोणमा बसाउने।</li>
+<li>অনুমোদিত बनावटको खाना र पेय मात्र दिने।</li>
+<li>खोकी वा सास फेर्न गाह्रो भएमा तुरुन्तै खुवाउन रोक्ने र नर्सलाई रिपोर्ट गर्ने।</li>
+</ul>
+<h3>नुहाउने र सरसफाइ सहायता (धारा 5.1.2) - जलेको र घाउ रोकथाम</h3>
+<ul>
+<li>बासिन्दालाई पानी छुनु अघि केयरगिभरको हातको पछाडि पानीको तापक्रम जाँच्ने।</li>
+<li>छालाको अखण्डता कायम राख्ने, छालाको पटाहरू बिस्तारै पुछ्ने र रातोपन भएमा रिपोर्ट गर्ने।</li>
+<li>नन-स्लिप म्याट प्रयोग गर्ने र नुहाउने कुर्सीको पाङ्ग्रा लक गर्ने।</li>
+</ul>
+<h3>सुरक्षित गतिशीलता र स्थानान्तरण (धारा 5.1.4) - लड्नबाट रोकथाम</h3>
+<ul>
+<li>नर्सको निर्देशन अनुसार मात्र स्थानान्तरण गर्ने।</li>
+<li>स्थानान्तरण सुरु गर्नु अघि ओछ्यान वा ह्वीलचेयरको पाङ्ग्रा लक गर्ने।</li>
+<li>सुरक्षित जुत्ता लगाएको सुनिश्चित गर्ने।</li>
+</ul>
+<h2>भाग २: नर्सको अनुमति बिना गर्न नहुने कार्यहरू (प्रक्रिया 1.2.1.2)</h2>
+<ul>
+<li><strong>स्वतन्त्र निर्णय गर्न निषेध:</strong> केयरगिभरले क्लिनिकल निर्णयहरू गर्न सक्दैन।</li>
+<li><strong>उन्नत सीपहरू गर्न निषेध:</strong> सुई लगाउने, औषधि दिने, रगतमा चिनीको मात्रा जाँच्ने जस्ता कार्यहरू गर्न निषेध छ।</li>
+<li><strong>आपतकालिन अवस्थामा महत्त्वपूर्ण निषेधहरू:</strong></li>
+<li>स्ट्रोकको शंका: खाना वा पिउन नदिने!</li>
+<li>हृदयघात (Seizures) को समयमा: मुखमा केही नराख्ने र आन्दोलनलाई रोक्न प्रयास नगर्ने।</li>
+<li>हाइपोग्लाइसेमियाको लक्षण देखिँदा: नर्सले चिनीको मात्रा जाँच नगरेसम्म र अनुमति नदिएसम्म मीठो पेय नदिने!</li>
+</ul>
+<h2>भाग ३: रातीको समयमा ६ वटा आपतकालिन अवस्थाहरूको पहिचान</h2>
+<p>1. <strong>गम्भीर श्वासप्रश्वास समस्या:</strong> सास फेर्न गाह्रो, नीलोपन। तुरुन्त नर्सलाई बोलाउने।</p>
+<p>2. <strong>स्ट्रोकको शंका:</strong> अनुहार झर्नु, बोल्न गाह्रो हुनु। तुरुन्त नर्सलाई बोलाउने, खाना नदिने।</p>
+<p>3. <strong>छाती दुखाइ / हृदयघात:</strong> छातीमा दबाब, पसिना आउनु। तुरुन्त नर्सलाई बोलाउने।</p>
+<p>4. <strong>हृदयघात (Seizures):</strong> अचानक बेहोस हुनु, शरीर काँप्नु। चोटपटकबाट बचाउने, नर्सलाई बोलाउने।</p>
+<p>5. <strong>हाइपोग्लाइसेमिया:</strong> पसिना आउनु, काँप्नु, भ्रम। तुरुन्त नर्सलाई बोलाउने, खाना नदिने।</p>
+<p>6. <strong>गम्भीर रक्तस्राव:</strong> धेरै रगत देखिनु। दबाब दिने, नर्सलाई बोलाउने।</p>
+<h2>भाग ४: दस्तावेजीकरण र नियन्त्रण</h2>
+<ul>
+<li>विस्तृत दस्तावेजीकरण (धारा 6.6.4)</li>
+<li>निरन्तर डिजिटल ज्ञान नियन्त्रण (धारा 6.6.3)</li>
+<li>अर्ध-वार्षिक कार्यसम्पादन मूल्याङ्कन (धारा 6.6.6)</li>
+<li>आधिकारिक समापन प्रमाणपत्र</li>
+</ul>
+<h2>भाग ५: ADKAR मोडेल चेकलिस्ट</h2>
+<ul>
+<li><strong>A - Awareness (जागरूकता)</strong></li>
+<li><strong>D - Desire (इच्छा)</strong></li>
+<li><strong>K - Knowledge (ज्ञान)</strong></li>
+<li><strong>A - Ability (क्षमता)</strong></li>
+<li><strong>R - Reinforcement (सुदृढीकरण)</strong></li>
+</ul>
+<h2>भाग ६: ज्ञान नियन्त्रण परीक्षण</h2>
+<p>(यहाँ बहुविकल्पीय प्रश्नहरू छन् जसले सिकाइको मूल्याङ्कन गर्दछ।)</p>
+<h2>भाग ७: अडिट चेकलिस्ट (Audit Checklist)</h2>
+<p>(यहाँ ADL सुरक्षाको लागि साप्ताहिक अडिट चेकलिस्ट समावेश छ।)</p>
+    </div>
+    <script>
+        var currentSize = 16;
+        var body = document.body;
+        document.getElementById('btn-zoom-in').addEventListener('click', function() {
+            if(currentSize < 24) {
+                currentSize += 2;
+                document.documentElement.style.setProperty('--font-size-base', currentSize + 'px');
+            }
+        });
+        document.getElementById('btn-zoom-out').addEventListener('click', function() {
+            if(currentSize > 12) {
+                currentSize -= 2;
+                document.documentElement.style.setProperty('--font-size-base', currentSize + 'px');
+            }
+        });
+        var themeBtn = document.getElementById('btn-theme');
+        themeBtn.addEventListener('click', function() {
+            body.classList.toggle('dark');
+            var icon = themeBtn.querySelector('i');
+            if(body.classList.contains('dark')) {
+                icon.className = 'fa-solid fa-sun';
+            } else {
+                icon.className = 'fa-solid fa-moon';
+            }
+        });
+        document.getElementById('btn-print').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>

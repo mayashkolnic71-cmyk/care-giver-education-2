@@ -1,0 +1,765 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>procedure 1 2 1 2 en</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --teal-primary: #0d9488;
+            --teal-hover: #0f766e;
+            --rose-primary: #e11d48;
+            --rose-bg: #ffe4e6;
+            --amber-primary: #d97706;
+            --amber-bg: #fef3c7;
+            --sky-primary: #0284c7;
+            --sky-bg: #e0f2fe;
+            --font-size-base: 16px;
+        }
+        .dark {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --teal-primary: #2dd4bf;
+            --teal-hover: #14b8a6;
+            --rose-primary: #fb7185;
+            --rose-bg: #4c0519;
+            --amber-primary: #fbbf24;
+            --amber-bg: #78350f;
+            --sky-primary: #38bdf8;
+            --sky-bg: #0c4a6e;
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', 'system-ui', sans-serif;
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s, font-size 0.2s;
+            text-align: left;
+        }
+        .controls-panel {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border-radius: 9999px;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .dark .controls-panel {
+            background-color: rgba(30, 41, 59, 0.85);
+        }
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            transition: color 0.2s, background-color 0.2s;
+            text-decoration: none;
+        }
+        .control-btn:hover {
+            color: var(--teal-primary);
+            background-color: rgba(13, 148, 136, 0.1);
+        }
+        .divider {
+            width: 1px;
+            height: 1.5rem;
+            background-color: var(--border-color);
+        }
+        .reader-container {
+            max-width: 800px;
+            margin: 6rem auto 4rem auto;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: var(--teal-primary);
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        h2 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--teal-primary);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        ul {
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+            padding-left: 2rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: rgba(13, 148, 136, 0.05);
+            color: var(--teal-primary);
+            font-weight: 700;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background-color: rgba(13, 148, 136, 0.02);
+        }
+        .quote-block {
+            padding: 1.25rem 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--border-color);
+            border-right: 5px solid var(--border-color);
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        .dir-rtl .quote-block {
+            border-left: none;
+        }
+        .dir-ltr .quote-block {
+            border-right: none;
+        }
+        .alert-important {
+            border-color: var(--rose-primary);
+            background-color: var(--rose-bg);
+            color: var(--rose-primary);
+        }
+        .alert-important p {
+            color: inherit;
+        }
+        .alert-warning {
+            border-color: var(--amber-primary);
+            background-color: var(--amber-bg);
+            color: var(--amber-primary);
+        }
+        .alert-warning p {
+            color: inherit;
+        }
+        .alert-note, .alert-tip {
+            border-color: var(--sky-primary);
+            background-color: var(--sky-bg);
+            color: var(--sky-primary);
+        }
+        .alert-note p, .alert-tip p {
+            color: inherit;
+        }
+        @media print {
+            .controls-panel {
+                display: none !important;
+            }
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12pt !important;
+            }
+            .reader-container {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="dir-ltr">
+    <div class="controls-panel">
+        <a href="index.html" class="control-btn" title="Back to Portal">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="divider"></div>
+        <button class="control-btn" id="btn-zoom-out" title="Decrease Font">
+            <i class="fa-solid fa-minus"></i>
+        </button>
+        <button class="control-btn" id="btn-zoom-in" title="Increase Font">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="divider"></div>
+        <button class="control-btn" id="btn-theme" title="Toggle Light/Dark Mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="control-btn" id="btn-print" title="Print / Save PDF">
+            <i class="fa-solid fa-print"></i>
+        </button>
+    </div>
+    <div class="reader-container">
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 1 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>1. Background:</p>
+<p>The geriatric facility provides care and support to the elderly population coping with functional or cognitive decline and chronic illnesses. Their quality of life and safety rely heavily on the work of the caregivers (assistive personnel), who are in daily, direct, and continuous contact with the residents.</p>
+<p>The caregiver's work is performed under the guidance and supervision of a registered nurse in a manner that allows the nurse to focus on managing the patient's care, engaging in advanced clinical skills, and additional activities requiring execution by a registered nurse.</p>
+<p>This procedure is based on the Nursing Administration circular regarding "Areas of occupation and activity of skilled assistive personnel in the hospitalization and community systems", which defines the areas of responsibility and authority of caregivers. This procedure implements the principles of the circular and regulates the work of the caregiver in the geriatric facility.</p>
+<p>2. Objectives of the Procedure:</p>
+<p>2.1. Defining the areas of occupation and responsibility of the caregiver (assistive personnel) in the geriatric facility.</p>
+<p>2.2. Defining the professional subordination of the caregiver.</p>
+<p>2.3. Defining the training required for the caregiver's role upon hiring and during employment.</p>
+<p>3. Definition of Terms:</p>
+<p>3.1. "Caregiver in a geriatric facility" - An employee employed in the geriatric facility who has undergone designated training and has been authorized to perform the areas of activity according to their training, as stated in the Nursing Administration circular regarding "Areas of occupation and activity of skilled assistive personnel in the hospitalization and community systems".</p>
+<p>3.2. "Activities of Daily Living (ADL)" - The most basic and essential daily activities that a person performs for themselves in order to maintain health, hygiene, and physical function. The ability to perform these activities independently is an important indicator of the person's functional status, and serves, among other things, to assess their need for assistance.</p>
+<p>3.3. "Caregiver Training Certificate" - A document indicating the completion of caregiver training, signed by the Director of Nursing in the facility. The certificate will detail: Employee name, ID No. or Passport, training dates, training content, training scope, names of staff members who delivered the content, and their roles.</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 2 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>4. Authority and Responsibility:</p>
+<p>4.1. The facility's management will define in its internal procedures, in accordance with this procedure, the roles of the caregiver, the areas of activity permitted for them to perform, and the required training, reporting requirements, documentation, and the method of supervision and control. The facility's management is responsible for implementing these guidelines.</p>
+<p>4.2. The facility's management will ensure that caregivers are employed in accordance with all laws and only after receiving appropriate training.</p>
+<p>4.3. The nurse in charge bears the authority and responsibility for managing and supervising the caregivers' work.</p>
+<p>4.4. The nurse in charge will ensure that the caregiver documents their actions and reports on events as required, including unusual events and near-misses, according to Ministry of Health requirements and as customary in the facility.</p>
+<p>4.5. The caregiver is responsible for providing assistance services in the area of daily care for residents and is professionally and administratively subordinate to the nurse in charge.</p>
+<p>4.6. The caregiver is not authorized to make independent therapeutic decisions.</p>
+<p>5. Main Areas of Activity of the Caregiver under the Guidance and Supervision of an Authorized Nurse:</p>
+<p>5.1. Basic personal care, according to professional guidelines and the resident's personal care plan, including:</p>
+<p>5.1.1. Preserving function, according to the resident's abilities;</p>
+<p>5.1.2. Hygiene and bathing - maintaining hygiene, assisting with bathing, and personal cleaning of the resident and their personal environment (brushing teeth, combing hair, shaving, nail care, etc.);</p>
+<p>5.1.3. Dressing - assistance in dressing and undressing clothes;</p>
+<p>5.1.4. Mobility and transfers - moving from place to place (walking, wheelchair mobility), assistance in getting up and sitting in bed or moving from a chair to bed and back, use of aids, according to professional guidelines;</p>
+<p>5.1.5. Changing positions to maintain skin integrity;</p>
+<p>5.1.6. Sphincter and excretion control - assisting in implementing a sphincter control program (changing diapers, escorting to the toilet);</p>
+<p>5.1.7. Assistance with eating and drinking.</p>
+<p>5.2. Daily tracking of the resident, identifying changes in the resident's condition, and immediate reporting to the authorized staff.</p>
+<p>5.3. Reporting any suspicion of abuse, unusual event, complaint, or emergency situation.</p>
+<p>5.4. Communication and support, holding conversations with the residents, listening, and containment.</p>
+<p>5.5. Assistance in integrating the resident into social activities, leisure, and basic occupation.</p>
+<p>5.6. The areas of responsibility of the caregiver focus on direct care of residents and the direct environment of the resident. General cleaning and maintenance tasks are not included in the scope of the caregiver's role and are required to be performed by designated staff for this.</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 3 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>5.7. Additional areas of occupation, according to training and according to the Nursing Administration circular on "Areas of occupation and activity of skilled assistive personnel in the hospitalization and community systems".</p>
+<p>5.8. A caregiver will perform only actions they have been trained for, which are permitted for them to perform according to Ministry of Health guidelines.</p>
+<p>6. Caregiver Training Program:</p>
+<p>6.1. Basic Initial Training for Caregivers</p>
+<p>6.1.1. Every caregiver hired in the facility will undergo theoretical and practical training of at least 18 hours, as a condition for starting their independent work in the ward. This training will provide the caregiver with the basic knowledge and skills required to perform their role and will allow familiarization and acquaintance with the unique characteristics of each facility.</p>
+<p>The training will include at least the following contents:</p>
+<p>6.1.1.1. Familiarization with the internal procedures in the facility;</p>
+<p>6.1.1.2. Familiarization with the world of aging and common syndromes;</p>
+<p>6.1.1.3. Defining the caregiver's role, areas of responsibility, and permitted and prohibited actions to perform;</p>
+<p>6.1.1.4. Familiarization with the resident's rights and the importance of maintaining human dignity, according to the Patient's Rights Law, 1996, and the provisions of any law;</p>
+<p>6.1.1.5. Familiarization with the activity routine, reporting, and documentation around the clock in the facility's wards;</p>
+<p>6.1.1.6. Basic care for the resident according to professional guidelines and in personal adaptation;</p>
+<p>6.1.1.7. Transfers and use of aids as required and safely;</p>
+<p>6.1.1.8. Correct and safe use of accessories and equipment;</p>
+<p>6.1.1.9. Care safety;</p>
+<p>6.1.1.10. Employee health;</p>
+<p>6.1.1.11. Infection prevention;</p>
+<p>6.1.1.12. Identification of distress situations and calling for help;</p>
+<p>6.1.1.13. Prevention of abuse, types of abuse, and reporting obligations according to Amendment 26 to the Penal Law, 1977, and the provisions of any law;</p>
+<p>6.1.1.14. Duty to report and identify special situations, such as: harm to skin integrity, falls, unusual events, and "near miss" cases;</p>
+<p>6.1.1.15. Importance of learning from events and processes of drawing conclusions, improving work processes;</p>
+<p>6.1.1.16. Quality of life in old age, ethical issues, and relevant topics adapted to the type of population in the facility.</p>
+<p>6.1.2. The training will be delivered by a registered nurse and a multi-disciplinary team.</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 4 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>6.1.3. The training will be delivered through on-the-job training, by a veteran caregiver who has graduated from basic training, under the supervision of a registered nurse.</p>
+<p>6.1.4. At the end of the training, a valid certificate signed by the Director of Nursing in the facility will be issued, serving as confirmation of the completion of basic initial training and the start of independent work in the ward.</p>
+<p>6.2. Continuing Education for Caregivers (within a year of hiring date)</p>
+<p>6.2.1. Every caregiver will undergo continuing education, beyond the initial training detailed in Section 6.1, for a minimum of 40 hours, within a year of their hiring date. The continuing education program will include the basic training contents and additional topics in depth:</p>
+<p>6.2.1.1. Quality and safety of care;</p>
+<p>6.2.1.2. Permitted and prohibited actions to be performed by the caregiver;</p>
+<p>6.2.1.3. Basic care for the resident - ADL;</p>
+<p>6.2.1.4. Maximizing resident's function;</p>
+<p>6.2.1.5. Patient-centered approach;</p>
+<p>6.2.1.6. Infection prevention;</p>
+<p>6.2.1.7. Care in the resident's environment;</p>
+<p>6.2.1.8. Adapted communication with the resident (including learning key words in different languages and graphic aids, use of aids);</p>
+<p>6.2.1.9. Maintaining the resident's dignity and rights;</p>
+<p>6.2.1.10. Contact with family members;</p>
+<p>6.2.1.11. Methods of reporting and documentation;</p>
+<p>6.2.1.12. Cultural alignment;</p>
+<p>6.2.1.13. Importance of occupation and leisure activities;</p>
+<p>6.2.1.14. Use of adapted equipment;</p>
+<p>6.2.1.15. Teamwork;</p>
+<p>6.2.1.16. Serving food and assistance with eating, according to guidelines;</p>
+<p>6.2.1.17. Dementia;</p>
+<p>6.2.1.18. Supportive care, coping with loss and death;</p>
+<p>6.2.1.19. Health promotion and caregiver resilience.</p>
+<p>6.2.2. At the end of the training, the caregiver will receive a certificate signed by the Director of Nursing in the facility, serving as confirmation of the completion of the continuing education for caregivers.</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 5 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>6.3. Ongoing Training (Professional Development)</p>
+<p>6.3.1. It is the responsibility of the Director of Nursing in the facility to ensure the participation of caregivers in the annual training program and the application of the acquired knowledge (in accordance with transversal procedure 1.0.4.2 Staff Training and Development - not yet published).</p>
+<p>6.4. Designated Training for Performing Night Shifts under the Supervision of a Registered Nurse in Charge of Two Wards</p>
+<p>6.4.1. In a night shift where a registered nurse with a permanent license is in charge of two wards, there will be at least 3 caregivers working who have undergone designated training to identify emergency situations and additionally, meet the detailed competency conditions:</p>
+<p>6.4.1.1. The caregiver has successfully passed initial basic training of 18 hours as required and received signed approval from the Director of Nursing in the facility.</p>
+<p>6.4.1.2. The caregiver has completed at least 3 months of work in the facility and works independently in morning and evening shifts.</p>
+<p>6.4.1.3. The caregiver is a graduate of a valid Basic Life Support CPR course (in accordance with the Medical Division circular on "Management of the CPR System in Medical Institutions and/or Facilities").</p>
+<p>6.4.2. Designated training to identify emergency situations will be for a minimum of 4 hours and will include the following contents: Identifying special medical situations and emergency situations, measuring vital signs, initial treatment, and calling for help (as detailed in Appendix B).</p>
+<p>6.4.3. At the end of this training, the caregiver will receive a certificate signed by the Director of Nursing in the facility, which serves as an authorization of competence to work night shifts. The certificate will be valid for one year.</p>
+<p>6.4.4. A knowledge refresher must be conducted at least once a year, and the certificate must be renewed accordingly.</p>
+<p>6.5. Knowledge Update for Caregivers</p>
+<p>It is recommended to train in additional enrichment contents and acquire professional tools to empower the caregiver and prevent burnout, such as: grooming and haircutting, social-occupational and leisure activities, communication (validation).</p>
+<p>6.6. General</p>
+<p>6.6.1. The training detailed in this procedure is mandatory for caregivers in geriatric facilities.</p>
+<p>6.6.2. Caregivers in the facility will be trained in all mandatory training, according to the guidelines of professional bodies (for example on topics such as: CPR, emergency hour, fire extinguishing), in addition to the professional training detailed in this procedure.</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 6 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>6.6.3. Training must be accessible in terms of language and graphical means. Training can be conducted using diverse means, when the use of courseware will be limited to up to half of the required training duration.</p>
+<p>It will be emphasized that practical training cannot be performed via digital means.</p>
+<p>6.6.4. Every training will be documented in the employee's file, including dates, contents learned, the caregiver's signature, and the name and signature of the instructing professional.</p>
+<p>6.6.5. At the end of every training, a caregiver training certificate will be issued. The certificate will be filed in the employee's file and a copy will be given to the employee.</p>
+<p>6.6.6. The caregiver training program in its entirety will be accompanied by a ward nurse in charge or the Director of Nursing in the facility with a documented ongoing performance evaluation in the employee's file (at least once every half year).</p>
+<p>6.6.7. Caregivers can be trained to perform additional tasks according to the requirements defined in the Nursing Administration circular on "Areas of occupation and activity of skilled assistive personnel in the hospitalization and community systems".</p>
+<p>Personal authorizations for caregivers, according to their training as stated, will be documented in the employee's file.</p>
+<p>6.6.8. In general, training is valid for the facility where it was conducted and will not be valid in another facility.</p>
+<p>Continuing education for caregivers, according to section 6.2 of this procedure, and knowledge update for caregivers (enrichment and professional tools), according to section 6.5 of this procedure - for these trainings, a signed certificate can be presented for training conducted in another facility.</p>
+<p>7. Retention of Caregiver Staff and Burnout Prevention:</p>
+<p>7.1. The facility management will encourage resilience retention and burnout prevention of caregivers in the facility, as an integral part of the facility staff, in collaboration with the nursing management team, and will allocate appropriate resources for this.</p>
+<p>7.2. The facility management and the nursing management team will strive to act for the professional and personal advancement of the caregivers, imparting knowledge, and participating caregivers in professional courses according to their qualifications and capabilities.</p>
+<p>7.3. The facility management and the nursing management team will work to promote caregivers with appropriate qualifications to positions of field responsibilities, under the guidance of a nurse in charge (in charge of kitchen/food distribution, in charge of implementing patient-centered approach, head of caregivers team, etc.).</p>
+<p>7.4. The facility management, nursing management team, and multi-disciplinary team will strive to integrate suitable caregivers into multi-disciplinary meetings, conducting occupational and leisure activities, communicating with residents' family members, and in other areas as needed.</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 7 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>8. Cooperation in a Multi-Disciplinary Team:</p>
+<p>8.1. The caregiver is obligated to work in full coordination with the facility staff.</p>
+<p>8.2. The caregiver will participate in relevant staff meetings, according to the invitation of the nurse in charge.</p>
+<p>8.3. The caregiver will assist and report to the multi-disciplinary team according to professional guidelines.</p>
+<p>9. Maintaining Resident's Dignity, Rights, and Maintaining Confidentiality:</p>
+<p>9.1. The caregiver will act to maintain the resident's dignity and rights.</p>
+<p>9.2. Every action will be performed with sensitivity, patience, and maintaining the resident's autonomy.</p>
+<p>9.3. The caregiver will maintain the resident's privacy.</p>
+<p>9.4. The caregiver is obligated to maintain medical and personal confidentiality of every resident, in accordance with any law.</p>
+<p>10. Reporting, Documentation, Control, and Supervision:</p>
+<p>10.1. A duty of reporting and documentation applies to the caregiver, in accordance with the Nursing Administration circular on "Areas of occupation and activity of skilled assistive personnel in the hospitalization and community systems" and the policy of the geriatric facility.</p>
+<p>10.2. The caregiver will report routinely and regarding any change in the resident's condition to the nurse in charge.</p>
+<p>10.3. The facility management will encourage the use of technological applications for reporting and documentation that are linguistically and graphically accessible.</p>
+<p>10.4. The facility management, through the Director of Nursing, will ensure the enforcement of this procedure, through periodic observations, feedback conversations, and documented performance evaluations.</p>
+<p>10.5. Performing an action that is not permitted for a caregiver and unusual events will be handled and documented for the purpose of drawing conclusions and learning.</p>
+<p>11. Appendices and References:</p>
+<p>11.1. Appendix A: Caregiver Training (Assistive Personnel) - Centralizing Table</p>
+<p>11.2. Appendix B: Guidelines for training caregivers to perform a night shift under the supervision of a registered nurse in charge of two wards in chronic geriatric wards</p>
+<p>11.3. Patient's Rights Law, 1996</p>
+<p>11.4. Duty to report in accordance with Amendment 26 to the Penal Law, 1977</p>
+<p>11.5. Nursing Administration Circular 163/2020 on "Areas of occupation and activity of skilled assistive personnel in the hospitalization and community systems"</p>
+<p>11.6. Medical Division Circular 3/2019 "Management of the CPR System in Medical Institutions and/or Facilities"</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 8 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>Appendix A - Caregiver Training (Assistive Personnel) - Centralizing Table</p>
+<div class='table-container'><table><thead><tr>
+<th>Type of Training</th>
+<th>Minimum Required Hours Scope</th>
+<th>Remarks</th>
+</tr></thead><tbody>
+<tr>
+<td>Basic Initial Training for Caregivers</td>
+<td>18 hours</td>
+<td>Condition for starting independent work.<br>Valid only for the facility where the training was conducted.</td>
+</tr>
+<tr>
+<td>Continuing Education for Caregivers</td>
+<td>40 hours</td>
+<td>To be completed within a year from hiring.<br>Valid upon presentation of caregiver training certificate.</td>
+</tr>
+<tr>
+<td>Ongoing Training (Professional Development)</td>
+<td>According to transverse procedure 0.4.2 "Staff Training and Development"</td>
+<td>Caregiver as part of the facility staff and according to their roles.<br>Valid only for the facility where the training was conducted.</td>
+</tr>
+<tr>
+<td>Designated Training for Performing Night Shifts under the Supervision of a Registered Nurse in Charge of Two Wards</td>
+<td>4 hours</td>
+<td>Valid only for the facility where the training was conducted.</td>
+</tr>
+<tr>
+<td>Knowledge Refresher for Performing Night Shifts under the Supervision of a Registered Nurse in Charge of Two Wards</td>
+<td>-</td>
+<td>Knowledge refresher required at least once a year.<br>Valid only for the facility where the training was conducted.</td>
+</tr>
+<tr>
+<td>Knowledge Update for Caregivers</td>
+<td>-</td>
+<td>Additional enrichment contents and acquisition of professional tools (not mandatory).<br>Valid upon presentation of course completion certificate.</td>
+</tr>
+<tr>
+<td>Additional Mandatory Training</td>
+<td>According to professional body requirements</td>
+<td>Example: CPR course, fire extinguishing, emergency hour.</td>
+</tr>
+</tbody></table></div>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 9 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>Appendix B - Training Caregivers to Perform Night Shifts under the Supervision of a Registered Nurse in Charge of Two Geriatric Nursing and Mentally Frail Wards</p>
+<p>Background:</p>
+<p>Elderly individuals are at high risk of being in a life-threatening medical situation for reasons influenced by the natural aging process and the accumulation of risk factors such as chronic diseases (diabetes, heart and kidney failure, blood vessel diseases, chronic obstructive pulmonary disease, dementia, etc.).</p>
+<p>Identifying early symptoms of a developing life-threatening critical condition for continued medical intervention, prevention of disability, and death.</p>
+<p>There is importance in early identification of changes in the resident's condition and providing an appropriate and rapid response to prevent deterioration in their condition.</p>
+<p>Work in a Night Shift where a Registered Nurse Supervises Two Wards with Three Caregivers (hereinafter: "The Framework") - Principles for Caregiver Training:</p>
+<p>A basic condition for implementing work in this framework is that the facility management and the Director of Nursing in the facility believed that it would be possible to effectively supervise the two wards so that the required standard of nursing care is guaranteed.</p>
+<p>The management and the Director of Nursing in the facility will ensure the existence and implementation of an internal procedure that regulates and guides the nursing staff and caregivers regarding work arrangements during the night shift in these wards, so that uniformity and systematicity in care management are guaranteed in every shift in all facility wards.</p>
+<p>The facility management implementing this framework is obligated to train the caregivers and supervise their work during the night shift to ensure maintaining the quality of care and safety of the residents. Caregiver training to perform night shifts in the framework will be carried out in order to give caregivers appropriate tools and will include the guiding principles for coping with emergency situations, including:</p>
+<p>A. Familiarization with internal work procedures regarding identification and coping with emergency situations and life-threatening situations</p>
+<p>B. Maintaining alertness and early identification of changes in the resident's condition and signs of distress</p>
+<p>C. Familiarization with mechanisms for calling for help and reporting to authorized medical entities (doctor, nurse)</p>
+<p>D. Measuring vital signs</p>
+<p>E. Providing basic first aid according to training</p>
+<p>F. Maintaining the safety of the resident and staff until receiving advanced medical response</p>
+<p>G. Familiarization with advance directives and resident preferences</p>
+<p>H. Documentation and reporting as required</p>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 10 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>Examples of Identifying Life-Threatening Situations and Reporting to the Nurse*:</p>
+<p>*There may be additional medical situations requiring calling for help and reporting to a nurse and initial treatment. Additional events and situations must be detailed within the designated training, as well as detailing special events that occurred in the facility and from which lessons can be learned.</p>
+<p>Identifying Breathing Difficulties:</p>
+<div class='table-container'><table><thead><tr>
+<th>Symptoms</th>
+<th>Initial Treatment</th>
+<th>Call for Help and Report to Nurse</th>
+</tr></thead><tbody>
+<tr>
+<td>Resident seems to be struggling to breathe:<br>rapid and labored breathing,<br>bluish color around lips, nails.<br>Unusual sounds during breathing (rattling, wheezing).<br>Extreme restlessness or confusion.</td>
+<td>- Improve position: sitting or semi-sitting (tilting the head of the bed, support with pillows).<br>- Loosening tight clothing: around the neck and chest.<br>- Calming and support: calm and gentle speaking.</td>
+<td>- Call the nurse immediately.<br>- "(Resident's name) is suffering from severe breathing difficulties."<br>- Stay with the resident until the nurse arrives.</td>
+</tr>
+</tbody></table></div>
+<p>Identifying Suspicion of a Cerebrovascular Event (Stroke):</p>
+<div class='table-container'><table><thead><tr>
+<th>Symptoms</th>
+<th>Initial Treatment</th>
+<th>Call for Help and Report to Nurse</th>
+</tr></thead><tbody>
+<tr>
+<td>Drooping of one side of the face,<br>difficulty moving arm/leg,<br>slurred speech, confusion,<br>excessive sleepiness, loss of consciousness.</td>
+<td>- Improve position: Lay the resident on their back, with head slightly elevated.<br>- Do not give the resident food or drink!<br>- Protect the resident from falling or trauma.<br>- Calming and support: calm and gentle speaking.</td>
+<td>- Call the nurse immediately.<br>- "(Resident's name) has difficulty speaking, difficulty closing mouth, etc."<br>- Stay with the resident until the nurse arrives.</td>
+</tr>
+</tbody></table></div>
+<p>Chest Pains / Suspicion of Heart Attack:</p>
+<div class='table-container'><table><thead><tr>
+<th>Symptoms</th>
+<th>Initial Treatment</th>
+<th>Call for Help and Report to Nurse</th>
+</tr></thead><tbody>
+<tr>
+<td>Restlessness, complaints of pressure in the chest, pain in the arm, back, jaw.<br>Resident looks frightened. Sometimes puts a hand on the chest or points.<br>"Noises" in breathing (rattling).</td>
+<td>- Improve resident's position: sitting / semi-sitting.<br>- Calming the resident.</td>
+<td>- Call the nurse immediately.<br>- "(Resident's name) has chest pains, abnormal breathing, restlessness...".<br>- Assist the nurse in bringing the resuscitation cart and defibrillator.</td>
+</tr>
+</tbody></table></div>
+<p>---</p>
+<p>State of Israel</p>
+<p>Ministry of Health - Geriatrics Division</p>
+<p>Procedures for Geriatric Facilities - Nursing Wards and Mentally Frail</p>
+<p>Professional Field: Nursing</p>
+<div class='table-container'><table><thead><tr>
+<th>Chapter: Nursing</th>
+<th>Procedure Name: The Role of the Caregiver (Assistive Personnel) in the Geriatric Facility</th>
+<th>Page 11 out of 11, Number of Appendices 2</th>
+</tr></thead><tbody>
+<tr>
+<td>Approval Date: 18/12/2025</td>
+<td>Updated on: -</td>
+</tr>
+<tr>
+<td>Edition 1</td>
+<td>Procedure No.: 1.2.1.2</td>
+</tr>
+</tbody></table></div>
+<p>Wherever this document is written in masculine or feminine form, the intention is to both genders</p>
+<p>Convulsions:</p>
+<div class='table-container'><table><thead><tr>
+<th>Symptoms</th>
+<th>Initial Treatment</th>
+<th>Call for Help and Report to Nurse</th>
+</tr></thead><tbody>
+<tr>
+<td>Sudden loss of consciousness.<br>Involuntary body spasms: rhythmic movements or stiffness of limbs.<br>- Tongue biting.<br>- Loss of sphincter control (urination or defecation).</td>
+<td>- Protect the resident from injury: remove sharp or hard objects around the resident.<br>- Lay the resident on their side: to prevent aspiration of secretions.<br>- Do not insert anything into the resident's mouth!<br>- Do not try to restrain the resident.</td>
+<td>- Call the nurse immediately.<br>- "(Resident's name) has difficulty speaking, difficulty closing mouth, etc."<br>After the convulsion, watch the resident until full recovery:<br>the resident may be confused or sleepy.</td>
+</tr>
+</tbody></table></div>
+<p>Identifying Signs of Hypoglycemia:</p>
+<div class='table-container'><table><thead><tr>
+<th>Symptoms</th>
+<th>Initial Treatment</th>
+<th>Call for Help and Report to Nurse</th>
+</tr></thead><tbody>
+<tr>
+<td>Symptoms can appear rapidly and include a wide variety of signs:<br>Sudden and intense feeling of hunger.<br>Cold sweat and sometimes tremor.<br>Rapid heartbeat, nervousness, anxiety, and restlessness, confusion.<br>Dizziness, weakness, headaches.</td>
+<td>- Do not attempt to give food or drink until blood sugar is checked by a nurse!</td>
+<td>- Call the nurse immediately.<br>- Stay with the resident to prevent physical injury (falling).</td>
+</tr>
+</tbody></table></div>
+<p>Severe Bleeding:</p>
+<div class='table-container'><table><thead><tr>
+<th>Symptoms</th>
+<th>Initial Treatment</th>
+<th>Call for Help and Report to Nurse</th>
+</tr></thead><tbody>
+<tr>
+<td>- Visible and massive bleeding: appearance of a lot of blood on clothes, bedding, or floor.<br>- Large and expanding hemorrhage in the skin.<br>- Pallor, cold and clammy skin.<br>- Confusion or loss of consciousness.</td>
+<td>- Direct pressure on the source of the bleeding: if an external source of bleeding is seen, use clean gauze or a clean cloth and press firmly on the bleeding site.<br>- Bleeding from a limb: if possible and there is no suspicion of a fracture, elevate the limb.<br>- Protect yourself: use gloves.</td>
+<td>- Call the nurse immediately.<br>- Continue to press on the source of bleeding until the nurse arrives.</td>
+</tr>
+</tbody></table></div>
+    </div>
+    <script>
+        var currentSize = 16;
+        var body = document.body;
+        document.getElementById('btn-zoom-in').addEventListener('click', function() {
+            if(currentSize < 24) {
+                currentSize += 2;
+                document.documentElement.style.setProperty('--font-size-base', currentSize + 'px');
+            }
+        });
+        document.getElementById('btn-zoom-out').addEventListener('click', function() {
+            if(currentSize > 12) {
+                currentSize -= 2;
+                document.documentElement.style.setProperty('--font-size-base', currentSize + 'px');
+            }
+        });
+        var themeBtn = document.getElementById('btn-theme');
+        themeBtn.addEventListener('click', function() {
+            body.classList.toggle('dark');
+            var icon = themeBtn.querySelector('i');
+            if(body.classList.contains('dark')) {
+                icon.className = 'fa-solid fa-sun';
+            } else {
+                icon.className = 'fa-solid fa-moon';
+            }
+        });
+        document.getElementById('btn-print').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>
