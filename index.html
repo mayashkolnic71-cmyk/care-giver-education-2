@@ -207,7 +207,7 @@
                 </button>
                 <button onclick="switchTab('emergencies')" id="tab-btn-emergencies" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
                     <i class="fa-solid fa-kit-medical text-rose-600"></i>
-                    <span id="tab-title-emergencies">מצבי חירום ותרגול</span>
+                    <span id="tab-title-emergencies">מצבי חירום, החייאה BLS ותרגול</span>
                 </button>
                 <button onclick="switchTab('curriculum')" id="tab-btn-curriculum" class="py-2 px-3 border-b-2 border-transparent hover:text-slate-900 flex items-center gap-2 whitespace-nowrap font-medium text-slate-600">
                     <i class="fa-solid fa-list-ol"></i>
@@ -1133,7 +1133,7 @@
                 authorRole: 'MHA, BA, RN | מומחית במדיניות ומנהל בסיעוד',
                 authorQuote: '"האחות כמובילת איכות ובטיחות, בשותפות מלאה עם כוחות העזר - זהו המפתח למניעת נזק בלתי רצוי ולשמירה על חיי הדיירים."',
                 tabModules: 'תוכניות ההכשרה והנוהל',
-                tabEmergencies: 'מצבי חירום ותרגול',
+                tabEmergencies: 'מצבי חירום, החייאה BLS ותרגול',
                 tabCurriculum: 'תרגול תוכניות הדרכה (18/40/4)',
                 tabResilience: 'סדנת חוסן 40 שעות למטפל/ת',
                 tabObservation: 'הערכה חצי-שנתית ותצפית',
@@ -1774,7 +1774,7 @@
         const emergencyCardsData = {
             he: [
                 { icon: "🫁", title: "1. חנק ואספירציה (Choking)", badge: "חירום קריטי", color: "border-rose-300 bg-rose-50/40", identify: "שיעול פתאומי חזק, אודם/מכחלון בפנים, חוסר יכולת לדבר או לשאוף אוויר, תנועות מצוקה בידיים בזמן האכלה.", action: "1. הפסק האכלה מיידית!\n2. הושב ב-90 מעלות (זקוף).\n3. קרא בדחיפות לאחות!\n4. אל תעזוב את המטופל!" },
-                { icon: "🫀", title: "2. דום לב / נשימה (BLS)", badge: "החייאה מיידית", color: "border-rose-300 bg-rose-50/40", identify: "חוסר תגובה לקריאה ומגע, היעדר נשימה תקינה או נשימות אגונליות (גניחות חנק פתאומיות).", action: "1. צעק לעזרה וקרא לאחות התורנית!\n2. החל נוהל החייאה בסיסי (BLS).\n3. הבא עגלת החייאה/דפיברילטור (AED)." },
+                { icon: "🫀", title: "2. דום לב / נשימה (BLS)", badge: "החייאה מיידית", color: "border-rose-300 bg-rose-50/40", identify: "חוסר תגובה לקריאה ומגע, היעדר נשימה תקינה או נשימות אגונליות (גניחות חנק פתאומיות).", action: "1. בטיחות וקריאה לעזרה: ודא סביבה בטוחה, צעק לעזרה וקרא לאחות תורנית (הכרזה על קוד החייאה).\n2. בדיקת דופק ונשימה: במקביל, למשך עד 10 שניות.\n3. עיסויים (Compressions): התחל מיד ב-30 עיסויי חזה חזקים ומהירים (עומק 5 ס\"מ, קצב 100-120 בדקה).\n4. נתיב אוויר (Airway): פתח נתיב אוויר בהטיית ראש לאחור.\n5. הנשמות (Breathing): תן 2 הנשמות עד לעליית בית החזה.\n6. דפיברילטור (AED): חבר מוקדם ככל האפשר ופעל לפי ההנחיות הקוליות." },
                 { icon: "⚠️", title: "3. הידרדרות קלינית / שבץ / אלח דם", badge: "דיווח דחוף", color: "border-amber-300 bg-amber-50/40", identify: "שינוי פתאומי במצב הכרה (אפתיה חריפה), צניחת זווית פה, נשימה מהירה מאד, זיעה קרה, חולשת צד.", action: "1. קרא לאחות האחראית לדיווח מיידי.\n2. השכב בבטיחות ומנע נפילה.\n3. אל תיתן שתייה/מזון לפה." },
                 { icon: "🦴", title: "4. נפילה וחשד לשבר / חבלת ראש", badge: "איסור הזזה", color: "border-amber-300 bg-amber-50/40", identify: "מטופל שנמצא שרוע על הרצפה, תלונה על כאב עז באגן/ירך, קיצור/סיבוב רגל, חבלה מדממת בראש.", action: "1. אל תזיז ואל תקים את המטופל!\n2. קרא לאחות להערכת ראש ועמוד שדרה.\n3. הרגע וכסה בשמיכה עד לבדיקה." },
                 { icon: "🧠", title: "5. אי-שקט חריף / דליריום לילי", badge: "בטיחות ורגיעה", color: "border-indigo-300 bg-indigo-50/40", identify: "בלבול פתאומי, חרדה, הזיות, ניסיון לתלוש עירוי/צנתר, ירידה מהמיטה בצורה מסוכנת בלילה.", action: "1. פנה ברוגע ובגובה העיניים בשפה פשוטה.\n2. שמור על בטיחות למניעת נפילה.\n3. דווח מיידית לאחות התורנית." },
