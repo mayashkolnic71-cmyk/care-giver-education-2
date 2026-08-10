@@ -84,9 +84,9 @@
             <!-- EXTERNAL LINKS & LANGUAGE SWITCHER -->
             <div class="flex flex-wrap items-center gap-2">
                 <!-- Safety Portal Link -->
-                <a href="https://safety-treatment-by-care-giver.vercel.app/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs">
+                <a href="https://safety-treatment-by-care-giver.vercel.app/" id="btn-portal-link" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs">
                     <i class="fa-solid fa-house-medical text-rose-600"></i>
-                    <span id="btn-portal-txt">פורטל בטיחות בטיפול</span>
+                    <span id="btn-portal-txt">משמרת בטוחה - מדריך למטפל</span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
 
@@ -184,9 +184,9 @@
                         "האחות כמובילת איכות ובטיחות, בשותפות מלאה עם כוחות העזר - זהו המפתח למניעת נזק בלתי רצוי ולשמירה על חיי הדיירים והמטופלים."
                     </p>
                     <div class="pt-1 flex flex-wrap gap-2">
-                        <a href="https://safety-treatment-by-care-giver.vercel.app/" target="_blank" class="flex-1 text-center py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold transition-all text-xs">
+                        <a href="https://safety-treatment-by-care-giver.vercel.app/" id="btn-portal-link-hero" target="_blank" class="flex-1 text-center py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold transition-all text-xs">
                             <i class="fa-solid fa-house-medical ml-1"></i>
-                            <span id="btn-portal-txt-hero">פורטל בטיחות בטיפול</span>
+                            <span id="btn-portal-txt-hero">משמרת בטוחה - מדריך למטפל</span>
                         </a>
                         <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="flex-1 text-center py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition-all text-xs">
                             <i class="fa-solid fa-file-pdf ml-1"></i>
@@ -1100,7 +1100,7 @@
             <div class="text-slate-400 text-center md:text-left space-y-1">
                 <p id="ft-author">נכתב ע"י מאיה שקולניק גזית MHA, BA, RN</p>
                 <div class="flex gap-3 justify-center md:justify-end text-emerald-400">
-                    <a href="https://safety-treatment-by-care-giver.vercel.app/" target="_blank" class="hover:underline flex items-center gap-1 text-rose-400"><i class="fa-solid fa-house-medical"></i> <span id="ft-link-portal">פורטל בטיחות בטיפול</span></a>
+                    <a href="https://safety-treatment-by-care-giver.vercel.app/" id="ft-link-portal-a" target="_blank" class="hover:underline flex items-center gap-1 text-rose-400"><i class="fa-solid fa-house-medical"></i> <span id="ft-link-portal">משמרת בטוחה - מדריך למטפל</span></a>
                     <a href="https://www.iang.co.il/" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-globe"></i> <span id="ft-link-assoc">אתר העמותה (IANG)</span></a>
                     <a href="https://www.gov.il/BlobFolder/dynamiccollectorresultitem/grc-1-2-1-2/he/files_circulars_ng_ngc_1_2_1_2.pdf" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-file-pdf"></i> <span id="ft-link-proc">נוהל משרד הבריאות</span></a>
                 </div>
@@ -1130,11 +1130,11 @@
                 btnAssocTop: 'אתר עמותת האחיות (IANG)',
                 btnProcTop: 'נוהל 1.2.1.2 הרשמי (PDF)',
                 btnBrochureTop: 'חוברת בטיחות (PDF)',
-                btnPortalTop: 'פורטל "בטיחות בטיפול"',
+                btnPortalTop: 'משמרת בטוחה - מדריך למטפל',
                 btnProcHero: 'קובץ נוהל 1.2.1.2',
                 btnAssocHero: 'אתר העמותה (IANG)',
                 btnBrochureHero: 'חוברת בטיחות',
-                btnPortalHero: 'פורטל בטיחות בטיפול',
+                btnPortalHero: 'משמרת בטוחה - מדריך למטפל',
                 heroTag: 'עמותת האחיות לקידום הסיעוד הגריאטרי בישראל',
                 heroTitle: 'הכשרה, בטיחות ובקרת כשירות למטפלים וכוחות עזר בגריאטריה',
                 heroDesc: 'כוחות העזר הסיעודיים הם חומת המגן האמיתית השומרת על איכות חייהם, כבודם ובטיחותם של המטופלים. טיפול מקצועי ובטוח מתחיל בחמלה, אמפתיה וכבוד לצלם האנוש. פורטל זה מנגיש את תוכניות ההכשרה, דרישות נוהל 1.2.1.2 ובקרת הכשירות הרב-לשונית במקום אחד.',
@@ -1204,7 +1204,7 @@
                 nmBoxSteps: '<li>האחות האחראית מעלה פתק "כמעט ונפגע" אחד שנאסף מהלוח.</li><li>הצוות דן במשך 3-5 דקות: מה גרם למפגע? כיצד למנוע הישנות?</li><li>מגדירים פתרון מחלקתי קבוע (למשל: החלפת בלם תקול ע"י אחזקה).</li>',
                 ftLinkAssoc: 'אתר העמותה (IANG)',
                 ftLinkProc: 'נוהל משרד הבריאות',
-                ftLinkPortal: 'פורטל בטיחות בטיפול',
+                ftLinkPortal: 'משמרת בטוחה - מדריך למטפל',
                 ftCopy: 'כל הזכויות שמורות © 2026 | מוקדש לבטיחות המטופל האזרח הוותיק',
                 ftTitle: 'עמותת האחיות לקידום הסיעוד הגריאטרי בישראל',
                 ftSub: 'מבוסס על נוהל האגף לגריאטריה, משרד הבריאות 1.2.1.2 מ-12.2025 וסקר תרבות בטיחות ארגונית',
@@ -1217,11 +1217,11 @@
                 btnAssocTop: 'IANG Nurses Website',
                 btnProcTop: 'Official Procedure 1.2.1.2 (PDF)',
                 btnBrochureTop: 'Safety Brochure (PDF)',
-                btnPortalTop: '"Safety in Care" Portal',
+                btnPortalTop: 'Safe Shift - Caregiver Guide',
                 btnProcHero: 'Procedure 1.2.1.2 PDF',
                 btnBrochureHero: 'Safety Brochure',
                 btnAssocHero: 'IANG Website',
-                btnPortalHero: 'Safety in Care Portal',
+                btnPortalHero: 'Safe Shift - Caregiver Guide',
                 heroTag: 'Association of Nurses for Geriatric Advancement in Israel',
                 heroTitle: 'Training, Safety & Competency Control for Geriatric Caregivers',
                 heroDesc: 'Assistive personnel are the true protective shield safeguarding patients quality of life, dignity, and safety. This portal unifies training programs, Procedure 1.2.1.2 standards, and multi-lingual competency tracking in one place.',
@@ -1290,7 +1290,7 @@
                 nmBoxSteps: '<li>The charge nurse brings up one "near-miss" note from the board.</li><li>The team discusses for 3-5 mins: what caused it? how to prevent?</li><li>Define a permanent solution (e.g. maintenance replacing faulty brake).</li>',
                 ftLinkAssoc: 'Assoc Website (IANG)',
                 ftLinkProc: 'MoH Procedure',
-                ftLinkPortal: 'Safety in Care Portal',
+                ftLinkPortal: 'Safe Shift - Caregiver Guide',
                 ftCopy: 'All rights reserved © 2026 | Dedicated to older adult patient safety',
                 ftTitle: 'Association of Nurses for Geriatric Advancement in Israel',
                 ftSub: 'Based on MoH Geriatric Department Procedure 1.2.1.2 (12/2025)',
@@ -1303,11 +1303,11 @@
                 btnAssocTop: 'Сайт ассоциации медсестер (IANG)',
                 btnProcTop: 'Официальная процедура 1.2.1.2 (PDF)',
                 btnBrochureTop: 'Брошюра по безопасности (PDF)',
-                btnPortalTop: 'Портал "Безопасность в уходе"',
+                btnPortalTop: 'Безопасная смена - Руководство для сиделки',
                 btnProcHero: 'Процедура 1.2.1.2 (PDF)',
                 btnBrochureHero: 'Брошюра по безопасности',
                 btnAssocHero: 'Сайт ассоциации (IANG)',
-                btnPortalHero: 'Портал безопасности ухода',
+                btnPortalHero: 'Безопасная смена - Руководство для сиделки',
                 heroTag: 'Ассоциация медсестер по развитию гериатрии в Израиле',
                 heroTitle: 'Обучение, безопасность и контроль компетенции сиделок в гериатрии',
                 heroDesc: 'Вспомогательный персонал - настоящий щит, защищающий качество жизни и безопасность пациентов. Этот портал объединяет программы обучения, требования и многоязычный контроль.',
@@ -1376,7 +1376,7 @@
                 nmBoxSteps: '<li>Старшая медсестра берет одну записку "чуть не случилось" с доски.</li><li>Команда обсуждает 3-5 мин: в чем причина? как предотвратить?</li><li>Определяется постоянное решение (напр. ремонт тормоза).</li>',
                 ftLinkAssoc: 'Сайт Ассоциации (IANG)',
                 ftLinkProc: 'Процедура Минздрава',
-                ftLinkPortal: 'Портал безопасности ухода',
+                ftLinkPortal: 'Безопасная смена - Руководство для сиделки',
                 ftCopy: 'Все права защищены © 2026 | Посвящается безопасности пожилых пациентов',
                 ftTitle: 'Ассоциация медсестер по развитию гериатрии в Израиле',
                 ftSub: 'На основе процедуры Минздрава 1.2.1.2',
@@ -1389,11 +1389,11 @@
                 btnAssocTop: 'موقع جمعية الممرضين (IANG)',
                 btnProcTop: 'الإجراء الرسمي 1.2.1.2 (PDF)',
                 btnBrochureTop: 'كتيب السلامة (PDF)',
-                btnPortalTop: 'بوابة "السلامة في الرعاية"',
+                btnPortalTop: 'وردية آمنة - دليل مقدم الرعاية',
                 btnProcHero: 'ملف الإجراء 1.2.1.2',
                 btnBrochureHero: 'كتيب السلامة',
                 btnAssocHero: 'موقع الجمعية (IANG)',
-                btnPortalHero: 'بوابة سلامة الرعاية',
+                btnPortalHero: 'وردية آمنة - دليل مقدم الرعاية',
                 heroTag: 'جمعية الممرضين لتعزيز طب الشيخوخة في إسرائيل',
                 heroTitle: 'التدريب، السلامة ومراقبة الكفاءة للمساعدين في طب الشيخوخة',
                 heroDesc: 'القوى المساعدة هي الدرع الحقيقي الذي يحمي جودة حياة وسلامة المرضى. يجمع هذا الموقع برامج التدريب ومتطلبات الإجراء 1.2.1.2.',
@@ -1462,7 +1462,7 @@
                 nmBoxSteps: '<li>تحضر الممرضة المسؤولة ملاحظة "حدث وشيك" واحدة من اللوحة.</li><li>يناقش الفريق لمدة 3-5 دقائق: ما السبب؟ كيف نمنع التكرار؟</li><li>تحديد حل جذري (مثل إرسال الفرامل للصيانة).</li>',
                 ftLinkAssoc: 'موقع الجمعية (IANG)',
                 ftLinkProc: 'إجراء وزارة الصحة',
-                ftLinkPortal: 'بوابة سلامة الرعاية',
+                ftLinkPortal: 'وردية آمنة - دليل مقدم الرعاية',
                 ftCopy: 'جميع الحقوق محفوظة © 2026 | مخصص لسلامة المرضى المسنين',
                 ftTitle: 'جمعية الممرضين لتعزيز طب الشيخوخة في إسرائيل',
                 ftSub: 'بناءً على إجراء قسم الشيخوخة بوزارة الصحة 1.2.1.2',
@@ -1475,11 +1475,11 @@
                 btnAssocTop: 'नर्सिङ संघ वेबसाइट (IANG)',
                 btnProcTop: 'आधिकारिक प्रक्रिया (PDF)',
                 btnBrochureTop: 'सुरक्षा ब्रोशर (PDF)',
-                btnPortalTop: '"केयरगिभर सुरक्षा" पोर्टल',
+                btnPortalTop: 'सुरक्षित सिफ्ट - स्याहारकर्ता गाइड',
                 btnProcHero: 'प्रक्रिया 1.2.1.2 (PDF)',
                 btnBrochureHero: 'सुरक्षा ब्रोशर',
                 btnAssocHero: 'संघ वेबसाइट (IANG)',
-                btnPortalHero: 'हेरचाहकर्ता सुरक्षा पोर्टल',
+                btnPortalHero: 'सुरक्षित सिफ्ट - स्याहारकर्ता गाइड',
                 heroTag: 'इजरायलमा जेरियाट्रिक प्रगति को लागी नर्स संघ',
                 heroTitle: 'जेरियाट्रिक स्याहारकर्ताहरूका लागि प्रशिक्षण र सुरक्षा',
                 heroDesc: 'स्याहारकर्ताहरू बिरामीहरूको सुरक्षा र मर्यादाको रक्षा गर्ने मुख्य ढाल हुन्। यस पोर्टलले बहुभाषिक क्षमता ट्र्याकिङ र प्रशिक्षण प्रदान गर्दछ।',
@@ -1548,7 +1548,7 @@
                 nmBoxSteps: '<li>इन्चार्ज नर्सले बोर्डबाट एउटा "नजिकैको-खतरा" नोट ल्याउँछिन्।</li><li>टोलीले ३-५ मिनेट छलफल गर्छ: कारण के हो? कसरी रोक्ने?</li><li>स्थायी समाधान परिभाषित गर्नुहोस् (जस्तै मर्मतद्वारा ब्रेक परिवर्तन)।</li>',
                 ftLinkAssoc: 'संघ वेबसाइट (IANG)',
                 ftLinkProc: 'स्वास्थ्य मन्त्रालय प्रक्रिया',
-                ftLinkPortal: 'हेरचाहकर्ता सुरक्षा पोर्टल',
+                ftLinkPortal: 'सुरक्षित सिफ्ट - स्याहारकर्ता गाइड',
                 ftCopy: 'सबै अधिकार सुरक्षित © २०२६ | वृद्ध बिरामीको सुरक्षामा समर्पित',
                 ftTitle: 'इजरायलमा जेरियाट्रिक प्रगति को लागी नर्स संघ',
                 ftSub: 'स्वास्थ्य मन्त्रालयको प्रक्रिया 1.2.1.2 मा आधारित',
@@ -1561,11 +1561,11 @@
                 btnAssocTop: 'IANG የነርሶች ድር ጣቢያ',
                 btnProcTop: 'ኦፊሴላዊ አሰራር 1.2.1.2 (PDF)',
                 btnBrochureTop: 'የደህንነት ብሮሹር (PDF)',
-                btnPortalTop: 'የደህንነት እንክብካቤ ፖርታል',
+                btnPortalTop: 'ደህንነቱ የተጠበቀ ፈረቃ - የተንከባካቢ መመሪያ',
                 btnProcHero: 'አሰራር 1.2.1.2 (PDF)',
                 btnBrochureHero: 'የደህንነት ብሮሹር',
                 btnAssocHero: 'IANG ድር ጣቢያ',
-                btnPortalHero: 'የደህንነት እንክብካቤ ፖርታል',
+                btnPortalHero: 'ደህንነቱ የተጠበቀ ፈረቃ - የተንከባካቢ መመሪያ',
                 heroTag: 'በእስራኤል የጄሪያትሪክ እድገት የነርሶች ማህበር',
                 heroTitle: 'ለጄሪያትሪክ ተንከባካቢዎች ስልጠና፣ ደህንነት እና የብቃት ቁጥጥር',
                 heroDesc: 'ረዳት ሰራተኞች የታካሚዎችን የህይወት ጥራት፣ ክብር እና ደህንነት የሚጠብቁ እውነተኛ ጋሻዎች ናቸው። ይህ ፖርታል የስልጠና ፕሮግራሞችን፣ የአሰራር 1.2.1.2 መስፈርቶችን እና የብዝሃ-ቋንቋ የብቃት ክትትልን በአንድ ቦታ ያዋህዳል።',
@@ -1634,7 +1634,7 @@
                 nmBoxSteps: '<li>ኃላፊዋ ነርስ ከቦርዱ አንድ ማስታወሻ ታነሳለች።</li><li>ቡדኑ ከ3-5 ደቂቃዎች ይወያያል፡ መንስኤው ምንድን ነው?</li><li>ዘላቂ መፍትሄ ይግለጹ (ለምሳሌ፡ የተበላሸ ፍሬን መጠገን)።</li>',
                 ftLinkAssoc: 'የማህበሩ ድር ጣቢያ (IANG)',
                 ftLinkProc: 'MoH አሰራር',
-                ftLinkPortal: 'የደህንነት እንክብካቤ ፖርታል',
+                ftLinkPortal: 'ደህንነቱ የተጠበቀ ፈረቃ - የተንከባካቢ መመሪያ',
                 ftCopy: 'መብቱ በህግ የተጠበቀ ነው © 2026',
                 ftTitle: 'በእስራኤል የጄሪያትሪክ እድገት የነርሶች ማህበር',
                 ftSub: 'በጤና ጥበቃ ሚኒስቴር አሰራር 1.2.1.2 ላይ የተመሰረተ',
@@ -2468,6 +2468,16 @@
             if(document.getElementById('btn-assoc-txt-hero')) document.getElementById('btn-assoc-txt-hero').innerText = dict.btnAssocHero;
             if (document.getElementById('btn-brochure-txt-hero')) if(document.getElementById('btn-brochure-txt-hero')) document.getElementById('btn-brochure-txt-hero').innerText = dict.btnBrochureHero;
             if(document.getElementById('btn-portal-txt-hero')) document.getElementById('btn-portal-txt-hero').innerText = dict.btnPortalHero;
+
+            // Update portal URLs dynamically with current language parameter
+            const portalTop = document.getElementById('btn-portal-link');
+            if (portalTop) portalTop.href = `https://safety-treatment-by-care-giver.vercel.app/?lang=${lang}`;
+            
+            const portalHero = document.getElementById('btn-portal-link-hero');
+            if (portalHero) portalHero.href = `https://safety-treatment-by-care-giver.vercel.app/?lang=${lang}`;
+            
+            const portalFooter = document.getElementById('ft-link-portal-a');
+            if (portalFooter) portalFooter.href = `https://safety-treatment-by-care-giver.vercel.app/?lang=${lang}`;
             if(document.getElementById('hero-tag')) document.getElementById('hero-tag').innerText = dict.heroTag;
             if(document.getElementById('hero-main-title')) document.getElementById('hero-main-title').innerText = dict.heroTitle;
             if(document.getElementById('hero-description')) document.getElementById('hero-description').innerText = dict.heroDesc;
